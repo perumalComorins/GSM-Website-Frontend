@@ -1,0 +1,1644 @@
+/**** Small devices (landscape phones, less than 768px)*****/
+@media (max-width: 991.98px) {
+    
+    /*** Sidepanel menu && Header (18-04-22)***/
+    .site-navigation .navbar-brand{
+        margin:0;
+    }
+    .site-header-container{
+        max-width: 75%;
+    }
+    .sidebar-wrapper-container{
+        background: transparent;
+    }
+    .hamburger{
+        width: 24px;
+        height:24px;
+    }
+    .hamburger.is-closed .hamb-top{
+        top:3px;
+    }
+    .hamburger.is-closed .hamb-top, 
+    .hamburger.is-closed .hamb-middle, 
+    .hamburger.is-closed .hamb-bottom{
+        background:#ffffff;
+    }
+    
+    #sidebar-wrapper{
+        box-shadow: none;
+    }
+    #sidebar-wrapper h1.pannel-title{
+        opacity: 0;
+    }
+    #wrapper.toggled #sidebar-wrapper h1.pannel-title{
+        opacity: 1;
+        font-size: 40px;
+        text-align: center;
+        position: unset;
+        transform: rotate(-180deg);
+
+    }
+    #wrapper.toggled .sidebar-wrapper-container{
+        background:#ffffff;
+    }
+    .site-navigation .site-logo{
+        width:144px;
+    }
+    .sidenav-Menu{
+        margin-top:97.5px;
+    }
+    .sidenav-Menu .dropdown-menu{
+        position: inherit!important;
+        transform: inherit!important;
+        width: auto;
+        box-shadow: none;
+        padding: 6px 0 0 15px;
+        left:auto;
+        margin:0;
+    }
+    .sidenav-Menu li a{
+        font-size: 15px;
+        line-height: 38px;
+    }
+    .sidenav-Menu .dropdown-menu li a{
+        font-size: 12px;
+        line-height: 35px;
+    }
+    .togglesearch{
+        background: #F5F5F5;
+        position: absolute;
+        top: 54px;
+        right: 0;
+        width: 320px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        border-top:4px solid #3F589E;
+        opacity:0;
+        padding: 7px 0;
+        z-index: 1000000;
+        border-radius: 2px;
+        -moz-transition: all 0.4s ease-out;  /* FF4+ */
+        -o-transition: all 0.4s ease-out;  /* Opera 10.5+ */
+        -webkit-transition: all 0.4s ease-out;  /* Saf3.2+, Chrome */
+        -ms-transition: all 0.4s ease-out;  /* IE10? */
+        transition: all 0.4s ease-out; 
+    }
+    .togglesearch.open{
+        opacity:1;
+       
+    }
+    .togglesearch-wrapper{
+        max-width: 80%;
+        margin:0 auto;
+    }
+    .togglesearch:before{
+        content: "";
+        position: absolute;
+        top: -32px;
+        right: 13px;
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-top: 14px solid transparent;
+        border-bottom: 14px solid #3F589E;
+    }
+    .togglesearch input[type="text"]{
+        font-size: 12px;
+        font-family: 'poppinsextralight';
+        color: #c5c5c5;
+        width: 75%;
+        height: 35px;
+        padding: 5px 10px;
+        border: 1px solid #3F589E;
+        border-radius: 2px;
+        outline: none;
+    }
+    .togglesearch input[type="text"]::placeholder{
+        font-size: 12px;
+        font-family: 'poppinsextralight';
+        color: #c5c5c5;
+    }
+    .togglesearch button{
+        width: 15%;
+        height: 35px;
+        outline: none;
+        cursor: pointer;
+    }
+    .search-form-trigger{
+        color:#FFFFFF;
+        padding: 5px 10px;
+        box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+        display: block;
+    }
+    .search-form-trigger:hover{
+        color:#FFFFFF;
+    }
+    .searchBar-mb .search-close{
+        cursor: pointer;
+    }
+
+    
+}
+/**** Extra small devices (portrait phones, less than 576px)****/
+@media (max-width: 575.98px) {
+    /** **/
+    .fullsize-banner{
+        height: auto;
+    }
+    
+    .home-banner-content {
+        width: 65%;
+        margin: 0 0 0 25%;
+        position: relative;
+    }
+    .home-banner-content h1.title{
+        font-size: 14px;
+        line-height: 21px;
+        margin-bottom: 24px;
+    }
+    .home-banner-content .content{
+        font-size: 14px;
+        line-height: 21px;
+        max-width: 75%;
+        margin: 0 0 9px 20%;
+        font-family: 'poppinsextralight';
+    }
+    .home-banner-content button{
+        width:auto;
+        font-size: 12px;
+        line-height: 18px;
+        padding: 2px 4px;
+        border-radius: 5px;
+    }
+    .home-banner-content button:not(:last-child){
+        margin-right: 3px!important;
+        margin-left:0!important;
+    }
+
+    /*** Footer design ***/
+    footer{
+        padding-top: 120px;
+    }
+    .footercontainer{
+        max-width: 80%;
+    }
+    .footerpanelAboutContent{
+        padding: 0;
+    }
+    footer .footer-widget:not(:last-child){
+        margin-bottom: 91px;
+    }
+    .footer-widget-title{
+        font-size: 24px;
+        font-family: 'poppinsregular';
+    }
+    .footer-menu li a{
+        font-size: 18px;
+    }
+    .newsletter button{
+        width: 150px;
+        font-size: 13px;
+        line-height: 20px;
+        font-family: 'poppinsregular';
+        border-radius:10px;
+        padding: 12px 0;
+    }
+    input[type=email].form-control.newsletter-email{
+        font-size: 13px;
+        line-height: 20px;
+    }
+    input[type=email].form-control.newsletter-email::placeholder{
+        font-size: 13px;
+        line-height: 20px;
+        
+    }
+    .footer-widget:last-child .footerpanelSocialicons{
+        writing-mode: inherit;
+        display: inline-block!important;
+        max-width: inherit;
+        margin: 0;
+    }
+    .footerpanelSocialicons .icon{
+        width: 21px;
+        height:21px;
+    }
+
+    /*** Home page design ***/
+    #client-logo-slider{
+        padding: 9px 0;
+        border-radius: 5px;
+        background: #FFFFFF;
+        box-shadow: 0px 3px 3px #b1b1b1;
+    }
+    .what-wedo-section .intro-section{
+        margin: 23px 0 28px 0;
+    }
+    .what-wedo-section .intro-title{
+        font-size: 16px;
+        line-height: 25px;
+    }
+    .what-wedo-section .intro-content{
+        font-size: 12px;
+        line-height: 20px;
+    }
+    .icontexts-box:not(:last-child){
+        margin-bottom: 40px ;
+    }
+    .icontexts-row{
+        margin: 0 0 10px 0;
+    }
+    .icontexts-row .icon{
+        height:45px;
+    }
+    .whatwedo-texts{
+        margin-top: 0;
+    }
+    .whatwedo-texts .icontexts{
+        font-size: 12px;
+        line-height: 18px;
+        margin: 0 0 0 12px;
+    }
+    .icontexts mark{
+        margin-bottom: 5px;
+    }
+    .icontexts-para{
+        font-size: 12px;
+        text-align: left;
+        line-height: 22px;
+        margin-bottom: 0;
+    }
+
+    .partnerpanel{
+        height: 110px;
+    }
+    .partnerLogos-section{
+        margin:12px 0 40px 0
+    }
+    .partnerLogos-section h2{
+        font-size: 16px;
+        line-height: 25px;
+    }
+
+    .satisfaction-rate-innersection{
+        max-width: 75%;
+    }
+    .satisfaction-rate h2{
+        font-size: 16px;
+        line-height: 25px;
+        margin-bottom: 9px;
+    }
+    .satisfaction-rate .intro-content{
+        font-size: 12px;
+        line-height: 22px;
+        margin-bottom: 0;
+    }
+    .title-bar{
+        margin-bottom: 16px;
+    }
+    .satisfaction-rate-section h4{
+        font-size: 12px;
+        line-height: 18px;
+
+    }
+    .satisfactionBar{
+        margin:12px 0 61px 0;
+    }
+
+    .organisation-section{
+        padding: 45px 0 100px 0;
+        background-position:top;
+    }
+    .organisation-inner-box{
+        -ms-flex-wrap: wrap-reverse;
+        flex-wrap: wrap-reverse;
+        margin:0;
+    }
+    .organisation-content,
+    .organize-picture{
+        padding: 0 0 0 48px;
+    }
+    .organize-picture{
+        margin-bottom: 32px;
+    }
+    .organize-picture img{
+        box-shadow: 0 7px 8px rgba(0,0,0,16%);
+    }
+    .organisation-content .main-title{
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom:4px;
+    }
+    .organisation-content .sub-title{
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom:4px;
+    }
+    .organisation-content .organization-para{
+        font-size: 12px;
+        line-height: 20px;
+        margin-bottom: 30px;
+    }
+    .organisation-viewmore{
+        position: inherit;
+        width:112px;
+        font-size:12px;
+        line-height: 18px;
+        padding: 7px 0;
+        display: inline-block!important;
+        top: inherit;
+    }
+
+    .testimonial{
+        top:18px;
+        /* padding:40px 0; */
+    }
+    .testimonial_box{
+        height: 152px;
+        position: relative;
+        top: 30px;
+    }
+    .testimonials_overlay{
+        top:0;
+        bottom:0;
+    }
+    .teamMember--img {
+        height: 182px;
+    }
+    .memberName{
+        font-size: 12px;
+        line-height: 18px;
+        margin:0;
+    }
+    .membersQuote{
+        font-size: 12px;
+        line-height: 18px;
+        margin:9px 0;
+        padding: 0;
+        font-family:'poppinsthin';
+    }
+    .gsm-teamMember--name-designation{
+        top:10px;
+        padding: 0;
+        align-self: center!important;
+    }
+    
+    /* .testimonial-Nav{
+        top: 78%;
+        right: inherit;
+        left: 0;
+    } */
+    .testimonial-Nav{
+        top:80%;
+    }
+    .testimonial_num{
+        font-size: 10px;
+        line-height: 9px;
+        padding: 0px 9px;
+        margin: 0 4px;
+    }
+    #testimonialIndicators .carousel-control-next, 
+    #testimonialIndicators .carousel-control-prev{
+        opacity:1
+    }
+    #testimonialIndicators .carousel-control-next img, 
+    #testimonialIndicators .carousel-control-prev img{
+        width:4px;
+        height:9px;
+    }
+
+
+    /*** Individual page design ***/
+    .smallsize-banner{
+        height:296px;
+    }
+    .banner-cover-overlay{
+        top:58px;
+    }
+    .individual-banner-content .banner-title{
+        font-size: 27px;
+        line-height: 40px;
+    }
+    .reg-intro-content{
+        font-size: 12px;
+        line-height: 20px;
+        margin-bottom: 14px;
+        font-family: 'poppinsextralight';
+    }
+    .registeration-box{
+        margin:15px 0 40px 0;
+    }
+    .register-box-top{
+        max-width: 75%;
+        margin-bottom: 32px;
+    }
+    .register-box-top button{
+        font-size: 12px;
+        line-height: 18px;
+        width:112px;
+        padding: 7.5px 0;
+    }
+    .register-box-bottom{
+        max-width: 85%;
+    }
+    .registeration-box .section-title{
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .registeration-box .section-content{
+        font-size: 12px;
+        line-height: 20px;
+        font-family: 'poppinsextralight';
+    }
+
+    .faq-section.company-bg .container{
+        max-width: 80%;
+    }
+    .faq-label{
+        font-size: 26px;
+        line-height: 39px;
+        padding: 6.5px 0px 16px 0px;
+        display: block;
+        text-align: center;
+        border-bottom-right-radius: 101px;
+        border-bottom-left-radius: 101px;
+    }
+    #faqIndicators{
+        margin-top: 18px;
+        margin-bottom: 38px;
+    }
+    .faqMember-thumbnail {
+        margin-bottom: 25px;
+    }
+    .faqmemberName{
+        margin-top: 42px;
+        margin-bottom: 0;
+        font-size: 15px;
+        line-height: 23px;
+
+    }
+    .faqmemberDesignation{
+        margin-left: 16px;
+    }
+    .faq-Nav{
+        margin-top:16px;
+    }
+    .faq-accordian-list{
+        margin:40px 0
+    }
+    .faq-accordian-list .title{
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 27px;
+    }
+    #faq .card .card-header .btn-header-link.collapsed{
+        font-size: 20px;
+        line-height: 30px;
+        padding: 15px 0 15px 15px;
+    }
+    #faq .card .card-header .btn-header-link{
+        color:#707070;
+        padding: 15px 0 15px 15px;
+    }
+    #faq .card .card-header .btn-header-link:before{
+        padding: 0px 23px 0px 0
+    }
+    #faq .card-body{
+        color: #707070;
+
+    }
+    #faq .card{
+        margin-bottom:14px;
+    }
+
+
+    .training-initial-formSection{
+        margin-bottom: 0;
+    }
+    .training-initial-formSection .container{
+        max-width: 100%;
+    }
+    .training-initial-formSection .train-title{
+        font-size: 20px;
+        line-height: 30px;
+        margin: 42px 0 51px 0;
+    }
+    .register-section{
+        background: none;
+        padding-bottom: 15px;
+    }
+    .reg-session-title{
+        font-size: 14px;
+        line-height: 21px;
+        text-align: center;
+        margin:0 0 5px 0;
+    }
+    .register-initial-form{
+        background: #f5f5f5;
+        padding: 12px 5% 38px 5%;
+    }
+    .twospaces-row .form-group:nth-child(1){
+        padding-right: 0;
+    }
+    .twospaces-row .form-group:nth-child(2){
+        padding-left: 0;
+    }
+    .register-initial-form .gsm-form-label{
+        display: none;
+    }
+    .gsm-dropdown-toggle{
+        font-size: 12px;
+        line-height: 18px;
+        padding:9px 0 9px 10px;
+        
+    }
+    .gsmDropdown .gsm-dropdown-toggle::after{
+        font-size: 12px;
+    }
+    .gsmDropdown .gsm-dropdown-toggle::after{
+        margin-right: 9px;
+    }
+    .gsmDropdown.show .gsm-dropdown-menu hr{
+        margin:0 9px 8px 9px;
+    }
+    .gsm-dropdown-menu .gsm-dropdown-link{
+        font-size: 12px;
+        width: 50%;
+        margin-left: 9px;
+        padding: 0 0 0 5px;
+    }
+    .gsmDropdown.show .gsm-dropdown-menu{
+        padding: 0;
+    }
+
+
+    .training-regitration-formSection{
+        background: #F5F5F5;
+    }
+    .training-regitration-formSection .container{
+        max-width: 100%;
+    }
+    .company-register-section .gsm-form-group{
+        margin-bottom: 14px;
+    }
+    .company-register-section .regitration-disclaimer{
+        margin:14px 0 19px 0;
+    }
+    input[type=text].form-control,
+    input[type=number].form-control,
+    input[type=email].form-control,
+    input[type=date].form-control,
+    select.form-control,
+    textarea.form-control,
+    .company-register-section input[type=text].form-control, 
+    .company-register-section input[type=number].form-control, 
+    .company-register-section input[type=email].form-control, 
+    .company-register-section input[type=date].form-control, 
+    .company-register-section textarea.form-control
+    {
+        font-size: 12px;
+        line-height: 18px;
+        padding: 9px 0 9px 10px;
+        border-radius: 5px;
+        
+    }
+    input.form-control::placeholder,
+    textarea.form-control::placeholder{
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .gsm-form-label{
+        font-size:12px;
+        line-height: 18px;
+        margin-bottom: 6px;
+    }
+    .twospaces-row .twospaces-row .form-group:nth-child(1){
+        padding-right: 0;
+    }
+    .twospaces-row .twospaces-row .form-group:nth-child(2){
+        padding-left: 0;
+    }
+    .register-registration-form .twospaces-row,
+    .register-registration-form .singlespace-row{
+        padding-bottom: 0;
+    }
+    .register-registration-form .gsm-form-group{
+        margin-bottom: 14px!important;
+    }
+    .register-registration-form .singlespace-row .gsm-form-group{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .register-registration-form button{
+        width: 178px;
+        font-size: 12px;
+        line-height: 18px;
+        padding: 18px 0;
+    }
+    .register-registration-form .twospaces-row .twospaces-row .gsm-form-group:last-child{
+        margin-bottom: 0!important;
+    }
+    .regitration-disclaimer{
+        margin-top: 9px;
+        margin-bottom: 20px;
+        font-size: 12px;
+        line-height: 18px;
+
+    }
+    .training-regitration-formSection .register-section{
+        padding: 24px 0 66px 0;
+    }
+
+    /*** Heighlighted footer ***/
+    .highlightedfooter-title{
+        font-size: 20px;
+        line-height: 30px;
+        font-family: 'poppinsregular';
+        text-align: center;
+        margin-bottom: 24px;
+    }
+    .heightlight-footer-box{
+        padding: 91px 0 80px 0;
+    }
+    .heightlight-footer-box .container{
+        max-width: 65%;
+        padding: 0;
+    }
+    .box-content{
+        padding: 0 0 25px 0;
+    }
+    .box-content .box-para{
+        font-size: 16px;
+        line-height: 25px;
+        padding: 0;
+        margin:0;
+    }
+
+    .box-btn{
+        font-size: 10px;
+        line-height: 16px;
+        padding: 12px 35px;
+    }
+
+    /***  Satisfaction card ***/
+    #satisfaction-slider-mobile .satisfaction-card figure{
+        /* box-shadow: 0 3px 6px rgb(0, 0, 0 / 16%), 0 3px 6px rgb(0, 0, 0 / 23%); */
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+        position: relative;
+    }
+    #satisfaction-slider-mobile .carousel-inner{
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        padding: 0 24px 0 18px;
+        background: #ffffff;
+    }
+    #satisfaction-slider-mobile .satisfaction-card{
+        padding: 0;
+    }
+    #satisfaction-slider-mobile .froentside-panel .card-title{
+        font-size:12px;
+        line-height: 18px;
+    }
+    #satisfaction-slider-mobile .froentside-panel .card-text{
+        font-size:10px;
+        line-height: 20px;
+    }
+    #satisfaction-slider-mobile .satisfaction-label{
+        font-size: 9px;
+        line-height: 13px;
+        padding: 10px 30px 10px 15px;
+        position: absolute;
+        left:auto;
+        right:0;
+    }
+    #satisfaction-slider-mobile .froentside-panel .content-block{
+        position: inherit;
+        bottom: inherit;
+    }
+    #satisfaction-slider-mobile .froentside-panel{
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .satisfaction-slider .carousel-indicators{
+        margin:25px auto 35px auto;
+    }
+    #satisfaction-slider-mobile .satisfaction-card figure{
+        height:309px;
+    }
+    .students-satisfaction-percentage{
+        margin-bottom: 12px;
+    }
+    .satifaction-percentage{
+        font-size: 14px;
+        font-family: 'poppinsbold';
+        line-height: 21px;
+        padding: 0;
+    }
+    .satifaction-text{
+        font-size: 11px;
+        line-height: 16px;
+        font-family: 'poppinsregular';
+    }
+    .students-count{
+        font-family: 'poppinsbold';
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .students-text{
+        font-size: 11px;
+        line-height: 16px;
+        font-family: 'poppinsregular';
+    }
+    .satisfaction-card figcaption{
+        padding: 0;
+        height:auto;
+    }
+    .satisfaction-card .card-header{
+        margin-top: 9px;
+    }
+    .backdrop-list li{
+        font-size: 9px;
+        line-height: 15px;
+    }
+    .satisfaction-card figcaption .card-footer button{
+        font-size: 10px;
+    }
+
+    /*** Company page design ***/
+    .company-page-banner .container{
+        max-width: 90%;
+    }
+    .company-page-banner .banner-left-col h2{
+        font-size: 14px;
+        line-height: 21px;
+        margin-bottom: 6.5px;
+    }
+    .company-page-banner .banner-left-col p{
+        font-size: 10px;
+        line-height: 16px;
+        margin-bottom: 12.5px;
+    }
+    .company-page-banner .banner-left-col{
+        padding: 0;
+    }
+    .company-page-banner .banner-left-col button{
+        font-size: 12px;
+        line-height: 18px;
+        width: 112px;
+        padding: 7.5px 0;
+    }
+    .company-page-banner .banner-right-col{
+        text-align: center;
+        background-size: contain;
+    }
+    .company-page-banner .banner-right-col img{
+        height:230px;
+    }
+    .reverse-row-mobile{
+        -ms-flex-wrap: wrap-reverse;
+        flex-wrap: wrap-reverse;
+    }
+
+
+    /*** Qualified staff ***/
+    .qualified-staff-section .container{
+        max-width: 90%;
+    }
+    .qualified-staff-box{
+        margin-top: 18px;
+    }
+    .qualified-staff-box .register-box-top{
+        margin-bottom: 0;
+    }
+    #faqqualified_Indicators{
+        margin-top: 10px;
+        margin-bottom: 37px;
+    }
+    .triangleBox{
+        width: 157px;
+        height: 178px;
+    }
+    .fag-content{
+        font-size: 16px;
+        line-height: 26px;
+        margin-bottom: 0px;
+    }
+    .company-register-section{
+        padding-top: 23px;
+    }
+    .company-register-section h2{
+        font-size: 13px;
+        line-height: 20px;
+        padding-bottom: 6px;
+        margin-bottom: 8px;
+    }
+    .company-register-section p{
+        font-size: 12px;
+        line-height: 18px;
+        margin-bottom: 9px;
+    }
+
+    /*** Blog page ***/
+    .blog-title-col .title{
+        font-size: 30px;
+        line-height: 45px;
+        text-align: left;
+        max-width: 75%;
+        margin: 0 auto;
+    }
+    .blog-title-col .title::after{
+        width: 125px;
+        position: inherit;
+        transform: inherit;
+    }
+    .banner-pic-col{
+        margin-bottom: 26px;
+    }
+    .blogImage{
+        padding:0 9px 0 0;
+    }
+    .blogContent h2{
+        font-size: 12px;
+        line-height: 16px;
+
+    }
+    .blogContent h2::before{
+        width:100px;
+        padding-bottom: 7px;
+    }
+    .blogContent p{
+        font-size: 12px;
+        line-height: 16px;
+        margin-bottom: 6px;
+    }
+    .gsm-blog-lists{
+        max-width: 85%;
+    }
+    .blogContent .author_designation{
+        font-size: 12px;
+    }
+    .gsm-blog-row:not(:last-child){
+        margin:0 0 30px 0;
+    }
+    .strike{
+        margin:35px 0 48px 0;
+    }
+    .blog-view-more {
+        font-size: 9px;
+        line-height: 11px;
+        padding: 5px 0;
+        width: 130px;
+    }
+
+
+    /*** Certificates page ***/
+    .indicator-view .title-banner h2 {
+        font-size: 12px;
+        line-height: 18px;
+        max-width: 95px;
+        margin-bottom: 16px;
+    }
+    .title-banner p {
+        font-size: 8px;
+        line-height: 12px;
+        max-width: 190px;
+        margin-bottom: 30px;
+    }
+    
+    .indicator-view.fullsize-banner{
+        height:100vh;
+    }
+    .picture-banner{
+        position: absolute;
+        bottom:87%;
+        text-align: right;
+    }
+    .picture-banner img{
+        width: 138px;
+        height:138px;
+    }
+    .indicator-view .indicator-content{
+        max-width: 283px;
+    }
+    .indicator-view .title-banner button{
+        font-size:8px;
+        line-height: 12px;
+        width:80px;
+        padding: 7px 0;
+    }
+    .certificate-contentarea{
+        max-width: 90%;
+        margin: 23px auto 46px auto;
+    }
+    .content-spaces{
+        margin-bottom: 30px;
+    }
+    .content-spaces h2{
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 14px;
+    }
+    .content-spaces p,
+    .content-spaces ul li{
+        font-size: 12px;
+        line-height: 18px;
+        margin-bottom: 21px;
+    }
+    .content-spaces ul li{
+        font-size: 12px;
+        line-height: 18px;
+        margin-bottom: 12px;
+    }
+    .certificate-cardarea .service-block{
+        padding: 0 30px!important;
+    }
+    .certificate-cardarea .row .service-block:not(:last-child){
+        margin:0 0 48px 0;
+    }
+
+    .certificate-satisfaction-card .satisfaction-card figure{
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+        position: relative;
+    }
+    .certificate-satisfaction-card .carousel-inner{
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        padding: 0 24px 0 18px;
+        background: #ffffff;
+    }
+    .certificate-satisfaction-card .satisfaction-card{
+        padding: 0 25px 0 23px;
+    }
+    .certificate-satisfaction-card .satisfaction-card:not(:last-child){
+        margin-bottom: 28px;
+    }
+    .certificate-satisfaction-card .froentside-panel .card-title{
+        font-size:12px;
+        line-height: 18px;
+    }
+    .certificate-satisfaction-card .froentside-panel .card-text{
+        font-size:10px;
+        line-height: 20px;
+    }
+    .certificate-satisfaction-card .satisfaction-label{
+        font-size: 9px;
+        line-height: 13px;
+        padding: 10px 30px 10px 15px;
+        position: absolute;
+        left:auto;
+        right:0;
+    }
+    .certificate-satisfaction-card .froentside-panel .content-block{
+        position: inherit;
+        bottom: inherit;
+    }
+    .certificate-satisfaction-card .froentside-panel{
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    #satisfaction-certificates-box.certificate-satisfaction-card .satisfaction-card figure{
+        height:309px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        padding: 0 24px 0 18px;
+        background: #ffffff;
+    }
+    .certificate-cardarea{
+        margin-bottom: 59px;
+    }
+    #satisfaction-certificates-box h2{
+        font-size: 20px;
+        line-height: 30px;
+    }
+    #satisfaction-certificates-box .row{
+        margin-top: 19px!important;
+    }
+    .service-title h2{
+        font-size: 24px;
+        line-height: 35px;
+    }
+    .service-body{
+        height:230px;
+    }
+    .service-body p{
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .service-footer{
+        height: 120px;
+    }
+    .service-footer button{
+        font-size: 15px;
+        line-height: 23px;
+        width: 172px;
+        padding: 12.5px 0;
+        margin: 0 auto;
+    }
+
+    /*** Certificular page ****/
+    .certificateur-bannersection .twofourth-size-banner{
+        height:470px;
+    }
+    .certificateur-container{
+        max-width:85%;
+        bottom:150px;
+    }
+    .certificateur-container .content-section h1{
+        font-size: 25px;
+        line-height: 38px;
+        text-align: center;
+        margin-bottom:81px;
+    }
+    .certificateur-container .content-section p{
+        font-size: 12px;
+        line-height: 18px;
+        font-family: 'poppinsextralight';
+    }
+    .certificateur-container .content-section{
+        padding: 0;
+        margin-bottom: 28px;
+    }
+    .twobyfour-banner-cover-overlay{
+        top:57px;
+    }
+    .certificateur-container .infobar-section{
+        padding-left: 0;
+    }
+    .infobar{
+        padding: 30px 35px;
+    }
+    .infobar .inforbar-col label{
+        font-size: 10px;
+        line-height: 16px;
+
+    }
+    .infobar .inforbar-col h2{
+        font-size: 40px;
+        line-height: 63px;
+        margin:7px 0
+    }
+    .infobar .infobar-title{
+        font-size: 25px;
+        line-height: 38px;
+        padding: 15px 0;
+
+    }
+    .certificateur-content-container .container{
+        max-width: 85%;
+    }
+    .certificateur-imgbannerbox{
+        margin: 0;
+    }
+    .certificateur-imgbannerbox img{
+        height:168px;
+    }
+    .certificateur-imgbannerbox p{
+        position: inherit;
+        transform: none;
+        color: #3F589E;
+        font-size: 12px;
+        line-height: 18px;
+        font-family: 'poppinsextralight';
+        top: inherit;
+        left: inherit;
+        max-width: 85%;
+        text-align: center;
+        margin: 32px auto;
+    }
+    .certificateur-content-container h2{
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .certificateur-content-container p{
+        font-size: 12px;
+        line-height: 18px;
+        font-family: 'poppinsextralight';
+    }
+    .certificateur-content-section,
+    .certificateur-image-section{
+        padding: 0;
+    }
+    .Quotebutton{
+        height:578px;
+    }
+    .box--title{
+        font-size: 34px;
+        line-height: 51px;
+        margin-bottom: 15px;
+    }
+    .box--para{
+        font-size: 15px;
+        line-height: 23px;
+        margin-bottom: 5px;
+    }
+    .link__box a{
+        width: 210px;
+        font-size: 15px;
+        line-height: 23px;
+        padding: 18px 0;
+    }
+
+    /***  Application page design ***/
+    .application-page-banner .container{
+        max-width: 80%;
+    }
+    .application-page-banner .banner-text{
+        margin:0;
+        align-self: center;
+        padding: 0;
+    }
+    .application-page-banner h2{
+        font-size: 25px;
+        line-height: 38px;
+        text-align: left!important;
+    }
+    .application-page-banner{
+        bottom: inherit;
+        padding: 65px 0 100px 0;
+    }
+    .profile-form-section{
+        bottom: inherit;
+    }
+    .applicationpage-body-container{
+        max-width: 100%;
+        position: relative;
+        bottom: 50px;
+        border-radius: 10px;
+        padding: 2px !important;
+    }
+    .Profile-disclaimer{
+        margin-bottom: 32px;
+
+    }
+    .emailform-label{
+        font-size: 10px;
+        line-height: 15px;
+    }
+    .emailform-check{
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    #gsmProfile-form h2.gsmProfile-title{
+        font-size: 15px;
+        line-height: 23px;
+        padding-bottom: 4.5px;
+        margin-bottom: 12px;
+    }
+    #gsmProfile-form .gsmProfile-content{
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    /*** Quality indicators page ***/
+    #qualityTab li{
+        width:50%;
+    }
+    .indicator-container{
+        max-width: 80%;
+        margin: 32px auto 91px auto;
+    }
+    #qualityTab-Content{
+        max-width: 85%;
+        margin:0 auto;
+        padding: 22px 0;
+    }
+    #qualityTab .tab-nav-link{
+        margin-right: 10px;
+    }
+    #qualityTab li:nth-child(5n) .tab-nav-link{
+        margin-right: 10px;
+    }
+    .indicator-container .title{
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .prevtab i, .nexttab i{
+        width: 25px;
+        height: 25px;
+    }
+    .prevtab i img, .nexttab i img{
+        width:10px;
+        height:10px;
+    }
+    .prevtab, .nexttab{
+        font-size: 9px;
+        line-height: 13px;
+        font-family: 'poppinsextralight';
+    }
+    .nexttab {
+        right: -30px;
+    }
+    .nexttab i {
+        margin-left: 6px;
+    }
+    .prevtab {
+        left: -30px;
+    }
+    .prevtab i{
+        margin-right: 6px;
+    }
+    #qualityTab-Content .tab-pane{
+        max-width: 75%;
+    }
+    #qualityTab-Content .tab-pane h1{
+        font-size: 21px;
+        line-height: 25px;
+        margin-bottom: 18px;
+    }
+    #qualityTab-Content .tab-pane p{
+        margin-bottom: 30px;
+        
+    }
+    #qualityTab-Content .tab-pane button{
+        
+        width: 125px;
+        font-size: 11px;
+        padding: 7px 0;
+
+    }
+
+
+    /****  Qualified staff ****/
+    .static-banner-organisation.fullsize-banner{
+        height:383px;
+    }
+    .organization-banner-content h1.title{
+        font-size: 12px;
+        line-height: 18px;
+        margin-bottom: 15px;
+
+    }
+    .organization-banner-content .content{
+        font-size: 8px;
+        line-height: 11px;
+
+    }
+    .organization-banner-content .btn-box-wrapper{
+        margin-top:15px!important;
+    }
+    .organization-banner-content .btn-box-wrapper button{
+        width: 91px;
+        font-size: 8px;
+        line-height: 12px;
+        padding: 7px 0;
+    }
+    .organization-banner-content .btn-box-wrapper button:last-child{
+        margin:0;
+    }
+    .organization-banner-content{
+        width:100%;
+    }
+    .organization-banner-content .banner-content{
+        width: 220px;
+        left:38px;
+
+    }
+    .organization-intro-section{
+        max-width: 75%;
+    }
+    .organization-intro-section .intro-section{
+        margin: 28px 0 24px 0;
+    }
+    .organization-intro-section .intro-title{
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 8px;
+
+    }
+    .organization-intro-section .intro-content{
+        font-size: 12px;
+        line-height: 21px;
+        font-family: 'poppinsextralight';
+        margin:0;
+    }
+    .training-tab-section h2{
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 20px;
+    }
+    .organization-tab-bar .container{
+        max-width: 80%;
+    }
+    .organization-tab-bar li a{
+        font-size: 11px;
+        line-height: 15px;
+        padding: 8px 0;
+    }
+    .draft-continue-indicator{
+        margin-bottom: 15px!important;
+    }
+    .draft-continue-indicator button{
+        background: #3F589E;
+        font-size: 9px;
+        line-height: 13px;
+        padding: 7px 9px;
+        border-radius: 10px;
+    }
+    .alert-gsm{
+        display: inline-flex;
+        font-size: 10px;
+        line-height: 16px;
+        padding: 9px 0px 9px 11px;
+    }
+    .alert-gsm span{
+        max-width: 80%;
+    }
+    .alert-gsm button.close{
+        font-size: 10px;
+        line-height: 16px;
+        padding: 4px 8px;
+    }
+    .organize-registration-form{
+        padding: 22px 0 50px 0;
+    }
+    .organization-tab-content .tab-content{
+        max-width: 80%;
+    }
+    .organization-tab-content .twospaces-row .form-group:nth-child(1),
+    .organization-tab-content .twospaces-row .form-group:nth-child(2){
+        padding-bottom: 14px;
+    }
+    .organization-tab-content .organize-form-submission  button{
+        font-size: 12px;
+        line-height: 18px;
+        width: 100% ;
+        padding: 8px 0;
+    }
+    .organization-tab-content .question-text{
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    /*** Sitemap page design ***/
+    .sitemap-row {
+        margin: 30px 0 120px 0;
+    }
+    .sitebar-row {
+        margin: 0px 0 68px 0;
+    }
+    .sitemap-container{
+        max-width: 75%;
+    }
+    .sitemap-banner{
+        padding-bottom: 14px;
+        padding-top: 48px;
+    }
+    .sitemap-banner h1{
+        font-size: 25px;
+        line-height: 38px;
+    }
+    .sitebar-box h2{
+        font-size: 25px;
+        line-height: 38px;
+        margin-bottom: 14px;
+
+    }
+    .sitebar-box li{
+        font-size: 15px;
+        line-height: 22px;
+        margin-bottom: 18px;
+    }
+
+    /*** Terms and privacy ***/
+    .terms-privacy-legal-view.fullsize-banner{
+        height:285px;
+    }
+    .terms-privacy-legal-content h1{
+        font-size: 25px;
+        line-height: 38px;
+        margin-bottom: 10px;
+    }
+    .policy-content-box{
+        margin-top: 18%;
+    }
+    .policy-content-box h4{
+        font-size: 12px;
+        line-height: 26px;
+        margin-bottom: 3px;
+    }
+    .policy-content-box p{
+        font-size: 12px;
+        line-height: 26px;
+        margin-bottom: 9px;
+    }
+
+    /*** Legal notice content ***/
+    .legalnotice-content{
+        max-width: 75%;
+        margin: 0 auto;
+        top: 48px;
+        transform: inherit;
+    }
+    .legalnotice-content .legal-banner{
+        width:100%;
+    }
+    .mobile-legal-container{
+        max-width: 75%;
+        margin:96px auto 45px auto;
+        padding: 0;
+    }
+    .legalnotice-col h1{
+        color:#3F589E;
+        font-size: 18px;
+        line-height: 26px;
+        margin-bottom: 12px;
+    }
+    .legalnotice-lists li{
+        color:#3F589E;
+        font-size: 12px;
+        line-height: 26px;
+        margin-bottom: 0px;
+    }
+    .legalnotice-lists li label{
+        margin-bottom: 0;
+    }
+
+
+    /*** Contact faq page ***/
+    #contactfaq-nav{
+        display:none;
+    }
+    .contactfaq-nav-slider .carousel-indicators{
+        position:inherit;
+        margin:30px auto 21px auto;
+    }
+    .contactfaq-nav-slider .carousel-indicators li{
+        width: 15px;
+        height: 15px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        border-radius: 50%;
+        border: none;
+        margin:0 12px 0 0;
+    }
+    .contactfaq-nav-slider .carousel-indicators .active{
+        background:#4EBDE4;
+    }
+    .contactfaq-banner-content h1{
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 0;
+    }
+    .contactfaq-searchForm{
+        max-width: 75%;
+        margin-bottom: 10px!important;
+    }
+    .search-for-contactfaq{
+        font-size: 9px;
+        line-height: 13px;
+        height: 41px;
+        padding: 14px 0 14px 7px;
+    }
+    .search-for-contactfaq::placeholder{
+        padding: 14px 0 14px 7px;
+    }
+    .contactfaq-searchForm button{
+        padding: 0 12px;
+    }
+    .threebyfour-banner-cover-overlay{
+        top:57px;
+    }
+    .contactfaq-tab-section{
+        position: inherit;
+        bottom:inherit;
+        margin-top: 42px;
+    }
+    .contactfaq-tab-bar .container{
+        max-width: 65%;
+    }
+    #contactfaq-nav-mobile .carousel-inner li{
+        margin: 3px;
+        box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+    }
+    #contactfaq-nav-mobile .carousel-inner li a h2{
+        font-size: 22px;
+        line-height: 33px;
+        margin-bottom: 0;
+    }
+    #contactfaq-nav-mobile .carousel-inner li a p{
+        font-size: 14px;
+        line-height: 19px;
+    }
+    #contact-faq-accordian{
+        margin: 50px 0 0 0;
+    }
+    #contact-faq-accordian h2.title{
+        font-size: 22px;
+        line-height: 34px;
+    }
+    .appointment-result-box{
+        max-width: 75%;
+    }
+    .result-title{
+            font-size: 21px;
+            line-height: 41px;
+    }
+    .contactfaq-result button{
+        width: 100%;
+        font-size: 15px;
+        padding: 9px 0;
+    }
+    .contactfaq-result{
+        padding: 20px 40px;
+    }
+    .appointment-title{
+        font-size: 21px;
+        line-height: 34px;
+    }
+    .appointment-content{
+        max-width: 75%;
+        margin: 32px auto 52px auto;
+    }
+    .appointment-card .card-title{
+        font-size: 15px;
+        line-height: 21px;
+        margin-bottom: 24px;
+    }
+    .appointment-card .card-text{
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .appointment-card button{
+        font-size: 12px;
+        line-height: 18px;
+        padding: 15px 0;
+        width:205px;
+        border-radius: 10px;
+    }
+    .threebyfour-banner-cover{
+        vertical-align: bottom;
+    }
+
+    /***  Recruitment page ***/
+    .requirement-bannersection .threebyfourth-size-banner{
+        height:348px;
+    }
+    .requirement-banner-content h1{
+        max-width: 75%;
+        font-size: 25px;
+        line-height: 38px;
+    }
+    .requirement-tab-section .organization-tab-bar .container{
+        max-width: 100%;
+    }
+    span.needs_span{
+        font-size: 11px;
+        line-height: 17px;
+    }
+    .requirement-tab-section .organization-tab-bar .nav.nav-pills{
+        top:0;
+    }
+    .requirement-tab .organization-tab-content .tab-content{
+        max-width: 100%;
+    }
+    .requirement-tab{
+        margin-top:42px;
+    }
+    .requirement-tab .tab-pane{
+        margin:0;
+    }
+    .requirement-tab .tab-pane-titleblog{
+        margin: 0 auto;
+    }
+    .requirement-tab .tab-pane-titleblog h2{
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 18px;
+    }
+    .requirement-tab .tab-pane-titleblog p{
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .requirement-tab .tab-pane-banner{
+        margin: 30px 0 25px 0;
+    }
+    .requirement-tab .tab-pane-filterform{
+        display: none;
+    }
+    #jobs-accordian{
+        max-width: 100%;
+    }
+    #job .card .card-header .btn-header-link.collapsed{
+        padding-right:0;
+        padding-left:25px;
+        
+    }
+    .job-title{
+        padding-left:16px;
+    }
+    .job-title h2{
+        font-size: 18px;
+        line-height: 27px;
+    }
+    .job-title .company-name, 
+    .job-title .company-location{
+        display: none;
+    }
+    #job .card .card-header .btn-header-link:after{
+        right:10px;
+    }
+    .page-navigation-list{
+        margin:37px 0 84px 0;
+    }
+}
+
+
