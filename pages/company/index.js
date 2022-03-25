@@ -1,105 +1,91 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Sidepanel from "../../components/sidepanel" ;
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import SatisfactionCardSlider from "./satisfaction-card-slider";
 import PeopleFaq from "./people-faq";
-export default function IndividualPage() {
+export default function CompanyPage() {
     const [datas, setDatas] = useState(null);
-        useEffect(()=>{
-            setDatas([1,2,3])
-            
-        },[])
-        useEffect(()=>{
-            if(datas && datas.length>0){
-                {/* Banner jquery script Starts */}
-                function BannerOverlays(){
-                    var $banner_h;
-                    var $banner_w;
+    useEffect(()=>{
+        setDatas([1,2,3])
+        
+    },[])
+    useEffect(()=>{
+        if(datas && datas.length>0){
+            {/* Faq jquery script Starts */}
+            $(document).ready(function () {
 
-                    $('.banner-cover').each(function(){
-                        $banner_h = $('.banner-view.smallsize-banner img').height();
-                        $banner_w = $('.banner-view.smallsize-banner img').width();
-                        $(this).width($banner_w).height($banner_h);
-                    });
-                }
+                {/* Faq slider jquery script Starts */}
+                var totalfaqItems = $('.faq-item').length;
+                var currentfaqIndex = $('div.faq-item.active').index() + 1;
+                var currentfaqIndex_active;
+                var downfaq_index;
 
-                $(window).resize(function(){ 
-                    BannerOverlays();
-                }); {/* Banner jquery script End */}
-                $(document).ready(function () {
-                    BannerOverlays();
+                // $('.testimonial_num').html(''+currentIndex+'/'+totalItems+'');
+                $('.faq_num').html(''+currentfaqIndex+'');
 
-                    {/* Faq slider jquery script Starts */}
-                    var totalfaqItems = $('.faq-item').length;
-                    var currentfaqIndex = $('div.faq-item.active').index() + 1;
-                    var currentfaqIndex_active;
-                    var downfaq_index;
-
-                    // $('.testimonial_num').html(''+currentIndex+'/'+totalItems+'');
-                    $('.faq_num').html(''+currentfaqIndex+'');
-
-                    $(".faq-next").click(function(){
-                        currentfaqIndex_active = $('div.faq-item.active').index() + 2;
-                        if (totalfaqItems >= currentfaqIndex_active)
-                        {
-                            downfaq_index= $('div.faq-item.active').index() + 2;
-                            //$('.testimonial_num').html(''+currentIndex_active+'/'+totalItems+'');
-                            $('.faq_num').html(''+currentfaqIndex_active+'');
-                        }
-                    });
-
-                    $(".faq-prev").click(function(){
-                        downfaq_index=downfaq_index-1;
-                        if (downfaq_index >= 1 ){
-                            //$('.testimonial_num').html(''+downfaq_index+'/'+totalItems+'');
-                            $('.faq_num').html(''+downfaq_index+'');
-                        }
-                    });
+                $(".faq-next").click(function(){
+                    currentfaqIndex_active = $('div.faq-item.active').index() + 2;
+                    if (totalfaqItems >= currentfaqIndex_active)
+                    {
+                        downfaq_index= $('div.faq-item.active').index() + 2;
+                        //$('.testimonial_num').html(''+currentIndex_active+'/'+totalItems+'');
+                        $('.faq_num').html(''+currentfaqIndex_active+'');
+                    }
                 });
-            }
-        },[datas])
+
+                $(".faq-prev").click(function(){
+                    downfaq_index=downfaq_index-1;
+                    if (downfaq_index >= 1 ){
+                        //$('.testimonial_num').html(''+downfaq_index+'/'+totalItems+'');
+                        $('.faq_num').html(''+downfaq_index+'');
+                    }
+                });
+
+            });
+        }
+    },[datas])
     return (
         <div id="wrapper">
             <div className="overlay">
             </div>
             <Sidepanel/>
             <div id="page-content-wrapper" className="container-fluid reset-padding">
-                <header class="site-header site-navbar site-navbar-target">
+                <header className="site-header site-navbar site-navbar-target">
                     <Header/>
                 </header>
                 <div className="site-bannersection">
-                    <div className="banner-view smallsize-banner">
-                        <img src="/assets/images/individual-banner-v1.png" className="banner-img"/>
-                    </div>
-                    <div className="banner-cover-overlay">
-                        <div className="banner-cover individual-banner-content">
-                            <div className="container container-1140 reset-padding banner-title-blog">
-                                <h2 className="banner-title">Réussir grâce aux compétences du futur</h2>
+                    <div className="company-page-banner banner-content">
+                        <div className="container container-65 reset-padding">
+                            <div className="row reset-margin">
+                                <div className="col-7 banner-left-col align-self-end">
+                                    <h2 className="individual-text">Montez en compétence avec votre EQUIPE</h2>
+                                    <p className="individual-text">
+                                        Augmentez votre taux de réparabilité, diminuez votre taux de retour 
+                                        grâce à de nouvelles compétences et devenez pionnier de la filière de la réparation.
+                                    </p>
+                                    <button type="button" className="btn gsm-bg-individual btn-gsm-lg">S’inscrire</button>
+                                </div>
+                                <div className="col-5 banner-right-col reset-padding" style={ {backgroundImage: "url('/assets/images/gsmmaster-logo-blue.png')"}}>
+                                    <img src="/assets/images/company-bg-pic.png" />
+                                </div>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
 
                 
 
                 <section className="site-body-container">
                     <div className="registeration-box">
-                        <div className="container container-60 reset-padding text-center register-box-top">
-                            <p className="reg-intro-content">
-                                Découvrez nos formations et notre certification afin de monter en compétence 
-                                et vous faire certifier pour le titre niveau 4 "Réparateur(trice) de produits nomades
-                            </p>
-                            <button type="button" className="btn gsm-bg-individual btn-gsm-lg">S’inscrire</button>
-                        </div>
-                        <div className="container container-70 reset-padding text-center register-box-bottom">
-                            <h2 className="section-title individual-text">Développe tes talents pour intégrer les équipes de demain</h2>
-                            <p className="section-content individual-text">
-                                Découvrez nos modules et nos formations qui vous préparent à intégrer le secteur 
-                                de la réparation des produits nomades. Découvrez l'indice de réparabilité, 
-                                la réparation en sécurité et en conformité ou encore l'initiation à la microsoudure 
-                                dispensées par des professionnels du secteur. Inscris toi et réserves ta place dans 
-                                la formation (nombre d’apprenants par cours limité)
+                        <div class="container container-70 reset-padding text-center register-box-bottom">
+                            <h2 class="section-title individual-text">Bâtissez votre équipe avec les <span class="partner-text text-uppercase">Competences</span> de demain</h2>
+                            <p class="section-content individual-text">
+                                Découvrez nos formations personnalisables et devenez incollables sur l'indice de réparabilité, 
+                                la réparation en sécurité et en conformité ou encore l'initiation à la microsoudure. 
+                                Toujours dispensées par des professionnels du secteur. Nous adaptons nos formations à vos besoins 
+                                et à ceux de vos équipes.
                             </p>
                         </div>
                     </div>

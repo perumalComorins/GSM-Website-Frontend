@@ -1,5 +1,45 @@
-
+import { useContext, useEffect, useState } from 'react';
+import { Link } from "./Link";
 const Sidepanel = (props) => {
+    const [datas, setDatas] = useState(null);
+    useEffect(()=>{
+        setDatas([1,2,3])
+        
+    },[])
+    useEffect(()=>{
+        if(datas && datas.length>0){
+            $(document).ready(function () {
+                var trigger = $('.hamburger'),
+                    overlay = $('.overlay'),
+                    isClosed = false;
+              
+                    trigger.click(function () {
+                        hamburger_cross();      
+                    });
+                
+                    function hamburger_cross() {
+                
+                        if (isClosed == true) {          
+                        //overlay.hide();
+                        trigger.removeClass('is-open');
+                        trigger.addClass('is-closed');
+                        isClosed = false;
+                        } else {   
+                        //overlay.show();
+                        trigger.removeClass('is-closed');
+                        trigger.addClass('is-open');
+                        isClosed = true;
+                        }
+                }
+                
+                $('[data-toggle="offcanvas"]').click(function () {
+                      $('#wrapper').toggleClass('toggled');
+                });
+            });
+        }
+    },[datas]) 
+
+
     return (
         <>
             <nav className="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
@@ -16,9 +56,9 @@ const Sidepanel = (props) => {
                             <img src="/assets/images/site-logo-color.png" style={{width: '180px'}}/>
                             <nav className="sidenav-Menu">
                             <ul>
-                                <li><a href="#">Accueil</a></li>
-                                <li><a href="#">Qui sommes-nous ?</a></li>
-                                <li><a href="#"> Blog</a></li>
+                                <li><Link href="/">Accueil</Link></li>
+                                <li><Link href="/who-we-are">Qui sommes-nous ?</Link></li>
+                                <li><Link href="/blog"> Blog</Link></li>
                                 <li className="btn-group dropright">
                                 <a className="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     Certification <i className="fa fa-angle-right right-arrow"></i>
@@ -26,12 +66,12 @@ const Sidepanel = (props) => {
                                 <ul className="dropdown-menu" >
                                     <li><a href="#">Certification niveau 4</a></li>
                                     <li><a href="#">Certification niveau 3</a></li>
-                                    <li><a href="#">Indicateurs de qualité</a></li>
+                                    <li><Link href="/quality-indicators">Indicateurs de qualité</Link></li>
                                 </ul>
                                 </li>
-                                <li><a href="#">Demande de devis</a></li>
-                                <li><a href="#">GSM Recrute</a></li>
-                                <li><a href="#">Contact & FAQ</a></li>
+                                <li><Link href="/quote-request">Demande de devis</Link></li>
+                                <li><Link href="/job">GSM Recrute</Link></li>
+                                <li><Link href="/contact-faq">Contact & FAQ</Link></li>
                             </ul>
                             </nav>
 

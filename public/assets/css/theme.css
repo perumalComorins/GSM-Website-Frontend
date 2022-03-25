@@ -1063,7 +1063,7 @@ footer{
     height:390px;
 }
 
-.no-touch .satisfaction-card figure:hover figcaption,
+.satisfaction-card figure:hover figcaption,
 .satisfaction-card figure.cs-hover figcaption {
 	opacity: 1;
 	-webkit-transform: rotateY(0deg);

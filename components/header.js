@@ -23,7 +23,9 @@ const Header = (props) => {
                 <div className="main-nav collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item dropdown">
-                            <Link href="/individual" className="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">Individual</Link>
+                            <Link href="/individual" className="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                Individual
+                            </Link>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li>
                                     <a href="#" className="drop-link">Recruter des talents</a>
@@ -50,7 +52,10 @@ const Header = (props) => {
                             </ul>
                         </li>
                         <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">Company</a>
+                            <Link href="/company" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                Company
+                            
+                            </Link>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li>
                                     <a href="#" className="drop-link">Recruter des talents</a>
@@ -74,9 +79,9 @@ const Header = (props) => {
                             </ul>
                         </li>
                         <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                            Organization
-                            </a>
+                            <Link href="/organization" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                Organization
+                            </Link>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li>
                                     <a href="#" className="drop-link">Collaborez avec GSM Master</a>

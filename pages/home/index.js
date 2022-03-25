@@ -1,7 +1,76 @@
+import { useEffect, useState } from 'react';
 import Sidepanel from "../../components/sidepanel" ;
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 export default function HomePage() {
+    const [datas, setDatas] = useState(null);
+    useEffect(()=>{
+        setDatas([1,2,3])
+        
+    },[])
+    useEffect(()=>{
+        if(datas && datas.length>0){
+            {/* Banner jquery script Starts */}
+            function HomeBannerOverlays(){
+        
+                
+                var $banner_h;
+                var $banner_w;
+                var $banner_inner_h;
+
+                $('.home-banner-resizer #banner-overlay').each(function(){
+                        
+                    $banner_h = $('.home-banner-resizer .banner-view').height();
+                    $banner_w = $('.home-banner-resizer .banner-view').width();
+                    
+                    $(this).width($banner_w).height($banner_h);
+                });
+                $('.home-banner-content').each(function(){
+                    $banner_inner_h = $('.home-banner-resizer .banner-view').height();
+                    $(this).height($banner_inner_h);
+                });
+            }
+
+            $(window).resize(function(){ 
+                HomeBannerOverlays();
+            }); {/* Banner jquery script End */}
+
+            {/* Testimonial jquery script Starts */}
+            $(document).ready(function () {
+
+                {/* Testimonial jquery script Starts */}
+                var totalItems = $('.testimonial-item').length;
+                var currentIndex = $('div.testimonial-item.active').index() + 1;
+                var currentIndex_active;
+                var down_index;
+
+                // $('.testimonial_num').html(''+currentIndex+'/'+totalItems+'');
+                $('.testimonial_num').html(''+currentIndex+'');
+
+                $(".next").click(function(){
+                    currentIndex_active = $('div.testimonial-item.active').index() + 2;
+                    if (totalItems >= currentIndex_active)
+                    {
+                        down_index= $('div.testimonial-item.active').index() + 2;
+                        //$('.testimonial_num').html(''+currentIndex_active+'/'+totalItems+'');
+                        $('.testimonial_num').html(''+currentIndex_active+'');
+                    }
+                });
+
+                $(".prev").click(function(){
+                    down_index=down_index-1;
+                    if (down_index >= 1 )
+                    {
+                        //$('.testimonial_num').html(''+down_index+'/'+totalItems+'');
+                        $('.testimonial_num').html(''+down_index+'');
+                    }
+                }); {/* Testimonial jquery script End */}
+
+                HomeBannerOverlays();
+
+            });
+        }
+    },[datas])  
     return (
         <div id="wrapper">
             <div classNameName="overlay">
@@ -250,17 +319,17 @@ export default function HomePage() {
                         </div>
 
                         <div className="satisfaction-rate" style={{backgroundImage: "url('/assets/images/map-bg.png')",}} >
-                        <div className="satisfaction-rate-innersection container container-60 reset-padding" >
-                            <div className="title-bar text-center">
-                                <h2>Nos <span className="partner-text text-uppercase">PARTENAIRES</span></h2>
-                                <p className="intro-content individual-text">Nos taux de réussite de la certification pour "Réparateur(trice) produits nomades" de 2016 à aujourd'hui </p>
+                            <div className="satisfaction-rate-innersection container container-60 reset-padding" >
+                                <div className="title-bar text-center">
+                                    <h2>Nos <span className="partner-text text-uppercase">PARTENAIRES</span></h2>
+                                    <p className="intro-content individual-text">Nos taux de réussite de la certification pour "Réparateur(trice) produits nomades" de 2016 à aujourd'hui </p>
+                                </div>
+                                <div className="satisfaction-rate-section">
+                                    <h4>Satisfaction rate</h4>
+                                    <canvas id="horizontalBar" className="satisfactionBar"></canvas>
+                                </div>
+                                
                             </div>
-                            <div className="satisfaction-rate-section">
-                                <h4>Satisfaction rate</h4>
-                                <canvas id="horizontalBar" className="satisfactionBar"></canvas>
-                            </div>
-                            
-                        </div>
                         </div>
 
                         <div className="organisation-section" style={{backgroundImage: "url('/assets/images/businessman-and-businesswoman.png')",}} >

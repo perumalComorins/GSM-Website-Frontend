@@ -1,3 +1,6 @@
+import { useContext, useEffect, useState } from 'react';
+import { Link } from "./Link";
+
 const Footer = (props) => {
     return(
         <div className="container footercontainer container-70 reset-padding">
