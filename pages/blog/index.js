@@ -1,8 +1,27 @@
+import {  useEffect, useState } from 'react';
+import {useRouter} from 'next/router'
+import { userService } from '../../services/user.service';
 import Sidepanel from "../../components/sidepanel" ;
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 
 export default function Blog(){
+    const router=useRouter()
+    const type='top-panel.php'
+    const pageName = "about_us";
+    const [loading,setLoading]=useState(true)
+
+   
+    useEffect( async() => {
+        
+        
+  
+        userService.getAllItems(type).then((res) => {
+           console.log(res[0].json_data);
+        }) 
+                  
+    }, [router.query]);
+
     return(
         <div id="wrapper">
             <div className="overlay">

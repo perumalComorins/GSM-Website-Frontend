@@ -6,30 +6,10 @@ export default function HomePage() {
     const [datas, setDatas] = useState(null);
     useEffect(()=>{
         setDatas([1,2,3])
-        
     },[])
     useEffect(()=>{
         if(datas && datas.length>0){
             {/* Banner jquery script Starts */}
-            function HomeBannerOverlays(){
-        
-                
-                var $banner_h;
-                var $banner_w;
-                var $banner_inner_h;
-
-                $('.home-banner-resizer #banner-overlay').each(function(){
-                        
-                    $banner_h = $('.home-banner-resizer .banner-view').height();
-                    $banner_w = $('.home-banner-resizer .banner-view').width();
-                    
-                    $(this).width($banner_w).height($banner_h);
-                });
-                $('.home-banner-content').each(function(){
-                    $banner_inner_h = $('.home-banner-resizer .banner-view').height();
-                    $(this).height($banner_inner_h);
-                });
-            }
 
             $(window).resize(function(){ 
                 HomeBannerOverlays();
@@ -37,18 +17,17 @@ export default function HomePage() {
 
             {/* Testimonial jquery script Starts */}
             $(document).ready(function () {
-
+                
                 {/* Testimonial jquery script Starts */}
-                var totalItems = $('.testimonial-item').length;
-                var currentIndex = $('div.testimonial-item.active').index() + 1;
-                var currentIndex_active;
-                var down_index;
+                let totalItems = $('.testimonial-item').length;
+                let currentIndex = $('div.testimonial-item.active').index() + 1;
+                let down_index;
 
                 // $('.testimonial_num').html(''+currentIndex+'/'+totalItems+'');
                 $('.testimonial_num').html(''+currentIndex+'');
 
                 $(".next").click(function(){
-                    currentIndex_active = $('div.testimonial-item.active').index() + 2;
+                    let currentIndex_active = $('div.testimonial-item.active').index() + 2;
                     if (totalItems >= currentIndex_active)
                     {
                         down_index= $('div.testimonial-item.active').index() + 2;
@@ -71,6 +50,22 @@ export default function HomePage() {
             });
         }
     },[datas])  
+
+
+    function HomeBannerOverlays(){
+
+        $('.home-banner-resizer #banner-overlay').each(function(){
+            let $banner_h = $('.home-banner-resizer .banner-view').height();
+            let $banner_w = $('.home-banner-resizer .banner-view').width();
+            $(this).width($banner_w).height($banner_h);
+        });
+        $('.home-banner-content').each(function(){
+            let $banner_inner_h = $('.home-banner-resizer .banner-view').height();
+            $(this).height($banner_inner_h);
+        });
+    }
+
+
     return (
         <div id="wrapper">
             <div classNameName="overlay">

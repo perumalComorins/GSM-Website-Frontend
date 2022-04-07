@@ -1,6 +1,9 @@
+// import { userService } from 'services';
+// import { Link } from 'components';
+import { userService } from '../services/user.service';
 import { useRouter } from 'next/router';
 import HomePage from './home/index'
-
+export default Home;
 
 
 
@@ -15,4 +18,3 @@ function Home() {
       <HomePage/>
     )
 }
-export default Home;
