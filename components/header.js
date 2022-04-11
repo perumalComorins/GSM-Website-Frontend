@@ -6,29 +6,45 @@ const Header = (props) => {
 
     const type='top-panel.php';
     const [section_1, setSection_1] = useState([]);
-    const [section_2, setSection_2] = useState([]);
-    const [section_3, setSection_3] = useState([]);
-
-
-    const [submenu_2, setSubmenu_2] = useState([]);
-    const [submenu_3, setSubmenu_3] = useState([]);
-
 
     useEffect( async() => {
         
         userService.getAllItems(type).then((res) => {
             
-            setSection_1(res[0].json_data[0]);
-            setSection_2(res[0].json_data[1]);
-            setSection_3(res[0].json_data[2]);
-
-
-            console.log(res[0].json_data[0])
-            console.log(res[0].json_data[0].sub_menu)
+            setSection_1(res[0].json_data);
 
         }) 
          .catch((err) => console.error(err));         
     }, []);
+
+    useEffect(()=>{
+        if(section_1 && section_1.length>0){
+            $(document).ready(function(){
+                $(".site-navigation .dropdown").hover(
+                    function () {
+                        $(this).addClass("show");
+                        $(this).find(".dropdown-menu").addClass("show");
+                    },
+                    function () {
+                        $(this).removeClass("show");
+                        $(this).find(".dropdown-menu").removeClass("show");
+                    }
+                );
+                
+                $(".searchBar-mb [data-toggle=search-form]").click(function(event) {
+                    event.preventDefault();
+                    $(".togglesearch").addClass("open");
+                    $("input[type='text']").focus();
+                });
+                $(".search-close").click(function() {
+                    $(".togglesearch").removeClass("open");
+                    
+                });
+                
+                
+            });
+        }
+    },[section_1]) 
 
     return (
 
@@ -52,27 +68,32 @@ const Header = (props) => {
                 </div>
                 <div className="main-nav collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
-                        <li className="nav-item dropdown">
-                            <Link href="/individual" className="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                  {section_1.top_title}
-                            </Link>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {section_1.sub_menu !== undefined && section_1.sub_menu.map((each, index) => 
-                                <li key = {index}>
-                                    <a href="#" className="drop-link">{each.menu_name}</a>
-                                        <ul className="drop-desc">
-                                        {each.inner_sub.map((one, i) => 
-                                            <li key = {i} className = "list-unstyled">
-                                                {one.inner_sub_name}
-                                            </li>
-                                        )}
-                                        </ul> 
-                                    <hr className="drop-option-seperator" />
-                                </li> 
-                                 )}
-                            </ul>
-                        </li>
-                        <li className="nav-item dropdown">
+                        {section_1 && section_1.map((module, increment) => 
+                            <li className="nav-item dropdown" key = {increment}>
+                                <Link href="/individual" className="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-hover="dropdown" aria-expanded="false">
+                                    {module.top_title}
+                                </Link>
+                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    {module.sub_menu && module.sub_menu.map((each_module, index) => 
+                                        <li key = {index}>
+                                            <a href="#" className="drop-link">{each_module.menu_name}</a>
+                                                <ul className="drop-desc">
+                                                    {each_module.inner_sub && each_module.inner_sub.map((each_module_inner, i) => 
+                                                        <li key = {i} className = "list-unstyled">
+                                                            {each_module_inner.inner_sub_name}
+                                                        </li>
+                                                    )}
+                                                </ul> 
+                                                {index !== module.sub_menu.length - 1 && <hr className="drop-option-seperator" />}
+                                        </li> 
+                                    )} 
+                                    {module.photo_link && <img src="/assets/images/careers-circle-pic-2.png" className="drop-desc-img" />}
+                                </ul>
+                            </li>
+                        )}
+                    </ul>
+                    
+                       {/* <li className="nav-item dropdown">
                             <Link href="/company" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                                   {section_2.top_title}
                             </Link>
@@ -111,13 +132,10 @@ const Header = (props) => {
                                             {index !== 0 && <img src="/assets/images/careers-circle-pic-2.png" className="drop-desc-img" />}
                                     </li> 
                                 )}
-{/*                                 <img src="/assets/images/careers-circle-pic-2.png" className="drop-desc-img" />
- */}                                
-
 
                             </ul>
-                        </li>
-                    </ul>
+                        </li> 
+                    </ul>  */}
                     <form name="searchForm" className="search-form form-inline my-2 my-lg-0">
                         <input name="search-for" className="search-for form-control mr-sm-0 rounded-0 border-right-0 gsm-border-individual" type="search" placeholder="What do you want to learn" aria-label="Search" />
                         <button className="btn btn-search-gsm gsm-bg-individual border-0 rounded-0 my-sm-0" type="subuttonbmit"><img src="/assets/images/icon-feather-search.png" style={{width: '16px',height:'16px'}} /></button>
