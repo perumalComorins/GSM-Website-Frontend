@@ -1,7 +1,51 @@
-
+import { userService } from '../services/user.service';
+import {  useEffect, useState } from 'react';
 import { Link } from "./Link";
+//import useSWR from 'swr'
 const Header = (props) => {
+
+    const type='top-panel.php';
+    const [toppanel, setToppanel] = useState([]);
+
+    useEffect( async() => {
+        
+        userService.getAllItems(type).then((res) => {    
+            setToppanel(res[0].json_data);
+        }) 
+         .catch((err) => console.error(err));         
+    }, []);
+
+    useEffect(()=>{
+        if(toppanel && toppanel.length > 0){
+            $(document).ready(function(){
+                $(".site-navigation .dropdown").hover(
+                    function () {
+                        $(this).addClass("show");
+                        $(this).find(".dropdown-menu").addClass("show");
+                    },
+                    function () {
+                        $(this).removeClass("show");
+                        $(this).find(".dropdown-menu").removeClass("show");
+                    }
+                );
+                
+                $(".searchBar-mb [data-toggle=search-form]").click(function(event) {
+                    event.preventDefault();
+                    $(".togglesearch").addClass("open");
+                    $("input[type='text']").focus();
+                });
+                $(".search-close").click(function() {
+                    $(".togglesearch").removeClass("open");
+                    
+                });
+                
+                
+            });
+        }
+    },[toppanel]) 
+
     return (
+
         <div className="container site-header-container reset-padding">
             <nav className="site-navigation navbar navbar-expand-lg navbar-light">
                 <Link href="/" className="navbar-brand" ><img src="/assets/images/site-logo-white.png" className="site-logo"/></Link>
@@ -22,81 +66,29 @@ const Header = (props) => {
                 </div>
                 <div className="main-nav collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
-                        <li className="nav-item dropdown">
-                            <Link href="/individual" className="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                Individual
-                            </Link>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li>
-                                    <a href="#" className="drop-link">Recruter des talents</a>
-                                    <p className="drop-desc">Recruter des réparateurs/trices de produits nomades</p>
-                                    <hr className="drop-option-seperator" />
-                                </li>
-                                <li>
-                                    <a href="#" className="drop-link">Formez vos équipes</a>
-                                    <p className="drop-desc">Réparation et micro soudure Compétences transverses du secteur</p>
-                                    <hr className="drop-option-seperator" />
-                                </li>
-                                <li>
-                                    <a href="#" className="drop-link">Certification niveau 4 (niveau bac)</a>
-                                    <ul className="drop-desc-list">
-                                        <li>VAE</li>
-                                        <li>Parcours de formation</li>
-                                    </ul>
-                                    <hr className="drop-option-seperator" />
-                                </li>
-                                <li>
-                                    <a href="#" className="drop-link">Certification niveau 3 (bac + 2)</a>
-                                    <p className="drop-desc">VAE Parcours de formation</p>
-                                </li>
-                            </ul>
-                        </li>
-                        <li className="nav-item dropdown">
-                            <Link href="/company" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                Company
-                            
-                            </Link>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li>
-                                    <a href="#" className="drop-link">Recruter des talents</a>
-                                    <p className="drop-desc">Recruter des réparateurs/trices de produits nomades</p>
-                                    <hr className="drop-option-seperator" />
-                                </li>
-                                <li>
-                                    <a href="#" className="drop-link">Formez vos équipes</a>
-                                    <p className="drop-desc">Réparation et micro soudure Compétences transverses du secteur</p>
-                                    <hr className="drop-option-seperator" />
-                                </li>
-                                <li>
-                                    <a href="#" className="drop-link">Certification niveau 4 (niveau bac)</a>
-                                    <p className="drop-desc">VAE Parcours de formation</p>
-                                    <hr className="drop-option-seperator" />
-                                </li>
-                                <li>
-                                    <a href="#" className="drop-link">Certification niveau 3 (bac + 2)</a>
-                                    <p className="drop-desc">VAE Parcours de formation</p>
-                                </li>
-                            </ul>
-                        </li>
-                        <li className="nav-item dropdown">
-                            <Link href="/organization" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                Organization
-                            </Link>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li>
-                                    <a href="#" className="drop-link">Collaborez avec GSM Master</a>
-                                    <hr className="drop-option-seperator" />
-                                </li>
-                                <li>
-                                    <a href="#" className="drop-link">Nos certifications</a>
-                                    <ul className="drop-desc-list">
-                                        <li>Certification niveau 4</li>
-                                        <li>Certification niveau 3</li>
-                                    </ul>
-                                </li>
-                                <img src="/assets/images/careers-circle-pic-2.png" className="drop-desc-img" />
-                            </ul>
-                        </li>
+                        {toppanel && toppanel.map((module, increment) => 
+                            <li className="nav-item dropdown" key = {increment}>
+                                <Link href="/individual" className="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-hover="dropdown" aria-expanded="false">
+                                    {module.top_title}
+                                </Link>
+                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    {module.sub_menu && module.sub_menu.map((each_module, index) => 
+                                        <li key = {index}>
+                                            <a href="#" className="drop-link">{each_module.menu_name}</a>
+                                                <ul className="drop-desc">
+                                                    {each_module.inner_sub && each_module.inner_sub.map((each_module_inner, i) => 
+                                                        <li key = {i} className = "list-unstyled">
+                                                            {each_module_inner.inner_sub_name}
+                                                        </li>
+                                                    )}
+                                                </ul> 
+                                                {index !== module.sub_menu.length - 1 && <hr className="drop-option-seperator" />}
+                                        </li> 
+                                    )} 
+                                    {module.photo_link && <img src="/assets/images/careers-circle-pic-2.png" className="drop-desc-img" />}
+                                </ul>
+                            </li>
+                        )}
                     </ul>
                     <form name="searchForm" className="search-form form-inline my-2 my-lg-0">
                         <input name="search-for" className="search-for form-control mr-sm-0 rounded-0 border-right-0 gsm-border-individual" type="search" placeholder="What do you want to learn" aria-label="Search" />
