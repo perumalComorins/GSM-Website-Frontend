@@ -6,24 +6,25 @@ const Header = (props) => {
 
     const type='top-panel.php';
     const [section_1, setSection_1] = useState([]);
-    const [submenu_1, setSubmenu_1] = useState([]);
     const [section_2, setSection_2] = useState([]);
-    const [submenu_2, setSubmenu_2] = useState([]);
     const [section_3, setSection_3] = useState([]);
+
+
+    const [submenu_2, setSubmenu_2] = useState([]);
     const [submenu_3, setSubmenu_3] = useState([]);
-    const [submenu_4, setSubmenu_4] = useState([]);
+
 
     useEffect( async() => {
         
         userService.getAllItems(type).then((res) => {
+            
+            setSection_1(res[0].json_data[0]);
+            setSection_2(res[0].json_data[1]);
+            setSection_3(res[0].json_data[2]);
 
-          setSection_1(res[0].json_data.section_1[0]);
-          setSubmenu_1(res[0].json_data.section_1[1].sub_menu);
-          setSection_2(res[0].json_data.section_2[0]);
-          setSubmenu_2(res[0].json_data.section_2[1].sub_menu);
-          setSection_3(res[0].json_data.section_3[0]);
-          setSubmenu_3(res[0].json_data.section_3[1].sub_menu[0]);
-          setSubmenu_4(res[0].json_data.section_3[1].sub_menu[1]);
+
+            console.log(res[0].json_data[0])
+            console.log(res[0].json_data[0].sub_menu)
 
         }) 
          .catch((err) => console.error(err));         
@@ -56,47 +57,64 @@ const Header = (props) => {
                                   {section_1.top_title}
                             </Link>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {submenu_1.map((each, index) =>
-                                <li key={index}>
+                                {section_1.sub_menu !== undefined && section_1.sub_menu.map((each, index) => 
+                                <li key = {index}>
                                     <a href="#" className="drop-link">{each.menu_name}</a>
-                                    <p className="drop-desc">{each.menu_desc}</p>
+                                        <ul className="drop-desc">
+                                        {each.inner_sub.map((one, i) => 
+                                            <li key = {i} className = "list-unstyled">
+                                                {one.inner_sub_name}
+                                            </li>
+                                        )}
+                                        </ul> 
                                     <hr className="drop-option-seperator" />
-                                </li>
-                            )}
+                                </li> 
+                                 )}
                             </ul>
                         </li>
                         <li className="nav-item dropdown">
                             <Link href="/company" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                    {section_2.top_title}
+                                  {section_2.top_title}
                             </Link>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {submenu_2.map((each, index) =>
-                                <li key = {index}>
-                                    <a href="#" className="drop-link">{each.menu_name}</a>
-                                    <p className="drop-desc">{each.menu_desc}</p>
-                                    <hr className="drop-option-seperator" />
-                                </li>
-                            )}     
+                                {section_2.sub_menu !== undefined && section_2.sub_menu.map((each, index) => 
+                                    <li key = {index}>
+                                        <a href="#" className="drop-link">{each.menu_name}</a>
+                                            <ul className="drop-desc">
+                                            {each.inner_sub.map((one, i) => 
+                                                <li key = {i} className = "list-unstyled">
+                                                    {one.inner_sub_name}
+                                                </li>
+                                            )}
+                                            </ul> 
+                                        <hr className="drop-option-seperator" />
+                                    </li> 
+                                )}
                             </ul>
                         </li>
                         <li className="nav-item dropdown">
                             <Link href="/organization" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                    {section_3.top_title}
+                                   {section_3.top_title}
                             </Link>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li >
-                                    <a href="#" className="drop-link">{submenu_3.menu_name}</a>
-                                    <hr className="drop-option-seperator" />
-                                </li>
-                                <li>
-                                    <a href="#" className="drop-link">{submenu_4.menu_name}</a>
-                                    <ul className="drop-desc-list">
-                                        <li>{submenu_4.menu_desc_1}</li>
-                                        <li>{submenu_4.menu_desc_2}</li>
-                                    </ul>
-                                </li>
-                                <img src="/assets/images/careers-circle-pic-2.png" className="drop-desc-img" />
-                
+                                {section_3.sub_menu !== undefined && section_3.sub_menu.map((each, index) => 
+                                    <li key = {index}>
+                                        <a href="#" className="drop-link">{each.menu_name}</a>
+                                             <ul className="drop-desc">
+                                                { index == 0 &&  <hr className="drop-option-seperator" /> }
+                                                {each.inner_sub !== undefined && each.inner_sub.map((one, i) => 
+                                                    <li key = {i} className = "list-unstyled">
+                                                        {one.inner_sub_name}
+                                                    </li>
+                                                )}
+                                            </ul> 
+                                            {index !== 0 && <img src="/assets/images/careers-circle-pic-2.png" className="drop-desc-img" />}
+                                    </li> 
+                                )}
+{/*                                 <img src="/assets/images/careers-circle-pic-2.png" className="drop-desc-img" />
+ */}                                
+
+
                             </ul>
                         </li>
                     </ul>
