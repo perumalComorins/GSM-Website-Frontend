@@ -1,44 +1,61 @@
-import { useContext, useEffect, useState } from 'react';
+import { userService } from '../services/user.service';
+import {  useEffect, useState } from 'react';
 import { Link } from "./Link";
-const Sidepanel = (props) => {
-    const [datas, setDatas] = useState(null);
-    useEffect(()=>{
-        setDatas([1,2,3])
-        
-    },[])
-    useEffect(()=>{
-        if(datas && datas.length>0){
-            $(document).ready(function () {
-                var trigger = $('.hamburger'),
-                    overlay = $('.overlay'),
-                    isClosed = false;
-              
-                    trigger.click(function () {
-                        hamburger_cross();      
-                    });
-                
-                    function hamburger_cross() {
-                
-                        if (isClosed == true) {          
-                        //overlay.hide();
-                        trigger.removeClass('is-open');
-                        trigger.addClass('is-closed');
-                        isClosed = false;
-                        } else {   
-                        //overlay.show();
-                        trigger.removeClass('is-closed');
-                        trigger.addClass('is-open');
-                        isClosed = true;
-                        }
-                }
-                
-                $('[data-toggle="offcanvas"]').click(function () {
-                      $('#wrapper').toggleClass('toggled');
-                });
-            });
-        }
-    },[datas]) 
 
+const Sidepanel = (props) => {
+    const type='sidepanel.php';
+    const [sidepanel, setSidepanel] = useState([]);
+
+    useEffect( async() => {
+        $(document).ready(function () {
+            var trigger = $('.hamburger'),
+                overlay = $('.overlay'),
+                isClosed = false;
+          
+                trigger.click(function () {
+                    hamburger_cross();      
+                });
+            
+                function hamburger_cross() {
+            
+                    if (isClosed == true) {          
+                    //overlay.hide();
+                    trigger.removeClass('is-open');
+                    trigger.addClass('is-closed');
+                    isClosed = false;
+                    } else {   
+                    //overlay.show();
+                    trigger.removeClass('is-closed');
+                    trigger.addClass('is-open');
+                    isClosed = true;
+                    }
+            }
+            
+            $('[data-toggle="offcanvas"]').click(function () {
+                  $('#wrapper').toggleClass('toggled');
+            });
+        });
+
+        userService.getAllItems(type).then((res) => {    
+            setSidepanel(res[0].json_data);
+        }) 
+         .catch((err) => console.error(err));         
+    }, []);
+
+    useEffect(()=>{
+        if(sidepanel && sidepanel.length > 0){
+            $(".sidenav-Menu .drop").hover(
+                    function () {
+                        $(this).addClass("show");
+                        $(this).find(".dropdown-menu").addClass("show");
+                    },
+                    function () {
+                        $(this).removeClass("show");
+                        $(this).find(".dropdown-menu").removeClass("show");
+                    }
+            );
+        }
+    },[sidepanel]) 
 
     return (
         <>
@@ -56,22 +73,23 @@ const Sidepanel = (props) => {
                             <img src="/assets/images/site-logo-color.png" style={{width: '180px'}}/>
                             <nav className="sidenav-Menu">
                             <ul>
-                                <li><Link href="/">Accueil</Link></li>
-                                <li><Link href="/who-we-are">Qui sommes-nous ?</Link></li>
-                                <li><Link href="/blog"> Blog</Link></li>
-                                <li className="btn-group dropright">
-                                <a className="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    Certification <i className="fa fa-angle-right right-arrow"></i>
-                                </a>
-                                <ul className="dropdown-menu" >
-                                    <li><a href="#">Certification niveau 4</a></li>
-                                    <li><a href="#">Certification niveau 3</a></li>
-                                    <li><Link href="/quality-indicators">Indicateurs de qualité</Link></li>
-                                </ul>
-                                </li>
-                                <li><Link href="/quote-request">Demande de devis</Link></li>
-                                <li><Link href="/job">GSM Recrute</Link></li>
-                                <li><Link href="/contact-faq">Contact & FAQ</Link></li>
+                                {sidepanel && sidepanel.map((list, index) => 
+                                    <li key ={index}>
+                                        {list.side_drop_down ?
+                                            <li className="btn-group dropright">
+                                                <a className="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                    {list.heading_text} <i className="fa fa-angle-right right-arrow"></i>
+                                                </a>
+                                                <ul className="dropdown-menu" >
+                                                    {list.side_drop_down && list.side_drop_down.map((drop_down, i)=>
+                                                        <li key = {i}><a href={drop_down.link}>{drop_down.drop_name}</a></li>
+                                                    )}
+                                                </ul>
+                                            </li> :
+                                            <Link href={list.link}>{list.heading_text}</Link>
+                                        }
+                                    </li>
+                                )}
                             </ul>
                             </nav>
 
