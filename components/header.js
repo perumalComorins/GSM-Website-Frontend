@@ -5,18 +5,18 @@ import { Link } from "./Link";
 const Header = (props) => {
 
     const type='top-panel.php';
-    const [section_1, setSection_1] = useState([]);
+    const [toppanel, setToppanel] = useState([]);
 
     useEffect( async() => {
         
         userService.getAllItems(type).then((res) => {    
-            setSection_1(res[0].json_data);
+            setToppanel(res[0].json_data);
         }) 
          .catch((err) => console.error(err));         
     }, []);
 
     useEffect(()=>{
-        if(section_1 && section_1.length > 0){
+        if(toppanel && toppanel.length > 0){
             $(document).ready(function(){
                 $(".site-navigation .dropdown").hover(
                     function () {
@@ -42,7 +42,7 @@ const Header = (props) => {
                 
             });
         }
-    },[section_1]) 
+    },[toppanel]) 
 
     return (
 
@@ -66,7 +66,7 @@ const Header = (props) => {
                 </div>
                 <div className="main-nav collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
-                        {section_1 && section_1.map((module, increment) => 
+                        {toppanel && toppanel.map((module, increment) => 
                             <li className="nav-item dropdown" key = {increment}>
                                 <Link href="/individual" className="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-hover="dropdown" aria-expanded="false">
                                     {module.top_title}
