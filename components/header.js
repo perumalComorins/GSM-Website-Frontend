@@ -9,16 +9,14 @@ const Header = (props) => {
 
     useEffect( async() => {
         
-        userService.getAllItems(type).then((res) => {
-            
+        userService.getAllItems(type).then((res) => {    
             setSection_1(res[0].json_data);
-
         }) 
          .catch((err) => console.error(err));         
     }, []);
 
     useEffect(()=>{
-        if(section_1 && section_1.length>0){
+        if(section_1 && section_1.length > 0){
             $(document).ready(function(){
                 $(".site-navigation .dropdown").hover(
                     function () {
@@ -92,50 +90,6 @@ const Header = (props) => {
                             </li>
                         )}
                     </ul>
-                    
-                       {/* <li className="nav-item dropdown">
-                            <Link href="/company" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                  {section_2.top_title}
-                            </Link>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {section_2.sub_menu !== undefined && section_2.sub_menu.map((each, index) => 
-                                    <li key = {index}>
-                                        <a href="#" className="drop-link">{each.menu_name}</a>
-                                            <ul className="drop-desc">
-                                            {each.inner_sub.map((one, i) => 
-                                                <li key = {i} className = "list-unstyled">
-                                                    {one.inner_sub_name}
-                                                </li>
-                                            )}
-                                            </ul> 
-                                        <hr className="drop-option-seperator" />
-                                    </li> 
-                                )}
-                            </ul>
-                        </li>
-                        <li className="nav-item dropdown">
-                            <Link href="/organization" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                   {section_3.top_title}
-                            </Link>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {section_3.sub_menu !== undefined && section_3.sub_menu.map((each, index) => 
-                                    <li key = {index}>
-                                        <a href="#" className="drop-link">{each.menu_name}</a>
-                                             <ul className="drop-desc">
-                                                { index == 0 &&  <hr className="drop-option-seperator" /> }
-                                                {each.inner_sub !== undefined && each.inner_sub.map((one, i) => 
-                                                    <li key = {i} className = "list-unstyled">
-                                                        {one.inner_sub_name}
-                                                    </li>
-                                                )}
-                                            </ul> 
-                                            {index !== 0 && <img src="/assets/images/careers-circle-pic-2.png" className="drop-desc-img" />}
-                                    </li> 
-                                )}
-
-                            </ul>
-                        </li> 
-                    </ul>  */}
                     <form name="searchForm" className="search-form form-inline my-2 my-lg-0">
                         <input name="search-for" className="search-for form-control mr-sm-0 rounded-0 border-right-0 gsm-border-individual" type="search" placeholder="What do you want to learn" aria-label="Search" />
                         <button className="btn btn-search-gsm gsm-bg-individual border-0 rounded-0 my-sm-0" type="subuttonbmit"><img src="/assets/images/icon-feather-search.png" style={{width: '16px',height:'16px'}} /></button>
