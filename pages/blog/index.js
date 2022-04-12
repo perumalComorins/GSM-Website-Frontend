@@ -69,8 +69,8 @@ export default function Blog(){
                 <footer className="site-footer">
                     <Footer/>
                 </footer> 
-                </div>}
-
+                </div>
+                }
             </div>
         </div>
     )
