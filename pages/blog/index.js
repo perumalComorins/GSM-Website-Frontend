@@ -9,11 +9,14 @@ export default function Blog(){
 
     const type='blog.php'
     //const pageName = "about_us";
-    const [blog, setBlog]=useState([])
+    const [blog, setBlog]=useState([]);
+    const [loading,setLoading] = useState(true)
+
 
     useEffect( async() => {
         userService.getAllItems(type).then((res) => {
             setBlog(res[0].json_data);
+            setLoading(false);
         }) 
     }, []);
 
@@ -26,6 +29,12 @@ export default function Blog(){
                 <header className="site-header site-navbar site-navbar-target">
                     <Header/>
                 </header>
+                {loading ?
+                    //<div className="col-lg-6 col-md-6 col-sm-12">
+                    <div>
+                        <img src="images/preLoader.gif" style={{width:'25px',height:'25px',position:'relative',left:'50%',transform:'translateX(-50%)'}} />  
+                    </div> :
+                    <div>
                 <div className="site-bannersection">
                     <div className="row reset-margin reverse-row-mobile">
                         <div className="col-md-6 blog-title-col reset-padding align-self-center">
@@ -56,9 +65,12 @@ export default function Blog(){
                         </div>
                     </div>
                 </section>
+            
                 <footer className="site-footer">
                     <Footer/>
                 </footer> 
+                </div>}
+
             </div>
         </div>
     )
