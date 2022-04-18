@@ -3,22 +3,23 @@ import { userService } from '../../services/user.service';
 import Sidepanel from "../../components/sidepanel" ;
 import Header from "../../components/header";
 import Footer from "../../components/footer";
-import { redirect } from 'next/dist/server/api-utils';
 
-export default function HomePage() {
-    const type = 'home.php'
-    const [datas, setDatas] = useState(null);
+
+export default function HomePage(){
+
+    const type = 'home.php';
     const [homepanel, setHomepanel] = useState([]);
 
     useEffect(()=>{
-        setDatas([1,2,3])
-        userService.getAllItems(type).then((res) => {    
+        userService.getAllItems(type).then((res) => { 
+            setHomepanel([1,2,3])   
             setHomepanel(res[0].json_data);
         }) 
+         .catch((err) => console.error(err));         
     },[])
 
     useEffect(()=>{
-        if(datas && datas.length>0){
+        if(homepanel && homepanel.length > 0){
             {/* Banner jquery script Starts */}
 
             $(window).resize(function(){ 
@@ -59,7 +60,7 @@ export default function HomePage() {
 
             });
         }
-    },[datas])  
+    },[homepanel])  
 
 
     function HomeBannerOverlays(){
@@ -86,6 +87,7 @@ export default function HomePage() {
                     <Header/>
                 </header>
                 <div className="site-bannersection home-banner-resizer">
+                    {console.log(homepanel)}
                         <div className="banner-view fullsize-banner">
                             <img src={homepanel.banner_section && homepanel.banner_section.banner_image} className="banner-img d-none d-md-block"/>
                             <img src="assets/images/home-mobile-banner.png" className="banner-img d-block d-md-none img-fluid"/>
@@ -130,126 +132,38 @@ export default function HomePage() {
                         </div>
                 </div>
 
-                <div id="client-logo-slider" class="d-block d-lg-none" data-ride="carousel" data-interval="3000" data-pause="hover">
-                          <div class="carousel-inner">
-                            <div class="carousel-item">
-                              <div class="row mx-0">
-                                  <div class="col-3 align-self-center">
-                                    <img src="/assets/images/LogoQualiopi.png" class="img-fluid" />
-                                  </div>  
-                                  <div class="col-3 align-self-center">
-                                    <img src="/assets/images/Group750.png" class="img-fluid" />
-                                  </div>
-                                  <div class="col-3 align-self-center">
-                                    <img src="/assets/images/Group749.png" class="img-fluid" />
-                                  </div>
-                                  <div class="col-3 align-self-center">
-                                    <img src="/assets/images/mon_compte_formation.png" class="img-fluid" />
-                                  </div>
-                              </div>
-                            </div>
-                            <div class="carousel-item active">
-                              <div class="row mx-0">
-                                  <div class="col-3 align-self-center">
-                                    <img src="/assets/images/LogoQualiopi.png" class="img-fluid" />
-                                  </div>  
-                                  <div class="col-3 align-self-center">
-                                    <img src="/assets/images/Group750.png" class="img-fluid" />
-                                  </div>
-                                  <div class="col-3 align-self-center">
-                                    <img src="/assets/images/Group749.png" class="img-fluid" />
-                                  </div>
-                                  <div class="col-3 align-self-center">
-                                    <img src="/assets/images/mon_compte_formation.png" class="img-fluid" />
-                                  </div>
-                              </div>
-                            </div>
-
-                                                      
-                            {/* <ul class="carousel-indicators">
-                              <li data-target="#client-logo-slider" data-slide-to="0" class="active"></li>
-                              <li data-target="#client-logo-slider" data-slide-to="1"></li>
-                            </ul>  */}
-                          </div>
-                </div>
-
                 <section className="site-body-container">
                     <div className="what-wedo-section container container-70 reset-padding">
-                                <div className="intro-section text-center">
-                                    <h2 className="intro-title">{homepanel.gsm_master && homepanel.gsm_master.title[0]}<span className="partner-text">{homepanel.gsm_master && homepanel.gsm_master.title[1]}</span></h2>
-                                    <p className="intro-content">{homepanel.gsm_master && homepanel.gsm_master.desc}</p>
-                                </div>
+                        <div className="intro-section text-center">
+                            <h2 className="intro-title">{homepanel.gsm_master && homepanel.gsm_master.title[0]}<span className="partner-text">{homepanel.gsm_master && homepanel.gsm_master.title[1]}</span></h2>
+                            <p className="intro-content">{homepanel.gsm_master && homepanel.gsm_master.desc}</p>
+                        </div>
                             
-                                <div className="whatwedo-icon-texts-section">
-                                    <div className="row reset-margin">
-                                        {homepanel.gsm_master && homepanel.gsm_master.modules.map((module, increment) =>
+                        <div className="whatwedo-icon-texts-section">
+                            <div className="row reset-margin">
+                                {homepanel.gsm_master && homepanel.gsm_master.modules.map((module, increment) =>
+                                    <>
                                         <div className="col-md-5 icontexts-box reset-padding">
                                             <div className="icontexts-row row">
                                                 <img src={module.photo_link} className="icon"/>
                                                 <div className="col whatwedo-texts reset-padding">
                                                     <p className="icontexts text-center">
-                                                    <mark>{module.title_1}</mark>
-                                                    <mark>{module.title_2}</mark>
+                                                    <mark>{module.title_1 && module.title_1}</mark>
+                                                    <mark>{module.title_2 && module.title_2}</mark>
+                                                    <mark>{module.title_3 && module.title_3}</mark>
                                                     </p>
                                                 </div>
-                                            </div>
+                                            </div> 
                                             <p className="icontexts-para">{module.desc}</p>
-                                        </div> 
-                                              
-                                        )}
-
-                                        
-                                        {/* <div className="col-md-2 d-none d-md-block icontexts-box reset-padding"></div>
-                                        <div className="col-md-5 icontexts-box reset-padding">
-                                            <div className="icontexts-row row">
-                                                <img src="/assets/images/noun_skills.png" className="icon"/>
-                                                <div className="col whatwedo-texts reset-padding">
-                                                    <p className="icontexts text-center">
-                                                    <mark>Des compétences</mark>
-                                                    <mark>développées pour accéder</mark>
-                                                    <mark>à un secteur sous tension</mark>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <p className="icontexts-para">Le marché de la réparation des produits nomades est en pleine expansion. 
-                                                Devenez acteur de ce secteur à votre compte ou comme salarié. Faites monter en compétence vos équipes et 
-                                                réduisez votre taux de retour tout en augmentant le nombre de produits pris en charge.</p>
-                                        </div>  */}
-                                       
-                                        {/* <div className="col-md-5 icontexts-box reset-padding">
-                                            <div className="icontexts-row row">
-                                                <img src="/assets/images/noun_quality.png" className="icon"/>
-                                                <div className="col whatwedo-texts reset-padding">
-                                                    <p className="icontexts text-center">
-                                                    <mark>Des Formateurs</mark>
-                                                    <mark>qualifiés</mark>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <p className="icontexts-para">Une formation dispensée par de véritables professionnels du métier exerçant 
-                                                depuis plus de 15 ans dans la réparation et la maintenance de produits nomades.
-                                                Nos formateurs gardent toujours un pied sur le terrain pour être informé de l’actualité</p>
                                         </div>
-                                        <div className="col-md-2 d-none d-md-block icontexts-box reset-padding"></div>
-                                        <div className="col-md-5 icontexts-box reset-padding">
-                                            <div className="icontexts-row row">
-                                                <img src="/assets/images/noun_certified.png" className="icon"/>
-                                                <div className="col whatwedo-texts reset-padding">
-                                                    <p className="icontexts text-center">
-                                                    <mark>Des Formations à la carte,</mark>
-                                                    <mark>adaptées à votre entreprise</mark>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <p className="icontexts-para">Les formations dispensées par GSM Master s’adressent aussi 
-                                            à des professionnels du métier souhaitant consolider, approfondir ou accroître les compétences 
-                                            et les performances de leurs équipes</p>
-                                        </div> */}
-                                    </div>
-                                </div>
-                        </div> {/*What we do section */}
+                                        {increment % 2 == 0 && <div class="col-md-2 d-none d-md-block icontexts-box reset-padding"></div>}                                     
+                                    </>
+                                )}
+                            </div>
+                        </div>
+                    </div> {/*What we do section */}
 
-                        <div className="partnerLogos-section container-fluid reset-padding">
+                    <div className="partnerLogos-section container-fluid reset-padding">
                             <h2 className="text-center">{homepanel.partners && homepanel.partners.title[0]}<span className="partner-text text-uppercase">{homepanel.partners && homepanel.partners.title[1]}</span></h2>
                             <div id="partnerpanel-slider" className="partnerpanel carousel slide" data-ride="carousel" data-interval="false" data-pause="hover">
                                 <div className="carousel-inner d-none d-lg-block">
@@ -277,9 +191,9 @@ export default function HomePage() {
                                         <li data-target="#partnerpanel-slider" data-slide-to="1"></li>
                                     </ul> */}
 
-                                </div> {/*first carousel inner end  */}
+                    </div> {/*first carousel inner end  */}
 
-                                <div className="carousel-inner d-block d-lg-none">
+                    <div className="carousel-inner d-block d-lg-none">
                                     <div className="carousel-item active">
                                             <div className="container container-70 reset-padding">
                                                 <div className="row mx-0">
@@ -305,9 +219,9 @@ export default function HomePage() {
                                     </div>
                                 </div>{ /*second carousel inner end*/ } 
                             </div>
-                        </div>
+                    </div>
 
-                        <div className="satisfaction-rate" style={{backgroundImage: "url('/assets/images/map-bg.png')",}} >
+                    <div className="satisfaction-rate" style={{backgroundImage: "url('/assets/images/map-bg.png')",}} >
                             <div className="satisfaction-rate-innersection container container-60 reset-padding" >
                                 <div className="title-bar text-center">
                                     <h2>Nos <span className="partner-text text-uppercase">PARTENAIRES</span></h2>
@@ -319,9 +233,9 @@ export default function HomePage() {
                                 </div>
                                 
                             </div>
-                        </div>
+                    </div>
 
-                        <div className="organisation-section" style={{backgroundImage: "url('/assets/images/businessman-and-businesswoman.png')",}} >
+                    <div className="organisation-section" style={{backgroundImage: "url('/assets/images/businessman-and-businesswoman.png')",}} >
                             <div className="organisation-inner-box row">
                                 <div className="col-md-8 organisation-content">
                                     <div className="row reset-margin">
@@ -343,9 +257,9 @@ export default function HomePage() {
                                     <img src="/assets/images/organisation-inner-img.png" className="img-fluid" />
                                 </div>
                             </div>
-                        </div>
+                    </div>
 
-                        <div className="testimonial">
+                    <div className="testimonial">
                             <div className="testimonial_box">
                             </div>
                             <div className="testimonials_overlay">
@@ -386,24 +300,17 @@ export default function HomePage() {
                                             <img src="/assets/images/testimonial-arrow-right.png" />
                                             <span className="sr-only">Next</span>
                                             </a>
-                                        </div>
-
-
-                                        
+                                        </div>                                      
                                     </div>
                                 </div>
                             </div>
                             </div>
-                        </div>
-
-                        
-                </div>
+                       </div>                       
+                    </div>
                 </section>
-
                 <footer className="site-footer">
                     <Footer/>
-                </footer>  
-                
+                </footer>                  
             </div>
         </div>
     )
