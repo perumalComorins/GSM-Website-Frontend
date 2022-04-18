@@ -87,7 +87,6 @@ export default function HomePage(){
                     <Header/>
                 </header>
                 <div className="site-bannersection home-banner-resizer">
-                    {console.log(homepanel)}
                         <div className="banner-view fullsize-banner">
                             <img src={homepanel.banner_section && homepanel.banner_section.banner_image} className="banner-img d-none d-md-block"/>
                             <img src="assets/images/home-mobile-banner.png" className="banner-img d-block d-md-none img-fluid"/>
