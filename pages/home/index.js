@@ -12,8 +12,8 @@ export default function HomePage(){
 
     useEffect(()=>{
         userService.getAllItems(type).then((res) => { 
-            setHomepanel([1,2,3])   
-            setHomepanel(res[0].json_data);
+            setHomepanel([1,2,3])       
+            setHomepanel(res.json_data);
         }) 
          .catch((err) => console.error(err));         
     },[])
