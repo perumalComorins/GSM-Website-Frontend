@@ -1,21 +1,22 @@
-export default function SatisfactionCardSlider() {
+export default function SatisfactionCardSlider({value}){
+    const individualpanel = value;
     return(
         <div className="container container-85 reset-padding">
                 <div id="satisfaction-slider-web" className="satisfaction-slider carousel slide d-none d-lg-block" data-ride="carousel" data-interval="false" data-pause="hover">
                   <div className="carousel-inner">
                       <div className="carousel-item active">
                           <div className="row mx-0">
+                            {individualpanel.satisfication_section && individualpanel.satisfication_section.map((items, index) => 
                                 <div className="card satisfaction-card col-sm-6">
                                   <figure>
-                                          <label className="satisfaction-label">Satisfaction 100%</label>
+                                          <label className="satisfaction-label">{items.rating}</label>
                                           <div className="card-body froentside-panel row reset-margin">
                                             <div className="col content-block">
-                                              <h5 className="card-title">Repair Safety and Compliance - 1</h5>
-                                              <p className="card-text">You are already repairing and want to establish your know-how by assimilating 
-                                                the basics of a diagnosis and intervention carried out in safety and compliance </p> 
+                                              <h5 className="card-title">{items.title}</h5>
+                                              <p className="card-text">{items.desc}</p> 
                                             </div>
                                             <div className="col picture-block">
-                                              <img src="/assets/images/satatistics-pic.png" className="img-fluid"/>
+                                              <img src={items.photo_link} className="img-fluid"/>
                                             </div> 
                                           </div>
                                           <figcaption>
@@ -25,66 +26,64 @@ export default function SatisfactionCardSlider() {
                                                       <div className="row reset-margin">
                                                         <div className="col-6 students-satisfaction-percentage">
                                                           <div className="row reset-margin">
-                                                            <div className="col-5 satifaction-percentage">100%</div>
-                                                            <div className="col-7 satifaction-text reset-padding">Students Satisfaction</div>
+                                                            <div className="col-5 satifaction-percentage">{items.percentage}</div>
+                                                            <div className="col-7 satifaction-text reset-padding">{items.label}</div>
                                                           </div>
                                                         </div>
                                                         <div className="col-6 students-number-count reset-padding">
                                                           <div className="row reset-margin">
-                                                            <div className="col-2 students-count">15</div>
-                                                            <div className="col-10 students-text reset-padding">No. of Students who have taken the course</div>
+                                                            <div className="col-2 students-count">{items.count}</div>
+                                                            <div className="col-10 students-text reset-padding">{items.count_title}</div>
                                                           </div>
                                                         </div>
                                                       </div>
                                                   </div>
                                                   <div className="col-3 text-center brand-logos reset-padding">
-                                                      {/* <div id="demo" className="carousel slide" data-ride="carousel">
+                                                      <div id="demo" className="carousel slide" data-ride="carousel">
                                                           <div className="row reset-margin carousel-inner">
                                                             <img src="/assets/images/brand-logo-1.png" className="carousel-item active"/>
-                                                            <img src="/assets/images/brand-logo-1.png" className="carousel-item"/>
+                                                            <img src="/assets/images/brand-logo-1.png" className="carousel-item"/> 
                                                           </div>
-                                                      </div> */}
+                                                      </div> 
                                                   </div>
                                               </div>
                                               <div className="card-body reset-padding">
                                                   <ul className="backdrop-list">
                                                       <li className="backdrop-item">
-                                                          <span className="item-heighlight">Objectives:</span>
-                                                          Diagnose a Level 1 failure To disassemble safely and in compliance.
-                                                          Replace a subset in safety and compliance. Go back to safety and compliance. 
-                                                          Conduct a functionality and compliance test.
+                                                          <span className="item-heighlight">{items.obj_title}</span>
+                                                          {items.objective}
                                                       </li>
                                                       <li className="backdrop-item">
-                                                          <span className="item-heighlight">Educational Terms:</span>
-                                                          Pedagogical face-to-face | Occupational situations | Technical Workshop
+                                                          <span className="item-heighlight">{items.edu_title}</span>
+                                                          {items.educational_terms}
                                                       </li>
                                                       <li className="backdrop-item">
-                                                          <span className="item-heighlight">Prerequisite:</span>
-                                                          6 months of experience in repairing nomadic products
+                                                          <span className="item-heighlight">{items.prereq_title}</span>
+                                                          {items.prerequisite}
                                                       </li>
                                                       <li className="backdrop-item">
-                                                          <span className="item-heighlight">Duration:</span>
-                                                          35 Hours (5 days) 
+                                                          <span className="item-heighlight">{items.dur_title}</span>
+                                                          {items.duration} 
                                                       </li>
                                                       <li className="backdrop-item">
-                                                          <span className="item-heighlight">Location:</span>
-                                                          PARIS - IDF
+                                                          <span className="item-heighlight">{items.loc_title}</span>
+                                                          {items.location}
                                                       </li>
                                                       <li className="backdrop-item">
-                                                          <span className="item-heighlight">Individual rate:</span>
-                                                          XX
+                                                          <span className="item-heighlight">{items.ind_title}</span>
+                                                          {items.individual}
                                                       </li>
                                                   </ul>
                                               </div> 
                                               <div className="card-footer">
-                                                <button className="btn gsm-outline-individual  btn-gsm-statics-size pull-left">Learn More</button>
-                                                <button className="btn gsm-bg-individual btn-gsm-statics-size pull-right">Apply Now</button>
+                                                <button className="btn gsm-outline-individual  btn-gsm-statics-size pull-left">{items.button_name}</button>
+                                                <button className="btn gsm-bg-individual btn-gsm-statics-size pull-right">{items.button_name_2}</button>
                                               </div>
                                           </figcaption>
                                   </figure>
                                 </div>
-
-                                <div className="card satisfaction-card col-sm-6">
+                            )}
+                                {/* <div className="card satisfaction-card col-sm-6">
                                   <figure>
                                           <label className="satisfaction-label">Satisfaction 100%</label>
                                           <div className="card-body froentside-panel row reset-margin">
@@ -117,12 +116,12 @@ export default function SatisfactionCardSlider() {
                                                       </div>
                                                   </div>
                                                   <div className="col-3 text-center brand-logos reset-padding">
-                                                      {/* <div id="demo" className="carousel slide" data-ride="carousel">
+                                                       <div id="demo" className="carousel slide" data-ride="carousel">
                                                           <div className="row reset-margin carousel-inner">
                                                             <img src="/assets/images/brand-logo-1.png" className="carousel-item active"/>
                                                             <img src="/assets/images/brand-logo-1.png" className="carousel-item"/>
                                                           </div>
-                                                      </div>  */}
+                                                      </div>  
                                                   </div>
                                               </div>
                                               <div className="card-body reset-padding">
@@ -161,11 +160,11 @@ export default function SatisfactionCardSlider() {
                                               </div>
                                           </figcaption>
                                   </figure>
-                                </div>
+                                </div> */}
                             </div>
                       </div>
 
-                      <div className="carousel-item">
+                      {/* <div className="carousel-item">
                           <div className="row mx-0">
                                 <div className="card satisfaction-card col-sm-6">
                                   <figure>
@@ -200,12 +199,12 @@ export default function SatisfactionCardSlider() {
                                                       </div>
                                                   </div>
                                                   <div className="col-3 text-center brand-logos reset-padding">
-                                                      {/* <div id="demo" className="carousel slide" data-ride="carousel">
+                                                      <div id="demo" className="carousel slide" data-ride="carousel">
                                                           <div className="row reset-margin carousel-inner">
                                                             <img src="/assets/images/brand-logo-1.png" className="carousel-item active"/>
                                                             <img src="/assets/images/brand-logo-1.png" className="carousel-item"/>
                                                           </div>
-                                                      </div> */}
+                                                      </div> 
                                                   </div>
                                               </div>
                                               <div className="card-body reset-padding">
@@ -279,12 +278,12 @@ export default function SatisfactionCardSlider() {
                                                       </div>
                                                   </div>
                                                   <div className="col-3 text-center brand-logos reset-padding">
-                                                      {/* <div id="demo" className="carousel slide" data-ride="carousel">
+                                                      <div id="demo" className="carousel slide" data-ride="carousel">
                                                           <div className="row reset-margin carousel-inner">
                                                             <img src="/assets/images/brand-logo-1.png" className="carousel-item active"/>
                                                             <img src="/assets/images/brand-logo-1.png" className="carousel-item"/>
                                                           </div>
-                                                      </div> */}
+                                                      </div> 
                                                   </div>
                                               </div>
                                               <div className="card-body reset-padding">
@@ -325,7 +324,7 @@ export default function SatisfactionCardSlider() {
                                   </figure>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     {/* Indicators  */}
                     <ul className="carousel-indicators">
@@ -692,3 +691,4 @@ export default function SatisfactionCardSlider() {
             </div>
     )
 }
+

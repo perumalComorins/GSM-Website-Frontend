@@ -2,10 +2,15 @@ import { useContext, useEffect, useState } from 'react';
 import Sidepanel from "../../components/sidepanel" ;
 import Header from "../../components/header";
 import Footer from "../../components/footer";
+import { userService } from '../../services/user.service';
 import SatisfactionCardSlider from "./satisfaction-card-slider";
 import PeopleFaq from "./people-faq";
+
 export default function IndividualPage() {
-        const [datas, setDatas] = useState(null);
+
+        const type = 'individual.php';
+        //const [datas, setDatas] = useState(null);
+        const [individualpanel, setIndividualpanel] = useState([]);
         
         useEffect(()=>{
             document.querySelector("body");
@@ -13,14 +18,17 @@ export default function IndividualPage() {
             body_ele.className='';
             body_ele.classList.add("inner-page");
     
-            setDatas([1,2,3])
+            userService.getAllItems(type).then((res) => { 
+                setIndividualpanel([1,2,3])
+                setIndividualpanel(res.json_data);
+            }) 
+             .catch((err) => console.error(err)); 
               
-        },[])
+        },[]) 
 
         useEffect(()=>{
-            
 
-            if(datas && datas.length>0){
+            if(individualpanel && individualpanel.length > 0){
                 {/* Banner jquery script Starts */}
                 function BannerOverlays(){
                     var $banner_h;
@@ -39,50 +47,27 @@ export default function IndividualPage() {
                 $(document).ready(function () {
                     BannerOverlays();
 
-                    {/* Faq slider jquery script Starts */}
-                    var totalfaqItems = $('.faq-item').length;
-                    var currentfaqIndex = $('div.faq-item.active').index() + 1;
-                    var currentfaqIndex_active;
-                    var downfaq_index;
-
-                    // $('.testimonial_num').html(''+currentIndex+'/'+totalItems+'');
-                    $('.faq_num').html(''+currentfaqIndex+'');
-
-                    $(".faq-next").click(function(){
-                        currentfaqIndex_active = $('div.faq-item.active').index() + 2;
-                        if (totalfaqItems >= currentfaqIndex_active)
-                        {
-                            downfaq_index= $('div.faq-item.active').index() + 2;
-                            //$('.testimonial_num').html(''+currentIndex_active+'/'+totalItems+'');
-                            $('.faq_num').html(''+currentfaqIndex_active+'');
-                        }
-                    });
-
-                    $(".faq-prev").click(function(){
-                        downfaq_index=downfaq_index-1;
-                        if (downfaq_index >= 1 ){
-                            //$('.testimonial_num').html(''+downfaq_index+'/'+totalItems+'');
-                            $('.faq_num').html(''+downfaq_index+'');
-                        }
-                    });
+                    
                 });
             }
-        },[datas])
+        },[individualpanel])
+
     return (
         <div id="wrapper">
             <div className="overlay">
+                {console.log(individualpanel)}
             </div>
             <Sidepanel/>
             <div id="page-content-wrapper" className="container-fluid reset-padding">
                 <Header/>
                 <div className="site-bannersection">
                     <div className="banner-view smallsize-banner">
-                        <img src="/assets/images/individual-banner-v1.png" className="banner-img"/>
+                        <img src={individualpanel.banner_section && individualpanel.banner_section.banner_image} className="banner-img"/>
                     </div>
                     <div className="banner-cover-overlay">
                         <div className="banner-cover individual-banner-content">
                             <div className="container container-1140 reset-padding banner-title-blog">
-                                <h2 className="banner-title">Réussir grâce aux compétences du futur</h2>
+                                <h2 className="banner-title">{individualpanel.banner_section && individualpanel.banner_section.title}</h2>
                             </div>
                         </div>
                     </div>
@@ -94,25 +79,85 @@ export default function IndividualPage() {
                     <div className="registeration-box">
                         <div className="container container-60 reset-padding text-center register-box-top">
                             <p className="reg-intro-content">
-                                Découvrez nos formations et notre certification afin de monter en compétence 
-                                et vous faire certifier pour le titre niveau 4 "Réparateur(trice) de produits nomades
+                            {individualpanel.banner_section && individualpanel.banner_section.desc}
                             </p>
-                            <button type="button" className="btn gsm-bg-individual btn-gsm-lg">S’inscrire</button>
+                            <button type="button" className="btn gsm-bg-individual btn-gsm-lg">{individualpanel.banner_section && individualpanel.banner_section.button_name}</button>
                         </div>
                         <div className="container container-70 reset-padding text-center register-box-bottom">
-                            <h2 className="section-title individual-text">Développe tes talents pour intégrer les équipes de demain</h2>
+                            <h2 className="section-title individual-text">{individualpanel.banner_section && individualpanel.banner_section.sub_title}</h2>
                             <p className="section-content individual-text">
-                                Découvrez nos modules et nos formations qui vous préparent à intégrer le secteur 
-                                de la réparation des produits nomades. Découvrez l'indice de réparabilité, 
-                                la réparation en sécurité et en conformité ou encore l'initiation à la microsoudure 
-                                dispensées par des professionnels du secteur. Inscris toi et réserves ta place dans 
-                                la formation (nombre d’apprenants par cours limité)
+                            {individualpanel.banner_section && individualpanel.banner_section.sud_desc}
                             </p>
                         </div>
                     </div>
 
-                    <SatisfactionCardSlider />
-                    <PeopleFaq/>
+                    <SatisfactionCardSlider value = {individualpanel}/>
+
+                    <div className="faq-section company-bg">
+                        <div className="container container-70 reset-padding">
+                            <div className="row reset-margin">
+                                <div className="col-md-5 reset-padding faq-accordian-slider">
+                                    <span className="faq-label company-text">{individualpanel.faq_section && individualpanel.faq_section.title}</span>
+                                        <div id="faqIndicators" className="carousel slide" data-ride="carousel" data-wrap="false" data-interval="false">
+                                            <div className="carousel-inner">
+                                                {individualpanel.faq_section && individualpanel.faq_section.student_details.map((items, index) => 
+                                                    <div className={`carousel-item faq-item ${index == 0 &&  'active'}`}>
+                                                        <div className="faqMember-thumbnail">
+                                                            <span className="faqequals-quotes">=</span>
+                                                                <img src={items.photo_link} className="img-fluid"/>
+                                                                    <div className="triangleBox"></div>
+                                                        </div>
+                                                        <p className="fag-content">
+                                                            {items.desc}
+                                                        </p>
+                                                        <h3 className="faqmemberName">{items.student_name}<span className="faqmemberDesignation">{items.qualification}</span></h3>
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <div className="faq-Nav">
+                                                            <a className="carousel-control-prev faq-prev" href="#faqIndicators" role="button" data-slide="prev">
+                                                            <img src="/assets/images/testimonial-arrow-left.png" />
+                                                            <span className="sr-only">Previous</span>
+                                                            </a>
+                                                            <span className="faq_num"></span>
+                                                            <a className="carousel-control-next faq-next" href="#faqIndicators" role="button" data-slide="next">
+                                                            <img src="/assets/images/testimonial-arrow-right.png" />
+                                                            <span className="sr-only">Next</span>
+                                                            </a>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div className="col-md-1 reset-padding d-none d-md-block">
+                                </div>
+                                <div id="main" className="col-md-6 reset-padding faq-accordian-list">
+                                    <h2 className="title">{individualpanel.faq_section && individualpanel.faq_section.faq.title}</h2>
+
+                                        <div className="accordion" id="faq">
+                                            {individualpanel.faq_section && individualpanel.faq_section.faq.questions.map((items, index) => 
+                                                <div className="card">
+                                                    <div className="card-header" id="faqhead1">
+                                                        <a href="#" className="btn btn-header-link" data-toggle="collapse" data-target="#faq1"
+                                                            aria-expanded="true" aria-controls="faq1">{items.quest}</a>
+                                                    </div>
+
+                                                    <div id="faq1" className="collapse show" aria-labelledby="faqhead1" data-parent="#faq">
+                                                        <div className="card-body">
+                                                            {items.answer}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        <div className="pull-right mt-4">
+                                            <a className="faqView_more" href="#">{individualpanel.faq_section && individualpanel.faq_section.faq.label}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    {/* <PeopleFaq value = {individualpanel}/> */}
+                            
                     
                     <div className="training-initial-formSection">
                         <div className="container container-70 reset-padding">

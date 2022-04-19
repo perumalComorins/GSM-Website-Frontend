@@ -272,7 +272,7 @@ export default function HomePage(){
                                     <div id="testimonialIndicators" className="carousel slide" data-ride="carousel" data-wrap="false" data-interval="false">
                                     <div className="carousel-inner">
                                         {homepanel.testimonial && homepanel.testimonial.map((feedback, index) => 
-                                        <div className={`carousel-item testimonial-item ${index == 0 &&  'active'}`}Z>
+                                        <div className={`carousel-item testimonial-item ${index == 0 &&  'active'}`}>
                                             <div className="row reset-margin gsm-teamMember-row">
                                                 <div className="col-5 gsm-teamMember--thumbnail">
                                                     <img src={feedback.photo_link} className="teamMember--img img-fluid" />
