@@ -5,6 +5,10 @@ import Footer from "../../components/footer";
 export default function OrganizationPage() {
     const [datas, setDatas] = useState(null);
     useEffect(()=>{
+        document.querySelector("body");
+        let body_ele = document.querySelector("body");
+        body_ele.className='';
+        body_ele.classList.add("inner-page");
         setDatas([1,2,3])
         
     },[])
@@ -44,10 +48,7 @@ export default function OrganizationPage() {
             </div>
             <Sidepanel/>
             <div id="page-content-wrapper" className="container-fluid reset-padding">
-                <header className="site-header site-navbar site-navbar-target">
-                    <Header/>
-                </header>
-
+                <Header/>
                 <div className="site-bannersection">
                     <div className="static-banner-organisation banner-view fullsize-banner">
                         <img src="/assets/images/organisation-bg.png" className="banner-img"/>

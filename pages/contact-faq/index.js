@@ -6,6 +6,10 @@ import Footer from "../../components/footer";
 export default function ContactFaqPage(){
         const [datas, setDatas] = useState(null);
         useEffect(()=>{
+            document.querySelector("body");
+            let body_ele = document.querySelector("body");
+            body_ele.className='';
+            body_ele.classList.add("inner-page");
             setDatas([1,2,3])
             
         },[])
@@ -145,18 +149,18 @@ export default function ContactFaqPage(){
                         
                         <div className="container-fluid reset-padding organization-tab-content">
                             <div className="tab-content container container-55 reset-padding">
-                                <div id="particulier" className="tab-pane fade in active show">
-                                    <div id="contact-faq-accordian" className="col-md-12 reset-padding faq-accordian-list">
-                                        <h2 className="title">Questions fréquentes - particulier</h2>
-                                        <div className="accordion" id="faq">
-                                            <div className="card">
-                                                <div className="card-header" id="faqhead1">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq1"
-                                                    aria-expanded="true" aria-controls="faq1">Entrer votre question ici</a>
+                                <div id="particulier" class="tab-pane fade in active show">
+                                    <div id="contact-faq-accordian" class="col-md-12 reset-padding faq-accordian-list">
+                                        <h2 class="title">Questions fréquentes - particulier</h2>
+                                        <div class="accordion" id="particulier-faq">
+                                            <div class="card">
+                                                <div class="card-header" id="particulier-faqhead1">
+                                                    <a href="#" class="btn btn-header-link" data-toggle="collapse" data-target="#particulier-faq1"
+                                                    aria-expanded="true" aria-controls="particulier-faq1">Entrer votre question ici</a>
                                                 </div>
 
-                                                <div id="faq1" className="collapse" aria-labelledby="faqhead1" data-parent="#faq">
-                                                    <div className="card-body">
+                                                <div id="particulier-faq1" class="collapse show" aria-labelledby="particulier-faqhead1" data-parent="#particulier-faq">
+                                                    <div class="card-body">
                                                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
                                                         moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
                                                         Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
@@ -166,14 +170,14 @@ export default function ContactFaqPage(){
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="card">
-                                                <div className="card-header" id="faqhead2">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq2"
-                                                    aria-expanded="true" aria-controls="faq2">Entrer votre question ici</a>
+                                            <div class="card">
+                                                <div class="card-header" id="particulier-faqhead2">
+                                                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#particulier-faq2"
+                                                    aria-expanded="false" aria-controls="particulier-faq2">Entrer votre question ici</a>
                                                 </div>
 
-                                                <div id="faq2" className="collapse" aria-labelledby="faqhead2" data-parent="#faq">
-                                                    <div className="card-body">
+                                                <div id="particulier-faq2" class="collapse" aria-labelledby="particulier-faqhead2" data-parent="#particulier-faq">
+                                                    <div class="card-body">
                                                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
                                                         moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
                                                         Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
@@ -183,14 +187,14 @@ export default function ContactFaqPage(){
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="card">
-                                                <div className="card-header" id="faqhead3">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq3"
-                                                    aria-expanded="true" aria-controls="faq3">Entrer votre question ici</a>
+                                            <div class="card">
+                                                <div class="card-header" id="particulier-faqhead3">
+                                                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#particulier-faq3"
+                                                    aria-expanded="false" aria-controls="particulier-faq3">Entrer votre question ici</a>
                                                 </div>
 
-                                                <div id="faq3" className="collapse" aria-labelledby="faqhead3" data-parent="#faq">
-                                                    <div className="card-body">
+                                                <div id="particulier-faq3" class="collapse" aria-labelledby="particulier-faqhead3" data-parent="#particulier-faq">
+                                                    <div class="card-body">
                                                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
                                                         moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
                                                         Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
@@ -200,14 +204,14 @@ export default function ContactFaqPage(){
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="card">
-                                                <div className="card-header" id="faqhead4">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq4"
-                                                    aria-expanded="true" aria-controls="faq4">Entrer votre question ici</a>
+                                            <div class="card">
+                                                <div class="card-header" id="particulier-faqhead4">
+                                                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#particulier-faq4"
+                                                    aria-expanded="false" aria-controls="particulier-faq4">Entrer votre question ici</a>
                                                 </div>
 
-                                                <div id="faq4" className="collapse" aria-labelledby="faqhead4" data-parent="#faq">
-                                                    <div className="card-body">
+                                                <div id="particulier-faq4" class="collapse" aria-labelledby="particulier-faqhead4" data-parent="#particulier-faq">
+                                                    <div class="card-body">
                                                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
                                                         moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
                                                         Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
@@ -217,14 +221,14 @@ export default function ContactFaqPage(){
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="card">
-                                                <div className="card-header" id="faqhead5">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq5"
-                                                    aria-expanded="true" aria-controls="faq5">Entrer votre question ici</a>
+                                            <div class="card">
+                                                <div class="card-header" id="particulier-faqhead5">
+                                                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#particulier-faq5"
+                                                    aria-expanded="false" aria-controls="particulier-faq5">Entrer votre question ici</a>
                                                 </div>
 
-                                                <div id="faq5" className="collapse" aria-labelledby="faqhead5" data-parent="#faq">
-                                                    <div className="card-body">
+                                                <div id="particulier-faq5" class="collapse" aria-labelledby="particulier-faqhead5" data-parent="#particulier-faq">
+                                                    <div class="card-body">
                                                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
                                                         moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
                                                         Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
@@ -234,126 +238,14 @@ export default function ContactFaqPage(){
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="card">
-                                                <div className="card-header" id="faqhead6">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq6"
-                                                    aria-expanded="true" aria-controls="faq3">Entrer votre question ici</a>
+                                            <div class="card">
+                                                <div class="card-header" id="faqhead6">
+                                                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#particulier-faq6"
+                                                    aria-expanded="false" aria-controls="particulier-faq6">Entrer votre question ici</a>
                                                 </div>
 
-                                                <div id="faq6" className="collapse" aria-labelledby="faqhead6" data-parent="#faq">
-                                                    <div className="card-body">
-                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                                                        moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                                        Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                                                        proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                                                        aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div id="entreprise" className="tab-pane fade">
-                                    <div id="contact-faq-accordian" className="col-md-12 reset-padding faq-accordian-list">
-                                        <h2 className="title">Questions fréquentes - entreprise</h2>
-                                        <div className="accordion" id="faq">
-                                            <div className="card">
-                                                <div className="card-header" id="faqhead1">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq1"
-                                                    aria-expanded="true" aria-controls="faq1">Entrer votre question ici</a>
-                                                </div>
-
-                                                <div id="faq1" className="collapse" aria-labelledby="faqhead1" data-parent="#faq">
-                                                    <div className="card-body">
-                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                                                        moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                                        Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                                                        proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                                                        aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="card">
-                                                <div className="card-header" id="faqhead2">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq2"
-                                                    aria-expanded="true" aria-controls="faq2">Entrer votre question ici</a>
-                                                </div>
-
-                                                <div id="faq2" className="collapse" aria-labelledby="faqhead2" data-parent="#faq">
-                                                    <div className="card-body">
-                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                                                        moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                                        Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                                                        proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                                                        aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="card">
-                                                <div className="card-header" id="faqhead3">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq3"
-                                                    aria-expanded="true" aria-controls="faq3">Entrer votre question ici</a>
-                                                </div>
-
-                                                <div id="faq3" className="collapse" aria-labelledby="faqhead3" data-parent="#faq">
-                                                    <div className="card-body">
-                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                                                        moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                                        Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                                                        proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                                                        aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="card">
-                                                <div className="card-header" id="faqhead4">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq4"
-                                                    aria-expanded="true" aria-controls="faq4">Entrer votre question ici</a>
-                                                </div>
-
-                                                <div id="faq4" className="collapse" aria-labelledby="faqhead4" data-parent="#faq">
-                                                    <div className="card-body">
-                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                                                        moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                                        Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                                                        proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                                                        aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="card">
-                                                <div className="card-header" id="faqhead5">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq5"
-                                                    aria-expanded="true" aria-controls="faq5">Entrer votre question ici</a>
-                                                </div>
-
-                                                <div id="faq5" className="collapse" aria-labelledby="faqhead5" data-parent="#faq">
-                                                    <div className="card-body">
-                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                                                        moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                                        Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                                                        proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                                                        aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="card">
-                                                <div className="card-header" id="faqhead6">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq6"
-                                                    aria-expanded="true" aria-controls="faq6">Entrer votre question ici</a>
-                                                </div>
-
-                                                <div id="faq6" className="collapse" aria-labelledby="faqhead6" data-parent="#faq">
-                                                    <div className="card-body">
+                                                <div id="particulier-faq6" class="collapse" aria-labelledby="faqhead6" data-parent="#particulier-faq">
+                                                    <div class="card-body">
                                                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
                                                         moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
                                                         Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
@@ -369,18 +261,18 @@ export default function ContactFaqPage(){
                                     </div>
                                 </div>
 
-                                <div id="partenaire" className="tab-pane fade">
-                                    <div id="contact-faq-accordian" className="col-md-12 reset-padding faq-accordian-list">
-                                        <h2 className="title">Questions fréquentes - partenaire</h2>
-                                        <div className="accordion" id="faq">
-                                            <div className="card">
-                                                <div className="card-header" id="faqhead1">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq1"
-                                                    aria-expanded="true" aria-controls="faq1">Entrer votre question ici</a>
+                                <div id="entreprise" class="tab-pane fade">
+                                    <div id="contact-faq-accordian" class="col-md-12 reset-padding faq-accordian-list">
+                                        <h2 class="title">Questions fréquentes - entreprise</h2>
+                                        <div class="accordion" id="entreprise-faq">
+                                            <div class="card">
+                                                <div class="card-header" id="entreprise-faqhead1">
+                                                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#entreprise-faq1"
+                                                    aria-expanded="true" aria-controls="entreprise-faq1">Entrer votre question ici</a>
                                                 </div>
 
-                                                <div id="faq1" className="collapse" aria-labelledby="faqhead1" data-parent="#faq">
-                                                    <div className="card-body">
+                                                <div id="entreprise-faq1" class="collapse" aria-labelledby="entreprise-faqhead1" data-parent="#entreprise-faq">
+                                                    <div class="card-body">
                                                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
                                                         moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
                                                         Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
@@ -390,14 +282,14 @@ export default function ContactFaqPage(){
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="card">
-                                                <div className="card-header" id="faqhead2">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq2"
-                                                    aria-expanded="true" aria-controls="faq2">Entrer votre question ici</a>
+                                            <div class="card">
+                                                <div class="card-header" id="entreprise-faqhead2">
+                                                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#entreprise-faq2"
+                                                    aria-expanded="true" aria-controls="entreprise-faq2">Entrer votre question ici</a>
                                                 </div>
 
-                                                <div id="faq2" className="collapse" aria-labelledby="faqhead2" data-parent="#faq">
-                                                    <div className="card-body">
+                                                <div id="entreprise-faq2" class="collapse" aria-labelledby="entreprise-faqhead2" data-parent="#entreprise-faq">
+                                                    <div class="card-body">
                                                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
                                                         moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
                                                         Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
@@ -407,14 +299,14 @@ export default function ContactFaqPage(){
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="card">
-                                                <div className="card-header" id="faqhead3">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq3"
-                                                    aria-expanded="true" aria-controls="faq3">Entrer votre question ici</a>
+                                            <div class="card">
+                                                <div class="card-header" id="entreprise-faqhead3">
+                                                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#entreprise-faq3"
+                                                    aria-expanded="true" aria-controls="entreprise-faq3">Entrer votre question ici</a>
                                                 </div>
 
-                                                <div id="faq3" className="collapse" aria-labelledby="faqhead3" data-parent="#faq">
-                                                    <div className="card-body">
+                                                <div id="entreprise-faq3" class="collapse" aria-labelledby="entreprise-faqhead3" data-parent="#entreprise-faq">
+                                                    <div class="card-body">
                                                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
                                                         moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
                                                         Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
@@ -424,14 +316,14 @@ export default function ContactFaqPage(){
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="card">
-                                                <div className="card-header" id="faqhead4">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq4"
-                                                    aria-expanded="true" aria-controls="faq4">Entrer votre question ici</a>
+                                            <div class="card">
+                                                <div class="card-header" id="entreprise-faqhead4">
+                                                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#entreprise-faq4"
+                                                    aria-expanded="true" aria-controls="entreprise-faq4">Entrer votre question ici</a>
                                                 </div>
 
-                                                <div id="faq4" className="collapse" aria-labelledby="faqhead4" data-parent="#faq">
-                                                    <div className="card-body">
+                                                <div id="entreprise-faq4" class="collapse" aria-labelledby="entreprise-faqhead4" data-parent="#entreprise-faq">
+                                                    <div class="card-body">
                                                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
                                                         moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
                                                         Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
@@ -441,14 +333,14 @@ export default function ContactFaqPage(){
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="card">
-                                                <div className="card-header" id="faqhead5">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq5"
-                                                    aria-expanded="true" aria-controls="faq5">Entrer votre question ici</a>
+                                            <div class="card">
+                                                <div class="card-header" id="entreprise-faqhead5">
+                                                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#entreprise-faq5"
+                                                    aria-expanded="true" aria-controls="entreprise-faq5">Entrer votre question ici</a>
                                                 </div>
 
-                                                <div id="faq5" className="collapse" aria-labelledby="faqhead5" data-parent="#faq">
-                                                    <div className="card-body">
+                                                <div id="entreprise-faq5" class="collapse" aria-labelledby="entreprise-faqhead5" data-parent="#entreprise-faq">
+                                                    <div class="card-body">
                                                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
                                                         moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
                                                         Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
@@ -458,14 +350,126 @@ export default function ContactFaqPage(){
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="card">
-                                                <div className="card-header" id="faqhead6">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq6"
-                                                    aria-expanded="true" aria-controls="faq6">Entrer votre question ici</a>
+                                            <div class="card">
+                                                <div class="card-header" id="entreprise-faqhead6">
+                                                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#entreprise-faq6"
+                                                    aria-expanded="true" aria-controls="entreprise-faq6">Entrer votre question ici</a>
                                                 </div>
 
-                                                <div id="faq6" className="collapse" aria-labelledby="faqhead6" data-parent="#faq">
-                                                    <div className="card-body">
+                                                <div id="entreprise-faq6" class="collapse" aria-labelledby="entreprise-faqhead6" data-parent="#entreprise-faq">
+                                                    <div class="card-body">
+                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                                                        moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                                        Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                                                        proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                                                        aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="partenaire" class="tab-pane fade">
+                                    <div id="contact-faq-accordian" class="col-md-12 reset-padding faq-accordian-list">
+                                        <h2 class="title">Questions fréquentes - partenaire</h2>
+                                        <div class="accordion" id="partenaire-faq">
+                                            <div class="card">
+                                                <div class="card-header" id="partenaire-faqhead1">
+                                                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#partenaire-faq1"
+                                                    aria-expanded="true" aria-controls="partenaire-faq1">Entrer votre question ici</a>
+                                                </div>
+
+                                                <div id="partenaire-faq1" class="collapse" aria-labelledby="partenaire-faqhead1" data-parent="#partenaire-faq">
+                                                    <div class="card-body">
+                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                                                        moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                                        Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                                                        proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                                                        aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="partenaire-faqhead2">
+                                                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#partenaire-faq2"
+                                                    aria-expanded="true" aria-controls="partenaire-faq2">Entrer votre question ici</a>
+                                                </div>
+
+                                                <div id="partenaire-faq2" class="collapse" aria-labelledby="partenaire-faqhead2" data-parent="#partenaire-faq">
+                                                    <div class="card-body">
+                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                                                        moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                                        Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                                                        proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                                                        aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="partenaire-faqhead3">
+                                                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#partenaire-faq3"
+                                                    aria-expanded="true" aria-controls="partenaire-faq3">Entrer votre question ici</a>
+                                                </div>
+
+                                                <div id="partenaire-faq3" class="collapse" aria-labelledby="partenaire-faqhead3" data-parent="#partenaire-faq">
+                                                    <div class="card-body">
+                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                                                        moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                                        Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                                                        proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                                                        aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="partenaire-faqhead4">
+                                                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#partenaire-faq4"
+                                                    aria-expanded="true" aria-controls="partenaire-faq4">Entrer votre question ici</a>
+                                                </div>
+
+                                                <div id="partenaire-faq4" class="collapse" aria-labelledby="partenaire-faqhead4" data-parent="#partenaire-faq">
+                                                    <div class="card-body">
+                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                                                        moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                                        Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                                                        proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                                                        aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="partenaire-faqhead5">
+                                                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#partenaire-faq5"
+                                                    aria-expanded="true" aria-controls="partenaire-faq5">Entrer votre question ici</a>
+                                                </div>
+
+                                                <div id="partenaire-faq5" class="collapse" aria-labelledby="partenaire-faqhead5" data-parent="#partenaire-faq">
+                                                    <div class="card-body">
+                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                                                        moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                                        Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                                                        proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                                                        aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="partenaire-faqhead6">
+                                                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#partenaire-faq6"
+                                                    aria-expanded="true" aria-controls="partenaire-faq6">Entrer votre question ici</a>
+                                                </div>
+
+                                                <div id="partenaire-faq6" class="collapse" aria-labelledby="partenaire-faqhead6" data-parent="#partenaire-faq">
+                                                    <div class="card-body">
                                                         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
                                                         moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
                                                         Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda

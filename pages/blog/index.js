@@ -14,8 +14,12 @@ export default function Blog(){
 
 
     useEffect( async() => {
+        document.querySelector("body");
+        let body_ele = document.querySelector("body");
+        body_ele.className='';
+        body_ele.classList.add("inner-page");
         userService.getAllItems(type).then((res) => {
-            setBlog(res[0].json_data);
+            setBlog(res.json_data);
             setLoading(false);
         }) 
     }, []);

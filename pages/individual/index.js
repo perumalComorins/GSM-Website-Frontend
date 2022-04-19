@@ -5,12 +5,21 @@ import Footer from "../../components/footer";
 import SatisfactionCardSlider from "./satisfaction-card-slider";
 import PeopleFaq from "./people-faq";
 export default function IndividualPage() {
-    const [datas, setDatas] = useState(null);
+        const [datas, setDatas] = useState(null);
+        
         useEffect(()=>{
+            document.querySelector("body");
+            let body_ele = document.querySelector("body");
+            body_ele.className='';
+            body_ele.classList.add("inner-page");
+    
             setDatas([1,2,3])
-            
+              
         },[])
+
         useEffect(()=>{
+            
+
             if(datas && datas.length>0){
                 {/* Banner jquery script Starts */}
                 function BannerOverlays(){
@@ -65,9 +74,7 @@ export default function IndividualPage() {
             </div>
             <Sidepanel/>
             <div id="page-content-wrapper" className="container-fluid reset-padding">
-                <header class="site-header site-navbar site-navbar-target">
-                    <Header/>
-                </header>
+                <Header/>
                 <div className="site-bannersection">
                     <div className="banner-view smallsize-banner">
                         <img src="/assets/images/individual-banner-v1.png" className="banner-img"/>

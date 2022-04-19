@@ -6,16 +6,23 @@ import Footer from "../../components/footer";
 export default function QualityIndicatorPage(){
         const [datas, setDatas] = useState(null);
         useEffect(()=>{
+            document.querySelector("body");
+            let body_ele = document.querySelector("body");
+            body_ele.className='';
+            body_ele.classList.add("inner-page");
             setDatas([1,2,3])
             
         },[])
         useEffect(()=>{
             if(datas && datas.length>0){
-                {/* Tab becomes slider */}
+
                 function bootstrapTabControl(){
+            
                     var i, items = $('.tab-nav-link'), pane = $('.tab-pane');
                     // next
                     $('.nexttab').on('click', function(){
+                        $('#qualityTab-Content.tab-content .tab-pane').removeClass('active');
+        
                         for(i = 0; i < items.length; i++){
                             if($(items[i]).hasClass('active') == true){
                                 break;
@@ -30,8 +37,8 @@ export default function QualityIndicatorPage(){
                             
                             setTimeout(function() {
                                 $(pane[i]).removeClass('left');
-                                $(pane[i]).removeClass('show active');
-                                $(pane[i+1]).addClass('show active');
+                                $(pane[i]).removeClass('active');
+                                $(pane[i+1]).addClass('active');
                             }, 500);
                             
                         }
@@ -39,6 +46,8 @@ export default function QualityIndicatorPage(){
                     });
                     // Prev
                     $('.prevtab').on('click', function(){
+                        $('#qualityTab-Content.tab-content .tab-pane').removeClass('active');
+                        
                         for(i = 0; i < items.length; i++){
                             if($(items[i]).hasClass('active') == true){
                                 break;
@@ -53,8 +62,8 @@ export default function QualityIndicatorPage(){
                             $(pane[i]).addClass('left');
                             setTimeout(function() {
                                 $(pane[i]).removeClass('left');
-                                $(pane[i]).removeClass('show active');
-                                $(pane[i-1]).addClass('show active');
+                                $(pane[i]).removeClass('active');
+                                $(pane[i-1]).addClass('active');
                             }, 500);
                         }
                     });

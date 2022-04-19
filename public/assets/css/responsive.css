@@ -1,6 +1,48 @@
-/**** Small devices (landscape phones, less than 768px)*****/
+/**** Small devices (portrait tab, less than 992px)*****/
 @media (max-width: 991.98px) {
-    
+    /** 29-03-22 **/
+    .fullsize-banner{
+        height: auto;
+    }
+    .home-banner-content {
+        width: 60%;
+        margin: 0 0 0 25%;
+        position: relative;
+    }
+    .home-banner-content h1.title{
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 28px;
+    }
+    .home-banner-content .content{
+        font-size: 18px;
+        line-height: 26px;
+        max-width: 65%;
+        margin: 0 0 9px 20%;
+        font-family: 'poppinsextralight';
+    }
+    .home-banner-content button{
+        width:auto;
+        font-size: 16px;
+        line-height: 20px;
+        padding: 4px 8px;
+        border-radius: 5px;
+    }
+    .home-banner-content button:not(:last-child){
+        margin-right: 6px!important;
+        margin-left:0!important;
+    }
+    .home-banner-content .banner-content {
+        top: 40%;
+        transform: translateY(-40%);
+    }
+
+    #client-logo-slider{
+        padding: 9px 0;
+        border-radius: 9px;
+        background: #FFFFFF;
+        box-shadow: 0px 3px 3px #b1b1b1;
+    }
     /*** Sidepanel menu && Header (18-04-22)***/
     .site-navigation .navbar-brand{
         margin:0;
@@ -10,6 +52,7 @@
     }
     .sidebar-wrapper-container{
         background: transparent;
+        box-shadow: none;
     }
     .hamburger{
         width: 24px;
@@ -26,6 +69,10 @@
     
     #sidebar-wrapper{
         box-shadow: none;
+        overflow-y: scroll;
+    }
+    #wrapper.toggled #sidebar-wrapper{
+        background: #FFFFFF;
     }
     #sidebar-wrapper h1.pannel-title{
         opacity: 0;
@@ -135,10 +182,470 @@
         cursor: pointer;
     }
 
+    /*** Side panel design (11-04-22) ***/
+    .mobiletopNav .dropdown-menu{
+        position: inherit!important;
+        transform: inherit!important;
+        width: auto;
+        box-shadow: none;
+    }
+
+    /*** Home page design ***/
+    .what-wedo-section .intro-section{
+        margin: 48px 0 68px 0;
+    }
+    .what-wedo-section .intro-title{
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 12px;
+    }
+    .what-wedo-section .intro-content{
+        font-size: 16px;
+        line-height: 24px;
+
+    }
+    .whatwedo-texts .icontexts {
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0 0 0 15px;
+    }
+    .icontexts-row .icon{
+        height:75px;
+    }
+    .icontexts mark{
+        margin-bottom: 5px;
+    }
+    .icontexts-row {
+        margin: 0 0 15px 0;
+    }
+    .icontexts-para {
+        font-size: 14px;
+        text-align: left;
+        line-height: 24px;
+        margin-bottom: 0;
+    }
+    .icontexts-box{
+        margin-bottom: 38px;
+    }
+
+    .partnerLogos-section{
+        margin:45px 0 60px 0;
+    }
+    .partnerLogos-section h2{
+        font-size: 28px;
+        line-height: 38px;
+    }
+    .partnerpanel{
+        height:150px;
+    }
+
+    .satisfaction-rate h2{
+        font-size: 28px;
+        line-height: 38px;
+        margin-bottom: 16px;
+    }
+    .satisfaction-rate .intro-content{
+        font-size: 16px;
+        line-height: 26px;
+    }
+    .satisfaction-rate-section h4{
+        font-size: 16px;
+        line-height: 18px;
+    }
+    .satisfactionBar{
+        margin:46px 0 51px 0
+    }
+
+    .organisation-section{
+        padding:45px 0 100px 0;
+    }
+    .organisation-inner-box {
+        margin: 32px 0 56px 0;
+    }
+    .organisation-content .main-title{
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 6px;
+    }
+    .organisation-content .sub-title{
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 7px;
+    }
+    .organisation-content .organization-para{
+        font-size: 16px;
+        line-height: 26px;
+        margin-bottom: 24px;
+    }
+    .organisation-inner-box{
+        flex-wrap: wrap-reverse;
+        margin: 0;
+    }
+    .organisation-content, .organize-picture{
+        padding: 0 0 0 42px;
+    }
+    .organize-picture{
+        margin-bottom: 32px;
+    }
+    .organisation-viewmore {
+        position: inherit;
+        width: 112px;
+        font-size: 12px;
+        line-height: 18px;
+        padding: 7px 0;
+        display: inline-block!important;
+        top: inherit;
+    }
+
+    .testimonial{
+        top:-32px;
+    }
+    .testimonial_box{
+        height: 152px;
+        position: relative;
+        top: 30px;
+    }
+    .testimonials_overlay{
+        top:0;
+        bottom:0;
+    }
+    .teamMember--img {
+        height: 182px;
+    }
+    .memberName{
+        font-size: 12px;
+        line-height: 18px;
+        margin:0;
+    }
+    .membersQuote{
+        font-size: 12px;
+        line-height: 18px;
+        margin:9px 0;
+        padding: 0;
+        font-family:'poppinsthin';
+    }
+    .gsm-teamMember--name-designation{
+        top:10px;
+        padding: 0;
+        align-self: center!important;
+    }
+    
+    
+    .testimonial-Nav{
+        top:80%;
+    }
+    .testimonial_num{
+        font-size: 10px;
+        line-height: 9px;
+        padding: 0px 9px;
+        margin: 0 4px;
+    }
+    #testimonialIndicators .carousel-control-next, 
+    #testimonialIndicators .carousel-control-prev{
+        opacity:1
+    }
+    #testimonialIndicators .carousel-control-next img, 
+    #testimonialIndicators .carousel-control-prev img{
+        width:4px;
+        height:9px;
+    }
+
+    /*** Footer design ***/
+    footer{
+        padding-top: 120px;
+    }
+    .footercontainer{
+        max-width: 80%;
+    }
+    .footerpanelAboutContent{
+        padding: 0;
+    }
+    footer .footer-widget:not(:last-child){
+        margin-bottom: 91px;
+    }
+    .footer-widget-title{
+        font-size: 24px;
+        font-family: 'poppinsregular';
+    }
+    .footer-menu li a{
+        font-size: 18px;
+    }
+    .newsletter button{
+        width: 150px;
+        font-size: 13px;
+        line-height: 20px;
+        font-family: 'poppinsregular';
+        border-radius:10px;
+        padding: 12px 0;
+    }
+    input[type=email].form-control.newsletter-email{
+        font-size: 13px;
+        line-height: 20px;
+    }
+    input[type=email].form-control.newsletter-email::placeholder{
+        font-size: 13px;
+        line-height: 20px;
+        
+    }
+    .footer-widget:last-child .footerpanelSocialicons{
+        writing-mode: inherit;
+        display: inline-block!important;
+        max-width: inherit;
+    }
+    .footerpanelSocialicons .icon{
+        width: 21px;
+        height:21px;
+        margin:0;
+    }
+    .footer-socialicon-link{
+        margin-left: 18px;
+    }
+}
+/**** Small devices (landscape phones, less than 768px)*****/
+@media (max-width: 767.98px) {
+    .fullsize-banner{
+        height: auto;
+    }
+    
+    .home-banner-content {
+        width: 65%;
+        margin: 0 0 0 25%;
+        position: relative;
+    }
+    .home-banner-content h1.title{
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 24px;
+    }
+    .home-banner-content .content{
+        font-size: 16px;
+        line-height: 24px;
+        max-width: 70%;
+        margin: 0 0 9px 20%;
+    }
+    .home-banner-content button{
+        width:auto;
+        font-size: 12px;
+        line-height: 18px;
+        padding: 2px 4px;
+        border-radius: 5px;
+    }
+    .home-banner-content button:not(:last-child){
+        margin-right: 3px!important;
+        margin-left:0!important;
+    }
+
+    .home-banner-content .banner-content {
+        top: 30%;
+        transform: translateY(-30%);
+    }
+
+    /*** Home page design ***/
+    .what-wedo-section .intro-section{
+        margin: 42px 0 46px 0;
+    }
+    .what-wedo-section .intro-title{
+        font-size: 18px;
+        line-height: 27px;
+    }
+    .what-wedo-section .intro-content{
+        font-size: 14px;
+        line-height: 22px;
+    }
+    .whatwedo-texts .icontexts {
+        font-size: 14px;
+        line-height: 20px;
+        margin: 0 0 0 15px;
+    }
+    .icontexts-row .icon{
+        height:65px;
+    }
+    .icontexts mark{
+        margin-bottom: 5px;
+    }
+    .icontexts-row {
+        margin: 0 0 15px 0;
+    }
+    .icontexts-para {
+        font-size: 14px;
+        text-align: left;
+        line-height: 24px;
+        margin-bottom: 0;
+    }
+    .icontexts-box{
+        margin-bottom: 48px;
+    }
+
+    .partnerLogos-section{
+        margin:45px 0 60px 0;
+    }
+    .partnerLogos-section h2{
+        font-size: 28px;
+        line-height: 38px;
+    }
+    .partnerpanel{
+        height:150px;
+    }
+
+    .satisfaction-rate h2{
+        font-size: 28px;
+        line-height: 38px;
+        margin-bottom: 16px;
+    }
+    .satisfaction-rate .intro-content{
+        font-size: 16px;
+        line-height: 26px;
+    }
+    .satisfaction-rate-section h4{
+        font-size: 16px;
+        line-height: 18px;
+    }
+    .satisfactionBar{
+        margin:46px 0 51px 0
+    }
+
+    .organisation-section{
+        padding:45px 0 100px 0;
+    }
+    .organisation-inner-box {
+        margin: 32px 0 56px 0;
+    }
+    .organisation-content .main-title{
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 6px;
+    }
+    .organisation-content .sub-title{
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 7px;
+    }
+    .organisation-content .organization-para{
+        font-size: 16px;
+        line-height: 26px;
+        margin-bottom: 24px;
+    }
+    .organisation-inner-box{
+        flex-wrap: wrap-reverse;
+        margin: 0;
+    }
+    .organisation-content, .organize-picture{
+        padding: 0 0 0 42px;
+    }
+    .organize-picture{
+        margin-bottom: 32px;
+    }
+    .organisation-viewmore {
+        position: inherit;
+        width: 112px;
+        font-size: 12px;
+        line-height: 18px;
+        padding: 7px 0;
+        display: inline-block!important;
+        top: inherit;
+    }
+
+    .testimonial{
+        top:-32px;
+    }
+    .testimonial_box{
+        height: 152px;
+        position: relative;
+        top: 30px;
+    }
+    .testimonials_overlay{
+        top:0;
+        bottom:0;
+    }
+    .teamMember--img {
+        height: 182px;
+    }
+    .memberName{
+        font-size: 12px;
+        line-height: 18px;
+        margin:0;
+    }
+    .membersQuote{
+        font-size: 12px;
+        line-height: 18px;
+        margin:9px 0;
+        padding: 0;
+        font-family:'poppinsthin';
+    }
+    .gsm-teamMember--name-designation{
+        top:10px;
+        padding: 0;
+        align-self: center!important;
+    }
+    
+    
+    .testimonial-Nav{
+        top:80%;
+    }
+    .testimonial_num{
+        font-size: 10px;
+        line-height: 9px;
+        padding: 0px 9px;
+        margin: 0 4px;
+    }
+    #testimonialIndicators .carousel-control-next, 
+    #testimonialIndicators .carousel-control-prev{
+        opacity:1
+    }
+    #testimonialIndicators .carousel-control-next img, 
+    #testimonialIndicators .carousel-control-prev img{
+        width:4px;
+        height:9px;
+    }
+
+    /*** Footer design ***/
+    footer{
+        padding-top: 120px;
+    }
+    .footercontainer{
+        max-width: 80%;
+    }
+    .footerpanelAboutContent{
+        padding: 0;
+    }
+    footer .footer-widget:not(:last-child){
+        margin-bottom: 91px;
+    }
+    .footer-widget-title{
+        font-size: 24px;
+        font-family: 'poppinsregular';
+    }
+    .footer-menu li a{
+        font-size: 18px;
+    }
+    .newsletter button{
+        width: 150px;
+        font-size: 13px;
+        line-height: 20px;
+        font-family: 'poppinsregular';
+        border-radius:10px;
+        padding: 12px 0;
+    }
+    input[type=email].form-control.newsletter-email{
+        font-size: 13px;
+        line-height: 20px;
+    }
+    input[type=email].form-control.newsletter-email::placeholder{
+        font-size: 13px;
+        line-height: 20px;
+        
+    }
     
 }
 /**** Extra small devices (portrait phones, less than 576px)****/
 @media (max-width: 575.98px) {
+    #wrapper{
+        position: relative;
+    }
+    .inner-page #page-content-wrapper{
+        position:absolute;
+        top:57px;
+    }
     /** **/
     .fullsize-banner{
         height: auto;
@@ -209,16 +716,6 @@
         font-size: 13px;
         line-height: 20px;
         
-    }
-    .footer-widget:last-child .footerpanelSocialicons{
-        writing-mode: inherit;
-        display: inline-block!important;
-        max-width: inherit;
-        margin: 0;
-    }
-    .footerpanelSocialicons .icon{
-        width: 21px;
-        height:21px;
     }
 
     /*** Home page design ***/
@@ -380,11 +877,7 @@
         align-self: center!important;
     }
     
-    /* .testimonial-Nav{
-        top: 78%;
-        right: inherit;
-        left: 0;
-    } */
+    
     .testimonial-Nav{
         top:80%;
     }
@@ -410,7 +903,7 @@
         height:296px;
     }
     .banner-cover-overlay{
-        top:58px;
+        /* top:58px; */
     }
     .individual-banner-content .banner-title{
         font-size: 27px;
@@ -905,7 +1398,7 @@
     }
     
     .indicator-view.fullsize-banner{
-        height:100vh;
+        height:420px;
     }
     .picture-banner{
         position: absolute;
@@ -918,12 +1411,17 @@
     }
     .indicator-view .indicator-content{
         max-width: 283px;
+        top: 65%;
     }
     .indicator-view .title-banner button{
         font-size:8px;
         line-height: 12px;
         width:80px;
         padding: 7px 0;
+    }
+    .indicator-view .indicator-content .title-banner p{
+        font-size: 12px;
+        line-height: 18px;
     }
     .certificate-contentarea{
         max-width: 90%;
@@ -1018,7 +1516,7 @@
         line-height: 35px;
     }
     .service-body{
-        height:230px;
+        height:auto;
     }
     .service-body p{
         font-size: 12px;
@@ -1059,7 +1557,7 @@
         margin-bottom: 28px;
     }
     .twobyfour-banner-cover-overlay{
-        top:57px;
+        /* top:57px; */
     }
     .certificateur-container .infobar-section{
         padding-left: 0;
@@ -1154,7 +1652,7 @@
     }
     .application-page-banner{
         bottom: inherit;
-        padding: 65px 0 100px 0;
+        padding: 40px 0 52px 0;
     }
     .profile-form-section{
         bottom: inherit;
@@ -1201,6 +1699,7 @@
         max-width: 85%;
         margin:0 auto;
         padding: 22px 0;
+        height:65vh;
     }
     #qualityTab .tab-nav-link{
         margin-right: 10px;
@@ -1290,7 +1789,7 @@
     }
     .organization-banner-content .banner-content{
         width: 220px;
-        left:38px;
+        left:25%;
 
     }
     .organization-intro-section{
@@ -1370,6 +1869,9 @@
     }
 
     /*** Sitemap page design ***/
+    .contactfaq-banner-content .banner-content{
+        top:85%;
+    }
     .sitemap-row {
         margin: 30px 0 120px 0;
     }
@@ -1495,7 +1997,7 @@
         padding: 0 12px;
     }
     .threebyfour-banner-cover-overlay{
-        top:57px;
+        /* top:57px; */
     }
     .contactfaq-tab-section{
         position: inherit;
@@ -1641,4 +2143,55 @@
     }
 }
 
+@media (max-width: 399.98px) {
+    #wrapper.toggled #sidebar-wrapper h1.pannel-title{
+        font-size: 35px;
+    }
+    .sidenav-Menu{
+        margin-top: 55.5px;
+    }
+    #sidebar-wrapper{
+        animation-delay: 2.5s;
+    }
+}
+
+@media(max-height:590px)
+{
+    #wrapper.toggled .navbarTitle-col{
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    #wrapper.toggled .navbarMenu-col{
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+        position: relative;
+        margin-top: 15px;
+    }
+    .sidepanel-site-logo{
+        position: relative;
+        left: 50%;
+        transform: translate(-50%, 0);
+        display: block;
+    }
+    #sidebar-wrapper h1.pannel-title{
+        writing-mode: inherit;
+        transform: inherit!important;
+        margin-top: 54px!important;
+        font-size: 23px!important;
+        line-height: 33px!important;
+
+    }
+    .hamburger.is-open{
+        right:15px;
+    }
+    .sidenav-Menu{
+        max-width: 80%;
+        margin: 30px auto;
+    }
+    .mobiletopNav{
+        margin-top: 0!important;
+    }
+}
 

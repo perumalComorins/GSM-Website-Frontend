@@ -5,6 +5,10 @@ import Footer from "../../components/footer";
 export default function QuoteRequestPage(){
         const [datas, setDatas] = useState(null);
         useEffect(()=>{
+            document.querySelector("body");
+            let body_ele = document.querySelector("body");
+            body_ele.className='';
+            body_ele.classList.add("inner-page");
             setDatas([1,2,3])
             
         },[])

@@ -7,13 +7,15 @@ const Sidepanel = (props) => {
     const [sidepanel, setSidepanel] = useState([]);
 
     useEffect( async() => {
-        $(document).ready(function () {
+        var isClosed = false;
+        $(document).ready(function(){
             var trigger = $('.hamburger'),
+                bodyTrigger = $('.humburger-body-open'),
                 overlay = $('.overlay'),
-                isClosed = false;
+                body = $('body,#page-content-wrapper');
           
                 trigger.click(function () {
-                    hamburger_cross();      
+                    hamburger_cross();
                 });
             
                 function hamburger_cross() {
@@ -29,11 +31,24 @@ const Sidepanel = (props) => {
                     trigger.addClass('is-open');
                     isClosed = true;
                     }
-            }
+                }
+
+                $(document).mouseup(function(e) {
             
-            $('[data-toggle="offcanvas"]').click(function () {
-                  $('#wrapper').toggleClass('toggled');
-            });
+                    var container = $("#sidebar-wrapper");
+                    if (!container.is(e.target) && container.has(e.target).length === 0) {
+                        
+                        if ( $('body').hasClass('humburger-body-open') ) {
+                                    $('body').removeClass('humburger-body-open');
+                                    $('#wrapper').removeClass('toggled');
+                                    $('.hamburger').removeClass('is-open');
+                                    $('.hamburger').addClass('is-closed');
+                                    isClosed = false;
+                        }
+                    }
+        
+                    
+                });
         });
 
         userService.getAllItems(type).then((res) => {    
@@ -44,15 +59,26 @@ const Sidepanel = (props) => {
 
     useEffect(()=>{
         if(sidepanel && sidepanel.length > 0){
-            $(".sidenav-Menu .drop").hover(
-                    function () {
-                        $(this).addClass("show");
-                        $(this).find(".dropdown-menu").addClass("show");
-                    },
-                    function () {
-                        $(this).removeClass("show");
-                        $(this).find(".dropdown-menu").removeClass("show");
-                    }
+            $(".sidenav-Menu .dropright").hover(
+                function () {
+                    $(this).addClass("show");
+                    $(this).find(".dropdown-menu").addClass("show");
+                },
+                function () {
+                    $(this).removeClass("show");
+                    $(this).find(".dropdown-menu").removeClass("show");
+                }
+            );
+
+            $(".mobiletopNav .dropright").hover(
+                function () {
+                    $(this).addClass("show");
+                    $(this).find(".dropdown-menu").addClass("show");
+                },
+                function () {
+                    $(this).removeClass("show");
+                    $(this).find(".dropdown-menu").removeClass("show");
+                }
             );
         }
     },[sidepanel]) 

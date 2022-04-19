@@ -9,8 +9,13 @@ export default function HomePage(){
 
     const type = 'home.php';
     const [homepanel, setHomepanel] = useState([]);
-
+    
     useEffect(()=>{
+        document.querySelector("body");
+        let body_ele = document.querySelector("body");
+        body_ele.className='';
+        body_ele.classList.add("home-page");
+
         userService.getAllItems(type).then((res) => { 
             setHomepanel([1,2,3])       
             setHomepanel(res.json_data);
@@ -29,16 +34,16 @@ export default function HomePage(){
             {/* Testimonial jquery script Starts */}
             $(document).ready(function () {
                 
-                {/* Testimonial jquery script Starts */}
-                let totalItems = $('.testimonial-item').length;
-                let currentIndex = $('div.testimonial-item.active').index() + 1;
-                let down_index;
+                var totalItems = $('.testimonial-item').length,
+                    currentIndex = $('div.testimonial-item.active').index() + 1,
+                    currentIndex_active,
+                    down_index;
 
                 // $('.testimonial_num').html(''+currentIndex+'/'+totalItems+'');
                 $('.testimonial_num').html(''+currentIndex+'');
 
                 $(".next").click(function(){
-                    let currentIndex_active = $('div.testimonial-item.active').index() + 2;
+                    currentIndex_active = $('div.testimonial-item.active').index() + 2;
                     if (totalItems >= currentIndex_active)
                     {
                         down_index= $('div.testimonial-item.active').index() + 2;
@@ -54,7 +59,7 @@ export default function HomePage(){
                         //$('.testimonial_num').html(''+down_index+'/'+totalItems+'');
                         $('.testimonial_num').html(''+down_index+'');
                     }
-                }); {/* Testimonial jquery script End */}
+                });
 
                 HomeBannerOverlays();
 
@@ -65,14 +70,17 @@ export default function HomePage(){
 
     function HomeBannerOverlays(){
 
+        /** Home banner image **/
         $('.home-banner-resizer #banner-overlay').each(function(){
-            let $banner_h = $('.home-banner-resizer .banner-view').height();
-            let $banner_w = $('.home-banner-resizer .banner-view').width();
-            $(this).width($banner_w).height($banner_h);
+            $banner_h = $('.home-banner-resizer .banner-view').height();
+            $banner_w = $('.home-banner-resizer .banner-view').width();
+            $(this).width($banner_w);
         });
-        $('.home-banner-content').each(function(){
-            let $banner_inner_h = $('.home-banner-resizer .banner-view').height();
-            $(this).height($banner_inner_h);
+
+        $('.testimonials_overlay').each(function(){
+            $h = $('.testimonial_box').height();
+            $w = $('.testimonial_box').width();
+            $(this).width($w).height($h);
         });
     }
 
@@ -83,9 +91,8 @@ export default function HomePage(){
             </div>
             <Sidepanel/>
             <div id="page-content-wrapper" className="container-fluid reset-padding">
-                <header class="site-header site-navbar site-navbar-target">
-                    <Header/>
-                </header>
+                
+                <Header/>
                 <div className="site-bannersection home-banner-resizer">
                         <div className="banner-view fullsize-banner">
                             <img src={homepanel.banner_section && homepanel.banner_section.banner_image} className="banner-img d-none d-md-block"/>
@@ -102,9 +109,7 @@ export default function HomePage(){
                                     <p className="content">{homepanel.banner_section && homepanel.banner_section.desc}</p>
                                     <div className="text-left mt-4">
                                         {homepanel.banner_section && homepanel.banner_section.buttons.map((each, i) =>          
-                                            //<button type="button" className="btn gsm-bg-individual btn-gsm-statics-size">{each.button_name}</button>
-                                            <button type="button" className="btn gsm-bg-individual btn-gsm-statics-size mx-3" style ={{backgroundColor: `${each.color_code}`}} >{each.button_name}</button>  
-                                            /*<button type="button" className="btn gsm-bg-partner btn-gsm-statics-size">{each.button_name}</button>*/
+                                            <button type="button" className={`btn gsm-bg-individual btn-gsm-statics-size ${i == 1 &&  'mx-3'}`} style ={{backgroundColor: `${each.color_code}`}} >{each.button_name}</button>  
                                         )}
                                     </div>
                                 </div>
@@ -113,8 +118,8 @@ export default function HomePage(){
                                         <div className="carousel-item active">
                                             <div className="row mx-0">
                                                 {homepanel.banner_section && homepanel.banner_section.logo.map((logo, index) =>
-                                                    <div className="col-3">
-                                                        <img src={logo.logo_url}/>
+                                                    <div className="col-3 align-self-center reset-padding">
+                                                        <img src={logo.logo_url} className="img-fluid"/>
                                                     </div>  
                                                 )}
                                                 
@@ -267,13 +272,13 @@ export default function HomePage(){
                                     <div id="testimonialIndicators" className="carousel slide" data-ride="carousel" data-wrap="false" data-interval="false">
                                     <div className="carousel-inner">
                                         {homepanel.testimonial && homepanel.testimonial.map((feedback, index) => 
-                                        <div className="carousel-item testimonial-item active">
+                                        <div className={`carousel-item testimonial-item ${index == 0 &&  'active'}`}Z>
                                             <div className="row reset-margin gsm-teamMember-row">
                                                 <div className="col-5 gsm-teamMember--thumbnail">
                                                     <img src={feedback.photo_link} className="teamMember--img img-fluid" />
                                                 </div>
                                             
-                                                <div className="col-7 gsm-teamMember--name-designation">
+                                                <div className="col-7 gsm-teamMember--name-designation align-self-center">
                                                     <h3 className="memberName d-block d-md-none">Testimonial from a company</h3>
                                                     <p className="membersQuote d-block d-md-none">
                                                     Present in the mobile telephony market since 1999, 
@@ -282,7 +287,7 @@ export default function HomePage(){
                                                 
                                                     <h3 className="memberName">{feedback.feedbacker_name}<span className="memberDesignation">{feedback.designation}</span></h3>
                                                     <p className="membersQuote d-none d-md-block">
-                                                    {feedback.feedback}
+                                                        <span class="quote">=</span>{feedback.feedback}
                                                     </p>
                                                 </div>
                                             </div>

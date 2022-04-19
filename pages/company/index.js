@@ -7,6 +7,10 @@ import PeopleFaq from "./people-faq";
 export default function CompanyPage() {
     const [datas, setDatas] = useState(null);
     useEffect(()=>{
+        document.querySelector("body");
+        let body_ele = document.querySelector("body");
+            body_ele.className='';
+            body_ele.classList.add("inner-page");
         setDatas([1,2,3])
         
     },[])
@@ -51,9 +55,7 @@ export default function CompanyPage() {
             </div>
             <Sidepanel/>
             <div id="page-content-wrapper" className="container-fluid reset-padding">
-                <header className="site-header site-navbar site-navbar-target">
-                    <Header/>
-                </header>
+                <Header/>
                 <div className="site-bannersection">
                     <div className="company-page-banner banner-content">
                         <div className="container container-65 reset-padding">
