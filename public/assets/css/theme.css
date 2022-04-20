@@ -3462,6 +3462,15 @@ li.inforbar-col:not(:last-child){
     font-family: 'poppinssemibold';
 
 }
+.sitebar-row{
+    margin:91px 0 30px 0;
+}
+.sitebar-row .parent-list{
+    list-style: none;
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+}
 .sitebar-box{
     margin-bottom: 25px;
 }
@@ -3489,9 +3498,7 @@ li.inforbar-col:not(:last-child){
 .sitemap-row{
     margin:80px 0 150px 0;
 }
-.sitebar-row{
-    margin:91px 0 30px 0;
-}
+
 
 /** terms privacy and legal **/
 .terms-privacy-legal-view{
