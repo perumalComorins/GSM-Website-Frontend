@@ -10,8 +10,10 @@ export default function IndividualPage() {
 
         const type = 'individual.php';
         //const [datas, setDatas] = useState(null);
-        const [individualpanel, setIndividualpanel] = useState([]);
-        
+        const [individualpanel, setIndividualpanel] = useState([1,2,3]);
+        const [satisfyCard, setSatisfyCard] = useState([]);
+        var perChunk = 2;
+
         useEffect(()=>{
             document.querySelector("body");
             let body_ele = document.querySelector("body");
@@ -19,8 +21,8 @@ export default function IndividualPage() {
             body_ele.classList.add("inner-page");
     
             userService.getAllItems(type).then((res) => { 
-                setIndividualpanel([1,2,3])
                 setIndividualpanel(res.json_data);
+                setSatisfyCard(res.json_data.satisfication_section);
             }) 
              .catch((err) => console.error(err)); 
               
@@ -52,17 +54,28 @@ export default function IndividualPage() {
             }
         },[individualpanel])
 
+        var result = satisfyCard.reduce((resultArray, item, index) => { 
+            const chunkIndex = Math.floor(index/perChunk)
+          
+            if(!resultArray[chunkIndex]) {
+              resultArray[chunkIndex] = [] // start a new chunk
+            }
+          
+            resultArray[chunkIndex].push(item)
+          
+            return resultArray
+        }, [])
+
     return (
         <div id="wrapper">
-            <div className="overlay">
-                {console.log(individualpanel)}
+            <div className="overlay">             
             </div>
             <Sidepanel/>
             <div id="page-content-wrapper" className="container-fluid reset-padding">
                 <Header/>
                 <div className="site-bannersection">
                     <div className="banner-view smallsize-banner">
-                        <img src={individualpanel.banner_section && individualpanel.banner_section.banner_image} className="banner-img"/>
+                        <img src={individualpanel.banner_section && individualpanel.banner_section.image_url} className="banner-img"/>
                     </div>
                     <div className="banner-cover-overlay">
                         <div className="banner-cover individual-banner-content">
@@ -91,8 +104,463 @@ export default function IndividualPage() {
                         </div>
                     </div>
 
-                    <SatisfactionCardSlider value = {individualpanel}/>
+                    {/* <SatisfactionCardSlider value = {result}/> */}
+                    {/*satisfication_section*/}
 
+
+                    <div className="container container-85 reset-padding">
+                        <div id="satisfaction-slider-web" className="satisfaction-slider carousel slide d-none d-lg-block" data-ride="carousel" data-interval="true" data-pause="hover">
+                        <div className="carousel-inner">
+                            {result && result.map((items, index) => 
+                            <div className={`carousel-item ${index == 0 ? 'active': ''}`}>
+                                <div className="row mx-0">
+                                        {items.map((list,i)=> 
+                                        <div className="card satisfaction-card col-sm-6">
+                                        <figure>
+                                                <label className="satisfaction-label">{list.rating}</label>
+                                                <div className="card-body froentside-panel row reset-margin">
+                                                    <div className="col content-block">
+                                                    <h5 className="card-title">{list.title}</h5>
+                                                    <p className="card-text">{list.desc}</p> 
+                                                    </div>
+                                                    <div className="col picture-block">
+                                                    <img src={list.photo_url} className="img-fluid"/>
+                                                    </div> 
+                                                </div>
+                                                <figcaption>
+                                                    <span className="backdrop-border"></span>
+                                                    <div className="card-header row">
+                                                        <div className="col-9 students-satisfaction">
+                                                            <div className="row reset-margin">
+                                                                <div className="col-6 students-satisfaction-percentage">
+                                                                <div className="row reset-margin">
+                                                                    <div className="col-5 satifaction-percentage">{list.percentage}</div>
+                                                                    <div className="col-7 satifaction-text reset-padding">{list.label}</div>
+                                                                </div>
+                                                                </div>
+                                                                <div className="col-6 students-number-count reset-padding">
+                                                                <div className="row reset-margin">
+                                                                    <div className="col-2 students-count">{list.count}</div>
+                                                                    <div className="col-10 students-text reset-padding">{list.count_title}</div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-3 text-center brand-logos reset-padding">
+                                                            <div id="demo" className="carousel slide" data-ride="carousel">
+                                                                <div className="row reset-margin carousel-inner">
+                                                                    <img src={list.img_url} className="carousel-item active"/>
+                                                                    <img src="/assets/images/brand-logo-1.png" className="carousel-item"/> 
+                                                                </div>
+                                                            </div> 
+                                                        </div>
+                                                    </div>
+                                                    <div className="card-body reset-padding">
+                                                        <ul className="backdrop-list">
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">{list.obj_title}</span>
+                                                                {list.objective}
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">{list.edu_title}</span>
+                                                                {list.educational_terms}
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">{list.prereq_title}</span>
+                                                                {list.prerequisite}
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">{list.dur_title}</span>
+                                                                {list.duration} 
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">{list.loc_title}</span>
+                                                                {list.location}
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">{list.ind_title}</span>
+                                                                {list.individual}
+                                                            </li>
+                                                        </ul>
+                                                    </div> 
+                                                    <div className="card-footer">
+                                                        <button className="btn gsm-outline-individual  btn-gsm-statics-size pull-left">{list.button_name}</button>
+                                                        <button className="btn gsm-bg-individual btn-gsm-statics-size pull-right">{list.button_name_2}</button>
+                                                    </div>
+                                                </figcaption>
+                                        </figure>
+                                        </div>)}
+                                    
+                                </div>
+                            </div> )}
+                            </div>
+                            {/* Indicators  */}
+                            <ul className="carousel-indicators">
+                            {result && result.map((items, index) => 
+                                <li data-target="#satisfaction-slider-web" data-slide-to={index} className={`${index == 0 ? `active`: ``}`}>
+                                </li>
+                            )}
+                            </ul>
+                        </div>
+
+
+                        <div id="satisfaction-slider-mobile" className="satisfaction-slider carousel slide d-block d-lg-none" data-ride="carousel" data-interval="false" data-pause="hover">
+                        <div className="carousel-inner">
+                            <div className="carousel-item active">
+                                <div className="row mx-0">
+                                        <div className="card satisfaction-card col-sm-12">
+                                        <figure>
+                                                <label className="satisfaction-label">Satisfaction 100%</label>
+                                                <div className="card-body froentside-panel row reset-margin">
+                                                    <div className="col content-block">
+                                                    <h5 className="card-title">Repair Safety and Compliance - 1</h5>
+                                                    <p className="card-text">You are already repairing and want to establish your know-how by assimilating 
+                                                        the basics of a diagnosis and intervention carried out in safety and compliance </p> 
+                                                    </div>
+                                                    <div className="col picture-block">
+                                                    <img src="/assets/images/satatistics-pic.png" className="img-fluid"/>
+                                                    </div> 
+                                                </div>
+                                                <figcaption>
+                                                    <span className="backdrop-border"></span>
+                                                    <div className="card-header row">
+                                                        <div className="col-10 students-satisfaction">
+                                                            <div className="row reset-margin">
+                                                                <div className="col-6 students-satisfaction-percentage">
+                                                                <div className="row reset-margin">
+                                                                    <div className="col-4 satifaction-percentage">100%</div>
+                                                                    <div className="col-8 satifaction-text reset-padding">Students Satisfaction</div>
+                                                                </div>
+                                                                </div>
+                                                                <div className="col-6 students-number-count reset-padding">
+                                                                <div className="row reset-margin">
+                                                                    <div className="col-2 students-count">15</div>
+                                                                    <div className="col-10 students-text reset-padding">No. of Students who have taken the course</div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-2 text-center brand-logos reset-padding">
+                                                            {/* <div id="demo" className="carousel slide" data-ride="carousel">
+                                                                <div className="row reset-margin carousel-inner">
+                                                                    <img src="/assets/images/brand-logo-1.png" className="carousel-item active"/>
+                                                                    <img src="/assets/images/brand-logo-1.png" className="carousel-item"/>
+                                                                </div>
+                                                            </div> */}
+                                                        </div>
+                                                    </div>
+                                                    <div className="card-body reset-padding">
+                                                        <ul className="backdrop-list">
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Objectives:</span>
+                                                                Diagnose a Level 1 failure To disassemble safely and in compliance.
+                                                                Replace a subset in safety and compliance. Go back to safety and compliance. 
+                                                                Conduct a functionality and compliance test.
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Educational Terms:</span>
+                                                                Pedagogical face-to-face | Occupational situations | Technical Workshop
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Prerequisite:</span>
+                                                                6 months of experience in repairing nomadic products
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Duration:</span>
+                                                                35 Hours (5 days) 
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Location:</span>
+                                                                PARIS - IDF
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Individual rate:</span>
+                                                                XX
+                                                            </li>
+                                                        </ul>
+                                                    </div> 
+                                                    <div className="card-footer">
+                                                        <button className="btn gsm-outline-individual pull-left">Learn More</button>
+                                                        <button className="btn gsm-bg-individual pull-right">Apply Now</button>
+                                                    </div>
+                                                </figcaption>
+                                        </figure>
+                                        </div>
+
+                                        
+                                    </div>
+                            </div>
+
+                            <div className="carousel-item">
+                                <div className="row mx-0">
+                                        <div className="card satisfaction-card col-sm-12">
+                                        <figure>
+                                                <label className="satisfaction-label">Satisfaction 100%</label>
+                                                <div className="card-body froentside-panel row reset-margin">
+                                                    <div className="col content-block">
+                                                    <h5 className="card-title">Repair Safety and Compliance - 2</h5>
+                                                    <p className="card-text">You are already repairing and want to establish your know-how by assimilating 
+                                                        the basics of a diagnosis and intervention carried out in safety and compliance </p> 
+                                                    </div>
+                                                    <div className="col picture-block">
+                                                    <img src="/assets/images/satatistics-pic.png" className="img-fluid"/>
+                                                    </div> 
+                                                </div>
+                                                <figcaption>
+                                                    <span className="backdrop-border"></span>
+                                                    <div className="card-header row">
+                                                        <div className="col-9 students-satisfaction">
+                                                            <div className="row reset-margin">
+                                                                <div className="col-6 students-satisfaction-percentage">
+                                                                <div className="row reset-margin">
+                                                                    <div className="col-5 satifaction-percentage">100%</div>
+                                                                    <div className="col-7 satifaction-text reset-padding">Students Satisfaction</div>
+                                                                </div>
+                                                                </div>
+                                                                <div className="col-6 students-number-count reset-padding">
+                                                                <div className="row reset-margin">
+                                                                    <div className="col-2 students-count">15</div>
+                                                                    <div className="col-10 students-text reset-padding">No. of Students who have taken the course</div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-3 text-center brand-logos reset-padding">
+                                                            {/* <div id="demo" className="carousel slide" data-ride="carousel">
+                                                                <div className="row reset-margin carousel-inner">
+                                                                    <img src="/assets/images/brand-logo-1.png" className="carousel-item active"/>
+                                                                    <img src="/assets/images/brand-logo-1.png" className="carousel-item"/>
+                                                                </div>
+                                                            </div> */}
+                                                        </div>
+                                                    </div>
+                                                    <div className="card-body reset-padding">
+                                                        <ul className="backdrop-list">
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Objectives:</span>
+                                                                Diagnose a Level 1 failure To disassemble safely and in compliance.
+                                                                Replace a subset in safety and compliance. Go back to safety and compliance. 
+                                                                Conduct a functionality and compliance test.
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Educational Terms:</span>
+                                                                Pedagogical face-to-face | Occupational situations | Technical Workshop
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Prerequisite:</span>
+                                                                6 months of experience in repairing nomadic products
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Duration:</span>
+                                                                35 Hours (5 days) 
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Location:</span>
+                                                                PARIS - IDF
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Individual rate:</span>
+                                                                XX
+                                                            </li>
+                                                        </ul>
+                                                    </div> 
+                                                    <div className="card-footer">
+                                                        <button className="btn gsm-outline-individual  btn-gsm-statics-size pull-left">Learn More</button>
+                                                        <button className="btn gsm-bg-individual btn-gsm-statics-size pull-right">Apply Now</button>
+                                                    </div>
+                                                </figcaption>
+                                        </figure>
+                                        </div>
+                                </div>
+                            </div>
+
+                            <div className="carousel-item">
+                                <div className="row mx-0">
+                                        <div className="card satisfaction-card col-sm-12">
+                                        <figure>
+                                                <label className="satisfaction-label">Satisfaction 100%</label>
+                                                <div className="card-body froentside-panel row reset-margin">
+                                                    <div className="col content-block">
+                                                    <h5 className="card-title">Repair Safety and Compliance - 3</h5>
+                                                    <p className="card-text">You are already repairing and want to establish your know-how by assimilating 
+                                                        the basics of a diagnosis and intervention carried out in safety and compliance </p> 
+                                                    </div>
+                                                    <div className="col picture-block">
+                                                    <img src="/assets/images/satatistics-pic.png" className="img-fluid"/>
+                                                    </div> 
+                                                </div>
+                                                <figcaption>
+                                                    <span className="backdrop-border"></span>
+                                                    <div className="card-header row">
+                                                        <div className="col-9 students-satisfaction">
+                                                            <div className="row reset-margin">
+                                                                <div className="col-6 students-satisfaction-percentage">
+                                                                <div className="row reset-margin">
+                                                                    <div className="col-5 satifaction-percentage">100%</div>
+                                                                    <div className="col-7 satifaction-text reset-padding">Students Satisfaction</div>
+                                                                </div>
+                                                                </div>
+                                                                <div className="col-6 students-number-count reset-padding">
+                                                                <div className="row reset-margin">
+                                                                    <div className="col-2 students-count">15</div>
+                                                                    <div className="col-10 students-text reset-padding">No. of Students who have taken the course</div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-3 text-center brand-logos reset-padding">
+                                                            {/* <div id="demo" className="carousel slide" data-ride="carousel">
+                                                                <div className="row reset-margin carousel-inner">
+                                                                    <img src="/assets/images/brand-logo-1.png" className="carousel-item active"/>
+                                                                    <img src="/assets/images/brand-logo-1.png" className="carousel-item"/>
+                                                                </div>
+                                                            </div> */}
+                                                        </div>
+                                                    </div>
+                                                    <div className="card-body reset-padding">
+                                                        <ul className="backdrop-list">
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Objectives:</span>
+                                                                Diagnose a Level 1 failure To disassemble safely and in compliance.
+                                                                Replace a subset in safety and compliance. Go back to safety and compliance. 
+                                                                Conduct a functionality and compliance test.
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Educational Terms:</span>
+                                                                Pedagogical face-to-face | Occupational situations | Technical Workshop
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Prerequisite:</span>
+                                                                6 months of experience in repairing nomadic products
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Duration:</span>
+                                                                35 Hours (5 days) 
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Location:</span>
+                                                                PARIS - IDF
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Individual rate:</span>
+                                                                XX
+                                                            </li>
+                                                        </ul>
+                                                    </div> 
+                                                    <div className="card-footer">
+                                                        <button className="btn gsm-outline-individual  btn-gsm-statics-size pull-left">Learn More</button>
+                                                        <button className="btn gsm-bg-individual btn-gsm-statics-size pull-right">Apply Now</button>
+                                                    </div>
+                                                </figcaption>
+                                        </figure>
+                                        </div>
+
+                                        
+                                    </div>
+                                </div>
+
+
+                                <div className="carousel-item">
+                                <div className="row mx-0">
+                                        <div className="card satisfaction-card col-sm-12">
+                                        <figure>
+                                                <label className="satisfaction-label">Satisfaction 100%</label>
+                                                <div className="card-body froentside-panel row reset-margin">
+                                                    <div className="col content-block">
+                                                    <h5 className="card-title">Repair Safety and Compliance - 4</h5>
+                                                    <p className="card-text">You are already repairing and want to establish your know-how by assimilating 
+                                                        the basics of a diagnosis and intervention carried out in safety and compliance </p> 
+                                                    </div>
+                                                    <div className="col picture-block">
+                                                    <img src="/assets/images/satatistics-pic.png" className="img-fluid"/>
+                                                    </div> 
+                                                </div>
+                                                <figcaption>
+                                                    <span className="backdrop-border"></span>
+                                                    <div className="card-header row">
+                                                        <div className="col-9 students-satisfaction">
+                                                            <div className="row reset-margin">
+                                                                <div className="col-12 students-satisfaction-percentage">
+                                                                <div className="row reset-margin">
+                                                                    <div className="col-5 satifaction-percentage">100%</div>
+                                                                    <div className="col-7 satifaction-text reset-padding">Students Satisfaction</div>
+                                                                </div>
+                                                                </div>
+                                                                <div className="col-12 students-number-count reset-padding">
+                                                                <div className="row reset-margin">
+                                                                    <div className="col-2 students-count">15</div>
+                                                                    <div className="col-10 students-text reset-padding">No. of Students who have taken the course</div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-3 text-center brand-logos reset-padding">
+                                                            {/* <div id="demo" className="carousel slide" data-ride="carousel">
+                                                                <div className="row reset-margin carousel-inner">
+                                                                    <img src="/assets/images/brand-logo-1.png" className="carousel-item active"/>
+                                                                    <img src="/assets/images/brand-logo-1.png" className="carousel-item"/>
+                                                                </div>
+                                                            </div> */}
+                                                        </div>
+                                                    </div>
+                                                    <div className="card-body reset-padding">
+                                                        <ul className="backdrop-list">
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Objectives:</span>
+                                                                Diagnose a Level 1 failure To disassemble safely and in compliance.
+                                                                Replace a subset in safety and compliance. Go back to safety and compliance. 
+                                                                Conduct a functionality and compliance test.
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Educational Terms:</span>
+                                                                Pedagogical face-to-face | Occupational situations | Technical Workshop
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Prerequisite:</span>
+                                                                6 months of experience in repairing nomadic products
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Duration:</span>
+                                                                35 Hours (5 days) 
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Location:</span>
+                                                                PARIS - IDF
+                                                            </li>
+                                                            <li className="backdrop-item">
+                                                                <span className="item-heighlight">Individual rate:</span>
+                                                                XX
+                                                            </li>
+                                                        </ul>
+                                                    </div> 
+                                                    <div className="card-footer">
+                                                        <button className="btn gsm-outline-individual  btn-gsm-statics-size pull-left">Learn More</button>
+                                                        <button className="btn gsm-bg-individual btn-gsm-statics-size pull-right">Apply Now</button>
+                                                    </div>
+                                                </figcaption>
+                                        </figure>
+                                        </div>
+
+                                        
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            {/* Indicators */}
+                            <ul className="carousel-indicators">
+                            <li data-target="#satisfaction-slider-mobile" data-slide-to="0" className="active"></li>
+                            <li data-target="#satisfaction-slider-mobile" data-slide-to="1"></li>
+                            <li data-target="#satisfaction-slider-mobile" data-slide-to="2"></li>
+                            <li data-target="#satisfaction-slider-mobile" data-slide-to="3"></li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+                    {/*End Satisfication_section*/}
+
+                    {/*PeopleFaq*/}                    
                     <div className="faq-section company-bg">
                         <div className="container container-70 reset-padding">
                             <div className="row reset-margin">
@@ -101,7 +569,7 @@ export default function IndividualPage() {
                                         <div id="faqIndicators" className="carousel slide" data-ride="carousel" data-wrap="false" data-interval="false">
                                             <div className="carousel-inner">
                                                 {individualpanel.faq_section && individualpanel.faq_section.student_details.map((items, index) => 
-                                                    <div className={`carousel-item faq-item ${index == 0 &&  'active'}`}>
+                                                    <div className={`carousel-item faq-item ${index == 0 && 'active'}`}>
                                                         <div className="faqMember-thumbnail">
                                                             <span className="faqequals-quotes">=</span>
                                                                 <img src={items.photo_link} className="img-fluid"/>
@@ -135,12 +603,12 @@ export default function IndividualPage() {
                                         <div className="accordion" id="faq">
                                             {individualpanel.faq_section && individualpanel.faq_section.faq.questions.map((items, index) => 
                                                 <div className="card">
-                                                    <div className="card-header" id="faqhead1">
-                                                        <a href="#" className="btn btn-header-link" data-toggle="collapse" data-target="#faq1"
-                                                            aria-expanded="true" aria-controls="faq1">{items.quest}</a>
+                                                    <div className="card-header" id={`faqhead${index + 1}`}>
+                                                        <a href="#" className="btn btn-header-link" data-toggle="collapse" data-target={`#faq${index + 1}`}
+                                                            aria-expanded="true" aria-controls={`faq${index + 1}`}>{items.quest}</a>
                                                     </div>
 
-                                                    <div id="faq1" className="collapse show" aria-labelledby="faqhead1" data-parent="#faq">
+                                                    <div id={`faq${index + 1}`} className="collapse" aria-labelledby={`faqhead${index + 1}`} data-parent={`#faq${index + 1}`}>
                                                         <div className="card-body">
                                                             {items.answer}
                                                         </div>
@@ -156,7 +624,7 @@ export default function IndividualPage() {
                                 </div>
                             </div>
                     </div>
-                    {/* <PeopleFaq value = {individualpanel}/> */}
+                    {/*End PeopleFaq*/}                    
                             
                     
                     <div className="training-initial-formSection">
@@ -343,9 +811,6 @@ export default function IndividualPage() {
                             </div>
                         </div>
                     </div>
-
-
-                        
 
                 </section>
 
