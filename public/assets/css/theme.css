@@ -1721,7 +1721,7 @@ footer{
     top: 8px;
     right: 10px;
     z-index: -999;
-
+    width: 100%;
 }
 .triangleBox{
     right: 0;
