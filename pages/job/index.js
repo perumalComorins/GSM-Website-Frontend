@@ -243,7 +243,7 @@ export default function Job(){
                                                         </a>
                                                     </div>
 
-                                                    <div id={`particulier-job${index + 1}`} className="collapse" aria-labelledby={`particulier-jobhead${index + 1}`} data-parent={`#particulier-job${index + 1}`}>
+                                                    <div id={`particulier-job${index + 1}`} className="collapse" aria-labelledby={`particulier-jobhead${index + 1}`} data-parent={`#particulier-job`}>
                                                         <div className="card-body">
                                                             <ul className="job-info-list">
                                                                 <li>{items.toggle.toggle_title_1}</li>
@@ -442,7 +442,7 @@ export default function Job(){
                                                         </a>
                                                     </div>
 
-                                                    <div id={`entreprise-job${index + 1}`} className="collapse" aria-labelledby={`entreprise-jobhead${index + 1 }`} data-parent={`#entreprise-job${index + 1}`}>
+                                                    <div id={`entreprise-job${index + 1}`} className="collapse" aria-labelledby={`entreprise-jobhead${index + 1 }`} data-parent={`#entreprise-job`}>
                                                         <div className="card-body">
                                                             <ul className="job-info-list">
                                                                 <li>{items.toggle.toggle_title_1}</li>
