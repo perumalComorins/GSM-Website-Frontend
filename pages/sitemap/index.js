@@ -72,10 +72,8 @@ export default function Sitemap(){
                 </footer>
             </div>
             
-            </div>
-              
-
         </div>
+        
         
     )
 } 
