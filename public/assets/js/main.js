@@ -73,57 +73,9 @@ $(document).ready(function(){
         });
         
         
-    /***  Faq slider section ***/ 
-    
-        var totalfaqItems = $('.faq-item').length;
-        var currentfaqIndex = $('div.faq-item.active').index() + 1;
-        var currentfaqIndex_active;
-        var downfaq_index;
-
-        // $('.testimonial_num').html(''+currentIndex+'/'+totalItems+'');
-        $('.faq_num').html(''+currentfaqIndex+'');
-
-        $(".faq-next").click(function(){
-            currentfaqIndex_active = $('div.faq-item.active').index() + 2;
-            if (totalfaqItems >= currentfaqIndex_active)
-            {
-                downfaq_index= $('div.faq-item.active').index() + 2;
-                //$('.testimonial_num').html(''+currentIndex_active+'/'+totalItems+'');
-                $('.faq_num').html(''+currentfaqIndex_active+'');
-            }
-        });
-
-        $(".faq-prev").click(function(){
-            
-            downfaq_index=downfaq_index-1;
-            if (downfaq_index >= 1 ){
-                //$('.testimonial_num').html(''+downfaq_index+'/'+totalItems+'');
-                $('.faq_num').html(''+downfaq_index+'');
-            }
-        });
-
-        $('#faqIndicators').carousel({
-            interval: 2000
-        });
         
-        $("#faqIndicators").on('slide.bs.carousel', function (e) {
-              var autofaqIndex_active = $('div.faq-item.active').index() + 2;
-            $(".faq-next").click(function(e){
-                    e.preventDefault();
-            });
-            $(".faq-prev").click(function(e){
-                    e.preventDefault();
-            })
-              if (totalfaqItems >= autofaqIndex_active){
-                autodownfaq_index= $('div.faq-item.active').index() + 2;
-                $('.faq_num').html(''+autodownfaq_index+'');
-              }
-              
-              else{
-                $('.faq_num').html(''+currentfaqIndex+''); 
-              }
-              
-        });
+
+        
     
     $('#publishModal').modal('show');
     $('#draftModal').modal('show');
