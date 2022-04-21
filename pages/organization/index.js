@@ -1,19 +1,29 @@
 import { useEffect, useState } from 'react';
+import { userService } from '../../services/user.service';
 import Sidepanel from "../../components/sidepanel" ;
 import Header from "../../components/header";
 import Footer from "../../components/footer";
+
 export default function OrganizationPage() {
-    const [datas, setDatas] = useState(null);
+
+    const type = 'organisation.php';
+    const [organpanel, setOrganpanel] = useState([]);
+
     useEffect(()=>{
+
         document.querySelector("body");
         let body_ele = document.querySelector("body");
         body_ele.className='';
         body_ele.classList.add("inner-page");
-        setDatas([1,2,3])
+        userService.getAllItems(type).then((res) => {  
+            setOrganpanel([1,2,3]) 
+            setOrganpanel(res.json_data)
+        }) 
+         .catch((err) => console.error(err));  
         
     },[])
     useEffect(()=>{
-        if(datas && datas.length>0){
+        if(organpanel && organpanel.length > 0){
             {/* Banner jquery script Starts */}
             function BannerOverlays(){
                 
@@ -40,7 +50,7 @@ export default function OrganizationPage() {
                 BannerOverlays();
             });
         }
-    },[datas])  
+    },[organpanel])  
 
     return(
         <div id="wrapper">
@@ -51,19 +61,18 @@ export default function OrganizationPage() {
                 <Header/>
                 <div className="site-bannersection">
                     <div className="static-banner-organisation banner-view fullsize-banner">
-                        <img src="/assets/images/organisation-bg.png" className="banner-img"/>
+                        <img src={organpanel.banner_section && organpanel.banner_section.bg_link} className="banner-img"/>
                     </div>
                     <div id="banner-overlay">
                         <div className="organization-banner-content">
                             <div className="banner-content">
-                                <h1 className="title">Collaborez avec GSM Master</h1>
+                                <h1 className="title">{organpanel.banner_section && organpanel.banner_section.title}</h1>
                                 <p className="content">
-                                    Rejoignez notre projet de structurer la filière de la réparation de produits nomades 
-                                    à travers la formation des techniciens et techniciennes.
+                                {organpanel.banner_section && organpanel.banner_section.desc}
                                 </p>
                                 <div className="btn-box-wrapper text-left mt-4">
-                                    <button type="button" className="btn gsm-outline-transparent btn-gsm-statics-size">Learn more</button>
-                                    <button type="button" className="btn gsm-bg-white btn-gsm-statics-size mx-3">REGISTER</button>
+                                    <button type="button" className="btn gsm-outline-transparent btn-gsm-statics-size">{organpanel.banner_section && organpanel.banner_section.button_name_1}</button>
+                                    <button type="button" className="btn gsm-bg-white btn-gsm-statics-size mx-3">{organpanel.banner_section && organpanel.banner_section.button_name_2}</button>
                                 </div>
                             </div>
                         </div>
@@ -74,13 +83,9 @@ export default function OrganizationPage() {
                 <section class="site-body-container">
                     <div class="organization-intro-section container container-65 reset-padding">
                         <div class="intro-section text-center">
-                        <h2 class="intro-title">Proposer une formation de <span class="partner-text">QUALITE</span> une exigence GSM Master</h2>
+                        <h2 class="intro-title">{organpanel.banner_section && organpanel.banner_section.sub_title[0]} <span class="partner-text">{organpanel.banner_section && organpanel.banner_section.sub_title[1]}</span> {organpanel.banner_section && organpanel.banner_section.sub_title[2]}</h2>
                         <p class="intro-content">
-                            Nous proposons une collaboration sur tout le territoire national aux centres de 
-                            formations qui souhaitent transmettre les compétences pour réparer en sécurité 
-                            et en conformité en adéquation avec les normes constructeurs. Afin d'établir 
-                            les démarches pour mettre en place cette collaboration merci de compléter le 
-                            formulaire ci-dessous.
+                        {organpanel.banner_section && organpanel.banner_section.sub_desc}
                         </p>
                         </div>
                     </div> {/*What we do section */}
@@ -100,13 +105,13 @@ export default function OrganizationPage() {
                     </div>
 
                     <div class="training-tab-section">
-                        <h2 class="individual-text text-center mt-2">Ready to collaborate?</h2>
+                        <h2 class="individual-text text-center mt-2">{organpanel.collaborate_section && organpanel.collaborate_section.title}</h2>
                         
                         <div class="organization-tab-bar">
                             <div class="container container-65 reset-padding">
                                 <ul class="nav nav-pills row reset-margin">
-                                    <li class="col reset-padding"><a data-toggle="pill" href="#home" class="active align-self-center" >Dispenser nos formations</a></li>
-                                    <li class="col reset-padding"><a data-toggle="pill" href="#menu1" class="align-self-center">Collaborer avec GSM Master</a></li>
+                                    <li class="col reset-padding"><a data-toggle="pill" href="#home" class="active align-self-center" >{organpanel.collaborate_section && organpanel.collaborate_section.training_module.title}</a></li>
+                                    <li class="col reset-padding"><a data-toggle="pill" href="#menu1" class="align-self-center">{organpanel.collaborate_section && organpanel.collaborate_section.collaborate_module.title}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -117,12 +122,12 @@ export default function OrganizationPage() {
                                 <div class="organize-register-section">
                                     <form class="organize-registration-form">
                                         <div class="draft-continue-indicator text-right mb-5">
-                                        <button type="button" class="btn gsm-bg-company">Continuer à partir d'un brouillon</button>
+                                        <button type="button" class="btn gsm-bg-company">{organpanel.collaborate_section && organpanel.collaborate_section.training_module.button_name_1}</button>
                                         </div>
                                         
                                         <div class="alert alert-info alert-gsm alert-dismissible fade show">
-                                        <span>There are still some files to be uploaded. Do you want to submit now and upload later? .</span>
-                                        <button type="button" class="close gsm-bg-white" data-dismiss="alert">Oui</button>
+                                        <span>{organpanel.collaborate_section && organpanel.collaborate_section.training_module.alert_box}</span>
+                                        <button type="button" class="close gsm-bg-white" data-dismiss="alert">{organpanel.collaborate_section && organpanel.collaborate_section.training_module.alert_box_button}</button>
                                         </div>
                                         <div class="form-row twospaces-row reset-margin">
                                             <div class="form-group gsm-form-group col-md-6">
@@ -179,7 +184,7 @@ export default function OrganizationPage() {
                                         </div>
                                         
                                         <div class="organize-form-submission text-center">
-                                        <button type="button" class="btn gsm-bg-individual btn-gsm-lg">Enregistrer ma demande</button>
+                                        <button type="button" class="btn gsm-bg-individual btn-gsm-lg">{organpanel.collaborate_section && organpanel.collaborate_section.training_module.button_name_2}</button>
                                         </div>
                                         
                                     </form>
@@ -244,14 +249,14 @@ export default function OrganizationPage() {
                                             </div>
                                             
                                             <div class="organize-form-submission text-center">
-                                            <button type="button" class="btn gsm-bg-individual btn-gsm-lg">Enregistrer ma demande</button>
+                                            <button type="button" class="btn gsm-bg-individual btn-gsm-lg">{organpanel.collaborate_section && organpanel.collaborate_section.button_name}</button>
                                             </div>
                                             
                                         </form>
                                     </div>
                                 </div>
 
-                                <p class="individual-text text-center question-text">Poser une question</p>
+                                <p class="individual-text text-center question-text">{organpanel.collaborate_section && organpanel.collaborate_section.training_module.footer_title}</p>
                             </div>
                         </div>
                     </div>
