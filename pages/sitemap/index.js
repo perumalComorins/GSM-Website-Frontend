@@ -7,7 +7,7 @@ import Footer from "../../components/footer";
 
 export default function Sitemap(){
 
-    const type='blog.php'
+    
     // const [sitemap, setSiteMap]=useState([]);
     // const [loading,setLoading] = useState(true);
 
@@ -17,10 +17,7 @@ export default function Sitemap(){
         let body_ele = document.querySelector("body");
         body_ele.className='';
         body_ele.classList.add("inner-page");
-        userService.getAllItems(type).then((res) => {
-            setBlog(res.json_data);
-            setLoading(false);
-        }) 
+        
     }, []);
 
     return(
@@ -88,15 +85,16 @@ export default function Sitemap(){
                                 </div>
                             </div>
                             <div className="col-md-4 reset-padding">
-                                <img src="images/information-architecture.png" className="img-fluid"/>
+                                <img src="/assets/images/information-architecture.png" className="img-fluid"/>
                             </div>
                         </div>
                     </div>
                 </section>
+                <footer className="site-footer">
+                    <Footer />
+                </footer>
             </div>
-            <footer className="site-footer">
-                <Footer />
-            </footer>  
+              
         </div>
         
     )
