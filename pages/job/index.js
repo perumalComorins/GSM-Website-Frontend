@@ -2,18 +2,33 @@ import { useEffect, useState } from 'react';
 import Sidepanel from "../../components/sidepanel" ;
 import Header from "../../components/header";
 import Footer from "../../components/footer";
+import { userService } from '../../services/user.service';
+import { each } from 'jquery';
+
+
 export default function Job(){
-        const [datas, setDatas] = useState(null);
+
+        const type = 'job.php';
+        const [jobpanel, setJobpanel] = useState([]);
+
         useEffect(()=>{
+
             document.querySelector("body");
             let body_ele = document.querySelector("body");
             body_ele.className='';
             body_ele.classList.add("inner-page");
-            setDatas([1,2,3])
-            
+
+            userService.getAllItems(type).then((res) => { 
+                setJobpanel([1,2,3]);
+                setJobpanel(res.json_data);
+                console.log(jobpanel)
+            }) 
+             .catch((err) => console.error(err));         
         },[])
+
         useEffect(()=>{
-            if(datas && datas.length>0){
+
+            if(jobpanel && jobpanel.length > 0){
                 {/* Banner jquery script Starts */}
                 function BannerOverlays(){
                     var $banner_h;
@@ -50,7 +65,9 @@ export default function Job(){
                     });
                 });
             }
-        },[datas])
+        },[jobpanel])
+
+
     return(
         <div id="wrapper">
             <div className="overlay">
@@ -67,21 +84,21 @@ export default function Job(){
                     <div className="threebyfour-banner-cover-overlay">
                         <div className="threebyfour-banner-cover requirement-banner-content threebyfourth-banner">
                                 <div className="banner-content text-center">
-                                    <h1 className="title">Nous sommes un puzzleaux multiples solutions</h1>
+                                    <h1 className="title">{jobpanel.banner_section && jobpanel.banner_section.title}</h1>
                                 </div>
                                 <div className="training-tab-section requirement-tab-section">
                                     <div className="organization-tab-bar">
                                         <div className="container container-60 reset-padding">
                                             <ul className="nav nav-pills row reset-margin">
                                                 <li className="col reset-padding">
-                                                    <span className="needs_span">Nos besoins</span>
+                                                    <span className="needs_span">{jobpanel.job_section && jobpanel.job_section.title}</span>
                                                     <a data-toggle="pill" href="#particulier" className="active" >
-                                                        Les offres d'emploichez GSM Master
+                                                        {jobpanel.job_section && jobpanel.job_section.gsm_job_module.title}
                                                     </a>
                                                 </li>
                                                 <li className="col reset-padding align-self-end">
                                                     <a data-toggle="pill" href="#entreprise">
-                                                        Les offres d'emploi chez nos partenaires
+                                                        {jobpanel.job_section && jobpanel.job_section.partner_job_module.title}
                                                     </a>
                                                 </li>
                                             </ul>
@@ -100,16 +117,15 @@ export default function Job(){
                                 <div className="tab-content reset-padding">
                                     <div id="particulier" className="tab-pane fade in active show">
                                         <div className="tab-pane-titleblog reset-padding">
-                                            <h2 className="individual-text">Les offres d'emploi chez GSM Master</h2>
+                                            <h2 className="individual-text">
+                                                {jobpanel.job_section && jobpanel.job_section.gsm_job_module.title}
+                                            </h2>
                                             <p className="individual-text">
-                                                Vous voulez rejoindre une entreprise établie dans la réparation avec 
-                                                une qualité de service reconnue ? Vous êtes passionné/e et dynamique et 
-                                                vous cherchez de nouvelles opportunités. Si vous souhaitez contribuer à 
-                                                la structuration de la filière, rejoignez notre équipe !
+                                                {jobpanel.job_section && jobpanel.job_section.gsm_job_module.desc}
                                             </p>
                                         </div>
                                         <div className="tab-pane-banner">
-                                            <img src="/assets/images/taba-banner-requirement.png" className="img-fluid"/>
+                                            <img src={jobpanel.job_section && jobpanel.job_section.gsm_job_module.photo_link} className="img-fluid"/>
                                         </div>
 
                                         
@@ -211,164 +227,66 @@ export default function Job(){
 
                                         <div id="jobs-accordian" className="col-md-12 reset-padding job-accordian-list">
                                         <div className="accordion" id="particulier-job">
-                                            <div className="card">
-                                                <div className="card-header" id="particulier-jobhead1">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#particulier-job1"
-                                                    aria-expanded="true" aria-controls="particulier-job1">
-                                                            <div className="col-md-3 job-company-icon reset-padding">
-                                                                <img src="/assets/images/gsmmaster_logo.png" className="img-fluid"/>
-                                                            </div>
-                                                            <div className="col-md-9 job-title align-self-center">
-                                                                <h2>Trainer Business Expert</h2>
-                                                                <span className="company-name">Company name: GSM Master</span>
-                                                                <span className="company-location">Location: Paris</span>
-                                                            </div>
-                                                    </a>
-                                                </div>
-
-                                                <div id="particulier-job1" className="collapse" aria-labelledby="particulier-jobhead1" data-parent="#particulier-job">
-                                                    <div className="card-body">
-                                                        <ul className="job-info-list">
-                                                            <li>Location: Paris</li>
-                                                            <li>Experience: 1+ Year</li>
-                                                            <li>Department: Marketing</li>
-                                                            <li>Salary: 5,000Euro</li>
-                                                        </ul>
-                                                        <div className="job_editors">
-                                                            <p>
-                                                                We are looking for o Ul/UX designer with a special place in his heart 
-                                                                for designing and the ability to work in a fast-paced entrepreneurial 
-                                                                environment. You should get excited about creating beautiful-looking 
-                                                                consumer products (Apps/ Websites/Graphics) that are simple to use, 
-                                                                intuitive and responsive.
-                                                            </p>
-                                                            <h4>Responsibilities</h4>
-                                                            <ul>
-                                                                <li>
-                                                                    Execute all visual design stages from concept to final hand over 
-                                                                    to the technology team 
-                                                                </li>
-                                                                <li>
-                                                                    Collaborate with product managers and tech team throughout the design 
-                                                                    life cycle such as product wireframes, user flows, information architecture. mockups, and visual design. 
-                                                                </li>
-                                                                <li>
-                                                                    Design new products, user interfaces. and user experiences from scratch 
-                                                                    across multiple platforms mobile, desktop, applications. 
-                                                                </li>
-                                                            </ul>
-                                                            <h4>Requirements</h4>
-                                                            <ul>
-                                                                <li>
-                                                                    3+ years of experience in Graphics, Illustration & UI/UX design, Formal education in UX/Ul Design, 
-                                                                    Interaction Design, Motion, Graphic Design, or related field of study is a plus. 
-                                                                </li>
-                                                                <li>Good aesthetic sense especially in the domains of typography and color theory. </li>
-                                                                <li>Strong online portfolio showcasing your best work.</li>
-                                                                <li>You must have proven skills with Adobe Suite (Photoshop. 
-                                                                    Illustrator, After Effects, XD), Sketch, Marvel, Jiro, 
-                                                                    Trello, Zeplin etc.</li>
-                                                            </ul>
-                                                        </div>
-                                                        <h4>Skills</h4>
-                                                        <ul className="job-skill-lists">
-                                                            <li>Management</li>
-                                                            <li>Motor skillst</li>
-                                                            <li>French</li>
-                                                        </ul>
-                                                        
-                                                        <div className="row reset-margin">
-                                                            <div className="col-md-4 reset-padding job-curd-operation">
-                                                                <h3 className="individual-text">Job Creation Date</h3>
-                                                                <label>December 27, 2021</label>
-                                                            </div>
-                                                            <div className="col-md-4 reset-padding job-curd-operation">
-                                                                <h3 className="individual-text">Recruitment Period</h3>
-                                                                <label>March 15, 2022 to May 2, 2022</label>
-                                                            </div>
-                                                            <div className="col-md-4 reset-padding">
-
-                                                            </div>
-                                                        </div>
-                                                        <button type="button" className="btn gsm-bg-individual btn-applynow" style={{marginTop:'110px'}}>Apply now</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="card">
-                                                    <div className="card-header" id="particulier-jobhead2">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#particulier-job2"
-                                                    aria-expanded="false" aria-controls="particulier-job2">
-                                                            <div className="col-md-3 job-company-icon reset-padding">
-                                                                <img src="/assets/images/gsmmaster_logo.png" className="img-fluid"/>
-                                                            </div>
-                                                            <div className="col-md-9 job-title align-self-center">
-                                                                <h2>Trainer Business Expert</h2>
-                                                                <span className="company-name">Company name: GSM Master</span>
-                                                                <span className="company-location">Location: Paris</span>
-                                                            </div>
-                                                    </a>
+                                            {jobpanel.job_section && jobpanel.job_section.gsm_job_module.gsm_business_expert.map((items, index) =>
+                                                <div className="card">
+                                                    <div className="card-header" id={`particulier-jobhead${index + 1}`}>
+                                                        <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target={`#particulier-job${index + 1}`}
+                                                        aria-expanded="true" aria-controls={`particulier-job${index + 1}`}>
+                                                                <div className="col-md-3 job-company-icon reset-padding">
+                                                                    <img src={items.logo_link} className="img-fluid"/>
+                                                                </div>
+                                                                <div className="col-md-9 job-title align-self-center">
+                                                                    <h2>{items.title}</h2>
+                                                                    <span className="company-name">{items.sub_title_1}</span>
+                                                                    <span className="company-location">{items.sub_title_2}</span>
+                                                                </div>
+                                                        </a>
                                                     </div>
 
-                                                    <div id="particulier-job2" className="collapse" aria-labelledby="particulier-jobhead2" data-parent="#particulier-job">
+                                                    <div id={`particulier-job${index + 1}`} className="collapse" aria-labelledby={`particulier-jobhead${index + 1}`} data-parent={`#particulier-job${index + 1}`}>
                                                         <div className="card-body">
                                                             <ul className="job-info-list">
-                                                                <li>Location: Paris</li>
-                                                                <li>Experience: 1+ Year</li>
-                                                                <li>Department: Marketing</li>
-                                                                <li>Salary: 5,000Euro</li>
+                                                                <li>{items.toggle.toggle_title_1}</li>
+                                                                <li>{items.toggle.toggle_title_2}</li>
+                                                                <li>{items.toggle.toggle_title_3}</li>
+                                                                <li>{items.toggle.toggle_title_4}</li>
                                                             </ul>
                                                             <div className="job_editors">
                                                                 <p>
-                                                                    We are looking for o Ul/UX designer with a special place in his heart 
-                                                                    for designing and the ability to work in a fast-paced entrepreneurial 
-                                                                    environment. You should get excited about creating beautiful-looking 
-                                                                    consumer products (Apps/ Websites/Graphics) that are simple to use, 
-                                                                    intuitive and responsive.
+                                                                    {items.toggle.desc}
                                                                 </p>
-                                                                <h4>Responsibilities</h4>
+                                                                <h4>{items.toggle.toggle_sub_title_1}</h4>
                                                                 <ul>
-                                                                    <li>
-                                                                        Execute all visual design stages from concept to final hand over 
-                                                                        to the technology team 
-                                                                    </li>
-                                                                    <li>
-                                                                        Collaborate with product managers and tech team throughout the design 
-                                                                        life cycle such as product wireframes, user flows, information architecture. mockups, and visual design. 
-                                                                    </li>
-                                                                    <li>
-                                                                        Design new products, user interfaces. and user experiences from scratch 
-                                                                        across multiple platforms mobile, desktop, applications. 
-                                                                    </li>
+                                                                    {items.toggle && items.toggle.responsibility.map((each, i) =>
+                                                                        <li>
+                                                                            {each.list}
+                                                                        </li>
+                                                                    )}
                                                                 </ul>
-                                                                <h4>Requirements</h4>
+                                                                <h4>{items.toggle.toggle_sub_title_2}</h4>
                                                                 <ul>
-                                                                    <li>
-                                                                        3+ years of experience in Graphics, Illustration & UI/UX design, Formal education in UX/Ul Design, 
-                                                                        Interaction Design, Motion, Graphic Design, or related field of study is a plus. 
-                                                                    </li>
-                                                                    <li>Good aesthetic sense especially in the domains of typography and color theory. </li>
-                                                                    <li>Strong online portfolio showcasing your best work.</li>
-                                                                    <li>You must have proven skills with Adobe Suite (Photoshop. 
-                                                                        Illustrator, After Effects, XD), Sketch, Marvel, Jiro, 
-                                                                        Trello, Zeplin etc.</li>
+                                                                    {items.toggle && items.toggle.requirements.map((each, i) =>
+                                                                        <li>
+                                                                            {each.list}
+                                                                        </li>
+                                                                    )}
                                                                 </ul>
                                                             </div>
                                                             <h4>Skills</h4>
                                                             <ul className="job-skill-lists">
-                                                                <li>Management</li>
-                                                                <li>Motor skillst</li>
-                                                                <li>French</li>
+                                                                {items.toggle && items.toggle.skills.map((each, i) =>
+                                                                    <li>{each.list}</li>
+                                                                )}
                                                             </ul>
                                                             
                                                             <div className="row reset-margin">
                                                                 <div className="col-md-4 reset-padding job-curd-operation">
-                                                                    <h3 className="individual-text">Job Creation Date</h3>
-                                                                    <label>December 27, 2021</label>
+                                                                    <h3 className="individual-text">{items.toggle.head_1}</h3>
+                                                                    <label>{items.toggle.label_1}</label>
                                                                 </div>
                                                                 <div className="col-md-4 reset-padding job-curd-operation">
-                                                                    <h3 className="individual-text">Recruitment Period</h3>
-                                                                    <label>March 15, 2022 to May 2, 2022</label>
+                                                                    <h3 className="individual-text">{items.toggle.head_2}</h3>
+                                                                    <label>{items.toggle.label_2}</label>
                                                                 </div>
                                                                 <div className="col-md-4 reset-padding">
 
@@ -377,92 +295,9 @@ export default function Job(){
                                                             <button type="button" className="btn gsm-bg-individual btn-applynow" style={{marginTop:'110px'}}>Apply now</button>
                                                         </div>
                                                     </div>
-                                            </div>
-
-                                            <div className="card">
-                                                    <div className="card-header" id="particulier-jobhead3">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#particulier-job3"
-                                                    aria-expanded="false" aria-controls="particulier-job3">
-                                                            <div className="col-md-3 job-company-icon reset-padding">
-                                                                <img src="/assets/images/gsmmaster_logo.png" className="img-fluid"/>
-                                                            </div>
-                                                            <div className="col-md-9 job-title align-self-center">
-                                                                <h2>Trainer Business Expert</h2>
-                                                                <span className="company-name">Company name: GSM Master</span>
-                                                                <span className="company-location">Location: Paris</span>
-                                                            </div>
-                                                    </a>
-                                                    </div>
-
-                                                    <div id="particulier-job3" className="collapse" aria-labelledby="particulier-jobhead3" data-parent="#particulier-job">
-                                                        <div className="card-body">
-                                                            <ul className="job-info-list">
-                                                                <li>Location: Paris</li>
-                                                                <li>Experience: 1+ Year</li>
-                                                                <li>Department: Marketing</li>
-                                                                <li>Salary: 5,000Euro</li>
-                                                            </ul>
-                                                            <div className="job_editors">
-                                                                <p>
-                                                                    We are looking for o Ul/UX designer with a special place in his heart 
-                                                                    for designing and the ability to work in a fast-paced entrepreneurial 
-                                                                    environment. You should get excited about creating beautiful-looking 
-                                                                    consumer products (Apps/ Websites/Graphics) that are simple to use, 
-                                                                    intuitive and responsive.
-                                                                </p>
-                                                                <h4>Responsibilities</h4>
-                                                                <ul>
-                                                                    <li>
-                                                                        Execute all visual design stages from concept to final hand over 
-                                                                        to the technology team 
-                                                                    </li>
-                                                                    <li>
-                                                                        Collaborate with product managers and tech team throughout the design 
-                                                                        life cycle such as product wireframes, user flows, information architecture. mockups, and visual design. 
-                                                                    </li>
-                                                                    <li>
-                                                                        Design new products, user interfaces. and user experiences from scratch 
-                                                                        across multiple platforms mobile, desktop, applications. 
-                                                                    </li>
-                                                                </ul>
-                                                                <h4>Requirements</h4>
-                                                                <ul>
-                                                                    <li>
-                                                                        3+ years of experience in Graphics, Illustration & UI/UX design, Formal education in UX/Ul Design, 
-                                                                        Interaction Design, Motion, Graphic Design, or related field of study is a plus. 
-                                                                    </li>
-                                                                    <li>Good aesthetic sense especially in the domains of typography and color theory. </li>
-                                                                    <li>Strong online portfolio showcasing your best work.</li>
-                                                                    <li>You must have proven skills with Adobe Suite (Photoshop. 
-                                                                        Illustrator, After Effects, XD), Sketch, Marvel, Jiro, 
-                                                                        Trello, Zeplin etc.</li>
-                                                                </ul>
-                                                            </div>
-                                                            <h4>Skills</h4>
-                                                            <ul className="job-skill-lists">
-                                                                <li>Management</li>
-                                                                <li>Motor skillst</li>
-                                                                <li>French</li>
-                                                            </ul>
-                                                            
-                                                            <div className="row reset-margin">
-                                                                <div className="col-md-4 reset-padding job-curd-operation">
-                                                                    <h3 className="individual-text">Job Creation Date</h3>
-                                                                    <label>December 27, 2021</label>
-                                                                </div>
-                                                                <div className="col-md-4 reset-padding job-curd-operation">
-                                                                    <h3 className="individual-text">Recruitment Period</h3>
-                                                                    <label>March 15, 2022 to May 2, 2022</label>
-                                                                </div>
-                                                                <div className="col-md-4 reset-padding">
-
-                                                                </div>
-                                                            </div>
-                                                            <button type="button" className="btn gsm-bg-individual btn-applynow" style={{marginTop:'110px'}}>Apply now</button>
-                                                        </div>
-                                                    </div>
-                                            </div>
-
+                                                </div>
+                                            )}
+                                            
                                             <nav className="text-right page-navigation-list">
                                                     <ul className="page-navigation">
                                                         <span className="page-nav-icon page-left-icon">
@@ -484,16 +319,13 @@ export default function Job(){
 
                                     <div id="entreprise" className="tab-pane fade">
                                         <div className="tab-pane-titleblog reset-padding">
-                                            <h2 className="individual-text">Les offres d'emploi chez nos partenaires</h2>
+                                            <h2 className="individual-text">{jobpanel.job_section && jobpanel.job_section.partner_job_module.title}</h2>
                                             <p className="individual-text">
-                                                Vous voulez rejoindre une équipe établie dans la réparation avec une qualité de service reconnue ? 
-                                                Vous êtes passionné/e et dynamique et vous cherchez de nouvelles opportunités. 
-                                                Si vous souhaitez contribuer à la normalisation de la filière, 
-                                                rejoignez une entreprise de notre écosystème !
+                                                {jobpanel.job_section && jobpanel.job_section.partner_job_module.desc}
                                             </p>
                                         </div>
                                         <div className="tab-pane-banner">
-                                            <img src="/assets/images/taba-banner-requirement_2.png" className="img-fluid"/>
+                                            <img src={jobpanel.job_section && jobpanel.job_section.partner_job_module.photo_link} className="img-fluid"/>
                                         </div>
 
                                         <div className="tab-pane-filterform">
@@ -594,164 +426,66 @@ export default function Job(){
 
                                         <div id="jobs-accordian" className="col-md-12 reset-padding job-accordian-list">
                                         <div className="accordion" id="entreprise-job">
-                                            <div className="card">
-                                                <div className="card-header" id="entreprise-jobhead1">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#entreprise-job1"
-                                                    aria-expanded="true" aria-controls="entreprise-job1">
-                                                            <div className="col-md-3 job-company-icon reset-padding">
-                                                                <img src="/assets/images/gsmmaster_logo_2.png" className="img-fluid"/>
-                                                            </div>
-                                                            <div className="col-md-9 job-title align-self-center">
-                                                                <h2>Trainer Business Expert</h2>
-                                                                <span className="company-name">Company name: GSM Master</span>
-                                                                <span className="company-location">Location: Paris</span>
-                                                            </div>
-                                                    </a>
-                                                </div>
-
-                                                <div id="entreprise-job1" className="collapse" aria-labelledby="entreprise-jobhead1" data-parent="#entreprise-job">
-                                                    <div className="card-body">
-                                                        <ul className="job-info-list">
-                                                            <li>Location: Paris</li>
-                                                            <li>Experience: 1+ Year</li>
-                                                            <li>Department: Marketing</li>
-                                                            <li>Salary: 5,000Euro</li>
-                                                        </ul>
-                                                        <div className="job_editors">
-                                                            <p>
-                                                                We are looking for o Ul/UX designer with a special place in his heart 
-                                                                for designing and the ability to work in a fast-paced entrepreneurial 
-                                                                environment. You should get excited about creating beautiful-looking 
-                                                                consumer products (Apps/ Websites/Graphics) that are simple to use, 
-                                                                intuitive and responsive.
-                                                            </p>
-                                                            <h4>Responsibilities</h4>
-                                                            <ul>
-                                                                <li>
-                                                                    Execute all visual design stages from concept to final hand over 
-                                                                    to the technology team 
-                                                                </li>
-                                                                <li>
-                                                                    Collaborate with product managers and tech team throughout the design 
-                                                                    life cycle such as product wireframes, user flows, information architecture. mockups, and visual design. 
-                                                                </li>
-                                                                <li>
-                                                                    Design new products, user interfaces. and user experiences from scratch 
-                                                                    across multiple platforms mobile, desktop, applications. 
-                                                                </li>
-                                                            </ul>
-                                                            <h4>Requirements</h4>
-                                                            <ul>
-                                                                <li>
-                                                                    3+ years of experience in Graphics, Illustration & UI/UX design, Formal education in UX/Ul Design, 
-                                                                    Interaction Design, Motion, Graphic Design, or related field of study is a plus. 
-                                                                </li>
-                                                                <li>Good aesthetic sense especially in the domains of typography and color theory. </li>
-                                                                <li>Strong online portfolio showcasing your best work.</li>
-                                                                <li>You must have proven skills with Adobe Suite (Photoshop. 
-                                                                    Illustrator, After Effects, XD), Sketch, Marvel, Jiro, 
-                                                                    Trello, Zeplin etc.</li>
-                                                            </ul>
-                                                        </div>
-                                                        <h4>Skills</h4>
-                                                        <ul className="job-skill-lists">
-                                                            <li>Management</li>
-                                                            <li>Motor skillst</li>
-                                                            <li>French</li>
-                                                        </ul>
-                                                        
-                                                        <div className="row reset-margin">
-                                                            <div className="col-md-4 reset-padding job-curd-operation">
-                                                                <h3 className="individual-text">Job Creation Date</h3>
-                                                                <label>December 27, 2021</label>
-                                                            </div>
-                                                            <div className="col-md-4 reset-padding job-curd-operation">
-                                                                <h3 className="individual-text">Recruitment Period</h3>
-                                                                <label>March 15, 2022 to May 2, 2022</label>
-                                                            </div>
-                                                            <div className="col-md-4 reset-padding">
-
-                                                            </div>
-                                                        </div>
-                                                        <button type="button" className="btn gsm-bg-individual btn-applynow" style={{marginTop:'110px'}}>Apply now</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="card">
-                                                    <div className="card-header" id="entreprise-jobhead2">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#entreprise-job2"
-                                                    aria-expanded="false" aria-controls="entreprise-job2">
-                                                            <div className="col-md-3 job-company-icon reset-padding">
-                                                                <img src="/assets/images/gsmmaster_logo_2.png" className="img-fluid"/>
-                                                            </div>
-                                                            <div className="col-md-9 job-title align-self-center">
-                                                                <h2>Trainer Business Expert</h2>
-                                                                <span className="company-name">Company name: GSM Master</span>
-                                                                <span className="company-location">Location: Paris</span>
-                                                            </div>
-                                                    </a>
+                                            {jobpanel.job_section && jobpanel.job_section.partner_job_module.partner_business_expert.map((items, index) =>
+                                                <div className="card">
+                                                    <div className="card-header" id={`entreprise-jobhead${index + 1 }`}>
+                                                        <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target={`#entreprise-job${index + 1}`}
+                                                        aria-expanded="true" aria-controls={`entreprise-job${index + 1}`}>
+                                                                <div className="col-md-3 job-company-icon reset-padding">
+                                                                    <img src={items.logo_link} className="img-fluid"/>
+                                                                </div>
+                                                                <div className="col-md-9 job-title align-self-center">
+                                                                    <h2>{items.title}</h2>
+                                                                    <span className="company-name">{items.sub_title_1}</span>
+                                                                    <span className="company-location">{items.sub_title_2}</span>
+                                                                </div>
+                                                        </a>
                                                     </div>
 
-                                                    <div id="entreprise-job2" className="collapse" aria-labelledby="entreprise-jobhead2" data-parent="#entreprise-job">
+                                                    <div id={`entreprise-job${index + 1}`} className="collapse" aria-labelledby={`entreprise-jobhead${index + 1 }`} data-parent={`#entreprise-job${index + 1}`}>
                                                         <div className="card-body">
                                                             <ul className="job-info-list">
-                                                                <li>Location: Paris</li>
-                                                                <li>Experience: 1+ Year</li>
-                                                                <li>Department: Marketing</li>
-                                                                <li>Salary: 5,000Euro</li>
+                                                                <li>{items.toggle.toggle_title_1}</li>
+                                                                <li>{items.toggle.toggle_title_2}</li>
+                                                                <li>{items.toggle.toggle_title_3}</li>
+                                                                <li>{items.toggle.toggle_title_4}</li>
                                                             </ul>
                                                             <div className="job_editors">
                                                                 <p>
-                                                                    We are looking for o Ul/UX designer with a special place in his heart 
-                                                                    for designing and the ability to work in a fast-paced entrepreneurial 
-                                                                    environment. You should get excited about creating beautiful-looking 
-                                                                    consumer products (Apps/ Websites/Graphics) that are simple to use, 
-                                                                    intuitive and responsive.
+                                                                    {items.toggle.desc}
                                                                 </p>
-                                                                <h4>Responsibilities</h4>
+                                                                <h4>{items.toggle.toggle_sub_title_1}</h4>
                                                                 <ul>
-                                                                    <li>
-                                                                        Execute all visual design stages from concept to final hand over 
-                                                                        to the technology team 
-                                                                    </li>
-                                                                    <li>
-                                                                        Collaborate with product managers and tech team throughout the design 
-                                                                        life cycle such as product wireframes, user flows, information architecture. mockups, and visual design. 
-                                                                    </li>
-                                                                    <li>
-                                                                        Design new products, user interfaces. and user experiences from scratch 
-                                                                        across multiple platforms mobile, desktop, applications. 
-                                                                    </li>
+                                                                    {items.toggle && items.toggle.responsibility.map((each, i)=>
+                                                                        <li>
+                                                                            {each.list}
+                                                                        </li>
+                                                                    )}
                                                                 </ul>
-                                                                <h4>Requirements</h4>
+                                                                <h4>{items.toggle.toggle_sub_title_2}</h4>
                                                                 <ul>
-                                                                    <li>
-                                                                        3+ years of experience in Graphics, Illustration & UI/UX design, Formal education in UX/Ul Design, 
-                                                                        Interaction Design, Motion, Graphic Design, or related field of study is a plus. 
-                                                                    </li>
-                                                                    <li>Good aesthetic sense especially in the domains of typography and color theory. </li>
-                                                                    <li>Strong online portfolio showcasing your best work.</li>
-                                                                    <li>You must have proven skills with Adobe Suite (Photoshop. 
-                                                                        Illustrator, After Effects, XD), Sketch, Marvel, Jiro, 
-                                                                        Trello, Zeplin etc.</li>
+                                                                    {items.toggle && items.toggle.requirements.map((each, i)=>
+                                                                        <li>
+                                                                            {each.list} 
+                                                                        </li>
+                                                                    )}
                                                                 </ul>
                                                             </div>
                                                             <h4>Skills</h4>
                                                             <ul className="job-skill-lists">
-                                                                <li>Management</li>
-                                                                <li>Motor skillst</li>
-                                                                <li>French</li>
+                                                                {items.toggle && items.toggle.skills.map((each, i)=>
+                                                                    <li>{each.list}</li>        
+                                                                )}
                                                             </ul>
                                                             
                                                             <div className="row reset-margin">
                                                                 <div className="col-md-4 reset-padding job-curd-operation">
-                                                                    <h3 className="individual-text">Job Creation Date</h3>
-                                                                    <label>December 27, 2021</label>
+                                                                    <h3 className="individual-text">{items.toggle && items.toggle.head_1}</h3>
+                                                                    <label>{items.toggle && items.toggle.label_1}</label>
                                                                 </div>
                                                                 <div className="col-md-4 reset-padding job-curd-operation">
-                                                                    <h3 className="individual-text">Recruitment Period</h3>
-                                                                    <label>March 15, 2022 to May 2, 2022</label>
+                                                                    <h3 className="individual-text">{items.toggle && items.toggle.head_2}</h3>
+                                                                    <label>{items.toggle && items.toggle.label_2}</label>
                                                                 </div>
                                                                 <div className="col-md-4 reset-padding">
 
@@ -760,91 +494,9 @@ export default function Job(){
                                                             <button type="button" className="btn gsm-bg-individual btn-applynow" style={{marginTop:'110px'}}>Apply now</button>
                                                         </div>
                                                     </div>
-                                            </div>
-
-                                            <div className="card">
-                                                    <div className="card-header" id="entreprise-jobhead3">
-                                                    <a href="#" className="btn btn-header-link collapsed" data-toggle="collapse" data-target="#entreprise-job3"
-                                                    aria-expanded="true" aria-controls="entreprise-job3">
-                                                            <div className="col-md-3 job-company-icon reset-padding">
-                                                                <img src="/assets/images/gsmmaster_logo_2.png" className="img-fluid"/>
-                                                            </div>
-                                                            <div className="col-md-9 job-title align-self-center">
-                                                                <h2>Trainer Business Expert</h2>
-                                                                <span className="company-name">Company name: GSM Master</span>
-                                                                <span className="company-location">Location: Paris</span>
-                                                            </div>
-                                                    </a>
-                                                    </div>
-
-                                                    <div id="entreprise-job3" className="collapse" aria-labelledby="entreprise-jobhead3" data-parent="#entreprise-job">
-                                                        <div className="card-body">
-                                                            <ul className="job-info-list">
-                                                                <li>Location: Paris</li>
-                                                                <li>Experience: 1+ Year</li>
-                                                                <li>Department: Marketing</li>
-                                                                <li>Salary: 5,000Euro</li>
-                                                            </ul>
-                                                            <div className="job_editors">
-                                                                <p>
-                                                                    We are looking for o Ul/UX designer with a special place in his heart 
-                                                                    for designing and the ability to work in a fast-paced entrepreneurial 
-                                                                    environment. You should get excited about creating beautiful-looking 
-                                                                    consumer products (Apps/ Websites/Graphics) that are simple to use, 
-                                                                    intuitive and responsive.
-                                                                </p>
-                                                                <h4>Responsibilities</h4>
-                                                                <ul>
-                                                                    <li>
-                                                                        Execute all visual design stages from concept to final hand over 
-                                                                        to the technology team 
-                                                                    </li>
-                                                                    <li>
-                                                                        Collaborate with product managers and tech team throughout the design 
-                                                                        life cycle such as product wireframes, user flows, information architecture. mockups, and visual design. 
-                                                                    </li>
-                                                                    <li>
-                                                                        Design new products, user interfaces. and user experiences from scratch 
-                                                                        across multiple platforms mobile, desktop, applications. 
-                                                                    </li>
-                                                                </ul>
-                                                                <h4>Requirements</h4>
-                                                                <ul>
-                                                                    <li>
-                                                                        3+ years of experience in Graphics, Illustration & UI/UX design, Formal education in UX/Ul Design, 
-                                                                        Interaction Design, Motion, Graphic Design, or related field of study is a plus. 
-                                                                    </li>
-                                                                    <li>Good aesthetic sense especially in the domains of typography and color theory. </li>
-                                                                    <li>Strong online portfolio showcasing your best work.</li>
-                                                                    <li>You must have proven skills with Adobe Suite (Photoshop. 
-                                                                        Illustrator, After Effects, XD), Sketch, Marvel, Jiro, 
-                                                                        Trello, Zeplin etc.</li>
-                                                                </ul>
-                                                            </div>
-                                                            <h4>Skills</h4>
-                                                            <ul className="job-skill-lists">
-                                                                <li>Management</li>
-                                                                <li>Motor skillst</li>
-                                                                <li>French</li>
-                                                            </ul>
-                                                            
-                                                            <div className="row reset-margin">
-                                                                <div className="col-md-4 reset-padding job-curd-operation">
-                                                                    <h3 className="individual-text">Job Creation Date</h3>
-                                                                    <label>December 27, 2021</label>
-                                                                </div>
-                                                                <div className="col-md-4 reset-padding job-curd-operation">
-                                                                    <h3 className="individual-text">Recruitment Period</h3>
-                                                                    <label>March 15, 2022 to May 2, 2022</label>
-                                                                </div>
-                                                                <div className="col-md-4 reset-padding">
-
-                                                                </div>
-                                                            </div>
-                                                            <button type="button" className="btn gsm-bg-individual btn-applynow" style={{marginTop:'110px'}}>Apply now</button>
-                                                        </div>
-                                                    </div>
-                                            </div>
+                                                </div>
+                                            )}
+                                            
                                             <nav className="text-right page-navigation-list">
                                                     <ul className="page-navigation">
                                                         <span className="page-nav-icon page-left-icon">

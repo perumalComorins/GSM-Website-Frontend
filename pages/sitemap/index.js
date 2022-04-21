@@ -7,10 +7,12 @@ import Footer from "../../components/footer";
 
 export default function Sitemap(){
 
+
     const type='sitemap.php'
     const [sitemap, setSiteMap]=useState([]);
     const [sitemapBanner, setSiteMapBanner] = useState(null);
     const [loading,setLoading] = useState(true);
+
 
 
     useEffect( async() => {
@@ -18,14 +20,15 @@ export default function Sitemap(){
         let body_ele = document.querySelector("body");
         body_ele.className='';
         body_ele.classList.add("inner-page");
+
         userService.getAllItems(type).then((res) => {
             setSiteMap(res.json_data.sitemap);
             setSiteMapBanner(res.json_data.sitemapimage);
             setLoading(false);
         }) 
-         
+
     }, []);
-    console.log(`SiteMap`,sitemap);
+  
     return(
         <div id="wrapper">
             <div className="overlay"></div>
@@ -65,10 +68,13 @@ export default function Sitemap(){
                     </div>
                 </section>
                 <footer className="site-footer">
-                    <Footer />
-                </footer>  
+                   <Footer />
+                </footer>
             </div>
             
+            </div>
+              
+
         </div>
         
     )
