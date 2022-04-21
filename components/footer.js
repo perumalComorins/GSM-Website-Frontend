@@ -41,7 +41,7 @@ const Footer = (props) => {
                             <h2 className="footer-widget-title">{items.footer_item_title}</h2>
                             <ul className="footer-menu">
                                 {items.footer_sub_item.map((each, i) => 
-                                    <li key = {i} ><a href={each.link}>{each.title}</a></li>
+                                    <li key = {i} ><Link href={each.link}>{each.title}</Link></li>
                                 )}
                             </ul>
                         </div>
