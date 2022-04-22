@@ -7,7 +7,7 @@ import Footer from "../../components/footer";
 
 export default function Credits() {
     const type ='application_form.php';
-    const [noticepanel, setNoticepanel] = useState([])
+    const [creditpanel, setCreditpanel] = useState([])
 
     useEffect(()=>{
 
@@ -16,7 +16,7 @@ export default function Credits() {
       body_ele.className='';
       body_ele.classList.add("inner-page");
       userService.getAllItems(type).then((res) => {  
-          setNoticepanel(res.json_data)
+          setCreditpanel(res.json_data)
       }) 
        .catch((err) => console.error(err));  
       
@@ -33,7 +33,7 @@ export default function Credits() {
             </header>
             <div class="site-bannersection">
             {/* style="background-image: url('images/background_banner.png');" */}
-                <div class="terms-privacy-legal-view fullsize-banner" >
+                <div class="terms-privacy-legal-view fullsize-banner" style={ {backgroundImage:`url(${creditpanel && creditpanel.img_url})`} } >
                     <div class="legalnotice-content reset-padding">
                         <div class="row legalnotice-row reverse-row-mobile reset-margin">
                             <div class="col-md-5 legalnotice-col d-none d-md-block">
