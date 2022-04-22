@@ -132,7 +132,7 @@ const Sidepanel = (props) => {
                                         <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                             Individual <i class="fa fa-angle-right right-arrow"></i>
                                         </a>
-                                        <ul class="dropdown-menu" style="">
+                                        <ul class="dropdown-menu">
                                         <li><a href="certificate.php">Certification niveau 4</a></li>
                                         <li><a href="certificate.php">Certification niveau 3</a></li>
                                         <li><a href="qulity_indicators.php">Indicateurs de qualité</a></li>
@@ -142,7 +142,7 @@ const Sidepanel = (props) => {
                                         <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                             Company <i class="fa fa-angle-right right-arrow"></i>
                                         </a>
-                                        <ul class="dropdown-menu" style="">
+                                        <ul class="dropdown-menu">
                                         <li><a href="certificate.php">Certification niveau 4</a></li>
                                         <li><a href="certificate.php">Certification niveau 3</a></li>
                                         <li><a href="qulity_indicators.php">Indicateurs de qualité</a></li>
@@ -152,7 +152,7 @@ const Sidepanel = (props) => {
                                         <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                             Organization <i class="fa fa-angle-right right-arrow"></i>
                                         </a>
-                                        <ul class="dropdown-menu" style="">
+                                        <ul class="dropdown-menu">
                                         <li><a href="certificate.php">Certification niveau 4</a></li>
                                         <li><a href="certificate.php">Certification niveau 3</a></li>
                                         <li><a href="qulity_indicators.php">Indicateurs de qualité</a></li>
