@@ -96,11 +96,12 @@ const Sidepanel = (props) => {
                         <h1 className="pannel-title">Together, let's be the future</h1>
                         </div>
                         <div className="navbarMenu-col reset-padding">
-                            <img src="/assets/images/site-logo-color.png" style={{width: '180px'}}/>
+                            <img src="/assets/images/site-logo-color.png" style={{width: '180px'}} className="sidepanel-site-logo"/>
                             <nav className="sidenav-Menu">
                             <ul>
                                 {sidepanel && sidepanel.map((list, index) => 
                                     <li key ={index}>
+                                        
                                         {list.side_drop_down ?
                                             <li className="btn-group dropright">
                                                 <a className="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -124,7 +125,42 @@ const Sidepanel = (props) => {
                                 <a href="#" className="applyTag companyColor"><img src="/assets/images/companyshadow.png" />Company</a>
                                 <a href="#" className="applyTag organisationColor"><img src="/assets/images/organizationshadow.png" />Organization</a>
                             </div>
-
+                            
+                            <nav class="sidenav-Menu mobiletopNav mt-5 d-block d-lg-none">
+                                <ul>
+                                    <li class="btn-group dropright">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            Individual <i class="fa fa-angle-right right-arrow"></i>
+                                        </a>
+                                        <ul class="dropdown-menu" style="">
+                                        <li><a href="certificate.php">Certification niveau 4</a></li>
+                                        <li><a href="certificate.php">Certification niveau 3</a></li>
+                                        <li><a href="qulity_indicators.php">Indicateurs de qualité</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="btn-group dropright">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            Company <i class="fa fa-angle-right right-arrow"></i>
+                                        </a>
+                                        <ul class="dropdown-menu" style="">
+                                        <li><a href="certificate.php">Certification niveau 4</a></li>
+                                        <li><a href="certificate.php">Certification niveau 3</a></li>
+                                        <li><a href="qulity_indicators.php">Indicateurs de qualité</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="btn-group dropright">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            Organization <i class="fa fa-angle-right right-arrow"></i>
+                                        </a>
+                                        <ul class="dropdown-menu" style="">
+                                        <li><a href="certificate.php">Certification niveau 4</a></li>
+                                        <li><a href="certificate.php">Certification niveau 3</a></li>
+                                        <li><a href="qulity_indicators.php">Indicateurs de qualité</a></li>
+                                        </ul>
+                                    </li>
+                                
+                                </ul>
+                            </nav>
                             <div className="sidepanelCopyright">
                             <span>&copy; 2020 GSM Master. All rights reserved</span>
                             </div>
