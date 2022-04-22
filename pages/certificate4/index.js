@@ -6,8 +6,9 @@ import Footer from "../../components/footer";
 
 
 export default function Certificate4() {
-    const type ='application_form.php';
-    const [noticepanel, setNoticepanel] = useState([])
+
+    const type ='certificate-4.php';
+    const [certificate4panel, setCertificate4panel] = useState([])
 
     useEffect(()=>{
 
@@ -16,7 +17,7 @@ export default function Certificate4() {
       body_ele.className='';
       body_ele.classList.add("inner-page");
       userService.getAllItems(type).then((res) => {  
-          setNoticepanel(res.json_data)
+          setCertificate4panel(res.json_data)
       }) 
        .catch((err) => console.error(err));  
       
@@ -33,24 +34,19 @@ export default function Certificate4() {
           </header>
           <div class="site-bannersection">
 {/*           style="background-image: url('images/background_banner.png');"
- */}              <div class="indicator-view fullsize-banner" >
+ */}              <div class="indicator-view fullsize-banner" style={ {backgroundImage:`url(${certificate4panel.banner_section && certificate4panel.banner_section.back_img})`,} } >
                       <div class="container container-70 indicator-content reset-padding">
                           <div class="row content-row reverse-row-mobile">
                             <div class="col-md-7 title-banner text-left align-self-center">
-                                <h2>Comprendre la certification</h2>
+                                <h2>{certificate4panel.banner_section && certificate4panel.banner_section.title}</h2>
                                 <p>
-                                  La certification est une reconnaissance d'état de la qualité d'un diplôme.
-                                  Le titre de « Réparateur/trice de produits nomades" est inscrit au RNCP 
-                                  (Répertoire national des certifications professionnelles) de niveau 4. 
-                                  La formation vous permet d'avoir un niveau équivalent du niveau BAC. 
-                                  Ce qui vous permet de faire reconnaître vos compétences dans le secteur de 
-                                  la réparation ou de poursuivre vos études.
+                                {certificate4panel.banner_section && certificate4panel.banner_section.desc}
                                 </p>
-                                  <button type="button" class="btn gsm-bg-white btn-gsm-md mr-4">En savoir plus</button>
-                                  <button type="button" class="btn gsm-bg-individual btn-gsm-md">Inscrivez-vous</button>
+                                  <button type="button" class="btn gsm-bg-white btn-gsm-md mr-4">{certificate4panel.banner_section && certificate4panel.banner_section.button_name_1}</button>
+                                  <button type="button" class="btn gsm-bg-individual btn-gsm-md">{certificate4panel.banner_section && certificate4panel.banner_section.button_name_2}</button>
                             </div>
                             <div class="col-md-5 picture-banner">
-                                <img src="images/squre.jpg" class="img-fluid rounded-circle"/>
+                                <img src={certificate4panel.banner_section && certificate4panel.banner_section.banner_img} class="img-fluid rounded-circle"/>
                             </div>
                           </div>
                       </div>
@@ -61,124 +57,80 @@ export default function Certificate4() {
           <section class="site-body-container">
                 <div class="container container-65 reset-padding certificate-contentarea">
                     <div class="content-spaces">
-                      <h2>La certification qu’est ce que c’est ?</h2>
-                      <p>« L’article L. 6113-1 du Code du Travail créé par la loi n°2018-771 du 5 septembre 2018 pour la
-                        liberté de choisir son avenir professionnel précise que « les certifications professionnelles
-                        enregistrées au RNCP permettent une validation des compétences et des connaissances
-                        acquises nécessaires à l’exercice d’activités professionnelles. Elles sont définies notamment
-                        par :</p>
+                      <h2>{certificate4panel.certification_section && certificate4panel.certification_section.title}</h2>
+                      <p>{certificate4panel.certification_section && certificate4panel.certification_section.desc}</p>
                       <ul>
-                        <li>Un référentiel d’activités qui décrit les situations de travail et les activités exercées, les
-                        métiers ou emplois visés.
-                        </li>
-                        <li>Un référentiel de compétences qui identifie les compétences et les connaissances, y compris
-                        transversales, qui en découlent.</li>
-                        <li>Un référentiel d’évaluation qui définit les critères et les modalités d’évaluation des acquis.
-                        Les certifications professionnelles sont classées par niveau de qualification et domaine d’activité
-                        […] et sont constituées de blocs de compétences, ensembles homogènes et cohérents de
-                        compétences contribuant à l’exercice autonome d’une activité professionnelle et pouvant être
-                        évaluées et validées. » (France compétence)</li>
-                      </ul>
-
+                        {certificate4panel.certification_section && certificate4panel.certification_section.details.map((items, index) =>
+                          <li>{items.list}</li>
+                        )}
+                      </ul>  
                     </div>
                     <div class="content-spaces">
-                      <h2>La certification de GSM Master</h2>
-                      <p>Notre certification se base sur deux qualités essentielles. 
-                        Tout d’abord vous former à l’intégralité du métier de réparateur.  
-                        Cette formation comprend tous les aspects du métier : 
-                        l’accueil client,  le recueil du besoin, le diagnostic, la communication, 
-                        la législation, l’économie circulaire et la réparation. Notre deuxième 
-                        outil est une méthodologie bâtie par des professionnels ayant obtenu le plus 
-                        haut niveau d’agrément du premier constructeur mondial. Cette méthodologie vous permettra 
-                        d’appréhender tous types de produits nomades et de pannes en sécurité et en conformité.
-                      </p>
-                      <p>Nous vous transmettons toutes les clefs pour vous rendre autonome dans 
-                        votre activité de réparateur/trice. GSM Master est implanté dans toute la France, 
-                        trouvez ci-dessous le centre de formation le plus proche de chez vous.</p>
+                      <h2>{certificate4panel.gsm_master_section && certificate4panel.gsm_master_section.title}</h2>
+                        {certificate4panel.gsm_master_section && certificate4panel.gsm_master_section.details.map((items, index) =>
+                          <p>{items.list}</p>
+                        )}
                     </div>
                     <div class="content-spaces">
-                      <h2>La certification pour qui ?</h2>
-                      <p>
-                      Nous donnons à tous la possibilité de réussir la certification et de s’épanouir. 
-                      Les tests de prérequis sont accessibles au plus grand nombre : 
-                      comprendre le français (lu, parlé, écrit) ; connaître les quatre opérations mathématiques. 
-                      Cette formation est éligible aux dispositifs de prise en charge pour l’apprentissage, 
-                      la professionnalisation, la VAE, les projets de transitions professionnelles et transitions collectives. 
-                      </p>
-                      <p>Nous vous transmettons toutes les clefs pour vous rendre autonome dans 
-                        votre activité de réparateur/trice. GSM Master est implanté dans toute la France, 
-                        trouvez ci-dessous le centre de formation le plus proche de chez vous.</p>
+                      <h2>{certificate4panel.whom_section && certificate4panel.whom_section.title}</h2>
+                        {certificate4panel.whom_section && certificate4panel.whom_section.details.map((items, index) =>
+                          <p>{items.list}</p>
+                        )}
                     </div>
                     
                 </div>
                 <div class="container container-75 reset-padding certificate-cardarea">
                     <div class="row justify-content-center mx-0 mb-5">
-                          <div class="service-block col-lg-4 col-md-12 col-sm-12 reset-padding mr-right-100">
+                      {certificate4panel.modules && certificate4panel.modules.first_section.map((items, index) =>
+                          <div class={`service-block col-lg-4 col-md-12 col-sm-12 reset-padding ${index == 0 ? 'mr-right-100': ''}`}>
                             <div class="service card">
                               <div class="service-title d-table text-center">
                                 <div class="service-title-innerwrapper d-table-cell align-middle">
-                                  <h2>Particulier</h2>
+                                  <h2>{items.title}</h2>
                                 </div>
                               </div>
                               <div class="service-body">
-                                <p>Vous n'avez aucune expérience dans la réparation mais êtes intéressé par ce secteur. 
-                                  Vous souhaitez vous inscrire à la certification pour obtenir des compétences 
-                                  professionnelles à valoriser.</p>
+                                <p>{items.desc}</p>
                               </div>
                               <div class="service-footer d-table text-center">
                                 <div class="service-footer-innerwrapper d-table-cell align-middle">
-                                  <button type="button" class="btn gsm-bg-individual btn-block py-3" >Inscrivez-vous</button>
+                                  <button type="button" class="btn gsm-bg-individual btn-block py-3" >{items.button_name}</button>
                                 </div>
                               </div>
                             </div>
                           </div>
-                          <div class="service-block col-lg-4 col-md-12 col-sm-12 reset-padding">
-                            <div class="service card">
-                              <div class="service-title d-table text-center">
-                                <div class="service-title-innerwrapper d-table-cell align-middle">
-                                  <h2>Salarié du secteur</h2>
-                                </div>
-                              </div>
-                              <div class="service-body">
-                                <p>Vous êtes indépendant et/ou salarié dans la réparation de produits nomades depuis plus    
-                                   d’1 an et vous voulez faire reconnaître vos compétences grâce à la certification. 
-                                   Téléchargez le livret 1 et accédez à une VAE (validation d'acquis par l’expérience).</p>
-                              </div>
-                              <div class="service-footer d-table text-center">
-                                <div class="service-footer-innerwrapper d-table-cell align-middle">
-                                  <button type="button" class="btn gsm-outline-individual btn-block py-3" >Certifiez vos compétences</button>
-                                </div>  
-                              </div>
-                            </div>
-                          </div>
+                      )}      
                     </div>
 
                     <div class="row justify-content-center reset-margin">
-                          <div class="service-block col-lg-4 col-md-12 col-sm-12 reset-padding">
-                            <div class="service card">
-                              <div class="service-title d-table text-center">
-                                <div class="service-title-innerwrapper d-table-cell align-middle">
-                                  <h2>Entreprise</h2>
+                      {certificate4panel.modules && certificate4panel.modules.second_section.map((items, index) =>
+                        <>
+                        {index == 1 ?
+                            <div class="service-block col-lg-4 col-md-12 col-sm-12 px-3 align-self-center d-none d-lg-block">
+                            <h2 class="service-textwrapp">{items.center_text}</h2>
+                          </div> :
+                            <div class="service-block col-lg-4 col-md-12 col-sm-12 reset-padding">
+                              <div class="service card">
+                                <div class="service-title d-table text-center">
+                                  <div class="service-title-innerwrapper d-table-cell align-middle">
+                                    <h2>{items.title}</h2>
+                                  </div>
+                                </div>
+                                <div class="service-body">
+                                  <p>
+                                  {items.desc}
+                                  </p>
+                                </div>
+                                <div class="service-footer d-table text-center">
+                                  <div class="service-footer-innerwrapper d-table-cell align-middle">
+                                    <button type="button" class="btn gsm-bg-company btn-block py-3" >{items.button_name}</button>
+                                  </div>
                                 </div>
                               </div>
-                              <div class="service-body">
-                                <p>
-                                  Vous représentez une entreprise et  souhaitez faire reconnaitre la qualité de vos techniciens. 
-                                  Votre équipe a besoin de monter en compétence et de réduire les retours ou vous souhaitez 
-                                  former vos équipes à la micro soudure.
-                                </p>
-                              </div>
-                              <div class="service-footer d-table text-center">
-                                <div class="service-footer-innerwrapper d-table-cell align-middle">
-                                  <button type="button" class="btn gsm-bg-company btn-block py-3" >Perfectionnez vos équipes</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="service-block col-lg-4 col-md-12 col-sm-12 px-3 align-self-center d-none d-lg-block">
-                              <h2 class="service-textwrapp">Soyez l’acteur du changement</h2>
-                          </div>
-                          <div class="service-block col-lg-4 col-md-12 col-sm-12 reset-padding">
+                            </div> 
+                            
+                          } 
+                          {/* <div class="service-block col-lg-4 col-md-12 col-sm-12 reset-padding">
                             <div class="service card">
                               <div class="service-title d-table text-center">
                                 <div class="service-title-innerwrapper d-table-cell align-middle">
@@ -198,27 +150,29 @@ export default function Certificate4() {
                                 </div>  
                               </div>
                             </div>
-                          </div>
+                          </div> */}
+                      </>
+                      )}
                     </div>
                 </div>
 
                 <div id="satisfaction-certificates-box" class="container container-75 reset-padding certificate-satisfaction-card">
-                    <h2>Nos Collaborations</h2>
+                    <h2>{certificate4panel.collaborate_section && certificate4panel.collaborate_section.title}</h2>
                     <div class="row mx-0 mt-5">
+                      {certificate4panel.collaborate_section && certificate4panel.collaborate_section.cards.map((items, index) =>
                                 <div class="card satisfaction-card col-sm-6">
                                   <figure>
-                                          <label class="satisfaction-label">Satisfaction 100%</label>
+                                          <label class="satisfaction-label">{items.label}</label>
                                           <div class="card-body froentside-panel row reset-margin">
                                             <div class="col content-block">
-                                              <h5 class="card-title">Repair Safety and Compliance - 1</h5>
-                                              <p class="card-text">You are already repairing and want to establish your know-how by assimilating 
-                                                the basics of a diagnosis and intervention carried out in safety and compliance </p> 
+                                              <h5 class="card-title">{items.title_1}</h5>
+                                              <p class="card-text">{items.desc}</p> 
                                             </div>
                                             <div class="col picture-block">
-                                              <img src="images/satatistics-pic.png" class="img-fluid"/>
+                                              <img src={items.photo_link} class="img-fluid"/>
                                             </div> 
                                           </div>
-                                          <figcaption>
+                                          {/* <figcaption>
                                               <span class="backdrop-border"></span>
                                               <div class="card-header row">
                                                   <div class="col-9 students-satisfaction">
@@ -238,12 +192,6 @@ export default function Certificate4() {
                                                       </div>
                                                   </div>
                                                   <div class="col-3 text-center brand-logos reset-padding">
-                                                      {/* <!-- <div id="demo" class="carousel slide" data-ride="carousel">
-                                                          <div class="row reset-margin carousel-inner">
-                                                            <img src="images/brand-logo-1.png" class="carousel-item active"/>
-                                                            <img src="images/brand-logo-1.png" class="carousel-item"/>
-                                                          </div>
-                                                      </div> --> */}
                                                   </div>
                                               </div>
                                               <div class="card-body reset-padding">
@@ -280,243 +228,10 @@ export default function Certificate4() {
                                                 <button class="btn gsm-outline-individual  btn-gsm-statics-size pull-left">Learn More</button>
                                                 <button class="btn gsm-bg-individual btn-gsm-statics-size pull-right">Apply Now</button>
                                               </div>
-                                          </figcaption>
+                                          </figcaption> */}
                                   </figure>
                                 </div>
-                                <div class="card satisfaction-card col-sm-6">
-                                  <figure>
-                                          <label class="satisfaction-label">Satisfaction 100%</label>
-                                          <div class="card-body froentside-panel row reset-margin">
-                                            <div class="col content-block">
-                                              <h5 class="card-title">Repair Safety and Compliance - 1</h5>
-                                              <p class="card-text">You are already repairing and want to establish your know-how by assimilating 
-                                                the basics of a diagnosis and intervention carried out in safety and compliance </p> 
-                                            </div>
-                                            <div class="col picture-block">
-                                              <img src="images/satatistics-pic.png" class="img-fluid"/>
-                                            </div> 
-                                          </div>
-                                          <figcaption>
-                                              <span class="backdrop-border"></span>
-                                              <div class="card-header row">
-                                                  <div class="col-9 students-satisfaction">
-                                                      <div class="row reset-margin">
-                                                        <div class="col-6 students-satisfaction-percentage">
-                                                          <div class="row reset-margin">
-                                                            <div class="col-5 satifaction-percentage">100%</div>
-                                                            <div class="col-7 satifaction-text reset-padding">Students Satisfaction</div>
-                                                          </div>
-                                                        </div>
-                                                        <div class="col-6 students-number-count reset-padding">
-                                                          <div class="row reset-margin">
-                                                            <div class="col-2 students-count">15</div>
-                                                            <div class="col-10 students-text reset-padding">No. of Students who have taken the course</div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-3 text-center brand-logos reset-padding">
-                                                      {/* <!-- <div id="demo" class="carousel slide" data-ride="carousel">
-                                                          <div class="row reset-margin carousel-inner">
-                                                            <img src="images/brand-logo-1.png" class="carousel-item active"/>
-                                                            <img src="images/brand-logo-1.png" class="carousel-item"/>
-                                                          </div>
-                                                      </div> --> */}
-                                                  </div>
-                                              </div>
-                                              <div class="card-body reset-padding">
-                                                  <ul class="backdrop-list">
-                                                      <li class="backdrop-item">
-                                                          <span class="item-heighlight">Objectives:</span>
-                                                          Diagnose a Level 1 failure To disassemble safely and in compliance.
-                                                          Replace a subset in safety and compliance. Go back to safety and compliance. 
-                                                          Conduct a functionality and compliance test.
-                                                      </li>
-                                                      <li class="backdrop-item">
-                                                          <span class="item-heighlight">Educational Terms:</span>
-                                                          Pedagogical face-to-face | Occupational situations | Technical Workshop
-                                                      </li>
-                                                      <li class="backdrop-item">
-                                                          <span class="item-heighlight">Prerequisite:</span>
-                                                          6 months of experience in repairing nomadic products
-                                                      </li>
-                                                      <li class="backdrop-item">
-                                                          <span class="item-heighlight">Duration:</span>
-                                                          35 Hours (5 days) 
-                                                      </li>
-                                                      <li class="backdrop-item">
-                                                          <span class="item-heighlight">Location:</span>
-                                                          PARIS - IDF
-                                                      </li>
-                                                      <li class="backdrop-item">
-                                                          <span class="item-heighlight">Individual rate:</span>
-                                                          XX
-                                                      </li>
-                                                  </ul>
-                                              </div> 
-                                              <div class="card-footer">
-                                                <button class="btn gsm-outline-individual  btn-gsm-statics-size pull-left">Learn More</button>
-                                                <button class="btn gsm-bg-individual btn-gsm-statics-size pull-right">Apply Now</button>
-                                              </div>
-                                          </figcaption>
-                                  </figure>
-                                </div>
-                                <div class="card satisfaction-card col-sm-6">
-                                  <figure>
-                                          <label class="satisfaction-label">Satisfaction 100%</label>
-                                          <div class="card-body froentside-panel row reset-margin">
-                                            <div class="col content-block">
-                                              <h5 class="card-title">Repair Safety and Compliance - 1</h5>
-                                              <p class="card-text">You are already repairing and want to establish your know-how by assimilating 
-                                                the basics of a diagnosis and intervention carried out in safety and compliance </p> 
-                                            </div>
-                                            <div class="col picture-block">
-                                              <img src="images/satatistics-pic.png" class="img-fluid"/>
-                                            </div> 
-                                          </div>
-                                          <figcaption>
-                                              <span class="backdrop-border"></span>
-                                              <div class="card-header row">
-                                                  <div class="col-9 students-satisfaction">
-                                                      <div class="row reset-margin">
-                                                        <div class="col-6 students-satisfaction-percentage">
-                                                          <div class="row reset-margin">
-                                                            <div class="col-5 satifaction-percentage">100%</div>
-                                                            <div class="col-7 satifaction-text reset-padding">Students Satisfaction</div>
-                                                          </div>
-                                                        </div>
-                                                        <div class="col-6 students-number-count reset-padding">
-                                                          <div class="row reset-margin">
-                                                            <div class="col-2 students-count">15</div>
-                                                            <div class="col-10 students-text reset-padding">No. of Students who have taken the course</div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-3 text-center brand-logos reset-padding">
-                                                      {/* <!-- <div id="demo" class="carousel slide" data-ride="carousel">
-                                                          <div class="row reset-margin carousel-inner">
-                                                            <img src="images/brand-logo-1.png" class="carousel-item active"/>
-                                                            <img src="images/brand-logo-1.png" class="carousel-item"/>
-                                                          </div>
-                                                      </div> --> */}
-                                                  </div>
-                                              </div>
-                                              <div class="card-body reset-padding">
-                                                  <ul class="backdrop-list">
-                                                      <li class="backdrop-item">
-                                                          <span class="item-heighlight">Objectives:</span>
-                                                          Diagnose a Level 1 failure To disassemble safely and in compliance.
-                                                          Replace a subset in safety and compliance. Go back to safety and compliance. 
-                                                          Conduct a functionality and compliance test.
-                                                      </li>
-                                                      <li class="backdrop-item">
-                                                          <span class="item-heighlight">Educational Terms:</span>
-                                                          Pedagogical face-to-face | Occupational situations | Technical Workshop
-                                                      </li>
-                                                      <li class="backdrop-item">
-                                                          <span class="item-heighlight">Prerequisite:</span>
-                                                          6 months of experience in repairing nomadic products
-                                                      </li>
-                                                      <li class="backdrop-item">
-                                                          <span class="item-heighlight">Duration:</span>
-                                                          35 Hours (5 days) 
-                                                      </li>
-                                                      <li class="backdrop-item">
-                                                          <span class="item-heighlight">Location:</span>
-                                                          PARIS - IDF
-                                                      </li>
-                                                      <li class="backdrop-item">
-                                                          <span class="item-heighlight">Individual rate:</span>
-                                                          XX
-                                                      </li>
-                                                  </ul>
-                                              </div> 
-                                              <div class="card-footer">
-                                                <button class="btn gsm-outline-individual  btn-gsm-statics-size pull-left">Learn More</button>
-                                                <button class="btn gsm-bg-individual btn-gsm-statics-size pull-right">Apply Now</button>
-                                              </div>
-                                          </figcaption>
-                                  </figure>
-                                </div>
-                                <div class="card satisfaction-card col-sm-6">
-                                  <figure>
-                                          <label class="satisfaction-label">Satisfaction 100%</label>
-                                          <div class="card-body froentside-panel row reset-margin">
-                                            <div class="col content-block">
-                                              <h5 class="card-title">Repair Safety and Compliance - 1</h5>
-                                              <p class="card-text">You are already repairing and want to establish your know-how by assimilating 
-                                                the basics of a diagnosis and intervention carried out in safety and compliance </p> 
-                                            </div>
-                                            <div class="col picture-block">
-                                              <img src="images/satatistics-pic.png" class="img-fluid"/>
-                                            </div> 
-                                          </div>
-                                          <figcaption>
-                                              <span class="backdrop-border"></span>
-                                              <div class="card-header row">
-                                                  <div class="col-9 students-satisfaction">
-                                                      <div class="row reset-margin">
-                                                        <div class="col-6 students-satisfaction-percentage">
-                                                          <div class="row reset-margin">
-                                                            <div class="col-5 satifaction-percentage">100%</div>
-                                                            <div class="col-7 satifaction-text reset-padding">Students Satisfaction</div>
-                                                          </div>
-                                                        </div>
-                                                        <div class="col-6 students-number-count reset-padding">
-                                                          <div class="row reset-margin">
-                                                            <div class="col-2 students-count">15</div>
-                                                            <div class="col-10 students-text reset-padding">No. of Students who have taken the course</div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-3 text-center brand-logos reset-padding">
-                                                      {/* <!-- <div id="demo" class="carousel slide" data-ride="carousel">
-                                                          <div class="row reset-margin carousel-inner">
-                                                            <img src="images/brand-logo-1.png" class="carousel-item active"/>
-                                                            <img src="images/brand-logo-1.png" class="carousel-item"/>
-                                                          </div>
-                                                      </div> --> */}
-                                                  </div>
-                                              </div>
-                                              <div class="card-body reset-padding">
-                                                  <ul class="backdrop-list">
-                                                      <li class="backdrop-item">
-                                                          <span class="item-heighlight">Objectives:</span>
-                                                          Diagnose a Level 1 failure To disassemble safely and in compliance.
-                                                          Replace a subset in safety and compliance. Go back to safety and compliance. 
-                                                          Conduct a functionality and compliance test.
-                                                      </li>
-                                                      <li class="backdrop-item">
-                                                          <span class="item-heighlight">Educational Terms:</span>
-                                                          Pedagogical face-to-face | Occupational situations | Technical Workshop
-                                                      </li>
-                                                      <li class="backdrop-item">
-                                                          <span class="item-heighlight">Prerequisite:</span>
-                                                          6 months of experience in repairing nomadic products
-                                                      </li>
-                                                      <li class="backdrop-item">
-                                                          <span class="item-heighlight">Duration:</span>
-                                                          35 Hours (5 days) 
-                                                      </li>
-                                                      <li class="backdrop-item">
-                                                          <span class="item-heighlight">Location:</span>
-                                                          PARIS - IDF
-                                                      </li>
-                                                      <li class="backdrop-item">
-                                                          <span class="item-heighlight">Individual rate:</span>
-                                                          XX
-                                                      </li>
-                                                  </ul>
-                                              </div> 
-                                              <div class="card-footer">
-                                                <button class="btn gsm-outline-individual  btn-gsm-statics-size pull-left">Learn More</button>
-                                                <button class="btn gsm-bg-individual btn-gsm-statics-size pull-right">Apply Now</button>
-                                              </div>
-                                          </figcaption>
-                                  </figure>
-                                </div>
+                      )}
                     </div>
                 </div>
 
