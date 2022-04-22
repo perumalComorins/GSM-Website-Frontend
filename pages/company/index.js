@@ -2,29 +2,57 @@ import { useEffect, useState } from 'react';
 import Sidepanel from "../../components/sidepanel" ;
 import Header from "../../components/header";
 import Footer from "../../components/footer";
+import { userService } from '../../services/user.service';
 import SatisfactionCardSlider from "./satisfaction-card-slider";
 import PeopleFaq from "./people-faq";
 export default function CompanyPage() {
-    const [datas, setDatas] = useState(null);
+    const type = 'company.php';
+    const [companypanel, setCompanypanel] = useState([]);
+    const [satisfyCard, setSatisfyCard] = useState([]);
+    var perChunk = 2;
+    
     useEffect(()=>{
         document.querySelector("body");
         let body_ele = document.querySelector("body");
-            body_ele.className='';
-            body_ele.classList.add("inner-page");
-        setDatas([1,2,3])
-        
-    },[])
-    useEffect(()=>{
-        if(datas && datas.length>0){
-            {/* Faq jquery script Starts */}
-            $(document).ready(function () {
+        body_ele.className='';
+        body_ele.classList.add("inner-page");
 
-                {/* Faq slider jquery script Starts */}
+        userService.getAllItems(type).then((res) => { 
+            setCompanypanel(res.json_data);
+            setSatisfyCard(res.json_data.satisfication_section);
+        }) 
+         .catch((err) => console.error(err)); 
+          
+    },[]) 
+
+    useEffect(()=>{
+
+        if(companypanel){
+            {/* Banner jquery script Starts */}
+            function BannerOverlays(){
+                var $banner_h;
+                var $banner_w;
+
+                $('.banner-cover').each(function(){
+                    $banner_h = $('.banner-view.smallsize-banner img').height();
+                    $banner_w = $('.banner-view.smallsize-banner img').width();
+                    $(this).width($banner_w).height($banner_h);
+                });
+            }
+
+            $(window).resize(function(){ 
+                BannerOverlays();
+            }); {/* Banner jquery script End */}
+            $(document).ready(function () {
+                BannerOverlays();
+
                 var totalfaqItems = $('.faq-item').length;
                 var currentfaqIndex = $('div.faq-item.active').index() + 1;
                 var currentfaqIndex_active;
                 var downfaq_index;
-
+                var autofaqIndex_active;
+                var autodownfaq_index;
+                
                 // $('.testimonial_num').html(''+currentIndex+'/'+totalItems+'');
                 $('.faq_num').html(''+currentfaqIndex+'');
 
@@ -39,6 +67,7 @@ export default function CompanyPage() {
                 });
 
                 $(".faq-prev").click(function(){
+                    
                     downfaq_index=downfaq_index-1;
                     if (downfaq_index >= 1 ){
                         //$('.testimonial_num').html(''+downfaq_index+'/'+totalItems+'');
@@ -46,9 +75,49 @@ export default function CompanyPage() {
                     }
                 });
 
+                $('#faqIndicators').carousel({
+                    interval: 2000
+                });
+                
+                $("#faqIndicators").on('slide.bs.carousel', function (e) {
+                    autofaqIndex_active = $('div.faq-item.active').index() + 2;
+                    $(".faq-next").click(function(e){
+                            e.preventDefault();
+                    });
+                    $(".faq-prev").click(function(e){
+                            e.preventDefault();
+                    })
+                      if (totalfaqItems >= autofaqIndex_active){
+                        autodownfaq_index= $('div.faq-item.active').index() + 2;
+                        $('.faq_num').html(''+autodownfaq_index+'');
+                      }
+                      
+                      else{
+                        $('.faq_num').html(''+currentfaqIndex+''); 
+                      }
+                      
+                });
+                
+                
             });
         }
-    },[datas])
+
+        
+    },[companypanel])
+
+    
+    var result = satisfyCard.reduce((resultArray, item, index) => { 
+        const chunkIndex = Math.floor(index/perChunk)
+      
+        if(!resultArray[chunkIndex]) {
+          resultArray[chunkIndex] = [] // start a new chunk
+        }
+      
+        resultArray[chunkIndex].push(item)
+      
+        return resultArray
+    }, [])
+
     return (
         <div id="wrapper">
             <div className="overlay">
@@ -61,20 +130,18 @@ export default function CompanyPage() {
                         <div className="container container-65 reset-padding">
                             <div className="row reset-margin">
                                 <div className="col-7 banner-left-col align-self-end">
-                                    <h2 className="individual-text">Montez en compétence avec votre EQUIPE</h2>
+                                    <h2 className="individual-text">{companypanel.banner_section && companypanel.banner_section.title}</h2>
                                     <p className="individual-text">
-                                        Augmentez votre taux de réparabilité, diminuez votre taux de retour 
-                                        grâce à de nouvelles compétences et devenez pionnier de la filière de la réparation.
+                                        {companypanel.banner_section && companypanel.banner_section.desc}
                                     </p>
-                                    <button type="button" className="btn gsm-bg-individual btn-gsm-lg">S’inscrire</button>
+                                    <button type="button" className="btn gsm-bg-individual btn-gsm-lg">{companypanel.banner_section && companypanel.banner_section.button_name}</button>
                                 </div>
-                                <div className="col-5 banner-right-col reset-padding" style={ {backgroundImage: "url('/assets/images/gsmmaster-logo-blue.png')"}}>
-                                    <img src="/assets/images/company-bg-pic.png" />
+                                <div className="col-5 banner-right-col reset-padding" style={ {backgroundImage: `url(${companypanel.banner_section && companypanel.banner_section.bg_image_url})`}}>
+                                    <img src={companypanel.banner_section && companypanel.banner_section.photo_image_url} />
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
                 </div>
 
                 
@@ -82,18 +149,271 @@ export default function CompanyPage() {
                 <section className="site-body-container">
                     <div className="registeration-box">
                         <div class="container container-70 reset-padding text-center register-box-bottom">
-                            <h2 class="section-title individual-text">Bâtissez votre équipe avec les <span class="partner-text text-uppercase">Competences</span> de demain</h2>
+                            <h2 class="section-title individual-text">
+                                {companypanel.banner_section && companypanel.banner_section.sub_title.map((items, index) => 
+                                 <>{index == 1 ?  <span class="partner-text text-uppercase">{items}</span> : items }   </>)}
+                            </h2>
                             <p class="section-content individual-text">
-                                Découvrez nos formations personnalisables et devenez incollables sur l'indice de réparabilité, 
-                                la réparation en sécurité et en conformité ou encore l'initiation à la microsoudure. 
-                                Toujours dispensées par des professionnels du secteur. Nous adaptons nos formations à vos besoins 
-                                et à ceux de vos équipes.
+                                {companypanel.banner_section && companypanel.banner_section.sub_desc}
                             </p>
                         </div>
                     </div>
 
-                    <SatisfactionCardSlider />
-                    <PeopleFaq/>
+                    <div className="container container-85 reset-padding">
+                        <div id="satisfaction-slider-web" class="satisfaction-slider carousel slide d-none d-lg-block" data-ride="carousel" data-interval="false" data-pause="hover">
+                            <div class="carousel-inner">
+                                {result && result.map((items, index) => 
+                                <div className={`carousel-item ${index==0 ? 'active':''}`}>
+                                    <div class="row mx-0">
+                                            {items && items.map((list,i)=>
+                                            <div class="card satisfaction-card col-sm-6">
+                                                <figure>
+                                                        <label class="satisfaction-label">{list.rating}</label>
+                                                        <div class="card-body froentside-panel row reset-margin">
+                                                            <div class="col content-block">
+                                                            <h5 class="card-title">{list.title}</h5>
+                                                            <p class="card-text">{list.desc}</p> 
+                                                            </div>
+                                                            <div class="col picture-block">
+                                                            <img src={list.photo_url} class="img-fluid"/>
+                                                            </div> 
+                                                        </div>
+                                                        <figcaption>
+                                                            <span class="backdrop-border"></span>
+                                                            <div class="card-header row">
+                                                                <div class="col-9 students-satisfaction">
+                                                                    <div class="row reset-margin">
+                                                                        <div class="col-6 students-satisfaction-percentage">
+                                                                        <div class="row reset-margin">
+                                                                            <div class="col-5 satifaction-percentage">{list.percentage}</div>
+                                                                            <div class="col-7 satifaction-text reset-padding">{list.label}</div>
+                                                                        </div>
+                                                                        </div>
+                                                                        <div class="col-6 students-number-count reset-padding">
+                                                                        <div class="row reset-margin">
+                                                                            <div class="col-2 students-count">{list.count}</div>
+                                                                            <div class="col-10 students-text reset-padding">{list.count_title}</div>
+                                                                        </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-3 text-center brand-logos reset-padding">
+                                                                    {/* <div id="demo" class="carousel slide" data-ride="carousel">
+                                                                        <div class="row reset-margin carousel-inner">
+                                                                            <img src="images/brand-logo-1.png" class="carousel-item active"/>
+                                                                            <img src="images/brand-logo-1.png" class="carousel-item"/>
+                                                                        </div>
+                                                                    </div> */}
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-body reset-padding">
+                                                                <ul class="backdrop-list">
+                                                                    <li class="backdrop-item">
+                                                                        <span className="item-heighlight">{list.obj_title}</span>
+                                                                        {list.objective}
+                                                                    </li>
+                                                                    <li className="backdrop-item">
+                                                                        <span className="item-heighlight">{list.edu_title}</span>
+                                                                        {list.educational_terms}
+                                                                    </li>
+                                                                    <li className="backdrop-item">
+                                                                        <span className="item-heighlight">{list.prereq_title}</span>
+                                                                        {list.prerequisite}
+                                                                    </li>
+                                                                    <li className="backdrop-item">
+                                                                        <span className="item-heighlight">{list.dur_title}</span>
+                                                                        {list.duration} 
+                                                                    </li>
+                                                                    <li className="backdrop-item">
+                                                                        <span className="item-heighlight">{list.loc_title}</span>
+                                                                        {list.location}
+                                                                    </li>
+                                                                    <li className="backdrop-item">
+                                                                        <span className="item-heighlight">{list.ind_title}</span>
+                                                                        {list.individual}
+                                                                    </li>
+                                                                </ul>
+                                                            </div> 
+                                                            <div class="card-footer">
+                                                                <button className="btn gsm-outline-individual  btn-gsm-statics-size pull-left">{list.button_name}</button>
+                                                                <button className="btn gsm-bg-individual btn-gsm-statics-size pull-right">{list.button_name_2}</button>
+                                                            </div>
+                                                        </figcaption>
+                                                </figure>
+                                            </div>)}
+                                    </div>
+                                </div> )}
+
+                            </div>
+
+                            {/* <!-- Indicators --> */}
+                            <ul class="carousel-indicators">
+                                {result && result.map((items, index) => 
+                                <li data-target="#satisfaction-slider-web" data-slide-to={index} class={index==0 ? 'active':''}></li>)}
+                            </ul>
+                        </div>
+
+                        
+                        <div id="satisfaction-slider-mobile" class="satisfaction-slider carousel slide d-block d-lg-none" data-ride="carousel" data-interval="false" data-pause="hover">
+                            <div class="carousel-inner">
+                                {satisfyCard && satisfyCard.map((items, index) => 
+                                <div class={`carousel-item ${index==0 ? 'active':''}`}>
+                                    <div class="row mx-0">
+                                            <div class="card satisfaction-card col-sm-12">
+                                            <figure>
+                                                    <label class="satisfaction-label">{items.rating}</label>
+                                                    <div class="card-body froentside-panel row reset-margin">
+                                                        <div class="col content-block">
+                                                        <h5 class="card-title">{items.title}</h5>
+                                                        <p class="card-text">{items.desc}</p> 
+                                                        </div>
+                                                        <div class="col picture-block">
+                                                        <img src={items.photo_url} class="img-fluid"/>
+                                                        </div> 
+                                                    </div>
+                                                    <figcaption>
+                                                        <span class="backdrop-border"></span>
+                                                        <div class="card-header row">
+                                                            <div class="col-10 students-satisfaction">
+                                                                <div class="row reset-margin">
+                                                                    <div class="col-6 students-satisfaction-percentage">
+                                                                    <div class="row reset-margin">
+                                                                        <div class="col-4 satifaction-percentage">{items.percentage}</div>
+                                                                        <div class="col-8 satifaction-text reset-padding">{items.label}</div>
+                                                                    </div>
+                                                                    </div>
+                                                                    <div class="col-6 students-number-count reset-padding">
+                                                                    <div class="row reset-margin">
+                                                                        <div class="col-2 students-count">{items.count}</div>
+                                                                        <div class="col-10 students-text reset-padding">{items.count_title}</div>
+                                                                    </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-2 text-center brand-logos reset-padding">
+                                                                {/* <div id="demo" class="carousel slide" data-ride="carousel">
+                                                                    <div class="row reset-margin carousel-inner">
+                                                                        <img src="images/brand-logo-1.png" class="carousel-item active"/>
+                                                                        <img src="images/brand-logo-1.png" class="carousel-item"/>
+                                                                    </div>
+                                                                </div> */}
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-body reset-padding">
+                                                            <ul class="backdrop-list">
+                                                                <li class="backdrop-item">
+                                                                    <span class="item-heighlight">{items.obj_title}</span>
+                                                                    {items.objective}
+                                                                </li>
+                                                                <li class="backdrop-item">
+                                                                    <span class="item-heighlight">{items.edu_title}</span>
+                                                                    {items.educational_terms}
+                                                                </li>
+                                                                <li class="backdrop-item">
+                                                                    <span class="item-heighlight">{items.prereq_title}</span>
+                                                                    {items.prerequisite}
+                                                                </li>
+                                                                <li class="backdrop-item">
+                                                                    <span class="item-heighlight">{items.dur_title}</span>
+                                                                    {items.duration} 
+                                                                </li>
+                                                                <li class="backdrop-item">
+                                                                    <span class="item-heighlight">{items.loc_title}</span>
+                                                                    {items.location}
+                                                                </li>
+                                                                <li class="backdrop-item">
+                                                                    <span class="item-heighlight">{items.ind_title}</span>
+                                                                    {items.individual}
+                                                                </li>
+                                                            </ul>
+                                                        </div> 
+                                                        <div class="card-footer">
+                                                            <button class="btn gsm-outline-individual pull-left">{items.button_name}</button>
+                                                            <button class="btn gsm-bg-individual pull-right">{items.button_name_2}</button>
+                                                        </div>
+                                                    </figcaption>
+                                            </figure>
+                                            </div>
+
+                                            
+                                        </div>
+                                </div>)}
+                            </div>
+                                
+                                
+                                <ul class="carousel-indicators">
+                                    {satisfyCard && satisfyCard.map((items, index) => 
+                                    <li data-target="#satisfaction-slider-mobile" data-slide-to={index} className={index==0 ? 'active':''}></li>
+                                    )}
+                                </ul>
+                                
+                        </div>
+                    </div>
+
+                    <div className="faq-section company-bg">
+                        <div className="container container-70 reset-padding">
+                            <div className="row reset-margin">
+                                <div id="main" className="col-md-6 reset-padding faq-accordian-list">
+                                    <h2 className="title">{companypanel.faq_section && companypanel.faq_section.faq.title}</h2>
+                                    <div className="accordion" id="faq">
+                                        {companypanel.faq_section && companypanel.faq_section.faq.questions.map((items, index) => 
+                                            <div className="card">
+                                                <div className="card-header" id={`faqhead${index + 1}`}>
+                                                    <a href="#" className={`btn btn-header-link ${index > 0 ? 'collapsed': ''}`} data-toggle="collapse" data-target={`#faq${index + 1}`}
+                                                        aria-expanded={index == 0 ? 'true' : 'false'} aria-controls={`faq${index + 1}`}>{items.quest}</a>
+                                                </div>
+
+                                                <div id={`faq${index + 1}`} className={`collapse ${index == 0 ? 'show' : ''}`} aria-labelledby={`faqhead${index + 1}`} data-parent="#faq">
+                                                    <div className="card-body">
+                                                        {items.answer}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <div className="pull-right mt-4">
+                                        <a className="faqView_more" href="#">{companypanel.faq_section && companypanel.faq_section.faq.label}</a>
+                                    </div>
+                                </div>
+
+                                <div className="col-md-1 reset-padding d-none d-md-block">
+                                </div>
+
+                                <div className="col-md-5 reset-padding faq-accordian-slider">
+                                    <div class="faq-label company-text">{companypanel.faq_section && companypanel.faq_section.title}</div>
+                                        <div id="faqIndicators" className="carousel slide" data-ride="carousel" data-wrap="false" data-interval="false">
+                                            <div className="carousel-inner">
+                                                {companypanel.faq_section && companypanel.faq_section.student_details.map((items, index) => 
+                                                    <div className={`carousel-item faq-item ${index == 0 && 'active'}`}>
+                                                        <div className="faqMember-thumbnail">
+                                                            <span className="faqequals-quotes">=</span>
+                                                                <img src={items.photo_link} className="img-fluid"/>
+                                                                    <div className="triangleBox"></div>
+                                                        </div>
+                                                        <p className="fag-content">
+                                                            {items.desc}
+                                                        </p>
+                                                        <h3 className="faqmemberName">{items.student_name}<span className="faqmemberDesignation">{items.qualification}</span></h3>
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <div className="faq-Nav">
+                                                            <a className="carousel-control-prev faq-prev" href="#faqIndicators" role="button" data-slide="prev">
+                                                            <img src="/assets/images/testimonial-arrow-left.png" />
+                                                            <span className="sr-only">Previous</span>
+                                                            </a>
+                                                            <span className="faq_num"></span>
+                                                            <a className="carousel-control-next faq-next" href="#faqIndicators" role="button" data-slide="next">
+                                                            <img src="/assets/images/testimonial-arrow-right.png" />
+                                                            <span className="sr-only">Next</span>
+                                                            </a>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div className="training-initial-formSection">
                         <div className="container container-70 reset-padding">

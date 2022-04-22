@@ -1,6 +1,6 @@
 export default function PeopleFaq() {
     return(
-      <div className="faq-section company-bg">
+    <div className="faq-section company-bg">
         <div className="container container-70 reset-padding">
           <div className="row reset-margin">
               <div id="main" className="col-md-6 reset-padding faq-accordian-list">
