@@ -2,76 +2,83 @@ import { useEffect, useState } from 'react';
 import Sidepanel from "../../components/sidepanel" ;
 import Header from "../../components/header";
 import Footer from "../../components/footer";
+import { userService } from '../../services/user.service';
 
 export default function QualityIndicatorPage(){
-        const [datas, setDatas] = useState(null);
-        useEffect(()=>{
-            document.querySelector("body");
-            let body_ele = document.querySelector("body");
-            body_ele.className='';
-            body_ele.classList.add("inner-page");
-            setDatas([1,2,3])
-            
-        },[])
-        useEffect(()=>{
-            if(datas && datas.length>0){
+    const type = 'quality-indicators.php';
+    const [qualityindicatorpanel, setQualityindicatorPanel] = useState([]);
+    
+    useEffect(()=>{
+        document.querySelector("body");
+        let body_ele = document.querySelector("body");
+        body_ele.className='';
+        body_ele.classList.add("inner-page");
 
-                function bootstrapTabControl(){
-            
-                    var i, items = $('.tab-nav-link'), pane = $('.tab-pane');
-                    // next
-                    $('.nexttab').on('click', function(){
-                        $('#qualityTab-Content.tab-content .tab-pane').removeClass('active');
+        userService.getAllItems(type).then((res) => { 
+            setQualityindicatorPanel(res.json_data);
+        }) 
+         .catch((err) => console.error(err));
         
-                        for(i = 0; i < items.length; i++){
-                            if($(items[i]).hasClass('active') == true){
-                                break;
-                            }
-                        }
-                        if(i < items.length - 1){
-                            // for tab
-                            $(items[i]).removeClass('active');
-                            $(items[i+1]).addClass('active');
-                            // for pane
-                            $(pane[i]).addClass('left')
-                            
-                            setTimeout(function() {
-                                $(pane[i]).removeClass('left');
-                                $(pane[i]).removeClass('active');
-                                $(pane[i+1]).addClass('active');
-                            }, 500);
-                            
-                        }
+    },[])
+    useEffect(()=>{
+        if(qualityindicatorpanel){
+
+            function bootstrapTabControl(){
         
-                    });
-                    // Prev
-                    $('.prevtab').on('click', function(){
-                        $('#qualityTab-Content.tab-content .tab-pane').removeClass('active');
-                        
-                        for(i = 0; i < items.length; i++){
-                            if($(items[i]).hasClass('active') == true){
-                                break;
-                            }
+                var i, items = $('.tab-nav-link'), pane = $('.tab-pane');
+                // next
+                $('.nexttab').on('click', function(){
+                    $('#qualityTab-Content.tab-content .tab-pane').removeClass('active');
+    
+                    for(i = 0; i < items.length; i++){
+                        if($(items[i]).hasClass('active') == true){
+                            break;
                         }
+                    }
+                    if(i < items.length - 1){
+                        // for tab
+                        $(items[i]).removeClass('active');
+                        $(items[i+1]).addClass('active');
+                        // for pane
+                        $(pane[i]).addClass('left')
                         
-                        if(i != 0){
-                            // for tab
-                            $(items[i]).removeClass('active');
-                            $(items[i-1]).addClass('active');
-                            // for pane
-                            $(pane[i]).addClass('left');
-                            setTimeout(function() {
-                                $(pane[i]).removeClass('left');
-                                $(pane[i]).removeClass('active');
-                                $(pane[i-1]).addClass('active');
-                            }, 500);
+                        setTimeout(function() {
+                            $(pane[i]).removeClass('left');
+                            $(pane[i]).removeClass('active');
+                            $(pane[i+1]).addClass('active');
+                        }, 500);
+                        
+                    }
+    
+                });
+                // Prev
+                $('.prevtab').on('click', function(){
+                    $('#qualityTab-Content.tab-content .tab-pane').removeClass('active');
+                    
+                    for(i = 0; i < items.length; i++){
+                        if($(items[i]).hasClass('active') == true){
+                            break;
                         }
-                    });
-                }
-                bootstrapTabControl();
+                    }
+                    
+                    if(i != 0){
+                        // for tab
+                        $(items[i]).removeClass('active');
+                        $(items[i-1]).addClass('active');
+                        // for pane
+                        $(pane[i]).addClass('left');
+                        setTimeout(function() {
+                            $(pane[i]).removeClass('left');
+                            $(pane[i]).removeClass('active');
+                            $(pane[i-1]).addClass('active');
+                        }, 500);
+                    }
+                });
             }
-        },[datas])
-
+            bootstrapTabControl();
+        }
+    },[qualityindicatorpanel])
+    console.log(qualityindicatorpanel);
     return(
         <div id="wrapper">
             <div className="overlay">
@@ -82,290 +89,46 @@ export default function QualityIndicatorPage(){
                     <Header/>
                 </header>
                 <div className="site-bannersection">
-                    <div className="indicator-view fullsize-banner" style={ {backgroundImage: "url('/assets/images/background_banner.png')"} }>
+                    <div className="indicator-view fullsize-banner" style={ {backgroundImage: `url(${qualityindicatorpanel.banner_section && qualityindicatorpanel.banner_section.backdrop_img})`}} >
                             <div className="container container-70 indicator-content reset-padding">
                                 <div className="row content-row">
                                     <div className="col-md-7 title-banner text-left align-self-center">
-                                        <h2>Indicateurs de qualité</h2>
-                                        <p>Pour toujours vous accueillir dans les meilleurs conditions, 
-                                        GSM Master est dans une démarche d’amélioration continue. 
-                                        Dans une démarche de transparence nous vous proposons une courte 
-                                        explication de nos indicateurs de qualité (logos, certification, label....).</p>
-                                        <button type="button" className="btn gsm-bg-white btn-gsm-md">En savoir plus</button>
+                                        <h2>{qualityindicatorpanel.banner_section && qualityindicatorpanel.banner_section.title}</h2>
+                                        <p>{qualityindicatorpanel.banner_section && qualityindicatorpanel.banner_section.desc}</p>
+                                        <button type="button" className="btn gsm-bg-white btn-gsm-md">{qualityindicatorpanel.banner_section && qualityindicatorpanel.banner_section.button_name}</button>
                                     </div>
                                     <div className="col-md-5 picture-banner">
-                                        <img src="/assets/images/squre.jpg" className="img-fluid rounded-circle"/>
+                                        <img src={qualityindicatorpanel.banner_section && qualityindicatorpanel.banner_section.banner_img} className="img-fluid rounded-circle"/>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                    </div>
                 </div>
 
                 <section className="site-body-container">
                     <div className="container container-70 reset-padding indicator-container">
-                        <h2 className="individual-text title">Nos labels de qualité</h2>
+                        <h2 className="individual-text title">{qualityindicatorpanel.label_title && qualityindicatorpanel.label_title}</h2>
                         <ul id="qualityTab" className="nav nav-tabs"  role="tablist">
+                            {qualityindicatorpanel.details && qualityindicatorpanel.details.map((items, index) => 
                             <li>
-                                <a className="tab-nav-link active" id="one-tab" data-toggle="tab" href="#one" role="tab" aria-controls="one" aria-selected="true">
-                                    <img src="/assets/images/indicators-logo-1.png" />
+                                <a className={`tab-nav-link ${index==0 ? 'active' :  ''}`} id={`${items.tab_slug}-tab`} data-toggle="tab" href={`#${items.tab_slug}`} role="tab" aria-controls={items.tab_slug} aria-selected={`${index==0 ? 'true' :  'false'}`}>
+                                    <img src={items.tab_logo_url} />
                                 </a>
-                            </li>
-                            <li>
-                                <a className="tab-nav-link" id="two-tab" data-toggle="tab" href="#two" role="tab" aria-controls="two" aria-selected="false">
-                                    <img src="/assets/images/indicators-logo-2.png" />
-                                </a>
-                            </li>
-                            <li>
-                                <a className="tab-nav-link" id="three-tab" data-toggle="tab" href="#three" role="tab" aria-controls="three" aria-selected="false">
-                                    <img src="/assets/images/indicators-logo-3.png" />
-                                </a>
-                            </li>
-                            <li>
-                                <a className="tab-nav-link" id="four-tab" data-toggle="tab" href="#four" role="tab" aria-controls="four" aria-selected="false">
-                                    <img src="/assets/images/indicators-logo-4.png" />
-                                </a>
-                            </li>
-                            <li>
-                                <a className="tab-nav-link" id="five-tab" data-toggle="tab" href="#five" role="tab" aria-controls="five" aria-selected="false">
-                                    <img src="/assets/images/indicators-logo-3.png" />
-                                </a>
-                            </li>
-                            <li>
-                                <a className="tab-nav-link" id="six-tab" data-toggle="tab" href="#six" role="tab" aria-controls="six" aria-selected="false">
-                                    <img src="/assets/images/indicators-logo-2.png" />
-                                </a>
-                            </li>
-                            <li>
-                                <a className="tab-nav-link" id="seven-tab" data-toggle="tab" href="#seven" role="tab" aria-controls="seven" aria-selected="false">
-                                    <img src="/assets/images/indicators-logo-4.png" />
-                                </a>
-                            </li>
-                            <li>
-                                <a className="tab-nav-link" id="eight-tab" data-toggle="tab" href="#eight" role="tab" aria-controls="eight" aria-selected="false">
-                                    <img src="/assets/images/indicators-logo-2.png" />
-                                </a>
-                            </li>
-                            <li>
-                                <a className="tab-nav-link active" id="nine-tab" data-toggle="tab" href="#nine" role="tab" aria-controls="nine" aria-selected="true">
-                                    <img src="/assets/images/indicators-logo-1.png" />
-                                </a>
-                            </li>
-                            <li>
-                                <a className="tab-nav-link" id="ten-tab" data-toggle="tab" href="#ten" role="tab" aria-controls="ten" aria-selected="false">
-                                    <img src="/assets/images/indicators-logo-2.png" />
-                                </a>
-                            </li>
-                            <li>
-                                <a className="tab-nav-link" id="eleven-tab" data-toggle="tab" href="#eleven" role="tab" aria-controls="eleven" aria-selected="false">
-                                    <img src="/assets/images/indicators-logo-4.png" />
-                                </a>
-                            </li>
-                            <li>
-                                <a className="tab-nav-link" id="twelve-tab" data-toggle="tab" href="#twelve" role="tab" aria-controls="twelve" aria-selected="false">
-                                    <img src="/assets/images/indicators-logo-3.png" />
-                                </a>
-                            </li>
-                            <li>
-                                <a className="tab-nav-link" id="threeteen-tab" data-toggle="tab" href="#threeteen" role="tab" aria-controls="threeteen" aria-selected="false">
-                                    <img src="/assets/images/indicators-logo-1.png" />
-                                </a>
-                            </li>
-                            <li>
-                                <a className="tab-nav-link" id="fourteen-tab" data-toggle="tab" href="#fourteen" role="tab" aria-controls="fourteen" aria-selected="false">
-                                    <img src="/assets/images/indicators-logo-4.png" />
-                                </a>
-                            </li>
-                            <li>
-                                <a className="tab-nav-link" id="fifteen-tab" data-toggle="tab" href="#fifteen" role="tab" aria-controls="fifteen" aria-selected="false">
-                                    <img src="/assets/images/indicators-logo-2.png" />
-                                </a>
-                            </li>
-                            
+                            </li>)}
                         </ul>
                         <div id="qualityTab-Content" className="tab-content" >
-                            <div className="tab-pane  show active" id="one" role="tabpanel" aria-labelledby="one-tab">
-                                <img src="/assets/images/indicators-logo-1.png" className="indicator-icon" />
-                                <h1>Qualiopi</h1>
+                            {qualityindicatorpanel.details && qualityindicatorpanel.details.map((items, index) => 
+                            <div className={`tab-pane ${index==0 ? 'active' :  ''}`} id={items.tab_slug} role="tabpanel" aria-labelledby={`${items.tab_slug}-tab`}>
+                                <img src={items.box_logo_url} className="indicator-icon" />
+                                <h1>{items.title}</h1>
                                 <p>
-                                    Nous avons voulu donner à tous la possibilité de réussir à s'épanouir grâce à la certification. 
-                                    Pour cela nous avons mis des prérequis accessibles au plus grand nombre (parler, comprendre, 
-                                    lire le français et connaitre les quatre opérations mathématiques). Si tu es intéressé par la 
-                                    formation et que tu n'as aucune expérience tu peux t'inscrire ici
+                                    {items.desc}
                                 </p>
-                                <button type="button" className="btn gsm-bg-individual btn-gsm-md">Learn more</button>
-                            </div>
-
-
-                            <div className="tab-pane " id="two" role="tabpanel" aria-labelledby="two-tab">
-                                <img src="/assets/images/indicators-logo-2.png" className="indicator-icon" />
-                                <h1>Paris</h1>
-                                <p>
-                                    Nous avons voulu donner à tous la possibilité de réussir à s'épanouir grâce à la certification. 
-                                    Pour cela nous avons mis des prérequis accessibles au plus grand nombre (parler, comprendre, 
-                                    lire le français et connaitre les quatre opérations mathématiques). Si tu es intéressé par la 
-                                    formation et que tu n'as aucune expérience tu peux t'inscrire ici
-                                </p>
-                                <button type="button" className="btn gsm-bg-individual btn-gsm-md">Learn more</button>
-                            </div>
-
-                            <div className="tab-pane " id="three" role="tabpanel" aria-labelledby="three-tab">
-                                <img src="/assets/images/indicators-logo-3.png" className="indicator-icon" />
-                                <h1>Paris</h1>
-                                <p>
-                                    Nous avons voulu donner à tous la possibilité de réussir à s'épanouir grâce à la certification. 
-                                    Pour cela nous avons mis des prérequis accessibles au plus grand nombre (parler, comprendre, 
-                                    lire le français et connaitre les quatre opérations mathématiques). Si tu es intéressé par la 
-                                    formation et que tu n'as aucune expérience tu peux t'inscrire ici
-                                </p>
-                                <button type="button" className="btn gsm-bg-individual btn-gsm-md">Learn more</button>
-                            </div>
-
-                            <div className="tab-pane " id="four" role="tabpanel" aria-labelledby="four-tab">
-                                <img src="/assets/images/indicators-logo-4.png" className="indicator-icon" />
-                                <h1>MONCOMPTE</h1>
-                                <p>
-                                    Nous avons voulu donner à tous la possibilité de réussir à s'épanouir grâce à la certification. 
-                                    Pour cela nous avons mis des prérequis accessibles au plus grand nombre (parler, comprendre, 
-                                    lire le français et connaitre les quatre opérations mathématiques). Si tu es intéressé par la 
-                                    formation et que tu n'as aucune expérience tu peux t'inscrire ici
-                                </p>
-                                <button type="button" className="btn gsm-bg-individual btn-gsm-md">Learn more</button>
-                            </div>
-
-                            <div className="tab-pane " id="five" role="tabpanel" aria-labelledby="five-tab">
-                                <img src="/assets/images/indicators-logo-3.png" className="indicator-icon" />
-                                <h1>Paris</h1>
-                                <p>
-                                    Nous avons voulu donner à tous la possibilité de réussir à s'épanouir grâce à la certification. 
-                                    Pour cela nous avons mis des prérequis accessibles au plus grand nombre (parler, comprendre, 
-                                    lire le français et connaitre les quatre opérations mathématiques). Si tu es intéressé par la 
-                                    formation et que tu n'as aucune expérience tu peux t'inscrire ici
-                                </p>
-                                <button type="button" className="btn gsm-bg-individual btn-gsm-md">Learn more</button>
-                            </div>
-
-                            <div className="tab-pane " id="six" role="tabpanel" aria-labelledby="six-tab">
-                                <img src="/assets/images/indicators-logo-2.png" className="indicator-icon" />
-                                <h1>Paris</h1>
-                                <p>
-                                    Nous avons voulu donner à tous la possibilité de réussir à s'épanouir grâce à la certification. 
-                                    Pour cela nous avons mis des prérequis accessibles au plus grand nombre (parler, comprendre, 
-                                    lire le français et connaitre les quatre opérations mathématiques). Si tu es intéressé par la 
-                                    formation et que tu n'as aucune expérience tu peux t'inscrire ici
-                                </p>
-                                <button type="button" className="btn gsm-bg-individual btn-gsm-md">Learn more</button>
-                            </div>
-
-                            <div className="tab-pane " id="seven" role="tabpanel" aria-labelledby="seven-tab">
-                                <img src="/assets/images/indicators-logo-4.png" className="indicator-icon" />
-                                <h1>Paris</h1>
-                                <p>
-                                    Nous avons voulu donner à tous la possibilité de réussir à s'épanouir grâce à la certification. 
-                                    Pour cela nous avons mis des prérequis accessibles au plus grand nombre (parler, comprendre, 
-                                    lire le français et connaitre les quatre opérations mathématiques). Si tu es intéressé par la 
-                                    formation et que tu n'as aucune expérience tu peux t'inscrire ici
-                                </p>
-                                <button type="button" className="btn gsm-bg-individual btn-gsm-md">Learn more</button>
-                            </div>
-
-                            <div className="tab-pane " id="eight" role="tabpanel" aria-labelledby="eight-tab">
-                                <img src="/assets/images/indicators-logo-2.png" className="indicator-icon" />
-                                <h1>Paris</h1>
-                                <p>
-                                    Nous avons voulu donner à tous la possibilité de réussir à s'épanouir grâce à la certification. 
-                                    Pour cela nous avons mis des prérequis accessibles au plus grand nombre (parler, comprendre, 
-                                    lire le français et connaitre les quatre opérations mathématiques). Si tu es intéressé par la 
-                                    formation et que tu n'as aucune expérience tu peux t'inscrire ici
-                                </p>
-                                <button type="button" className="btn gsm-bg-individual btn-gsm-md">Learn more</button>
-                            </div>
-
-                            <div className="tab-pane " id="nine" role="tabpanel" aria-labelledby="nine-tab">
-                                <img src="/assets/images/indicators-logo-1.png" className="indicator-icon" />
-                                <h1>Paris</h1>
-                                <p>
-                                    Nous avons voulu donner à tous la possibilité de réussir à s'épanouir grâce à la certification. 
-                                    Pour cela nous avons mis des prérequis accessibles au plus grand nombre (parler, comprendre, 
-                                    lire le français et connaitre les quatre opérations mathématiques). Si tu es intéressé par la 
-                                    formation et que tu n'as aucune expérience tu peux t'inscrire ici
-                                </p>
-                                <button type="button" className="btn gsm-bg-individual btn-gsm-md">Learn more</button>
-                            </div>
-
-                            <div className="tab-pane " id="ten" role="tabpanel" aria-labelledby="ten-tab">
-                                <img src="/assets/images/indicators-logo-2.png" className="indicator-icon" />
-                                <h1>Paris</h1>
-                                <p>
-                                    Nous avons voulu donner à tous la possibilité de réussir à s'épanouir grâce à la certification. 
-                                    Pour cela nous avons mis des prérequis accessibles au plus grand nombre (parler, comprendre, 
-                                    lire le français et connaitre les quatre opérations mathématiques). Si tu es intéressé par la 
-                                    formation et que tu n'as aucune expérience tu peux t'inscrire ici
-                                </p>
-                                <button type="button" className="btn gsm-bg-individual btn-gsm-md">Learn more</button>
-                            </div>
-
-                            <div className="tab-pane " id="eleven" role="tabpanel" aria-labelledby="eleven-tab">
-                                <img src="/assets/images/indicators-logo-4.png" className="indicator-icon" />
-                                <h1>Paris</h1>
-                                <p>
-                                    Nous avons voulu donner à tous la possibilité de réussir à s'épanouir grâce à la certification. 
-                                    Pour cela nous avons mis des prérequis accessibles au plus grand nombre (parler, comprendre, 
-                                    lire le français et connaitre les quatre opérations mathématiques). Si tu es intéressé par la 
-                                    formation et que tu n'as aucune expérience tu peux t'inscrire ici
-                                </p>
-                                <button type="button" className="btn gsm-bg-individual btn-gsm-md">Learn more</button>
-                            </div>
-
-                            <div className="tab-pane " id="twelve" role="tabpanel" aria-labelledby="twelve-tab">
-                                <img src="/assets/images/indicators-logo-3.png" className="indicator-icon" />
-                                <h1>Paris</h1>
-                                <p>
-                                    Nous avons voulu donner à tous la possibilité de réussir à s'épanouir grâce à la certification. 
-                                    Pour cela nous avons mis des prérequis accessibles au plus grand nombre (parler, comprendre, 
-                                    lire le français et connaitre les quatre opérations mathématiques). Si tu es intéressé par la 
-                                    formation et que tu n'as aucune expérience tu peux t'inscrire ici
-                                </p>
-                                <button type="button" className="btn gsm-bg-individual btn-gsm-md">Learn more</button>
-                            </div>
-
-                            <div className="tab-pane " id="threeteen" role="tabpanel" aria-labelledby="threeteen-tab">
-                                <img src="/assets/images/indicators-logo-1.png" className="indicator-icon" />
-                                <h1>Paris</h1>
-                                <p>
-                                    Nous avons voulu donner à tous la possibilité de réussir à s'épanouir grâce à la certification. 
-                                    Pour cela nous avons mis des prérequis accessibles au plus grand nombre (parler, comprendre, 
-                                    lire le français et connaitre les quatre opérations mathématiques). Si tu es intéressé par la 
-                                    formation et que tu n'as aucune expérience tu peux t'inscrire ici
-                                </p>
-                                <button type="button" className="btn gsm-bg-individual btn-gsm-md">Learn more</button>
-                            </div>
-
-                            <div className="tab-pane " id="fourteen" role="tabpanel" aria-labelledby="fourteen-tab">
-                                <img src="/assets/images/indicators-logo-4.png" className="indicator-icon" />
-                                <h1>Paris</h1>
-                                <p>
-                                    Nous avons voulu donner à tous la possibilité de réussir à s'épanouir grâce à la certification. 
-                                    Pour cela nous avons mis des prérequis accessibles au plus grand nombre (parler, comprendre, 
-                                    lire le français et connaitre les quatre opérations mathématiques). Si tu es intéressé par la 
-                                    formation et que tu n'as aucune expérience tu peux t'inscrire ici
-                                </p>
-                                <button type="button" className="btn gsm-bg-individual btn-gsm-md">Learn more</button>
-                            </div>
-
-                            <div className="tab-pane " id="fifteen" role="tabpanel" aria-labelledby="fifteen-tab">
-                                <img src="/assets/images/indicators-logo-2.png" className="indicator-icon" />
-                                <h1>Paris</h1>
-                                <p>
-                                    Nous avons voulu donner à tous la possibilité de réussir à s'épanouir grâce à la certification. 
-                                    Pour cela nous avons mis des prérequis accessibles au plus grand nombre (parler, comprendre, 
-                                    lire le français et connaitre les quatre opérations mathématiques). Si tu es intéressé par la 
-                                    formation et que tu n'as aucune expérience tu peux t'inscrire ici
-                                </p>
-                                <button type="button" className="btn gsm-bg-individual btn-gsm-md">Learn more</button>
-                            </div>
-
-                            <a className="prevtab"><i><img src="/assets/images/prev-i.png" /></i> Prev</a>
-                            <a className="nexttab">Next <i><img src="/assets/images/next-i.png" /></i></a>
+                                <button type="button" className="btn gsm-bg-individual btn-gsm-md">{qualityindicatorpanel.button_text && qualityindicatorpanel.button_text}</button>
+                            </div>)}
+                            
+                            <a className="prevtab"><i><img src="/assets/images/prev-i.png" /></i> {qualityindicatorpanel.label_prev_text && qualityindicatorpanel.label_prev_text}</a>
+                            <a className="nexttab">{qualityindicatorpanel.label_next_text && qualityindicatorpanel.label_next_text} <i><img src="/assets/images/next-i.png" /></i></a>
                         </div>
                     
                     </div>      
