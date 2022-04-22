@@ -400,35 +400,35 @@ export default function IndividualPage() {
                                             </div>
                                         </div>
                                 </div>
-                                
+
                                 <div className="col-md-1 reset-padding d-none d-md-block">
                                 </div>
+
                                 <div id="main" className="col-md-6 reset-padding faq-accordian-list">
                                     <h2 className="title">{individualpanel.faq_section && individualpanel.faq_section.faq.title}</h2>
+                                    <div className="accordion" id="faq">
+                                        {individualpanel.faq_section && individualpanel.faq_section.faq.questions.map((items, index) => 
+                                            <div className="card">
+                                                <div className="card-header" id={`faqhead${index + 1}`}>
+                                                    <a href="#" className={`btn btn-header-link ${index > 0 ? 'collapsed': ''}`} data-toggle="collapse" data-target={`#faq${index + 1}`}
+                                                        aria-expanded={index == 0 ? 'true' : 'false'} aria-controls={`faq${index + 1}`}>{items.quest}</a>
+                                                </div>
 
-                                        <div className="accordion" id="faq">
-                                            {individualpanel.faq_section && individualpanel.faq_section.faq.questions.map((items, index) => 
-                                                <div className="card">
-                                                    <div className="card-header" id={`faqhead${index + 1}`}>
-                                                        <a href="#" className={`btn btn-header-link ${index > 0 ? 'collapsed': ''}`} data-toggle="collapse" data-target={`#faq${index + 1}`}
-                                                            aria-expanded={index == 0 ? 'true' : 'false'} aria-controls={`faq${index + 1}`}>{items.quest}</a>
-                                                    </div>
-
-                                                    <div id={`faq${index + 1}`} className={`collapse ${index == 0 ? 'show' : ''}`} aria-labelledby={`faqhead${index + 1}`} data-parent="#faq">
-                                                        <div className="card-body">
-                                                            {items.answer}
-                                                        </div>
+                                                <div id={`faq${index + 1}`} className={`collapse ${index == 0 ? 'show' : ''}`} aria-labelledby={`faqhead${index + 1}`} data-parent="#faq">
+                                                    <div className="card-body">
+                                                        {items.answer}
                                                     </div>
                                                 </div>
-                                            )}
-                                        </div>
+                                            </div>
+                                        )}
+                                    </div>
 
-                                        <div className="pull-right mt-4">
-                                            <a className="faqView_more" href="#">{individualpanel.faq_section && individualpanel.faq_section.faq.label}</a>
-                                        </div>
+                                    <div className="pull-right mt-4">
+                                        <a className="faqView_more" href="#">{individualpanel.faq_section && individualpanel.faq_section.faq.label}</a>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
                     {/*End PeopleFaq*/}                    
                             
