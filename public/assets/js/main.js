@@ -36,47 +36,6 @@ $(window).scroll(function(){
 
 $(document).ready(function(){
     
-    
-    
-   
-
-
-    /**** Testimonial slider section *****/
-    
-
-    
-        var totalItems = $('.testimonial-item').length,
-            currentIndex = $('div.testimonial-item.active').index() + 1,
-            currentIndex_active,
-            down_index;
-
-        // $('.testimonial_num').html(''+currentIndex+'/'+totalItems+'');
-        $('.testimonial_num').html(''+currentIndex+'');
-
-        $(".next").click(function(){
-            currentIndex_active = $('div.testimonial-item.active').index() + 2;
-            if (totalItems >= currentIndex_active)
-            {
-                down_index= $('div.testimonial-item.active').index() + 2;
-                //$('.testimonial_num').html(''+currentIndex_active+'/'+totalItems+'');
-                $('.testimonial_num').html(''+currentIndex_active+'');
-            }
-        });
-
-        $(".prev").click(function(){
-            down_index=down_index-1;
-            if (down_index >= 1 )
-            {
-                //$('.testimonial_num').html(''+down_index+'/'+totalItems+'');
-                $('.testimonial_num').html(''+down_index+'');
-            }
-        });
-        
-        
-        
-
-        
-    
     $('#publishModal').modal('show');
     $('#draftModal').modal('show');
 
