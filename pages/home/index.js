@@ -9,7 +9,8 @@ export default function HomePage(){
 
     const type = 'home.php';
     const [homepanel, setHomepanel] = useState([]);
-    
+    const [clientlogoCard, setclientlogoCard] = useState([]);
+    var perChunk = 4;
     useEffect(()=>{
         document.querySelector("body");
         let body_ele = document.querySelector("body");
@@ -19,6 +20,7 @@ export default function HomePage(){
         userService.getAllItems(type).then((res) => { 
             setHomepanel([1,2,3])       
             setHomepanel(res.json_data);
+            setclientlogoCard(res.json_data.banner_section.logo)
         }) 
          .catch((err) => console.error(err));         
     },[])
@@ -84,6 +86,17 @@ export default function HomePage(){
         });
     }
 
+    var result = clientlogoCard.reduce((resultArray, item, index) => { 
+        const chunkIndex = Math.floor(index/perChunk)
+      
+        if(!resultArray[chunkIndex]) {
+          resultArray[chunkIndex] = [] // start a new chunk
+        }
+      
+        resultArray[chunkIndex].push(item)
+      
+        return resultArray
+    }, [])
 
     return (
         <div id="wrapper">
@@ -115,16 +128,18 @@ export default function HomePage(){
                                 </div>
                                 <div id="client-logo-slider" className="client-logo-section d-none d-lg-block" data-ride="carousel" data-interval="3000" data-pause="hover">
                                     <div className="carousel-inner">
-                                        <div className="carousel-item active">
-                                            <div className="row mx-0">
-                                                {homepanel.banner_section && homepanel.banner_section.logo.map((logo, index) =>
-                                                    <div className="col-3 align-self-center reset-padding">
-                                                        <img src={logo.logo_url} className="img-fluid"/>
-                                                    </div>  
-                                                )}
-                                                
-                                            </div>
-                                        </div>                                        
+                                        {result && result.map((items, index) => 
+                                            <div className={`carousel-item ${index==0 ? 'active':''}`}>
+                                                <div className="row mx-0">
+                                                    {items && items.map((list,i)=>
+                                                        <div className="col-3 align-self-center reset-padding">
+                                                            <img src={list.logo_url} className="img-fluid"/>
+                                                        </div>  
+                                                    )}
+                                                </div>
+                                            </div>  
+                                        )}
+                                        
                                         <ul className="carousel-indicators">
                                             <li data-target="#client-logo-slider" data-slide-to="0" className="active"></li>
                                             <li data-target="#client-logo-slider" data-slide-to="1"></li>
@@ -133,6 +148,20 @@ export default function HomePage(){
                                 </div>
                             </div>
                             
+                        </div>
+                </div>
+                
+                <div id="client-logo-slider" class="d-block d-lg-none" data-ride="carousel" data-interval="3000" data-pause="hover">
+                        <div class="carousel-inner">
+                            {result && result.map((items, index) => 
+                            <div class={`carousel-item ${index==0 ? 'active':''}`}>
+                              <div class="row mx-0">
+                                  {items && items.map((list,i)=>
+                                  <div class="col-3 align-self-center">
+                                    <img src={list.logo_url} class="img-fluid" />
+                                  </div> )}
+                              </div>
+                            </div>)}
                         </div>
                 </div>
 
@@ -145,6 +174,7 @@ export default function HomePage(){
                             
                         <div className="whatwedo-icon-texts-section">
                             <div className="row reset-margin">
+                                
                                 {homepanel.gsm_master && homepanel.gsm_master.modules.map((module, increment) =>
                                     <>
                                         <div className="col-md-5 icontexts-box reset-padding">
