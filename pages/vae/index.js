@@ -50,7 +50,6 @@ export default function Vae() {
                           </div>
                       </div>
               </div>
-              
           </div>
           
           <section class="site-body-container">
