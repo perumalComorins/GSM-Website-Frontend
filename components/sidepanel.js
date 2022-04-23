@@ -122,7 +122,7 @@ const Sidepanel = (props) => {
 
                             <div className="course_Section mt-5 d-none d-lg-block">
                                 {sidepanel.sidepanel_list_menu && sidepanel.sidepanel_list_menu.map((items, index) => 
-                                    <a href={items.img_url} className="applyTag individualColor"><img src="/assets/images/cornershadow.png" />{items.list}</a>
+                                    <a href={items.link} className={`applyTag ${items.classname}`}><img src={items.img_url} />{items.list}</a>
                                 )}
                             </div>
                             
@@ -130,18 +130,19 @@ const Sidepanel = (props) => {
                                 <ul>
                                     {sidepanel.toppanel_mobile_menu && sidepanel.toppanel_mobile_menu.map((items, index) => 
 
-                                        <li class="btn-group dropright">
-                                            <a href={items.link} class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                {items.top_title} <i class="fa fa-angle-right right-arrow"></i>
-                                            </a>
-                                            <ul class="dropdown-menu" >
-                                                {items.sub_menu.map((items, index) =>
-                                                    <li><a href={items.menu_link}>{items.menu_name}</a></li>   
-                                                )}
-                                            </ul>
-                                        </li>
+                                    <li class="btn-group dropright">
+                                        <a href={items.link} class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            {items.top_title} <i class="fa fa-angle-right right-arrow"></i>
+                                        </a>
+                                        <ul class="dropdown-menu" >
+                                            {items.sub_menu.map((items, index) =>
+                                                <li><a href={items.menu_link}>{items.menu_name}</a></li>   
+                                            )}
+                                        </ul>
+                                    </li>
                                     
                                     )}
+
                                 </ul>
                             </nav>
                             <div className="sidepanelCopyright">
