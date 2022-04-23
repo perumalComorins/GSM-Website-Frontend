@@ -34,7 +34,7 @@ export default function Vae() {
               <Header />
           </header>
           <div class="site-bannersection">
-             <div class="indicator-view fullsize-banner" style={ {backgroundImage:`url(${vaepanel.banner_section && vaepanel.banner_section.back_img})`,} } >
+             <div class="indicator-view fullsize-banner" style={{backgroundImage:`url(${vaepanel.banner_section && vaepanel.banner_section.back_img})`,} } >
                       <div class="container container-70 indicator-content reset-padding">
                           <div class="row content-row reverse-row-mobile">
                             <div class="col-md-7 title-banner text-left align-self-center">
