@@ -33,8 +33,7 @@ export default function Certificate4() {
               <Header />
           </header>
           <div class="site-bannersection">
-{/*           style="background-image: url('images/background_banner.png');"
- */}              <div class="indicator-view fullsize-banner" style={ {backgroundImage:`url(${certificate4panel.banner_section && certificate4panel.banner_section.back_img})`,} } >
+             <div class="indicator-view fullsize-banner" style={ {backgroundImage:`url(${certificate4panel.banner_section && certificate4panel.banner_section.back_img})`,} } >
                       <div class="container container-70 indicator-content reset-padding">
                           <div class="row content-row reverse-row-mobile">
                             <div class="col-md-7 title-banner text-left align-self-center">
