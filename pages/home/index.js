@@ -258,7 +258,7 @@ export default function HomePage(){
                     <div className="satisfaction-rate" style={{backgroundImage: "url('/assets/images/map-bg.png')",}} >
                             <div className="satisfaction-rate-innersection container container-60 reset-padding" >
                                 <div className="title-bar text-center">
-                                    <h2>Nos <span className="partner-text text-uppercase">PARTENAIRES</span></h2>
+                                    <h2>Notre taux de <span className="partner-text text-uppercase">SATISFACTION GLOBAL</span></h2>
                                     <p className="intro-content individual-text">Nos taux de réussite de la certification pour "Réparateur(trice) produits nomades" de 2016 à aujourd'hui </p>
                                 </div>
                                 <div className="satisfaction-rate-section">
@@ -282,7 +282,7 @@ export default function HomePage(){
                                             <p className="organization-para individual-text">
                                             {homepanel.gsm_organization && homepanel.gsm_organization.desc}
                                             </p>
-                                            <button className="btn d-block d-md-none gsm-bg-individual organisation-viewmore" type="button">Register Now</button>
+                                            <button className="btn d-block d-md-none gsm-bg-individual organisation-viewmore mr-2" type="button">Register Now</button>
                                             <button className="btn btn-gsm-sm gsm-outline-individual organisation-viewmore" type="button">{homepanel.gsm_organization && homepanel.gsm_organization.button_name}</button>
                                         </div>
                                     </div>

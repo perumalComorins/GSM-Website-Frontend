@@ -53,7 +53,8 @@ export default function Credits() {
                             </div>
                             
                             <div class="col-md-7 reset-padding">
-                              <img src={creditpanel && creditpanel.img_url}  class="legal-banner"/>
+                                <h1 class="d-block d-md-none credits-banner-title">Credits</h1>
+                                <img src={creditpanel && creditpanel.img_url}  class="legal-banner"/>
                             </div>
                             
                         </div>

@@ -170,12 +170,19 @@ export default function ContactFaqPage(){
                                         <div className="appointment-card card mx-auto">
                                             <div className="card-body">
                                             <div className="row">
-                                                <div className="col-3">
+                                                <div className="col-4 col-lg-3">
                                                     <img src="/assets/images/noun_Appointment-icon.png" className="img-fluid"/>
                                                 </div>
-                                                <div className="col-9">
+                                                <div className="col-8 col-lg-9">
                                                     <h3 className="card-title">Prenez rendez-vous</h3>
-                                                    <p className="card-text">
+                                                    <p className="card-text d-none d-lg-block">
+                                                    Vous ne trouvez pas la réponse à votre question ou vous avez besoin de plus de détails. 
+                                                    Notre équipe est à votre disposition pour vous répondre. Pensez à interroger la FAQ ci-dessus.
+                                                    </p>
+                                                    <button className="btn gsm-bg-white btn-gsm-md my-2 d-none d-lg-block">Réservez votre créneau</button>
+                                                </div>
+                                                <div className="col-sm-12 d-block d-lg-none">
+                                                    <p className="card-text ">
                                                     Vous ne trouvez pas la réponse à votre question ou vous avez besoin de plus de détails. 
                                                     Notre équipe est à votre disposition pour vous répondre. Pensez à interroger la FAQ ci-dessus.
                                                     </p>

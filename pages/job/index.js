@@ -272,14 +272,14 @@ export default function Job(){
                                                                     )}
                                                                 </ul>
                                                             </div>
-                                                            <h4>Skills</h4>
-                                                            <ul className="job-skill-lists">
+                                                            <h4 className="d-none d-lg-block">Skills</h4>
+                                                            <ul className="d-none d-lg-block job-skill-lists">
                                                                 {items.toggle && items.toggle.skills.map((each, i) =>
                                                                     <li>{each.list}</li>
                                                                 )}
                                                             </ul>
                                                             
-                                                            <div className="row reset-margin">
+                                                            <div className="row d-none d-lg-block reset-margin">
                                                                 <div className="col-md-4 reset-padding job-curd-operation">
                                                                     <h3 className="individual-text">{items.toggle.head_1}</h3>
                                                                     <label>{items.toggle.label_1}</label>
@@ -471,14 +471,14 @@ export default function Job(){
                                                                     )}
                                                                 </ul>
                                                             </div>
-                                                            <h4>Skills</h4>
-                                                            <ul className="job-skill-lists">
+                                                            <h4 className="d-none d-lg-block">Skills</h4>
+                                                            <ul className="job-skill-lists d-none d-lg-block">
                                                                 {items.toggle && items.toggle.skills.map((each, i)=>
                                                                     <li>{each.list}</li>        
                                                                 )}
                                                             </ul>
                                                             
-                                                            <div className="row reset-margin">
+                                                            <div className="row d-none d-lg-block reset-margin">
                                                                 <div className="col-md-4 reset-padding job-curd-operation">
                                                                     <h3 className="individual-text">{items.toggle && items.toggle.head_1}</h3>
                                                                     <label>{items.toggle && items.toggle.label_1}</label>

@@ -93,7 +93,7 @@ export default function Certificate4() {
                               </div>
                               <div class="service-footer d-table text-center">
                                 <div class="service-footer-innerwrapper d-table-cell align-middle">
-                                  <button type="button" class="btn gsm-bg-individual btn-block py-3" >{items.button_name}</button>
+                                  <button type="button" class={`btn btn-block py-3 ${items.class_name}`} >{items.button_name}</button>
                                 </div>
                               </div>
                             </div>
@@ -122,7 +122,7 @@ export default function Certificate4() {
                                 </div>
                                 <div class="service-footer d-table text-center">
                                   <div class="service-footer-innerwrapper d-table-cell align-middle">
-                                    <button type="button" class="btn gsm-bg-company btn-block py-3" >{items.button_name}</button>
+                                    <button type="button" class={`btn btn-block py-3 ${items.class_name}`} >{items.button_name}</button>
                                   </div>
                                 </div>
                               </div>

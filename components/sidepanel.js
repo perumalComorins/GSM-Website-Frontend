@@ -122,7 +122,7 @@ const Sidepanel = (props) => {
 
                             <div className="course_Section mt-5 d-none d-lg-block">
                                 {sidepanel.sidepanel_list_menu && sidepanel.sidepanel_list_menu.map((items, index) => 
-                                    <a href={items.link} className={`applyTag ${items.classname}`}><img src={items.img_url} />{items.list}</a>
+                                    <Link href={items.link} className={`applyTag ${items.classname}`}><img src={items.img_url} />{items.list}</Link>
                                 )}
                             </div>
                             
@@ -136,7 +136,7 @@ const Sidepanel = (props) => {
                                         </a>
                                         <ul class="dropdown-menu" >
                                             {items.sub_menu.map((items, index) =>
-                                                <li><a href={items.menu_link}>{items.menu_name}</a></li>   
+                                                <li><Link href={items.menu_link}>{items.menu_name}</Link></li>   
                                             )}
                                         </ul>
                                     </li>

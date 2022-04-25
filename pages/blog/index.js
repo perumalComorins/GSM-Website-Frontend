@@ -43,7 +43,8 @@ export default function Blog(){
                     <div className="row reset-margin reverse-row-mobile">
                         <div className="col-md-6 blog-title-col reset-padding align-self-center">
                             <h1 className="individual-text title d-none d-md-block">{blog.title}</h1>
-                            <h1 className="individual-text title d-block d-md-none">Read what future holds for you</h1>
+                            <h1 className="individual-text title d-block d-md-none">{blog.mobile_title}</h1>
+                            <h2 className="partner-text sub-title d-block d-md-none">{blog.sub_title}</h2>
                         </div>
                         <div className="col-md-6 banner-pic-col reset-padding">
                             <img src="/assets/images/blog-pic.png" className="img-fluid" />

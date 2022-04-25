@@ -10,7 +10,10 @@ export default function Application_gsm (){
     const [applicationpanel, setApplicationpanel] = useState([])
 
     useEffect(()=>{
-
+      document.querySelector("body");
+      let body_ele = document.querySelector("body");
+      body_ele.className='';
+      body_ele.classList.add("inner-page");
         userService.getAllItems(type).then((res) => {  
             setApplicationpanel(res.json_data)
         }) 
@@ -32,7 +35,7 @@ export default function Application_gsm (){
                               <h2 class="text-center">{applicationpanel && applicationpanel.title}</h2>
                             </div>
                             <div class="col-5 col-md-6 d-block d-md-none reset-padding">
-                              <img src="images/placeit-close-up.png" class="img-fluid" />
+                              <img src="/assets/images/placeit-close-up.png" class="img-fluid" />
                             </div>
                         </div>
                     </div>

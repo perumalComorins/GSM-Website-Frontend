@@ -90,7 +90,7 @@ export default function OrganizationPage() {
                         </div>
                     </div> {/*What we do section */}
                     
-                    <div className="satisfaction-rate" style={{backgroundImage: "url('/assets/images/map-bg.png')",}} >
+                    <div className="satisfaction-rate d-none d-md-block" style={{backgroundImage: "url('/assets/images/map-bg.png')",}} >
                             <div className="satisfaction-rate-innersection container container-60 reset-padding" >
                                 <div className="title-bar text-center">
                                     <h2>Nos <span className="partner-text text-uppercase">PARTENAIRES</span></h2>
