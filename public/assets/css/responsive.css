@@ -436,8 +436,8 @@
     }
 
     .home-banner-content .banner-content {
-        top: 30%;
-        transform: translateY(-30%);
+        top: 50px;
+        transform: translateY(50px);
     }
 
     /*** Home page design ***/
@@ -648,11 +648,11 @@
     }
     /** **/
     .fullsize-banner{
-        height: auto;
+        height: 420px;
     }
     
     .home-banner-content {
-        width: 65%;
+        width: 75%;
         margin: 0 0 0 25%;
         position: relative;
     }
@@ -880,6 +880,7 @@
     
     .testimonial-Nav{
         top:80%;
+        
     }
     .testimonial_num{
         font-size: 10px;
@@ -1338,6 +1339,15 @@
         max-width: 75%;
         margin: 0 auto;
     }
+    .blog-title-col .sub-title{
+        font-size: 29px;
+        line-height: 42px;
+        text-align: left;
+        max-width: 75%;
+        margin: 0 auto;
+        text-transform: uppercase;
+        margin-top: 7px;
+    }
     .blog-title-col .title::after{
         width: 125px;
         position: inherit;
@@ -1393,12 +1403,11 @@
     .title-banner p {
         font-size: 8px;
         line-height: 12px;
-        max-width: 190px;
         margin-bottom: 30px;
     }
     
     .indicator-view.fullsize-banner{
-        height:420px;
+        height:460px;
     }
     .picture-banner{
         position: absolute;
@@ -1411,12 +1420,12 @@
     }
     .indicator-view .indicator-content{
         max-width: 283px;
-        top: 65%;
+        top: 60%;
     }
     .indicator-view .title-banner button{
         font-size:8px;
         line-height: 12px;
-        width:80px;
+        width:90px;
         padding: 7px 0;
     }
     .indicator-view .indicator-content .title-banner p{
@@ -1696,10 +1705,10 @@
         margin: 32px auto 91px auto;
     }
     #qualityTab-Content{
-        max-width: 85%;
-        margin:0 auto;
+        max-width: 100%;
+        margin: 0 auto;
         padding: 22px 0;
-        height:65vh;
+        height: 55vh;
     }
     #qualityTab .tab-nav-link{
         margin-right: 10px;
@@ -1790,6 +1799,7 @@
     .organization-banner-content .banner-content{
         width: 220px;
         left:25%;
+        max-width: inherit;
 
     }
     .organization-intro-section{
@@ -1799,14 +1809,14 @@
         margin: 28px 0 24px 0;
     }
     .organization-intro-section .intro-title{
-        font-size: 20px;
+        font-size: 21px;
         line-height: 30px;
-        margin-bottom: 8px;
+        margin-bottom: 14px;
 
     }
     .organization-intro-section .intro-content{
         font-size: 12px;
-        line-height: 21px;
+        line-height: 24px;
         font-family: 'poppinsextralight';
         margin:0;
     }
@@ -1885,6 +1895,9 @@
         padding-bottom: 14px;
         padding-top: 48px;
     }
+    .sitebar-row .parent-list{
+        column-count: auto;
+    }
     .sitemap-banner h1{
         font-size: 25px;
         line-height: 38px;
@@ -1923,7 +1936,10 @@
         line-height: 26px;
         margin-bottom: 9px;
     }
-
+    .policy-content-box ol li{
+        font-size: 12px;
+        line-height: 26px;
+    }
     /*** Legal notice content ***/
     .legalnotice-content{
         max-width: 75%;
@@ -1933,6 +1949,12 @@
     }
     .legalnotice-content .legal-banner{
         width:100%;
+    }
+    .credits-banner-title{
+        color:#fff;
+        font-size: 25px;
+        line-height: 38px;
+        margin-bottom: 10px;
     }
     .mobile-legal-container{
         max-width: 75%;
@@ -2053,11 +2075,15 @@
     .appointment-card .card-title{
         font-size: 15px;
         line-height: 21px;
-        margin-bottom: 24px;
+        margin-top: 15px;
+        margin-bottom: 0;
+        max-width: 100px;
     }
+    
     .appointment-card .card-text{
+        margin-top: 20px;
         font-size: 12px;
-        line-height: 18px;
+        line-height: 22px;
     }
     .appointment-card button{
         font-size: 12px;
@@ -2115,6 +2141,10 @@
     }
     .requirement-tab .tab-pane-filterform{
         display: none;
+    }
+    .requirement-tab .btn-applynow{
+        width:100%;
+        margin-top: 65px!important;
     }
     #jobs-accordian{
         max-width: 100%;

@@ -604,6 +604,21 @@ export default function CompanyPage() {
                         
 
                 </section>
+                
+                <section class="heightlight-footer-box">
+                        <div class="container container-1160">
+                            <div class="row reset-margin">
+                            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 box-content">
+                                <p class="box-para">
+                                    {companypanel.heighligted_box && companypanel.heighligted_box.content_area}
+                                </p>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 box-link align-self-center">
+                                <a href="#" class="box-btn">{companypanel.heighligted_box && companypanel.heighligted_box.button_text}</a>
+                            </div>
+                            </div>
+                        </div>
+                </section>
 
                 <footer className="site-footer">
                     <Footer/>
