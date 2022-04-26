@@ -109,7 +109,7 @@ const Sidepanel = (props) => {
                                                 </a>
                                                 <ul className="dropdown-menu" >
                                                     {list.side_drop_down && list.side_drop_down.map((drop_down, i)=>
-                                                        <li key = {i}><a href={drop_down.link}>{drop_down.drop_name}</a></li>
+                                                        <li key = {i}><Link href={drop_down.link}>{drop_down.drop_name}</Link></li>
                                                     )}
                                                 </ul>
                                             </li> :
