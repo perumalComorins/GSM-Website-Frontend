@@ -1178,6 +1178,9 @@ footer{
     color:#3F589E;
     line-height: 25px;
 }
+.newsletter button{
+    border-radius: 10px;
+}
 .newsletter-form .form-group{
     margin-bottom: 20px;
 }
@@ -1800,7 +1803,8 @@ footer{
 }
 
 .faq-accordian-list .accordion .card .card-header .btn-header-link:before {
-    content: "\f105";
+    
+    content: "\f107";
     font-family: FontAwesome;
     font-size: 20px;
     font-weight: 900;
@@ -1820,7 +1824,7 @@ footer{
 }
 
 .faq-accordian-list .accordion .card .card-header .btn-header-link.collapsed:before {
-    content: "\f107";
+    content: "\f105";
     
 }
 #faq .card .collapse {
@@ -3303,6 +3307,7 @@ h2.service-textwrapp{
     line-height: 66px;
     color:#FFFFFF;
     margin-bottom: 24px;
+    min-height: 265px;
 }
 .certificateur-container .content-section p{
     font-family: 'poppinsregular';
