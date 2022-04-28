@@ -23,7 +23,7 @@ export default function OrganizationPage() {
         
     },[])
     useEffect(()=>{
-        if(organpanel && organpanel.length > 0){
+        if(organpanel){
             {/* Banner jquery script Starts */}
             function BannerOverlays(){
                 
@@ -59,10 +59,10 @@ export default function OrganizationPage() {
             <Sidepanel/>
             <div id="page-content-wrapper" className="container-fluid reset-padding">
                 <Header/>
-                <div className="site-bannersection">
-                    <div className="static-banner-organisation banner-view fullsize-banner">
-                        <img src={organpanel.banner_section && organpanel.banner_section.bg_link} className="banner-img"/>
+                <div className="oraganization-banner-section site-bannersection">
+                    <div className="static-banner-organisation banner-view fullsize-banner d-none d-sm-block"  style={ {backgroundImage: `url(${organpanel.banner_section && organpanel.banner_section.bg_link})`}}>
                     </div>
+                    <div className="banner-view fullsize-banner d-block d-sm-none" style={ {backgroundImage: `url('assets/images/organization-mobile-banner.png')`} }></div>
                     <div id="banner-overlay">
                         <div className="organization-banner-content">
                             <div className="banner-content">

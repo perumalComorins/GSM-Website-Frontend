@@ -112,7 +112,7 @@ export default function QualityIndicatorPage(){
                             {qualityindicatorpanel.details && qualityindicatorpanel.details.map((items, index) => 
                             <li>
                                 <a className={`tab-nav-link ${index==0 ? 'active' :  ''}`} id={`${items.tab_slug}-tab`} data-toggle="tab" href={`#${items.tab_slug}`} role="tab" aria-controls={items.tab_slug} aria-selected={`${index==0 ? 'true' :  'false'}`}>
-                                    <img src={items.tab_logo_url} />
+                                    <img src={items.tab_logo_url} className="img-fluid"/>
                                 </a>
                             </li>)}
                         </ul>
@@ -121,9 +121,13 @@ export default function QualityIndicatorPage(){
                             <div className={`tab-pane ${index==0 ? 'active' :  ''}`} id={items.tab_slug} role="tabpanel" aria-labelledby={`${items.tab_slug}-tab`}>
                                 <img src={items.box_logo_url} className="indicator-icon" />
                                 <h1>{items.title}</h1>
-                                <p>
+                                <p className="d-none d-sm-block">
                                     {items.desc}
                                 </p>
+                                <p className="d-block d-sm-none">
+                                    Nous avons voulu donner à tous la
+                                </p>
+
                                 <button type="button" className="btn gsm-bg-individual btn-gsm-md">{qualityindicatorpanel.button_text && qualityindicatorpanel.button_text}</button>
                             </div>)}
                             

@@ -175,7 +175,7 @@ export default function CompanyPage() {
                                                             <p class="card-text">{list.desc}</p> 
                                                             </div>
                                                             <div class="col picture-block">
-                                                            <img src={list.photo_url} class="img-fluid"/>
+                                                            <img src={list.photo_link} class="img-fluid"/>
                                                             </div> 
                                                         </div>
                                                         <figcaption>

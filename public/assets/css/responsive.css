@@ -404,7 +404,7 @@
 /**** Small devices (landscape phones, less than 768px)*****/
 @media (max-width: 767.98px) {
     .fullsize-banner{
-        height: auto;
+        height: 100vh;
     }
     
     .home-banner-content {
@@ -436,8 +436,8 @@
     }
 
     .home-banner-content .banner-content {
-        top: 50px;
-        transform: translateY(50px);
+        top:12%;
+        transform: translateY(12%);
     }
 
     /*** Home page design ***/
@@ -639,22 +639,31 @@
 }
 /**** Extra small devices (portrait phones, less than 576px)****/
 @media (max-width: 575.98px) {
+    .btn{
+        font-size: 15px;
+    }
     #wrapper{
         position: relative;
     }
     .inner-page #page-content-wrapper{
         position:absolute;
-        top:57px;
+        top:45px;
     }
     /** **/
     .fullsize-banner{
-        height: 420px;
+        height: 85vh;
     }
-    
+    .oraganization-banner-section .fullsize-banner{
+        height:450px;
+    }
     .home-banner-content {
-        width: 75%;
-        margin: 0 0 0 25%;
+        width: 65%;
+        margin: 0 0 0 30%;
         position: relative;
+    }
+    .home-banner-content .banner-content {
+        top:12%;
+        transform: translateY(12%);
     }
     .home-banner-content h1.title{
         font-size: 14px;
@@ -905,6 +914,9 @@
     }
     .banner-cover-overlay{
         /* top:58px; */
+    }
+    .banner-cover.individual-banner-content{
+        width: 100%!important;
     }
     .individual-banner-content .banner-title{
         font-size: 27px;
@@ -1261,13 +1273,16 @@
     .company-page-banner .container{
         max-width: 90%;
     }
+    .company-page-banner{
+        margin: 80px 0 50px 0;
+    }
     .company-page-banner .banner-left-col h2{
-        font-size: 14px;
+        font-size: 13px;
         line-height: 21px;
         margin-bottom: 6.5px;
     }
     .company-page-banner .banner-left-col p{
-        font-size: 10px;
+        font-size: 9.5px;
         line-height: 16px;
         margin-bottom: 12.5px;
     }
@@ -1554,7 +1569,8 @@
         font-size: 25px;
         line-height: 38px;
         text-align: center;
-        margin-bottom:81px;
+        margin-bottom:65px;
+        min-height: inherit;
     }
     .certificateur-container .content-section p{
         font-size: 12px;
@@ -1679,7 +1695,11 @@
     }
     .emailform-label{
         font-size: 10px;
-        line-height: 15px;
+        line-height: 23px;
+    }
+    .emailform-check-input{
+        width: 15px;
+        height: 15px;
     }
     .emailform-check{
         margin-bottom: 15px;
@@ -1708,7 +1728,7 @@
         max-width: 100%;
         margin: 0 auto;
         padding: 22px 0;
-        height: 55vh;
+        height: 50vh;
     }
     #qualityTab .tab-nav-link{
         margin-right: 10px;
@@ -1768,7 +1788,7 @@
 
     /****  Qualified staff ****/
     .static-banner-organisation.fullsize-banner{
-        height:383px;
+        height:460px;
     }
     .organization-banner-content h1.title{
         font-size: 12px;
@@ -1795,6 +1815,7 @@
     }
     .organization-banner-content{
         width:100%;
+        height:460px!important;
     }
     .organization-banner-content .banner-content{
         width: 220px;
@@ -2018,9 +2039,7 @@
     .contactfaq-searchForm button{
         padding: 0 12px;
     }
-    .threebyfour-banner-cover-overlay{
-        /* top:57px; */
-    }
+    
     .contactfaq-tab-section{
         position: inherit;
         bottom:inherit;
@@ -2092,13 +2111,15 @@
         width:205px;
         border-radius: 10px;
     }
-    .threebyfour-banner-cover{
+   .threebyfour-banner-cover{
         vertical-align: bottom;
     }
 
     /***  Recruitment page ***/
+    .requirement-banner-cover-overlay.threebyfour-banner-cover-overlay,
+    .requirement-banner-content.threebyfour-banner-cover,
     .requirement-bannersection .threebyfourth-size-banner{
-        height:348px;
+        height:350px;
     }
     .requirement-banner-content h1{
         max-width: 75%;

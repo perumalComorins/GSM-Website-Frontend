@@ -23,7 +23,7 @@ export default function WhowearePage(){
         
     },[])
     useEffect(()=>{
-        if(whowepanel && whowepanel.length > 0){
+        if(whowepanel){
             {/* Banner jquery script Starts */}
             function BannerOverlays(){
                 
@@ -57,10 +57,8 @@ export default function WhowearePage(){
                 <Header />
             </header>
             <div class="site-bannersection certificateur-bannersection">
-                <div class="banner-view twofourth-size-banner">
-                    <img src={whowepanel.banner_section && whowepanel.banner_section.banner_img} className="banner-img"/>
-                    <img src="images/who-wer-mobile-banner.png" class="banner-img d-block d-md-none"/>
-                </div>
+                <div class="banner-view twofourth-size-banner d-none d-sm-block" style={ {backgroundImage: `url(${whowepanel.banner_section && whowepanel.banner_section.banner_img})`}}></div>
+                <div class="banner-view twofourth-size-banner d-block d-sm-none" style={ {backgroundImage: `url('/assets/images/who-wer-mobile-banner.png')`}}></div>
                 <div class="twobyfour-banner-cover-overlay">
                 </div>
   

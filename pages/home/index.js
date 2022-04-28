@@ -26,9 +26,10 @@ export default function HomePage(){
     },[])
 
     useEffect(()=>{
+        
         if(homepanel && homepanel.length > 0){
             {/* Banner jquery script Starts */}
-
+            
             $(window).resize(function(){ 
                 HomeBannerOverlays();
             }); {/* Banner jquery script End */}
@@ -71,12 +72,12 @@ export default function HomePage(){
 
 
     function HomeBannerOverlays(){
-
+        var banner_h,banner_w;
         /** Home banner image **/
         $('.home-banner-resizer #banner-overlay').each(function(){
-            $banner_h = $('.home-banner-resizer .banner-view').height();
-            $banner_w = $('.home-banner-resizer .banner-view').width();
-            $(this).width($banner_w);
+            banner_h = $('.home-banner-resizer .banner-view').height();
+            banner_w = $('.home-banner-resizer .banner-view').width();
+            $(this).width(banner_w);
         });
 
         $('.testimonials_overlay').each(function(){
@@ -107,10 +108,11 @@ export default function HomePage(){
                 
                 <Header/>
                 <div className="site-bannersection home-banner-resizer">
-                        <div className="banner-view fullsize-banner">
-                            <img src={homepanel.banner_section && homepanel.banner_section.banner_image} className="banner-img d-none d-md-block"/>
-                            <img src="assets/images/home-mobile-banner.png" className="banner-img d-block d-md-none img-fluid"/>
+                        <div id="site-web-view" className="banner-view fullsize-banner d-none d-sm-block" style={ {backgroundImage: `url(${homepanel.banner_section && homepanel.banner_section.banner_image})`}}>
+                            {/* <img src={homepanel.banner_section && homepanel.banner_section.banner_image} className="banner-img d-none d-md-block"/>
+                            <img src="assets/images/home-mobile-banner.png" className="banner-img d-block d-md-none img-fluid"/> */}
                         </div>
+                        <div id="site-mobile-view" className="banner-view fullsize-banner d-block d-sm-none" style={ {backgroundImage: `url('assets/images/home-mobile-banner.png')`} }></div>
                         <div id="banner-overlay" >
                             <div className="home-banner-content">
                                 <div className="banner-content">

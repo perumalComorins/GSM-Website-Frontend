@@ -71,8 +71,11 @@ export default function ContactFaqPage(){
             <div id="page-content-wrapper" className="container-fluid reset-padding">
                 <Header/>
                  <div className="site-bannersection contactFaq-banner-resizer">
-                    <div className="banner-view threebyfourth-size-banner">
-                        <img src={contactfaq.banner_section && contactfaq.banner_section.bg_image_url} className="banner-img"/>
+                    <div className="banner-view threebyfourth-size-banner d-none d-sm-block" style={ {backgroundImage: `url(${contactfaq.banner_section && contactfaq.banner_section.bg_image_url})`}}>
+                        {/* <img src={contactfaq.banner_section && contactfaq.banner_section.bg_image_url} className="banner-img"/> */}
+                    </div>
+                    <div className="banner-view threebyfourth-size-banner d-block d-sm-none" style={ {backgroundImage: `url('/assets/images/contact-mobile-banner.png')`}}>
+                        {/* <img src={contactfaq.banner_section && contactfaq.banner_section.bg_image_url} className="banner-img"/> */}
                     </div>
                     <div className="threebyfour-banner-cover-overlay">
                         <div className="threebyfour-banner-cover contactfaq-banner-content threebyfourth-banner">
@@ -93,9 +96,12 @@ export default function ContactFaqPage(){
                             <div className="container container-55 reset-padding">
                                 <ul id="contactfaq-nav" className="nav nav-pills row reset-margin">
                                     {contactfaq.button_module  && contactfaq.button_module.map((items, index) => 
-                                    <li className={`col text-center ${index==0 ? 'list-active' :  ''}`}>
-                                        <a data-toggle="pill" href={`#${items.slug}`} className={`${index==0 ? 'active' :  ''}`} >
-                                            <img src={items.photo_url} />
+                                    //<li className={`col text-center ${index==0 ? 'list-active' :  ''}`}></li>
+                                    <li className={`col text-center`}>
+                                        <a data-toggle="pill" href={`#${items.slug}`} className={``} >
+                                        {/* <a data-toggle="pill" href={`#${items.slug}`} className={`${index==0 ? 'active' :  ''}`} > */}
+                                            <img class="non-active-icon" src={items.photo_url} />
+                                            <img class="active-icon" src={items.photo_hover_url} />
                                             <h2>{items.title}</h2>
                                             <p>{items.desc}</p>
                                         </a>
@@ -106,9 +112,12 @@ export default function ContactFaqPage(){
                                 <div id="contactfaq-nav-mobile" className="contactfaq-nav-slider carousel slide d-block d-lg-none" data-ride="carousel" data-interval="false" data-pause="hover">
                                     <ul className="carousel-inner nav nav-pills row reset-margin">
                                         {contactfaq.button_module  && contactfaq.button_module.map((items, index) => 
-                                        <li className={`carousel-item col-sm-12 text-center ${index==0 ? 'active list-active' :  ''}`}>
-                                            <a data-toggle="pill" href={`#${items.slug}`} className={`${index==0 ? 'active' :  ''}`} >
-                                                    <img src={items.photo_url} />
+                                        // <li className={`carousel-item col-sm-12 text-center ${index==0 ? 'active list-active' :  ''}`}>
+                                        <li className={`carousel-item col-sm-12 text-center ${index==0 ? 'active' :  ''}`}>
+                                            {/* <a data-toggle="pill" href={`#${items.slug}`} className={`${index==0 ? 'active' :  ''}`} > */}
+                                            <a data-toggle="pill" href={`#${items.slug}`} className={``} >
+                                                    <img class="non-active-icon" src={items.photo_url} />
+                                                    <img class="active-icon" src={items.photo_hover_url} />
                                                     <h2>{items.title}</h2>
                                                     <p>{items.desc}</p>
                                             </a>
@@ -130,7 +139,8 @@ export default function ContactFaqPage(){
                         <div className="container-fluid reset-padding organization-tab-content">
                             <div className="tab-content container container-55 reset-padding">
                                 {contactfaq.button_module  && contactfaq.button_module.map((items, index) => 
-                                <div id={items.slug} class={`tab-pane fade ${index==0 ? 'in active show': ''}`}>
+                                // <div id={items.slug} class={`tab-pane fade ${index==0 ? 'in active show': ''}`}>
+                                <div id={items.slug} class={`tab-pane fade`}>    
                                     <div id="contact-faq-accordian" class="col-md-12 reset-padding faq-accordian-list">
                                         <h2 class="title">{items.sub_title}</h2>
                                         <div class="accordion" id={`${items.slug}-faq`}>

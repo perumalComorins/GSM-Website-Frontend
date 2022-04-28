@@ -36,9 +36,9 @@ export default function IndividualPage() {
                     var $banner_h;
                     var $banner_w;
 
-                    $('.banner-cover').each(function(){
-                        $banner_h = $('.banner-view.smallsize-banner img').height();
-                        $banner_w = $('.banner-view.smallsize-banner img').width();
+                    $('.individual-banner-content.banner-cover').each(function(){
+                        $banner_h = $('.banner-view.smallsize-banner').height();
+                        $banner_w = $('.banner-view.smallsize-banner').width();
                         $(this).width($banner_w).height($banner_h);
                     });
                 }
@@ -130,8 +130,9 @@ export default function IndividualPage() {
             <div id="page-content-wrapper" className="container-fluid reset-padding">
                 <Header/>
                 <div className="site-bannersection">
-                    <div className="banner-view smallsize-banner">
-                        <img src={individualpanel.banner_section && individualpanel.banner_section.image_url} className="banner-img"/>
+                    <div className="banner-view smallsize-banner d-none d-sm-block" style={ {backgroundImage: `url(${individualpanel.banner_section && individualpanel.banner_section.image_url})`}}>
+                    </div>
+                    <div className="banner-view smallsize-banner d-block d-sm-none" style={ {backgroundImage: `url('/assets/images/quote-request-mobile.png')`}}>
                     </div>
                     <div className="banner-cover-overlay">
                         <div className="banner-cover individual-banner-content">

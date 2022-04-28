@@ -2,66 +2,134 @@ import { useEffect, useState } from 'react';
 import Sidepanel from "../../components/sidepanel" ;
 import Header from "../../components/header";
 import Footer from "../../components/footer";
+import { userService } from '../../services/user.service';
 export default function QuoteRequestPage(){
-        const [datas, setDatas] = useState(null);
-        useEffect(()=>{
-            document.querySelector("body");
-            let body_ele = document.querySelector("body");
-            body_ele.className='';
-            body_ele.classList.add("inner-page");
-            setDatas([1,2,3])
-            
-        },[])
-        useEffect(()=>{
-            if(datas && datas.length>0){
-                {/* Banner jquery script Starts */}
-                function BannerOverlays(){
-                    var $banner_h;
-                    var $banner_w;
+    const type = 'quote-request.php';
+    const [quoterequestpanel, setQuoterequestPanel] = useState([]);
+    
+    useEffect(()=>{
+        document.querySelector("body");
+        let body_ele = document.querySelector("body");
+        body_ele.className='';
+        body_ele.classList.add("inner-page");
 
-                    $('.banner-cover').each(function(){
-                        $banner_h = $('.banner-view.smallsize-banner img').height();
-                        $banner_w = $('.banner-view.smallsize-banner img').width();
-                        $(this).width($banner_w).height($banner_h);
-                    });
-                }
+        userService.getAllItems(type).then((res) => { 
+            setQuoterequestPanel(res.json_data);
+        }) 
+         .catch((err) => console.error(err)); 
+          
+    },[])
 
-                $(window).resize(function(){ 
-                    BannerOverlays();
-                }); {/* Banner jquery script End */}
-                $(document).ready(function () {
-                    BannerOverlays();
+
+    useEffect(()=>{
+
+        if(quoterequestpanel){
+            {/* Banner jquery script Starts */}
+            function BannerOverlays(){
+                var $banner_h;
+                var $banner_w;
+
+                $('.individual-banner-content.banner-cover').each(function(){
+                    $banner_h = $('.banner-view.smallsize-banner').height();
+                    $banner_w = $('.banner-view.smallsize-banner').width();
+                    $(this).width($banner_w).height($banner_h);
                 });
             }
-        },[datas]);
 
+            $(window).resize(function(){ 
+                BannerOverlays();
+            }); {/* Banner jquery script End */}
+            $(document).ready(function () {
+                BannerOverlays();
+
+                var totalfaqItems = $('.qualified-faq-item').length;
+                var currentfaqIndex = $('div.qualified-faq-item.active').index() + 1;
+                var currentfaqIndex_active;
+                var downfaq_index;
+                var autofaqIndex_active;
+                var autodownfaq_index;
+                
+                // $('.testimonial_num').html(''+currentIndex+'/'+totalItems+'');
+                $('.faq_qulified_num').html(''+currentfaqIndex+'');
+
+                $(".qualified-faq-next").click(function(){
+                    currentfaqIndex_active = $('div.qualified-faq-item.active').index() + 2;
+                    if (totalfaqItems >= currentfaqIndex_active)
+                    {
+                        downfaq_index= $('div.qualified-faq-item.active').index() + 2;
+                        //$('.testimonial_num').html(''+currentIndex_active+'/'+totalItems+'');
+                        $('.faq_qulified_num').html(''+currentfaqIndex_active+'');
+                    }
+                });
+
+                $(".qualified-faq-prev").click(function(){
+                    
+                    downfaq_index=downfaq_index-1;
+                    if (downfaq_index >= 1 ){
+                        //$('.testimonial_num').html(''+downfaq_index+'/'+totalItems+'');
+                        $('.faq_qulified_num').html(''+downfaq_index+'');
+                    }
+                });
+
+                $('#faqqualified_Indicators').carousel({
+                    interval: 2000
+                });
+                
+                $("#faqqualified_Indicators").on('slide.bs.carousel', function (e) {
+                    autofaqIndex_active = $('div.qualified-faq-item.active').index() + 2;
+                    $(".qualified-faq-next").click(function(e){
+                            e.preventDefault();
+                    });
+                    $(".qualified-faq-prev").click(function(e){
+                            e.preventDefault();
+                    })
+                      if (totalfaqItems >= autofaqIndex_active){
+                        autodownfaq_index= $('div.qualified-faq-item.active').index() + 2;
+                        $('.faq_qulified_num').html(''+autodownfaq_index+'');
+                      }
+                      
+                      else{
+                        $('.faq_qulified_num').html(''+currentfaqIndex+''); 
+                      }
+                      
+                });
+                
+                
+            });
+        }
+
+        
+    },[quoterequestpanel])
+
+    
     return(
         <div id="wrapper">
             <div className="overlay"></div>
+
             <Sidepanel/>
 
             <div id="page-content-wrapper" className="container-fluid reset-padding">
-                <header className="site-header site-navbar site-navbar-target">
                     <Header/>
-                </header>
                 <div className="site-bannersection">
-                    <div className="banner-view smallsize-banner">
-                        <img src="/assets/images/individual-banner-v1.png" className="banner-img"/>
+                    <div className="banner-view smallsize-banner d-none d-sm-block" style={ {backgroundImage: `url(${quoterequestpanel.banner_section && quoterequestpanel.banner_section.photo_url})`}}>
                     </div>
+                    <div className="banner-view smallsize-banner d-block d-sm-none" style={ {backgroundImage: `url('/assets/images/individual-mobile-banner.png')`}}>
+                    </div>
+                    
                     <div className="banner-cover-overlay">
                         <div className="banner-cover individual-banner-content">
                             <div className="container container-1140 reset-padding banner-title-blog">
-                                <h2 className="banner-title">Recrutez votre équipe pour des métiers durables</h2>
+                                <h2 className="banner-title">{quoterequestpanel.banner_section && quoterequestpanel.banner_section.title}</h2>
                             </div>
                         </div>
                     </div>
                 </div>
+                
                 <section className="site-body-container">
                     <div className="qualified-staff-box">
                         <div className="container container-60 reset-padding text-center register-box-top">
                             <p className="reg-intro-content">
-                            Découvrez les profils de nos apprenants de la certification 
-                            « Réparateur/trice de produits nomades" afin de renforcer vos équipes.
+                                {quoterequestpanel.banner_section && quoterequestpanel.banner_section.desc}
                             </p>
                         </div>
                     </div>
@@ -73,36 +141,19 @@ export default function QuoteRequestPage(){
                                 <div className="col-md-5 reset-padding faq-accordian-slider">
                                     <div id="faqqualified_Indicators" className="carousel slide" data-ride="carousel" data-wrap="false" data-interval="false">
                                             <div className="carousel-inner">
-                                                <div className="carousel-item qualified-faq-item active">
-                                                    <div className="faqMember-thumbnail">
-                                                        <span className="faqequals-quotes individual-text">=</span>
-                                                        <img src="/assets/images/faq-thumb-1.png" className="img-fluid"/>
-                                                        <div className="triangleBox individual-bg"></div>
+                                                {quoterequestpanel.student_details && quoterequestpanel.student_details.map((items, index) => 
+                                                    <div className={`carousel-item  qualified-faq-item ${index == 0 && 'active'}`}>
+                                                        <div className="faqMember-thumbnail">
+                                                                <span className="faqequals-quotes individual-text">=</span>
+                                                                <img src={items.photo_link} className="img-fluid"/>
+                                                                <div className="triangleBox individual-bg"></div>
+                                                        </div>
+                                                        <p className="fag-content individual-text">
+                                                            {items.desc}
+                                                        </p>
+                                                        <h3 className="faqmemberName individual-text">{items.student_name}<span className="faqmemberDesignation">{items.qualification}</span></h3>
                                                     </div>
-                                                    <p className="fag-content individual-text">
-                                                    Present in the mobile telephony market since 1999, 
-                                                    GSM Master founded its training center at the end of 2014 with the aim of 
-                                                    contributing to the standardization of the mobile product repair sector by 
-                                                    offering complete and certifying training, allowing everyone to exercise 
-                                                    the profession of repairer in full compliance and safety.
-                                                    </p>
-                                                    <h3 className="faqmemberName individual-text">Kim Joe <span className="faqmemberDesignation">Highschool</span></h3>
-                                                </div>
-                                                <div className="carousel-item qualified-faq-item">
-                                                    <div className="faqMember-thumbnail">
-                                                        <span className="faqequals-quotes individual-text">=</span>
-                                                        <img src="/assets/images/faq-thumb-1.png" className="img-fluid"/>
-                                                        <div className="triangleBox individual-bg"></div>
-                                                    </div>
-                                                    <p className="fag-content individual-text">
-                                                    Present in the mobile telephony market since 1999, 
-                                                    GSM Master founded its training center at the end of 2014 with the aim of 
-                                                    contributing to the standardization of the mobile product repair sector by 
-                                                    offering complete and certifying training, allowing everyone to exercise 
-                                                    the profession of repairer in full compliance and safety.
-                                                    </p>
-                                                    <h3 className="faqmemberName individual-text">Kim Joe <span className="faqmemberDesignation">Highschool</span></h3>
-                                                </div>
+                                                )}
                                             </div>
                                             <div className="faq-Nav">
                                                 <a className="carousel-control-prev qualified-faq-prev" href="#faqqualified_Indicators" role="button" data-slide="prev">
@@ -193,14 +244,14 @@ export default function QuoteRequestPage(){
                                 </div>
 
                             </div>
-                            <p className="individual-text text-center question-text">Une question ?</p>
+                            <p className="individual-text text-center question-text">{quoterequestpanel.question_text && quoterequestpanel.question_text}</p>
                         </div>
                     </div>
-                </section>
-                <footer className="site-footer">
-                    <Footer/>
-                </footer>
+                    </section>
+                    <footer className="site-footer">
+                        <Footer/>
+                    </footer>  
             </div>
         </div>
-    )
+    );
 }

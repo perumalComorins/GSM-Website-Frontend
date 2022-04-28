@@ -83,10 +83,16 @@
     padding:0;
     font-family: 'poppinsregular';
 }
+html{
+    font-size: 10px;
+}
 body {
     position: relative;
     overflow-x: hidden;
     background: #FBFBFB;
+}
+.btn{
+    font-size: 2rem;
 }
 .nav .open > a, 
 .nav .open > a:hover, 
@@ -301,15 +307,23 @@ a:hover{
 /******  Site Banners Lists  ******/
 .fullsize-banner{
     height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .smallsize-banner{
     height: 55vh;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .threebyfourth-size-banner{
     height: 80vh;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .twofourth-size-banner{
     height: 65vh;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .fullsize-banner .banner-img,
 .smallsize-banner .banner-img,
@@ -317,7 +331,7 @@ a:hover{
 .twofourth-size-banner .banner-img
 {
     width:100%;
-    height:100%;
+    height:auto;
 }
 
 
@@ -355,7 +369,7 @@ a:hover{
     position: absolute;
     text-align: center;
     top: 0;
-    width: 100%;
+    width: 100%!important;
     height:100vh;
     z-index: 999;
 }
@@ -395,7 +409,7 @@ a:hover{
     background: #ffffff;
     border-radius: 5px;
     position: absolute;
-    bottom: 7px;
+    bottom: 2px;
     padding:20px 40px;
 }
 .client-logo-section .carousel-item img{
@@ -425,7 +439,7 @@ a:hover{
 }
 .organization-banner-content .banner-content{
     position: absolute;
-    top:75%;
+    top:70%;
     left:30%;
     max-width: 34vw;
     transform:translate(-30%,-75%);
@@ -726,7 +740,7 @@ hr.drop-option-seperator{
 }
 .inner-page #page-content-wrapper{
     position:absolute;
-    top:65px;
+    top:55px;
 }
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
@@ -760,7 +774,7 @@ hr.drop-option-seperator{
 
 .hamburger {
     position: fixed;
-    top: 20px;
+    top: 15px;
     z-index: 999;
     display: block;
     width: 37px;
@@ -2348,7 +2362,24 @@ textarea.form-control::placeholder{
 #contactfaq-nav-mobile .carousel-inner li.list-active
 {
     background: #3F589E;
-    
+}
+#contactfaq-nav li img.active-icon, 
+#contactfaq-nav li img.non-active-icon,
+#contactfaq-nav-mobile .carousel-inner li img.active-icon,
+#contactfaq-nav-mobile .carousel-inner li img.non-active-icon{
+    margin:0 auto;
+}
+#contactfaq-nav li img.active-icon, 
+#contactfaq-nav-mobile .carousel-inner li img.active-icon,
+#contactfaq-nav li.list-active img.non-active-icon, 
+#contactfaq-nav-mobile .carousel-inner li.list-active img.non-active-icon{
+    display: none;
+}
+#contactfaq-nav li img.non-active-icon, 
+#contactfaq-nav-mobile .carousel-inner li img.non-active-icon,
+#contactfaq-nav li.list-active img.active-icon, 
+#contactfaq-nav-mobile .carousel-inner li.list-active img.active-icon{
+    display: block;
 }
 #contactfaq-nav li:last-child,
 #contactfaq-nav-mobile .carousel-inner li:last-child{
@@ -3087,7 +3118,6 @@ ul.page-navigation li.page-link.active a{
     -moz-transform:translate(-50%, -50%);
     -ms-transform:translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
-    width: 91px;
 }
 #qualityTab li{
     margin-bottom:12px
@@ -3164,6 +3194,7 @@ ul.page-navigation li.page-link.active a{
     text-align: center;
     color:#3F589E;
     cursor: pointer;
+    font-size: 20px;
 }
 .prevtab {
     left: -100px;
@@ -3654,3 +3685,88 @@ li.inforbar-col:not(:last-child){
         opacity: 1;
     }
 }
+
+ @media (max-width: 2500px) {
+    .register-registration-form .gsm-form-label{
+        font-size: 2rem;
+    }
+    
+    .gsm-dropdown-toggle{
+        font-size: 2rem;
+    }
+
+    input[type=text].form-control,
+    input[type=number].form-control,
+    input[type=email].form-control,
+    input[type=date].form-control,
+    select.form-control,
+    textarea.form-control{
+        font-size: 2rem;
+    }
+
+    input.form-control::placeholder,
+    textarea.form-control::placeholder{
+        font-size: 2rem;
+    }
+
+    .accordion .card-body{
+        font-size: 2rem;
+        line-height: 3.5rem;
+        padding: 20px 32px;
+    }
+
+}
+@media (max-width: 1440px) {
+    .register-registration-form .gsm-form-label{
+        font-size: 1.6rem;
+    }
+    
+    .gsm-dropdown-toggle{
+        font-size: 1.6rem;
+    }
+
+    input[type=text].form-control,
+    input[type=number].form-control,
+    input[type=email].form-control,
+    input[type=date].form-control,
+    select.form-control,
+    textarea.form-control{
+        font-size: 1.6rem;
+    }
+    
+    input.form-control::placeholder,
+    textarea.form-control::placeholder{
+        font-size: 1.6rem;
+    }
+    .accordion .card-body{
+        font-size: 1.8rem;
+        line-height: 3.2rem;
+    }
+}
+@media (max-width: 991px) {
+    .register-registration-form .gsm-form-label{
+        font-size: 1.5rem;
+    }
+    
+    .gsm-dropdown-toggle{
+        font-size: 1.5rem;
+    }
+
+    input[type=text].form-control,
+    input[type=number].form-control,
+    input[type=email].form-control,
+    input[type=date].form-control,
+    select.form-control,
+    textarea.form-control{
+        font-size: 1.5rem;
+    }
+
+    input.form-control::placeholder,
+    textarea.form-control::placeholder{
+        font-size: 1.5rem;
+    }
+    
+    .accordion .card-body{
+        font-size: 1.5rem;
+    }
+} 

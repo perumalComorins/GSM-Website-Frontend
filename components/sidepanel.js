@@ -58,7 +58,7 @@ const Sidepanel = (props) => {
     }, []);
 
     useEffect(()=>{
-        if(sidepanel && sidepanel.length > 0){
+        if(sidepanel){
             $(".sidenav-Menu .dropright").hover(
                 function () {
                     $(this).addClass("show");
@@ -96,7 +96,9 @@ const Sidepanel = (props) => {
                         <h1 className="pannel-title">Together, let's be the future</h1>
                         </div>
                         <div className="navbarMenu-col reset-padding">
-                            <img src="/assets/images/site-logo-color.png" style={{width: '180px'}} className="sidepanel-site-logo"/>
+                            <Link href="/">
+                                <img src="/assets/images/site-logo-color.png" style={{width: '180px'}} className="sidepanel-site-logo"/>
+                            </Link>
                             <nav className="sidenav-Menu">
                             <ul>
                                 {sidepanel.sidepanel_menu && sidepanel.sidepanel_menu.map((list, index) => 

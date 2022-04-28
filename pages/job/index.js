@@ -28,7 +28,7 @@ export default function Job(){
 
         useEffect(()=>{
 
-            if(jobpanel && jobpanel.length > 0){
+            if(jobpanel){
                 {/* Banner jquery script Starts */}
                 function BannerOverlays(){
                     var $banner_h;
@@ -78,10 +78,11 @@ export default function Job(){
                     <Header/>
                 </header>
                 <div className="site-bannersection requirement-bannersection">
-                    <div className="banner-view threebyfourth-size-banner">
-                        <img src="/assets/images/recuritment-banner.png" className="banner-img"/>
+                    <div className="banner-view threebyfourth-size-banner d-none d-sm-block" style={ {backgroundImage: `url('/assets/images/recuritment-banner.png')`}}>
+                        {/* <img src="/assets/images/recuritment-banner.png" className="banner-img"/> */}
                     </div>
-                    <div className="threebyfour-banner-cover-overlay">
+                    <div className="banner-view threebyfourth-size-banner d-block d-sm-none" style={ {backgroundImage: `url('/assets/images/job-mobile-banner.png')`}}></div>
+                    <div className="requirement-banner-cover-overlay threebyfour-banner-cover-overlay">
                         <div className="threebyfour-banner-cover requirement-banner-content threebyfourth-banner">
                                 <div className="banner-content text-center">
                                     <h1 className="title">{jobpanel.banner_section && jobpanel.banner_section.title}</h1>
