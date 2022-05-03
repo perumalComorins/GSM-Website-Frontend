@@ -3,8 +3,6 @@ import Sidepanel from "../../components/sidepanel" ;
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import { userService } from '../../services/user.service';
-import SatisfactionCardSlider from "./satisfaction-card-slider";
-import PeopleFaq from "./people-faq";
 
 export default function IndividualPage() {
 
