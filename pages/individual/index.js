@@ -76,26 +76,24 @@ export default function IndividualPage() {
                         }
                     });
 
-                    $('#faqIndicators').carousel({
-                        interval: 2000
-                    });
+                    
                     
                     $("#faqIndicators").on('slide.bs.carousel', function (e) {
-                        autofaqIndex_active = $('div.faq-item.active').index() + 2;
-                        $(".faq-next").click(function(e){
-                                e.preventDefault();
-                        });
-                        $(".faq-prev").click(function(e){
-                                e.preventDefault();
-                        })
-                          if (totalfaqItems >= autofaqIndex_active){
-                            autodownfaq_index= $('div.faq-item.active').index() + 2;
-                            $('.faq_num').html(''+autodownfaq_index+'');
-                          }
-                          
-                          else{
-                            $('.faq_num').html(''+currentfaqIndex+''); 
-                          }
+                            autofaqIndex_active = $('div.faq-item.active').index() + 2;
+                            // $(".faq-next").click(function(e){
+                            //         e.preventDefault();
+                            // });
+                            // $(".faq-prev").click(function(e){
+                            //         e.preventDefault();
+                            // })
+                            if (totalfaqItems >= autofaqIndex_active){
+                                autodownfaq_index= $('div.faq-item.active').index() + 2;
+                                $('.faq_num').html(''+autodownfaq_index+'');
+                            }
+                            
+                            else{
+                                $('.faq_num').html(''+currentfaqIndex+''); 
+                            }
                           
                     });
                     
@@ -130,7 +128,7 @@ export default function IndividualPage() {
                 <div className="site-bannersection">
                     <div className="banner-view smallsize-banner d-none d-sm-block" style={ {backgroundImage: `url(${individualpanel.banner_section && individualpanel.banner_section.image_url})`}}>
                     </div>
-                    <div className="banner-view smallsize-banner d-block d-sm-none" style={ {backgroundImage: `url('/assets/images/quote-request-mobile.png')`}}>
+                    <div className="banner-view smallsize-banner d-block d-sm-none" style={ {backgroundImage: `url('/assets/images/individual-mobile-banner.png')`}}>
                     </div>
                     <div className="banner-cover-overlay">
                         <div className="banner-cover individual-banner-content">
@@ -370,7 +368,7 @@ export default function IndividualPage() {
                             <div className="row reset-margin">
                                 <div className="col-md-5 reset-padding faq-accordian-slider">
                                     <div class="faq-label company-text">{individualpanel.faq_section && individualpanel.faq_section.title}</div>
-                                        <div id="faqIndicators" className="carousel slide" data-ride="carousel" data-wrap="false" data-interval="false">
+                                        <div id="faqIndicators" className="carousel slide" data-ride="carousel" data-wrap="false" data-interval="4000">
                                             <div className="carousel-inner">
                                                 {individualpanel.faq_section && individualpanel.faq_section.student_details.map((items, index) => 
                                                     <div className={`carousel-item faq-item ${index == 0 && 'active'}`}>

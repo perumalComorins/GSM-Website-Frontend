@@ -107,7 +107,7 @@ const Sidepanel = (props) => {
                                         {list.side_drop_down ?
                                             <li className="btn-group dropright">
                                                 <a className="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                    {list.heading_text} <i className="fa fa-angle-right right-arrow"></i>
+                                                    {list.heading_text} <i className="fa right-arrow"></i>
                                                 </a>
                                                 <ul className="dropdown-menu" >
                                                     {list.side_drop_down && list.side_drop_down.map((drop_down, i)=>

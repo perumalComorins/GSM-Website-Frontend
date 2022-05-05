@@ -74,9 +74,6 @@ export default function CompanyPage() {
                     }
                 });
 
-                $('#faqIndicators').carousel({
-                    interval: 2000
-                });
                 
                 $("#faqIndicators").on('slide.bs.carousel', function (e) {
                     autofaqIndex_active = $('div.faq-item.active').index() + 2;
@@ -351,7 +348,7 @@ export default function CompanyPage() {
 
                     <div className="faq-section company-bg">
                         <div className="container container-70 reset-padding">
-                            <div className="row reset-margin">
+                            <div className="row reverse-row-mobile reset-margin">
                                 <div id="main" className="col-md-6 reset-padding faq-accordian-list">
                                     <h2 className="title">{companypanel.faq_section && companypanel.faq_section.faq.title}</h2>
                                     <div className="accordion" id="faq">
@@ -381,7 +378,7 @@ export default function CompanyPage() {
 
                                 <div className="col-md-5 reset-padding faq-accordian-slider">
                                     <div class="faq-label company-text">{companypanel.faq_section && companypanel.faq_section.title}</div>
-                                        <div id="faqIndicators" className="carousel slide" data-ride="carousel" data-wrap="false" data-interval="false">
+                                        <div id="faqIndicators" className="carousel slide" data-ride="carousel" data-wrap="false" data-interval="3000">
                                             <div className="carousel-inner">
                                                 {companypanel.faq_section && companypanel.faq_section.student_details.map((items, index) => 
                                                     <div className={`carousel-item faq-item ${index == 0 && 'active'}`}>

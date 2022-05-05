@@ -959,7 +959,6 @@ button.hamburger:focus{
     position: absolute;
     right:20px;
     line-height: 40px;
-
 }
 .sidenav-Menu li a:hover{
     text-decoration: none;
@@ -974,9 +973,13 @@ button.hamburger:focus{
     padding: 16px 32px;
    
 }
-
-.sidenav-Menu .dropdown-menu li{
-    
+.sidenav-Menu li a.dropdown-toggle i:before{
+    content: "\f105";
+    font-family: FontAwesome;
+}
+.sidenav-Menu li.dropright.show a.dropdown-toggle i:before{
+    content: "\f107";
+    font-family: FontAwesome;
 }
 .sidenav-Menu .btn-group{
     display: block;
@@ -1821,6 +1824,7 @@ footer{
     content: "\f107";
     font-family: FontAwesome;
     font-size: 20px;
+    line-height: 24px;
     font-weight: 900;
     padding: 0px 32px 0px 0;
     

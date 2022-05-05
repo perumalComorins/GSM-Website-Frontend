@@ -201,8 +201,9 @@ export default function HomePage(){
 
                     <div className="partnerLogos-section container-fluid reset-padding">
                             <h2 className="text-center">{homepanel.partners && homepanel.partners.title[0]}<span className="partner-text text-uppercase">{homepanel.partners && homepanel.partners.title[1]}</span></h2>
-                            <div id="partnerpanel-slider" className="partnerpanel carousel slide" data-ride="carousel" data-interval="false" data-pause="hover">
-                                <div className="carousel-inner d-none d-lg-block">
+                            <div id="partnerpanel-web-slider" className="d-none d-lg-block partnerpanel carousel slide" data-ride="carousel" data-interval="3000" data-pause="hover">
+                                
+                                <div className="carousel-inner">
                                     <div className="carousel-item active">
                                             <div className="container container-70 reset-padding">
                                                 <div className="row mx-0">
@@ -217,19 +218,15 @@ export default function HomePage(){
                                     <div className="carousel-item">
                                             <div className="container container-70 reset-padding">
                                                 <div className="row mx-0">
-                                                    <div className="col-3"><img src="/assets/images/partner-group-5.png" /></div>
+                                                    <div className="col-3"><img src="/assets/images/partner-group-1.png" /></div>
                                                 </div>
                                             </div>
                                     </div>
-                                    
-                                    {/* <ul className="carousel-indicators">
-                                        <li data-target="#partnerpanel-slider" data-slide-to="0" className="active"></li>
-                                        <li data-target="#partnerpanel-slider" data-slide-to="1"></li>
-                                    </ul> */}
+                                </div> 
+                            </div>
 
-                    </div> {/*first carousel inner end  */}
-
-                    <div className="carousel-inner d-block d-lg-none">
+                            <div id="partnerpanel-mobile-slider" className="d-block d-lg-none partnerpanel carousel slide" data-ride="carousel" data-interval="3000" data-pause="hover">                            
+                                <div className="carousel-inner">
                                     <div className="carousel-item active">
                                             <div className="container container-70 reset-padding">
                                                 <div className="row mx-0">
@@ -249,11 +246,11 @@ export default function HomePage(){
                                     <div className="carousel-item">
                                             <div className="container container-70 reset-padding">
                                                 <div className="row mx-0">
-                                                    <div className="col-6"><img src="/assets/images/partner-group-5.png" className="img-fluid"/></div>
+                                                    <div className="col-6"><img src="/assets/images/partner-group-1.png" className="img-fluid"/></div>
                                                 </div>
                                             </div>
                                     </div>
-                                </div>{ /*second carousel inner end*/ } 
+                                </div>
                             </div>
                     </div>
 

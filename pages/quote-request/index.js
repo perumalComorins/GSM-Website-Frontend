@@ -71,10 +71,7 @@ export default function QuoteRequestPage(){
                     }
                 });
 
-                $('#faqqualified_Indicators').carousel({
-                    interval: 2000
-                });
-                
+               
                 $("#faqqualified_Indicators").on('slide.bs.carousel', function (e) {
                     autofaqIndex_active = $('div.qualified-faq-item.active').index() + 2;
                     $(".qualified-faq-next").click(function(e){
@@ -113,7 +110,7 @@ export default function QuoteRequestPage(){
                 <div className="site-bannersection">
                     <div className="banner-view smallsize-banner d-none d-sm-block" style={ {backgroundImage: `url(${quoterequestpanel.banner_section && quoterequestpanel.banner_section.photo_url})`}}>
                     </div>
-                    <div className="banner-view smallsize-banner d-block d-sm-none" style={ {backgroundImage: `url('/assets/images/individual-mobile-banner.png')`}}>
+                    <div className="banner-view smallsize-banner d-block d-sm-none" style={ {backgroundImage: `url('/assets/images/quote-request-mobile.png')`}}>
                     </div>
                     
                     <div className="banner-cover-overlay">
@@ -139,7 +136,7 @@ export default function QuoteRequestPage(){
                             <div className="row reset-margin">
 
                                 <div className="col-md-5 reset-padding faq-accordian-slider">
-                                    <div id="faqqualified_Indicators" className="carousel slide" data-ride="carousel" data-wrap="false" data-interval="false">
+                                    <div id="faqqualified_Indicators" className="carousel slide" data-ride="carousel" data-wrap="false" data-interval="3000">
                                             <div className="carousel-inner">
                                                 {quoterequestpanel.student_details && quoterequestpanel.student_details.map((items, index) => 
                                                     <div className={`carousel-item  qualified-faq-item ${index == 0 && 'active'}`}>
@@ -235,6 +232,13 @@ export default function QuoteRequestPage(){
                                             Nous utiliserons vos données personnelles pour administrer votre 
                                             compte et vous fournir les produits et services demandés.
                                             </p>
+                                            <div class="form-check emailform-check">
+                                                <input type="checkbox" class="form-check-input emailform-check-input" id="emailform-check-label" />
+                                                <label class="text-left form-check-label emailform-label" for="emailform-check-label">
+                                                    En cochant cette case je reconnais avoir pris connaissance 
+                                                    des <strong>conditions générales d’utilisation</strong> et de la <strong>politique de confidentialité</strong>
+                                                </label>
+                                            </div>
                                             <div className="text-center">
                                             <button type="button" className="btn gsm-bg-individual btn-block">Soumettre</button>
                                             </div>

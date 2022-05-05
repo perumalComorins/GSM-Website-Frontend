@@ -95,19 +95,13 @@ const Header = (props) => {
                     <nav className="site-navigation navbar navbar-expand-lg navbar-light">
                         <Link href="/" className="navbar-brand" ><img src="/assets/images/site-logo-white.png" className="site-logo"/></Link>
                         <div className="searchBar-mb d-block d-lg-none">  
-                            <a href="#" className="search-form-trigger" data-toggle="search-form">
-                                <i className="fa fa-search" aria-hidden="true" data-toggle="search-form"></i>
+                            {/* <a href="#" className="search-form-trigger" data-toggle="search-form" >
+                                <i className="fa fa-search" aria-hidden="true" ></i>
+                            </a> */}
+                            <a className="search-form-trigger collapsed" data-toggle="collapse"  href="#collapseSearchbox" role="button" aria-expanded="false" aria-controls="collapseExample"  >
+                                <i className="fa" aria-hidden="true" ></i>
                             </a>
-                            <div className="togglesearch">
-                                <div className="togglesearch-wrapper mx-auto">
-                                    <input type="text" placeholder="What do you want" />
-                                    <button type="button" className="btn btn-search-gsm gsm-bg-individual border-0 rounded-1">
-                                        <img src="/assets/images/icon-feather-search.png" style={{width: '16px',height:'16px'}} />
-                                    </button>
-                                    <span className="input-group-addon search-close gsm-bg-white" id="basic-addon2"><i className="fa fa-window-close" aria-hidden="true"></i>
-                                    </span>
-                                </div>
-                            </div>
+                            
                         </div>
                         <div className="main-nav collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav mr-auto">
@@ -141,6 +135,26 @@ const Header = (props) => {
                             </form>
                         </div>
                     </nav>
+                </div>
+                <div id="collapseSearchbox" className="collapse">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-8 col-md-12 offset-lg-2">
+                                <div className="site-search-form">
+                                    <form action="/search" className="mb-0">
+                                        <div className="input-group flex-nowrap">
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text collapseSearch-icon">
+                                                    <i className="fa" aria-hidden="true" ></i>
+                                                </span>
+                                            </div>
+                                            <input type="search" className="form-control site-search-text" placeholder="What do you want to learn" aria-label="Username" aria-describedby="addon-wrapping" />
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
         </header>
         

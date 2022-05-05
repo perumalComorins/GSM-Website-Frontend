@@ -10,15 +10,7 @@ $(document).ready(function(){
         }
     );
     
-    $(".searchBar-mb [data-toggle=search-form]").click(function(event) {
-        event.preventDefault();
-        $(".togglesearch").addClass("open");
-        $("input[type='text']").focus();
-    });
-    $(".search-close").click(function() {
-        $(".togglesearch").removeClass("open");
-        
-    });
+    
     
     
 });

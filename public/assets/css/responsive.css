@@ -47,8 +47,12 @@
     .site-navigation .navbar-brand{
         margin:0;
     }
+    .site-navigation.navbar{
+        padding: 15px 0;
+    }
     .site-header-container{
-        max-width: 75%;
+        max-width: 80%;
+        margin:0 18px 0 auto;
     }
     .sidebar-wrapper-container{
         background: transparent;
@@ -57,6 +61,7 @@
     .hamburger{
         width: 24px;
         height:24px;
+        top:25px;
     }
     .hamburger.is-closed .hamb-top{
         top:3px;
@@ -70,6 +75,7 @@
     #sidebar-wrapper{
         box-shadow: none;
         overflow-y: scroll;
+        width:25px;
     }
     #wrapper.toggled #sidebar-wrapper{
         background: #FFFFFF;
@@ -111,6 +117,15 @@
         font-size: 12px;
         line-height: 35px;
     }
+    .sidenav-Menu li a.dropdown-toggle i:before{
+        content: "\f105";
+        font-family: FontAwesome;
+    }
+    .sidenav-Menu li.dropright.show a.dropdown-toggle i:before{
+        content: "\f107";
+        font-family: FontAwesome;
+    }
+    /* "\f107" */
     .togglesearch{
         background: #F5F5F5;
         position: absolute;
@@ -170,10 +185,54 @@
         cursor: pointer;
     }
     .search-form-trigger{
-        color:#FFFFFF;
-        padding: 5px 10px;
+        color: #FFFFFF;
+        width: 40px;
+        height: 40px;
         box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
         display: block;
+        text-align: center;
+        padding-top: 12px;
+    }
+    #collapseSearchbox{
+        position: absolute;
+        width: 100%;
+        left: 0px;
+        background: #ffffff;
+        padding: 15px 0;
+    }
+    .search-form-trigger i:before{
+        content: "\f00d";
+        font-family: FontAwesome;
+    }
+    .search-form-trigger.collapsed i:before{
+        content: "\f002";
+        font-family: FontAwesome;
+    }
+    .collapseSearch-icon i:before{
+        content: "\f002";
+        font-family: FontAwesome;
+        font-size: 16px;
+        color:#333;
+    }
+    .collapseSearch-icon{
+        background: transparent;
+        border: none;
+    }
+    input[type=search].form-control.site-search-text{
+        border: none;
+        background: transparent;
+        font-size: 16px;
+        line-height: 20px;
+        padding: 3px 0 0 15px;
+        color:#333;
+    }
+    input[type=search].form-control.site-search-text::placeholder{
+        font-size: 16px;
+        line-height: 20px;
+        color:#333;
+    }
+    .search-form-trigger i:before{
+        font-size: 16px;
     }
     .search-form-trigger:hover{
         color:#FFFFFF;
@@ -647,7 +706,7 @@
     }
     .inner-page #page-content-wrapper{
         position:absolute;
-        top:45px;
+        top:67px;
     }
     /** **/
     .fullsize-banner{
@@ -694,7 +753,7 @@
         padding-top: 120px;
     }
     .footercontainer{
-        max-width: 80%;
+        max-width: 85%;
     }
     .footerpanelAboutContent{
         padding: 0;
@@ -703,7 +762,7 @@
         margin-bottom: 91px;
     }
     .footer-widget-title{
-        font-size: 24px;
+        font-size: 21px;
         font-family: 'poppinsregular';
     }
     .footer-menu li a{
@@ -888,14 +947,14 @@
     
     
     .testimonial-Nav{
-        top:80%;
+        top:85%;
         
     }
     .testimonial_num{
-        font-size: 10px;
+        font-size: 9px;
         line-height: 9px;
-        padding: 0px 9px;
-        margin: 0 4px;
+        padding: 0px 7px;
+        margin: 0 5px;
     }
     #testimonialIndicators .carousel-control-next, 
     #testimonialIndicators .carousel-control-prev{
@@ -921,6 +980,8 @@
     .individual-banner-content .banner-title{
         font-size: 27px;
         line-height: 40px;
+        max-width: 85%;
+        margin:0 auto;
     }
     .reg-intro-content{
         font-size: 12px;
@@ -1002,9 +1063,11 @@
     #faq .card .card-header .btn-header-link{
         color:#707070;
         padding: 15px 0 15px 15px;
+        font-size: 18px;
+        line-height: 28px;
     }
     #faq .card .card-header .btn-header-link:before{
-        padding: 0px 23px 0px 0
+        padding: 0px 12px 0px 0
     }
     #faq .card-body{
         color: #707070;
@@ -1274,16 +1337,16 @@
         max-width: 90%;
     }
     .company-page-banner{
-        margin: 80px 0 50px 0;
+        margin: 101px 0 60px 0;
     }
     .company-page-banner .banner-left-col h2{
-        font-size: 13px;
+        font-size: 15px;
         line-height: 21px;
-        margin-bottom: 6.5px;
+        margin-bottom: 8px;
     }
     .company-page-banner .banner-left-col p{
-        font-size: 9.5px;
-        line-height: 16px;
+        font-size: 11px;
+        line-height: 18px;
         margin-bottom: 12.5px;
     }
     .company-page-banner .banner-left-col{
@@ -1310,7 +1373,7 @@
 
     /*** Qualified staff ***/
     .qualified-staff-section .container{
-        max-width: 90%;
+        max-width: 85%;
     }
     .qualified-staff-box{
         margin-top: 18px;
@@ -1333,6 +1396,10 @@
     }
     .company-register-section{
         padding-top: 23px;
+        margin-bottom: 21px;
+    }
+    .qualified-staff-section .question-text{
+        font-size: 20px;
     }
     .company-register-section h2{
         font-size: 13px;
@@ -1351,14 +1418,14 @@
         font-size: 30px;
         line-height: 45px;
         text-align: left;
-        max-width: 75%;
+        max-width: 85%;
         margin: 0 auto;
     }
     .blog-title-col .sub-title{
         font-size: 29px;
         line-height: 42px;
         text-align: left;
-        max-width: 75%;
+        max-width: 85%;
         margin: 0 auto;
         text-transform: uppercase;
         margin-top: 7px;
@@ -1398,7 +1465,7 @@
         margin:0 0 30px 0;
     }
     .strike{
-        margin:35px 0 48px 0;
+        margin:42px 0 48px 0;
     }
     .blog-view-more {
         font-size: 9px;
@@ -1508,7 +1575,7 @@
         padding: 10px 30px 10px 15px;
         position: absolute;
         left:auto;
-        right:0;
+        right:25px;
     }
     .certificate-satisfaction-card .froentside-panel .content-block{
         position: inherit;
@@ -1576,10 +1643,15 @@
         font-size: 12px;
         line-height: 18px;
         font-family: 'poppinsextralight';
+        text-align: center;
     }
     .certificateur-container .content-section{
         padding: 0;
         margin-bottom: 28px;
+    }
+    .certificateur-content-container{
+        margin-top: 15px;
+        text-align: center;
     }
     .twobyfour-banner-cover-overlay{
         /* top:57px; */
@@ -1631,6 +1703,8 @@
     .certificateur-content-container h2{
         font-size: 20px;
         line-height: 30px;
+        margin-left:auto;
+        margin-right:auto;
     }
     .certificateur-content-container p{
         font-size: 12px;
@@ -1694,8 +1768,8 @@
 
     }
     .emailform-label{
-        font-size: 10px;
-        line-height: 23px;
+        font-size: 13px;
+        line-height: 22px;
     }
     .emailform-check-input{
         width: 15px;
@@ -2116,6 +2190,9 @@
     }
 
     /***  Recruitment page ***/
+    .application-form-intro{
+        text-align: center;
+    }
     .requirement-banner-cover-overlay.threebyfour-banner-cover-overlay,
     .requirement-banner-content.threebyfour-banner-cover,
     .requirement-bannersection .threebyfourth-size-banner{
@@ -2191,6 +2268,23 @@
     }
     .page-navigation-list{
         margin:37px 0 84px 0;
+    }
+    .file-upload-wrapper:after{
+        padding: 9px 0 9px 10px;
+        font-size: 12px;
+    }
+    .file-upload-wrapper:before{
+        font-size: 12px;
+        padding: 9px 20px;
+    }
+    .carrer-application-formSection form button.btn{
+        font-size: 20px;
+        padding: 9px 0;
+        display: block;
+        border-radius: 10px;
+    }
+    .requirement-banner-content .banner-content{
+        top:62%;
     }
 }
 
