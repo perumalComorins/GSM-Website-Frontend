@@ -699,7 +699,7 @@
     
 }
 /**** Extra small devices (portrait phones, less than 576px)****/
-@media (max-width: 620.98px) {
+@media (max-width: 650.98px) {
     .btn{
         font-size: 15px;
     }
