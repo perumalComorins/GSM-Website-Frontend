@@ -795,7 +795,7 @@
         background: #FFFFFF;
         box-shadow: 0px 3px 3px #b1b1b1;
         position: relative;
-        bottom:20px;
+        bottom:22px;
     }
     .what-wedo-section .intro-section{
         margin: 23px 0 28px 0;
@@ -1783,6 +1783,9 @@
         margin-bottom: 15px;
         text-align: center;
     }
+    #gsmProfile-form button.btn{
+        border-radius: 10px;
+    }
     #gsmProfile-form h2.gsmProfile-title{
         font-size: 15px;
         line-height: 23px;
@@ -1899,7 +1902,7 @@
         width: 220px;
         left:25%;
         max-width: inherit;
-
+        top:75%;
     }
     .organization-intro-section{
         max-width: 75%;
@@ -2081,6 +2084,9 @@
     #contactfaq-nav{
         display:none;
     }
+    #contactfaq-nav-mobile .carousel-inner.nav-pills{
+        height: 56vh;
+    }
     .contactfaq-nav-slider .carousel-indicators{
         position:inherit;
         margin:30px auto 21px auto;
@@ -2129,6 +2135,7 @@
     #contactfaq-nav-mobile .carousel-inner li{
         margin: 3px;
         box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+        position: absolute;
     }
     #contactfaq-nav-mobile .carousel-inner li a h2{
         font-size: 22px;
@@ -2145,6 +2152,13 @@
     #contact-faq-accordian h2.title{
         font-size: 22px;
         line-height: 34px;
+    }
+    .faq-accordian-list .accordion .card .card-header .btn-header-link:before{
+        padding: 0 16px 0 0;
+    }
+    .faq-accordian-list .accordion .card .card-header .btn-header-link,
+    .faq-accordian-list .accordion .card .card-header .btn-header-link.collapsed{
+        font-size: 18px;
     }
     .appointment-result-box{
         max-width: 75%;

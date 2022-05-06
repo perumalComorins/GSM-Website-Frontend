@@ -270,7 +270,7 @@ export default function CompanyPage() {
                                                     <figcaption>
                                                         <span class="backdrop-border"></span>
                                                         <div class="card-header row">
-                                                            <div class="col-10 students-satisfaction">
+                                                            <div class="col-12 students-satisfaction">
                                                                 <div class="row reset-margin">
                                                                     <div class="col-6 students-satisfaction-percentage">
                                                                     <div class="row reset-margin">
