@@ -699,7 +699,7 @@
     
 }
 /**** Extra small devices (portrait phones, less than 576px)****/
-@media (max-width: 575.98px) {
+@media (max-width: 620.98px) {
     .btn{
         font-size: 15px;
     }
@@ -723,7 +723,7 @@
         position: relative;
     }
     .home-banner-content .banner-content {
-        top:12%;
+        top:91px;
         transform: translateY(12%);
     }
     .home-banner-content h1.title{
