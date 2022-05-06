@@ -75,6 +75,8 @@
     #sidebar-wrapper{
         box-shadow: none;
         overflow-y: scroll;
+    }
+   .inner-page #sidebar-wrapper{
         width:25px;
     }
     #wrapper.toggled #sidebar-wrapper{
@@ -792,6 +794,8 @@
         border-radius: 5px;
         background: #FFFFFF;
         box-shadow: 0px 3px 3px #b1b1b1;
+        position: relative;
+        bottom:20px;
     }
     .what-wedo-section .intro-section{
         margin: 23px 0 28px 0;
