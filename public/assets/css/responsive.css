@@ -749,7 +749,10 @@
         margin-right: 3px!important;
         margin-left:0!important;
     }
-
+    .bgbanner-backdrop {
+        background-position: bottom right;
+        height: 58vh;
+    }
     /*** Footer design ***/
     footer{
         padding-top: 120px;

@@ -404,6 +404,10 @@ a:hover{
     -moz-transform: translateY(-25%);
     -o-transform: translateY(-25%);
 }
+.bgbanner-backdrop{
+    background-repeat: no-repeat;
+    background-position: bottom left;
+}
 .client-logo-section{
     width:90%;
     background: #ffffff;

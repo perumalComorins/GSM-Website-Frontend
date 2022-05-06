@@ -273,7 +273,7 @@ export default function HomePage(){
                                 <div className="col-md-8 organisation-content">
                                     <div className="row reset-margin">
                                         <div className="col-md-5 d-none d-md-block"></div>
-                                        <div className="col-md-7">
+                                        <div className="col-md-7 bgbanner-backdrop" style={{backgroundImage: "url('/assets/images/bg-banner-pic.png')",}}>
                                             <h2 className="main-title individual-text">
                                             {homepanel.gsm_organization && homepanel.gsm_organization.title[0]}<span className="partner-text text-uppercase">{homepanel.gsm_organization && homepanel.gsm_organization.title[1]}</span> 
                                             </h2>
