@@ -7,7 +7,7 @@ import { userService } from '../../services/user.service';
 export default function QualityIndicatorPage(){
     const type = 'quality-indicators.php';
     const [qualityindicatorpanel, setQualityindicatorPanel] = useState([]);
-    
+    var total,current_index;
     useEffect(()=>{
         document.querySelector("body");
         let body_ele = document.querySelector("body");
@@ -26,8 +26,49 @@ export default function QualityIndicatorPage(){
             function bootstrapTabControl(){
         
                 var i, items = $('.tab-nav-link'), pane = $('.tab-pane');
+                
+
+                var tabFirstActive = $("#qualityTab-Content .active.tab-pane:first-child");
+                var tabLastActive = $("#qualityTab-Content .active.tab-pane:last-child");
+                
+                if(tabFirstActive){
+                    $("#qualityTab-Content .prevtab").hide();
+                }
+                
+                total = $('#qualityTab-Content .tab-pane').length;
+                current_index = $( "#qualityTab-Content .active.tab-pane" ).index();
+
+
+                var totalTab = $('#qualityTab li').length;
+                
                 // next
+                $("#qualityTab li").on('click', function(){
+                    var tab_currentindex = $(this).index();
+                    
+                    if( tab_currentindex > 0 ){
+                        $("#qualityTab-Content .prevtab").show();
+                        $("#qualityTab-Content .nexttab").show();
+                    }
+                    if (tab_currentindex == 0) {
+                        $("#qualityTab-Content .prevtab").hide();
+                        $("#qualityTab-Content .nexttab").show();
+                    }
+                    if(tab_currentindex === totalTab - 1){
+                        $("#qualityTab-Content .nexttab").hide();
+                        $("#qualityTab-Content .prevtab").show();
+                    }
+                });
+
                 $('.nexttab').on('click', function(){
+
+                    total = $('#qualityTab-Content .tab-pane').length;
+                    current_index = $( "#qualityTab-Content .active.tab-pane" ).index();
+
+                    if (current_index === total - 2) {
+                        $("#qualityTab-Content .nexttab").hide();
+                    }
+                    $("#qualityTab-Content .prevtab").show();
+                    
                     $('#qualityTab-Content.tab-content .tab-pane').removeClass('active');
     
                     for(i = 0; i < items.length; i++){
@@ -49,10 +90,20 @@ export default function QualityIndicatorPage(){
                         }, 500);
                         
                     }
-    
+                    
+                    
+                    
+
                 });
+
                 // Prev
                 $('.prevtab').on('click', function(){
+                    total = $('#qualityTab-Content .tab-pane').length;
+                    current_index = $( "#qualityTab-Content .active.tab-pane" ).index();
+                    if (current_index == 1) {
+                        $("#qualityTab-Content .prevtab").hide();
+                    }
+                    $("#qualityTab-Content .nexttab").show();
                     $('#qualityTab-Content.tab-content .tab-pane').removeClass('active');
                     
                     for(i = 0; i < items.length; i++){
@@ -73,6 +124,7 @@ export default function QualityIndicatorPage(){
                             $(pane[i-1]).addClass('active');
                         }, 500);
                     }
+                    
                 });
             }
             bootstrapTabControl();

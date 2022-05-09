@@ -3328,7 +3328,9 @@ h2.service-textwrapp{
     text-align: center;
     margin:0;
 }
-
+.service-footer button{
+    border-radius: 9px;
+}
 
 /*** Certiflier page (17-03-22)***/
 .twobyfour-banner-cover-overlay{

@@ -1288,17 +1288,22 @@
     #satisfaction-slider-mobile .froentside-panel .content-block{
         position: inherit;
         bottom: inherit;
+        padding-right: 9px;
     }
+    
     #satisfaction-slider-mobile .froentside-panel{
         position: relative;
-        top: 50%;
-        transform: translateY(-50%);
+        top: 40%;
+        transform: translateY(-40%);
+    }
+    .froentside-panel .picture-block{
+        padding: 22px 0 0 0;
     }
     .satisfaction-slider .carousel-indicators{
         margin:25px auto 35px auto;
     }
     #satisfaction-slider-mobile .satisfaction-card figure{
-        height:309px;
+        height:250px;
     }
     .students-satisfaction-percentage{
         margin-bottom: 12px;
@@ -1637,7 +1642,7 @@
     }
     .certificateur-container{
         max-width:85%;
-        bottom:150px;
+        bottom:135px;
     }
     .certificateur-container .content-section h1{
         font-size: 25px;
@@ -1659,6 +1664,7 @@
     .certificateur-content-container{
         margin-top: 15px;
         text-align: center;
+        bottom:10vh;
     }
     .twobyfour-banner-cover-overlay{
         /* top:57px; */
