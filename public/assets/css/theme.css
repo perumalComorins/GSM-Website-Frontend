@@ -86,6 +86,9 @@
 html{
     font-size: 10px;
 }
+ol li{
+    font-size: 20px;
+}
 body {
     position: relative;
     overflow-x: hidden;
@@ -3556,7 +3559,7 @@ li.inforbar-col:not(:last-child){
 .terms-privacy-legal-content{
     position: absolute;
     left:50%;
-    top:15%;
+    top:22%;
     transform: translateX(-50%);
     -webkit-transform:translateX(-50%);
     -moz-transform:translateX(-50%);

@@ -4,7 +4,7 @@ import { userService } from '../../services/user.service';
 import Sidepanel from "../../components/sidepanel" ;
 import Header from "../../components/header";
 import Footer from "../../components/footer";
-
+import { Link } from '../../components/Link';
 export default function Sitemap(){
 
 
@@ -55,7 +55,7 @@ export default function Sitemap(){
                                             <h2>{items.title}</h2>
                                             <ul>
                                                 {items.menu && items.menu.map((each_item, i) => 
-                                                <li><a href={each_item.link}>{each_item.list}</a></li>)}
+                                                <li><Link href={each_item.link}>{each_item.list}</Link></li>)}
                                             </ul>
                                         </li>)}
                                     </ul>
