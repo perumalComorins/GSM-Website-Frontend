@@ -3,6 +3,7 @@ import Sidepanel from "../../components/sidepanel" ;
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import { userService } from '../../services/user.service';
+import { Link } from '../../components/Link';
 import { each } from 'jquery';
 
 
@@ -293,7 +294,7 @@ export default function Job(){
 
                                                                 </div>
                                                             </div>
-                                                            <button type="button" className="btn gsm-bg-individual btn-applynow" style={{marginTop:'110px'}}>Apply now</button>
+                                                            <Link href="/application_gsm"  className="btn gsm-bg-individual btn-applynow" style={{marginTop:'110px'}}>Apply now</Link>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -492,7 +493,7 @@ export default function Job(){
 
                                                                 </div>
                                                             </div>
-                                                            <button type="button" className="btn gsm-bg-individual btn-applynow" style={{marginTop:'110px'}}>Apply now</button>
+                                                            <Link href="/application_gsm" className="btn gsm-bg-individual btn-applynow" style={{marginTop:'110px'}}>Apply now</Link>
                                                         </div>
                                                     </div>
                                                 </div>
