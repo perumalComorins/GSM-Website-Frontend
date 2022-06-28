@@ -59,6 +59,63 @@ export default function ContactFaqPage(){
                             $(this).parents('').addClass("list-active");
                             event.preventDefault();
                     });
+
+                    // $('.news').each(function(){
+                    //     var t,
+                    //         $self = $(this),
+                    //         $contentBox = $self.find('.content'),
+                    //         newHeight = $contentBox.innerHeight()*3
+                        
+                    //     $self.hover(function(){
+                    //         clearTimeout(t);
+                    //         $contentBox.stop().animate({
+                    //         'height' : newHeight
+                    //       }, {
+                    //         step: function() {
+                    //           $contentBox.css("overflow-y", "auto");
+                    //         }
+                    //       });
+                    //     }, function(){
+                    //       clearTimeout(t);
+                    //       t=setTimeout(function(){
+                    //         $contentBox.stop().animate({
+                    //           'height' : 100
+                    //         }, {
+                    //           step: function() {
+                    //             $contentBox.css("overflow-y", "auto");
+                    //           }
+                    //         });
+                    //       }, 300)
+                    //     });
+                    // });
+
+                    var t,
+                    $contentBox = $("#contactfaq-nav li"),
+                    newHeight = $contentBox.innerHeight()+80;
+
+                    $contentBox.hover(function(){
+                        clearTimeout(t);
+                        $(this).stop().animate({
+                            'height' : newHeight
+                            }, {
+                            step: function() {
+                                $(this).css("overflow-y", "auto");
+                            }
+                        });
+                    }, function(){
+                      clearTimeout(t);
+                      t=setTimeout(function(){
+                        $(this).stop().animate({
+                          'height' : 300
+                        }, {
+                          step: function() {
+                            $(this).css("overflow-y", "auto");
+                          }
+                        });
+                      }, 300)
+                    });
+                    
+                    
                 });
             }
         },[contactfaq])
@@ -177,7 +234,7 @@ export default function ContactFaqPage(){
                                         <h2 className="individual-text appointment-title text-center">
                                             Vous ne trouvez pas votre solution ? Prenez rendez vous avec notre équipe
                                         </h2>
-                                        <div className="appointment-card card mx-auto">
+                                        <div className="appointment-card card mx-auto" style={{backgroundImage: "url('/assets/images/faq-appoint-bg.png')",}}>
                                             <div className="card-body">
                                             <div className="row">
                                                 <div className="col-4 col-lg-3">
@@ -191,7 +248,7 @@ export default function ContactFaqPage(){
                                                     </p>
                                                     <button className="btn gsm-bg-white btn-gsm-md my-2 d-none d-lg-block">Réservez votre créneau</button>
                                                 </div>
-                                                <div className="col-sm-12 d-block d-lg-none">
+                                                <div className="col-sm-12 d-block d-lg-none reset-padding ml-5">
                                                     <p className="card-text ">
                                                     Vous ne trouvez pas la réponse à votre question ou vous avez besoin de plus de détails. 
                                                     Notre équipe est à votre disposition pour vous répondre. Pensez à interroger la FAQ ci-dessus.

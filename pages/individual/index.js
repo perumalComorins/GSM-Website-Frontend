@@ -208,7 +208,7 @@ export default function IndividualPage() {
                                                                     </div> */}
                                                                 </div>
                                                             </div>
-                                                            <div class="card-body reset-padding">
+                                                            <div class="card-body">
                                                                 <ul class="backdrop-list">
                                                                     <li class="backdrop-item">
                                                                         <span className="item-heighlight">{list.obj_title}</span>
@@ -305,7 +305,7 @@ export default function IndividualPage() {
                                                                 </div> */}
                                                             </div>
                                                         </div>
-                                                        <div class="card-body reset-padding">
+                                                        <div class="card-body">
                                                             <ul class="backdrop-list">
                                                                 <li class="backdrop-item">
                                                                     <span class="item-heighlight">{items.obj_title}</span>
@@ -452,7 +452,7 @@ export default function IndividualPage() {
                                         </div>
                                         </div>
                                         <div className="form-group gsm-form-group col-md-6">
-                                        <label className="gsm-form-label individual-text">Choisissez votre formation</label>
+                                        <label className="gsm-form-label individual-text">Choisissez votre ville</label>
                                         <div className="dropdown gsmDropdown">
                                             <a className="dropdown-toggle gsm-dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                                 Ville

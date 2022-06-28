@@ -64,6 +64,15 @@ export default function Job(){
                             $(this).parents('').addclassName("list-active");
                             event.preventDefault();
                     });
+
+                    $('#jobs-accordian .collapse').on('shown.bs.collapse', function(e) {
+                        
+                        var panel = $(this).closest('.card');
+                        console.log("panel",panel)
+                        $('html,body').animate({
+                            scrollTop: panel.offset().top
+                        }, 1000);
+                    });
                 });
             }
         },[jobpanel])
@@ -90,10 +99,10 @@ export default function Job(){
                                 </div>
                                 <div className="training-tab-section requirement-tab-section">
                                     <div className="organization-tab-bar">
-                                        <div className="container container-60 reset-padding">
+                                        <div className="container container-70 reset-padding">
+                                            <span className="needs_span">{jobpanel.job_section && jobpanel.job_section.title}</span>
                                             <ul className="nav nav-pills row reset-margin">
                                                 <li className="col reset-padding">
-                                                    <span className="needs_span">{jobpanel.job_section && jobpanel.job_section.title}</span>
                                                     <a data-toggle="pill" href="#particulier" className="active" >
                                                         {jobpanel.job_section && jobpanel.job_section.gsm_job_module.title}
                                                     </a>
@@ -281,12 +290,12 @@ export default function Job(){
                                                                 )}
                                                             </ul>
                                                             
-                                                            <div className="row d-none d-lg-block reset-margin">
-                                                                <div className="col-md-4 reset-padding job-curd-operation">
+                                                            <div className="row reset-margin">
+                                                                <div className="col-sm-12 col-md-4 reset-padding job-curd-operation">
                                                                     <h3 className="individual-text">{items.toggle.head_1}</h3>
                                                                     <label>{items.toggle.label_1}</label>
                                                                 </div>
-                                                                <div className="col-md-4 reset-padding job-curd-operation">
+                                                                <div className="col-sm-12 col-md-4 reset-padding job-curd-operation">
                                                                     <h3 className="individual-text">{items.toggle.head_2}</h3>
                                                                     <label>{items.toggle.label_2}</label>
                                                                 </div>

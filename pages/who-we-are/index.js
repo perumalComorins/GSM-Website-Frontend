@@ -65,8 +65,10 @@ export default function WhowearePage(){
                 <div class="container container-70 reset-padding certificateur-container">
                     <div class="row reset-margin">
                         <div class="col-md-6 content-section">
-                            <h1>{whowepanel.banner_section && whowepanel.banner_section.title}</h1>
-                            <p>{whowepanel.banner_section && whowepanel.banner_section.desc}</p>    
+                            <div class="whowe-are-titlebar">
+                                <h1>{whowepanel.banner_section && whowepanel.banner_section.title}</h1>
+                                <p>{whowepanel.banner_section && whowepanel.banner_section.desc}</p>  
+                            </div>
                         </div>
                         <div class="col-md-6 infobar-section align-self-center">
                             <div class="infobar">

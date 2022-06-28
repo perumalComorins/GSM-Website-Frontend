@@ -10,7 +10,16 @@ $(document).ready(function(){
         }
     );
     
-    
+    var boxHeight = $("#contactfaq-nav li").height();
+    $("#contactfaq-nav li").mouseenter(function(){
+        $(this).animate({
+            height: "380"
+        });
+    }).mouseleave(function(){
+        $(this).animate({
+            height: boxHeight
+        });
+    });
     
     
 });

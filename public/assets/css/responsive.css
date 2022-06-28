@@ -464,6 +464,10 @@
 }
 /**** Small devices (landscape phones, less than 768px)*****/
 @media (max-width: 767.98px) {
+    .home-page .site-header{
+        animation-delay: 1s;
+    }
+
     .fullsize-banner{
         height: 100vh;
     }
@@ -751,7 +755,10 @@
     }
     .bgbanner-backdrop {
         background-position: bottom right;
-        height: 58vh;
+        height: 35vh;
+        padding: 0;
+        margin-right: 50px;
+
     }
     /*** Footer design ***/
     footer{
@@ -769,6 +776,12 @@
     .footer-widget-title{
         font-size: 21px;
         font-family: 'poppinsregular';
+    }
+    .footer-quotes{
+        margin-left: 0;
+    }
+    .footer-quotes h2{
+        text-align: left;
     }
     .footer-menu li a{
         font-size: 18px;
@@ -875,7 +888,7 @@
     }
 
     .organisation-section{
-        padding: 45px 0 100px 0;
+        padding: 45px 0 85px 0;
         background-position:top;
     }
     .organisation-inner-box{
@@ -930,9 +943,14 @@
     .testimonials_overlay{
         top:0;
         bottom:0;
+        height:152px;
     }
     .teamMember--img {
         height: 182px;
+        bottom:30px;
+    }
+    .gsm-teamMember--thumbnail{
+        padding: 0;
     }
     .memberName{
         font-size: 12px;
@@ -947,14 +965,14 @@
         font-family:'poppinsthin';
     }
     .gsm-teamMember--name-designation{
-        top:10px;
+        top:-15px;
         padding: 0;
-        align-self: center!important;
+        margin-top: 0;
     }
     
     
     .testimonial-Nav{
-        top:85%;
+        top:70%;
         
     }
     .testimonial_num{
@@ -1331,7 +1349,7 @@
     }
     .satisfaction-card figcaption{
         padding: 0;
-        height:auto;
+        height: 250px;
     }
     .satisfaction-card .card-header{
         margin-top: 9px;
@@ -1817,7 +1835,7 @@
     #qualityTab-Content{
         max-width: 100%;
         margin: 0 auto;
-        padding: 22px 0;
+        padding:0;
         height: 50vh;
     }
     #qualityTab .tab-nav-link{
@@ -1830,29 +1848,32 @@
         font-size: 20px;
         line-height: 30px;
     }
-    .prevtab i, .nexttab i{
+    #qualityTab-Content .prevtab i, 
+    #qualityTab-Content .nexttab i{
         width: 25px;
         height: 25px;
     }
-    .prevtab i img, .nexttab i img{
+    #qualityTab-Content .prevtab i img, 
+    #qualityTab-Content .nexttab i img{
         width:10px;
         height:10px;
     }
-    .prevtab, .nexttab{
+    #qualityTab-Content .prevtab, 
+    #qualityTab-Content .nexttab{
         font-size: 9px;
         line-height: 13px;
         font-family: 'poppinsextralight';
     }
-    .nexttab {
+    #qualityTab-Content .nexttab {
         right: -30px;
     }
-    .nexttab i {
+    #qualityTab-Content .nexttab i {
         margin-left: 6px;
     }
-    .prevtab {
+    #qualityTab-Content .prevtab {
         left: -30px;
     }
-    .prevtab i{
+    #qualityTab-Content .prevtab i{
         margin-right: 6px;
     }
     #qualityTab-Content .tab-pane{
@@ -1943,6 +1964,9 @@
         font-size: 11px;
         line-height: 15px;
         padding: 8px 0;
+    }
+    .organization-tab-bar li{
+       height: 50px;
     }
     .draft-continue-indicator{
         margin-bottom: 15px!important;
@@ -2094,7 +2118,7 @@
         display:none;
     }
     #contactfaq-nav-mobile .carousel-inner.nav-pills{
-        height: 56vh;
+        height: 350px;
     }
     .contactfaq-nav-slider .carousel-indicators{
         position:inherit;
@@ -2189,8 +2213,11 @@
         line-height: 34px;
     }
     .appointment-content{
-        max-width: 75%;
+        max-width: 320px;
         margin: 32px auto 52px auto;
+    }
+    .appointment-card{
+        width:100%;
     }
     .appointment-card .card-title{
         font-size: 15px;
@@ -2201,7 +2228,7 @@
     }
     
     .appointment-card .card-text{
-        margin-top: 20px;
+        margin-top: 28px;
         font-size: 12px;
         line-height: 22px;
     }
@@ -2209,7 +2236,7 @@
         font-size: 12px;
         line-height: 18px;
         padding: 15px 0;
-        width:205px;
+        width:100%;
         border-radius: 10px;
     }
    .threebyfour-banner-cover{
@@ -2235,7 +2262,8 @@
     }
     span.needs_span{
         font-size: 11px;
-        line-height: 17px;
+        line-height: inherit;
+        padding: 3px 0;
     }
     .requirement-tab-section .organization-tab-bar .nav.nav-pills{
         top:0;
@@ -2244,7 +2272,10 @@
         max-width: 100%;
     }
     .requirement-tab{
-        margin-top:42px;
+        margin-top:73px;
+    }
+    .requirement-banner-content .training-tab-section.requirement-tab-section{
+        top: 94%;
     }
     .requirement-tab .tab-pane{
         margin:0;
@@ -2298,10 +2329,10 @@
     }
     .file-upload-wrapper:after{
         padding: 9px 0 9px 10px;
-        font-size: 12px;
+        font-size: 11px;
     }
     .file-upload-wrapper:before{
-        font-size: 12px;
+        font-size: 11px;
         padding: 9px 20px;
     }
     .carrer-application-formSection form button.btn{

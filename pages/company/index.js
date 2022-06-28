@@ -419,7 +419,7 @@ export default function CompanyPage() {
                                 <form className="register-initial-form">
                                     <div className="form-row twospaces-row reset-margin">
                                         <div className="form-group gsm-form-group col-md-6">
-                                        <label className="gsm-form-label individual-text">Choisissez votre formation</label>
+                                        <label className="gsm-form-label individual-text">Choisissez votre cours</label>
                                         <div className="dropdown gsmDropdown">
                                             <a className="dropdown-toggle gsm-dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                                 Nom du cours
@@ -433,16 +433,41 @@ export default function CompanyPage() {
                                         </div>
                                         </div>
                                         <div className="form-group gsm-form-group col-md-6">
-                                        <label className="gsm-form-label individual-text">Choisissez votre formation</label>
+                                        <label className="gsm-form-label individual-text">Choisissez votre localisation</label>
                                         <div className="dropdown gsmDropdown">
                                             <a className="dropdown-toggle gsm-dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                Ville
+                                                Nom de la ville
                                             </a>
                                             <ul className="dropdown-menu gsm-dropdown-menu" >
                                                 <hr />
-                                                <li><a href="#" className="gsm-dropdown-link">Certification niveau 4</a></li>
-                                                <li><a href="#" className="gsm-dropdown-link">Certification niveau 3</a></li>
-                                                <li><a href="#" className="gsm-dropdown-link">Indicateurs de qualité</a></li>
+                                                <li>
+                                                    <a href="#" class="gsm-dropdown-link">
+                                                        <span class="handicaped-label">Paris</span>
+                                                        <span class="motor-handicaped">
+                                                        <img src="/assets/images/handicaped.png" class="handicap-icon" /> 
+                                                        <img src="/assets/images/eye-disabled.png" class="handicap-icon" /> 
+                                                        <img src="/assets/images/ear-disabled.png" class="handicap-icon" />
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="gsm-dropdown-link">
+                                                        <span class="handicaped-label">Lyon</span>
+                                                        <span class="motor-handicaped">
+                                                        <img src="/assets/images/handicaped.png" class="handicap-icon" /> 
+                                                        <img src="/assets/images/eye-disabled.png" class="handicap-icon" />
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="gsm-dropdown-link">
+                                                        <span class="handicaped-label">Marseille</span>
+                                                        <span class="motor-handicaped">
+                                                        <img src="/assets/images/handicaped.png" class="handicap-icon" /> 
+                                                        <img src="/assets/images/eye-disabled.png" class="handicap-icon" />
+                                                        </span>
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                         </div>
@@ -451,14 +476,39 @@ export default function CompanyPage() {
                                     <div className="form-group gsm-form-group">
                                     <label className="gsm-form-label individual-text">Choisissez votre date</label>
                                     <div className="dropdown gsmDropdown">
-                                            <a className="dropdown-toggle gsm-dropdown-toggle active-choose" data-toggle="dropdown" aria-expanded="false">
+                                            <a class="dropdown-toggle gsm-dropdown-toggle active-choose" data-toggle="dropdown" aria-expanded="false">
                                                 05 julliet 2021 to 06 Septembre 2021 - Fore Noon
                                             </a>
                                             <ul className="dropdown-menu gsm-dropdown-menu">
                                                 <hr />
-                                                <li><a href="#" className="gsm-dropdown-link">Certification niveau 4</a></li>
-                                                <li><a href="#" className="gsm-dropdown-link">Certification niveau 3</a></li>
-                                                <li><a href="#" className="gsm-dropdown-link">Indicateurs de qualité</a></li>
+                                                <li>
+                                                    <a href="#" class="gsm-dropdown-link">
+                                                        <span class="handicaped-label">10 Mai 2022 to  5 Decembre 2022 - After Noon</span>
+                                                        <span class="motor-handicaped">
+                                                        <img src="/assets/images/handicaped.png" class="handicap-icon" /> 
+                                                        <img src="/assets/images/eye-disabled.png" class="handicap-icon" /> 
+                                                        <img src="/assets/images/ear-disabled.png" class="handicap-icon" />
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="gsm-dropdown-link">
+                                                        <span class="handicaped-label">10 Mai 2022 to  5 Decembre 2022 - After Noon</span>
+                                                        <span class="motor-handicaped">
+                                                        <img src="/assets/images/handicaped.png" class="handicap-icon" /> 
+                                                        <img src="/assets/images/eye-disabled.png" class="handicap-icon" />
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="gsm-dropdown-link">
+                                                        <span class="handicaped-label">10 Mai 2022 to  5 Decembre 2022 - After Noon</span>
+                                                        <span class="motor-handicaped">
+                                                        <img src="/assets/images/handicaped.png" class="handicap-icon" /> 
+                                                        <img src="/assets/images/eye-disabled.png" class="handicap-icon" />
+                                                        </span>
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>

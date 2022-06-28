@@ -16,7 +16,7 @@ const Footer = (props) => {
 
     return(
         <div className="container footercontainer container-70 reset-padding">
-            <div className="footer-quotes d-none d-md-block">
+            <div className="footer-quotes">
                 <h2>{footerpanel.footer}</h2>
             </div>
             <div className="row reset-margin">

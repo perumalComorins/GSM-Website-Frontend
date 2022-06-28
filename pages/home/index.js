@@ -218,7 +218,7 @@ export default function HomePage(){
                                     <div className="carousel-item">
                                             <div className="container container-70 reset-padding">
                                                 <div className="row mx-0">
-                                                    <div className="col-3"><img src="/assets/images/partner-group-1.png" /></div>
+                                                    <div className="col-3 reset-padding"><img src="/assets/images/partner-group-1.png" /></div>
                                                 </div>
                                             </div>
                                     </div>
@@ -246,7 +246,7 @@ export default function HomePage(){
                                     <div className="carousel-item">
                                             <div className="container container-70 reset-padding">
                                                 <div className="row mx-0">
-                                                    <div className="col-6"><img src="/assets/images/partner-group-1.png" className="img-fluid"/></div>
+                                                    <div className="col-6 reset-padding"><img src="/assets/images/partner-group-1.png" className="img-fluid"/></div>
                                                 </div>
                                             </div>
                                     </div>
@@ -293,10 +293,8 @@ export default function HomePage(){
                     </div>
 
                     <div className="testimonial">
-                            <div className="testimonial_box">
-                            </div>
                             <div className="testimonials_overlay">
-                            <div className="container container-1160">
+                            <div className="container container-1160 testimonial-cover-content">
                                 <div className="row reset-margin">
                                     <div id="testimonialIndicators" className="carousel slide" data-ride="carousel" data-wrap="false" data-interval="false">
                                     <div className="carousel-inner">
@@ -307,7 +305,7 @@ export default function HomePage(){
                                                     <img src={feedback.photo_link} className="teamMember--img img-fluid" />
                                                 </div>
                                             
-                                                <div className="col-7 gsm-teamMember--name-designation align-self-center">
+                                                <div className="col-7 gsm-teamMember--name-designation">
                                                     <h3 className="memberName d-block d-md-none">Testimonial from a company</h3>
                                                     <p className="membersQuote d-block d-md-none">
                                                     Present in the mobile telephony market since 1999, 
